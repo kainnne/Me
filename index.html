@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="朱璽的個人網站：AI、數位教學與創作" />
+    <title>朱璽｜個人網站</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳至主要內容</a>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="回到頁面頂端">KAINE / NOTES</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">開啟選單</span><span></span><span></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="主要導覽">
+        <a href="#about">關於我</a>
+        <a href="#experience">現在投入</a>
+        <a href="#projects">探索方向</a>
+        <a class="nav-contact" href="#contact">聯絡我 ↗</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section id="top" class="hero section-shell">
+        <p class="eyebrow">PORTFOLIO · 2026</p>
+        <div class="hero-grid">
+          <div>
+            <p class="hero-intro">你好，我是</p>
+            <h1><span id="name">朱璽</span><span id="english-name">Kaine Zhu</span></h1>
+            <p id="headline" class="hero-headline">正在打造有價值數位體驗的工作者。</p>
+            <a class="button button-primary" href="#contact">一起合作 <span>→</span></a>
+          </div>
+          <aside class="availability-card">
+            <span class="status-dot"></span>
+            <p id="availability">目前開放新的合作機會</p>
+            <p class="card-note">Based in <span id="location">Taipei, Taiwan</span></p>
+          </aside>
+        </div>
+        <div class="hero-footer">
+          <span>SCROLL TO EXPLORE</span>
+          <span class="scroll-line" aria-hidden="true"></span>
+          <span id="role-label">YOUR ROLE</span>
+        </div>
+      </section>
+
+      <section id="about" class="section section-shell">
+        <div class="section-label"><span>01</span> 關於我</div>
+        <div class="section-content about-layout">
+          <div>
+            <h2 id="about-title">以好奇心與行動，持續解決問題。</h2>
+          </div>
+          <div>
+            <p id="about-text" class="large-copy"></p>
+            <div class="facts" id="facts"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" class="section section-shell">
+        <div class="section-label"><span>02</span> 現在投入</div>
+        <div class="section-content">
+          <div id="experience-list" class="timeline"></div>
+        </div>
+      </section>
+
+      <section id="resume-detail" class="section section-shell">
+        <div class="section-label"><span>03</span> 履歷詳述</div>
+        <div class="section-content">
+          <p class="detail-intro">中文／English · 學歷、工作經驗與碩士論文完整說明</p>
+          <div id="resume-detail-list" class="resume-detail-list"></div>
+        </div>
+      </section>
+
+      <section id="skills" class="section section-shell">
+        <div class="section-label"><span>04</span> 專業能力</div>
+        <div class="section-content skills-layout">
+          <p class="large-copy">我重視持續學習，也享受將不同領域的工具整合成實際成果。</p>
+          <div id="skill-groups" class="skill-groups"></div>
+        </div>
+      </section>
+
+      <section id="projects" class="section section-shell">
+        <div class="section-label"><span>05</span> 探索方向</div>
+        <div class="section-content">
+          <div id="project-list" class="projects"></div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact section-shell">
+        <p class="eyebrow">LET'S CONNECT</p>
+        <h2>期待聽見<br />你的想法。</h2>
+        <a id="email-link" class="email-link" href="mailto:chaos60649@gmail.com">chaos60649@gmail.com <span>↗</span></a>
+        <a id="phone-link" class="phone-link" href="tel:+886909505931">+886 909 505 931</a>
+        <div id="social-links" class="social-links"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer section-shell">
+      <span>© <span id="year"></span> <span id="footer-name">朱璽</span></span>
+      <a href="#top">回到頂端 ↑</a>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
