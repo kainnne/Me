@@ -3,113 +3,140 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="朱璽的個人網站：AI、數位教學與創作" />
-    <title>朱璽｜個人網站</title>
+    <meta name="theme-color" content="#f4f1ff" />
+    <meta name="description" content="朱璽 Kaine Zhu — AI 軟體、數位學習、資料系統與創作實踐。" />
+    <meta property="og:title" content="Kaine Zhu — AI, Learning &amp; Creative Technology" />
+    <meta property="og:description" content="從資料系統到學習體驗，把複雜問題做成可用、可驗證的成果。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://zx50416.github.io/Me/" />
+    <link rel="canonical" href="https://zx50416.github.io/Me/" />
+    <title>Kaine Zhu — AI, Learning &amp; Creative Technology</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;family=Noto+Sans+TC:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css?v=2" />
   </head>
   <body>
     <a class="skip-link" href="#main">跳至主要內容</a>
+    <div class="page-atmosphere" aria-hidden="true"><span></span><span></span><span></span></div>
 
-    <header class="site-header">
-      <a class="brand" href="#top" aria-label="回到頁面頂端">KAINE / NOTES</a>
+    <header class="site-header" data-header>
+      <a class="brand" href="#top" aria-label="Kaine Zhu，回到首頁">
+        <span class="brand-mark">KZ</span>
+        <span class="brand-name">Kaine Zhu</span>
+      </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
         <span class="sr-only">開啟選單</span><span></span><span></span>
       </button>
       <nav id="site-nav" class="site-nav" aria-label="主要導覽">
-        <a href="#about">關於我</a>
-        <a href="#experience">現在投入</a>
-        <a href="#projects">探索方向</a>
-        <a class="nav-contact" href="#contact">聯絡我 ↗</a>
+        <a href="#focus">能力</a>
+        <a href="#work">成果</a>
+        <a href="#story">經歷</a>
+        <a class="nav-cta" href="#contact">開始對話 <span>↗</span></a>
       </nav>
     </header>
 
     <main id="main">
       <section id="top" class="hero section-shell">
-        <p class="eyebrow">PORTFOLIO · 2026</p>
-        <div class="hero-grid">
-          <div>
-            <p class="hero-intro">你好，我是</p>
-            <h1><span id="name">朱璽</span><span id="english-name">Kaine Zhu</span></h1>
-            <p id="headline" class="hero-headline">正在打造有價值數位體驗的工作者。</p>
-            <a class="button button-primary" href="#contact">一起合作 <span>→</span></a>
+        <div class="hero-copy reveal is-visible">
+          <div class="hero-meta">
+            <span class="status"><i></i><span id="availability">持續學習，也持續創作中</span></span>
+            <span id="location">Taipei & New Taipei, Taiwan</span>
           </div>
-          <aside class="availability-card">
-            <span class="status-dot"></span>
-            <p id="availability">目前開放新的合作機會</p>
-            <p class="card-note">Based in <span id="location">Taipei, Taiwan</span></p>
-          </aside>
-        </div>
-        <div class="hero-footer">
-          <span>SCROLL TO EXPLORE</span>
-          <span class="scroll-line" aria-hidden="true"></span>
-          <span id="role-label">YOUR ROLE</span>
-        </div>
-      </section>
-
-      <section id="about" class="section section-shell">
-        <div class="section-label"><span>01</span> 關於我</div>
-        <div class="section-content about-layout">
-          <div>
-            <h2 id="about-title">以好奇心與行動，持續解決問題。</h2>
-          </div>
-          <div>
-            <p id="about-text" class="large-copy"></p>
-            <div class="facts" id="facts"></div>
+          <p class="eyebrow">AI SYSTEMS · LEARNING EXPERIENCE · CREATIVE PRACTICE</p>
+          <h1>
+            <span class="name-zh" id="name">朱璽</span>
+            <span class="name-en" id="english-name">Kaine Zhu</span>
+          </h1>
+          <p class="hero-headline" id="headline">把學習、技術與創作，連成可感知的體驗。</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#focus">探索我的能力 <span>↓</span></a>
+            <a class="button button-quiet" href="https://github.com/zx50416" target="_blank" rel="noreferrer">GitHub <span>↗</span></a>
           </div>
         </div>
-      </section>
 
-      <section id="experience" class="section section-shell">
-        <div class="section-label"><span>02</span> 現在投入</div>
-        <div class="section-content">
-          <div id="experience-list" class="timeline"></div>
+        <div class="hero-object" aria-hidden="true">
+          <div class="orbital-stage">
+            <div class="orb orb-a"></div><div class="orb orb-b"></div>
+            <div class="orbit orbit-one"><span>AI</span></div>
+            <div class="orbit orbit-two"><span>DATA</span></div>
+            <div class="orbit orbit-three"><span>MUSIC</span></div>
+            <div class="object-core"><span>BUILD</span><strong>×</strong><span>VERIFY</span></div>
+          </div>
+        </div>
+
+        <div class="hero-note">
+          <span>01</span>
+          <p>跨越工程、AI、教育與音樂。<br />我關心的不只是做出來，也關心它是否真正可用。</p>
         </div>
       </section>
 
-      <section id="resume-detail" class="section section-shell">
-        <div class="section-label"><span>03</span> 履歷詳述</div>
-        <div class="section-content">
-          <p class="detail-intro">中文／English · 學歷、工作經驗與碩士論文完整說明</p>
-          <div id="resume-detail-list" class="resume-detail-list"></div>
+      <div class="marquee" aria-label="專業領域">
+        <div class="marquee-track">
+          <span>AI AGENTS</span><i>✦</i><span>MACHINE LEARNING</span><i>✦</i><span>LEARNING SYSTEMS</span><i>✦</i><span>FRONTEND DESIGN</span><i>✦</i><span>CREATIVE DIRECTION</span><i>✦</i>
+          <span aria-hidden="true">AI AGENTS</span><i aria-hidden="true">✦</i><span aria-hidden="true">MACHINE LEARNING</span><i aria-hidden="true">✦</i><span aria-hidden="true">LEARNING SYSTEMS</span><i aria-hidden="true">✦</i><span aria-hidden="true">FRONTEND DESIGN</span><i aria-hidden="true">✦</i><span aria-hidden="true">CREATIVE DIRECTION</span><i aria-hidden="true">✦</i>
+        </div>
+      </div>
+
+      <section id="focus" class="section section-shell reveal">
+        <div class="section-heading">
+          <p class="section-index">01 / CAPABILITIES</p>
+          <h2>不先塞滿畫面，<br />選一個方向深入。</h2>
+          <p>每個能力都連結到實際做法與工具。預設收合，讓你快速找到真正想看的內容。</p>
+        </div>
+        <div id="capability-list" class="accordion capability-list"></div>
+      </section>
+
+      <section id="work" class="section section-shell reveal">
+        <div class="section-heading compact">
+          <p class="section-index">02 / SELECTED EVIDENCE</p>
+          <h2>成果，比技能清單更有說服力。</h2>
+        </div>
+        <div id="highlight-list" class="highlight-grid"></div>
+      </section>
+
+      <section id="story" class="section section-shell reveal">
+        <div class="section-heading">
+          <p class="section-index">03 / BACKGROUND</p>
+          <h2>完整履歷，<br />需要時再展開。</h2>
+          <p>工作、論文、學歷與其他經驗均保留中英文內容，點選分類即可閱讀。</p>
+        </div>
+        <div id="resume-detail-list" class="accordion resume-accordion"></div>
+      </section>
+
+      <section id="about" class="manifesto section-shell reveal">
+        <div class="manifesto-label"><span>04</span> ABOUT</div>
+        <blockquote id="about-title">在技術與音樂之間，尋找讓想法發生的方法。</blockquote>
+        <div class="manifesto-side">
+          <p id="about-text"></p>
+          <div id="facts" class="fact-list"></div>
         </div>
       </section>
 
-      <section id="skills" class="section section-shell">
-        <div class="section-label"><span>04</span> 專業能力</div>
-        <div class="section-content skills-layout">
-          <p class="large-copy">我重視持續學習，也享受將不同領域的工具整合成實際成果。</p>
-          <div id="skill-groups" class="skill-groups"></div>
+      <section id="contact" class="contact section-shell reveal">
+        <div class="contact-orb" aria-hidden="true"></div>
+        <p class="section-index">05 / NEXT CONVERSATION</p>
+        <h2>有一個值得<br />一起完成的想法？</h2>
+        <p class="contact-copy">AI 應用、數位學習、資料系統，或任何跨領域的有趣問題，都歡迎來聊。</p>
+        <div class="contact-actions">
+          <a id="email-link" class="contact-primary" href="mailto:chaos60649@gmail.com">寫信給我 <span>↗</span></a>
+          <button id="copy-email" class="contact-secondary" type="button" data-email="chaos60649@gmail.com">複製 Email</button>
         </div>
-      </section>
-
-      <section id="projects" class="section section-shell">
-        <div class="section-label"><span>05</span> 探索方向</div>
-        <div class="section-content">
-          <div id="project-list" class="projects"></div>
+        <div class="contact-meta">
+          <a id="phone-link" href="tel:+886909505931">+886 909 505 931</a>
+          <div id="social-links" class="social-links"></div>
         </div>
-      </section>
-
-      <section id="contact" class="contact section-shell">
-        <p class="eyebrow">LET'S CONNECT</p>
-        <h2>期待聽見<br />你的想法。</h2>
-        <a id="email-link" class="email-link" href="mailto:chaos60649@gmail.com">chaos60649@gmail.com <span>↗</span></a>
-        <a id="phone-link" class="phone-link" href="tel:+886909505931">+886 909 505 931</a>
-        <div id="social-links" class="social-links"></div>
       </section>
     </main>
 
     <footer class="site-footer section-shell">
-      <span>© <span id="year"></span> <span id="footer-name">朱璽</span></span>
-      <a href="#top">回到頂端 ↑</a>
+      <span>© <span id="year"></span> <span id="footer-name">朱璽</span> / KAINE ZHU</span>
+      <span>Designed with curiosity in Taiwan</span>
+      <a href="#top">TOP ↑</a>
     </footer>
 
-    <script src="data.js"></script>
-    <script src="main.js"></script>
+    <div class="toast" role="status" aria-live="polite"></div>
+    <script src="data.js?v=2"></script>
+    <script src="main.js?v=2"></script>
   </body>
 </html>

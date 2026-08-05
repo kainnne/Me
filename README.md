@@ -1,50 +1,39 @@
-# 朱璽的個人網站
+# Kaine Zhu — Personal Website
 
-這個儲存庫用來製作與維護朱璽的個人介紹網站。目前第一版位於 [`v1/`](./v1)，著重呈現 AI、數位教學、研究與音樂創作的能力與方向；它不是套用模板，而是以原生網頁技術從零建立。
+朱璽（Kaine Zhu）的互動式個人網站，呈現 AI 軟體、數位學習、資料系統、研究與音樂創作經驗。
 
-## 目前完成內容
+線上網站：<https://zx50416.github.io/Me/>
 
-- 單頁式個人網站：自我介紹、現在投入、中英雙語履歷詳述、專業能力、探索方向與聯絡方式。
-- 夢幻粉色視覺系統，以及桌機、平板與手機的響應式版面。
-- 手機導覽選單、平滑捲動與鍵盤使用者可用的「跳至主要內容」連結。
-- 履歷資料和版面分離，未來加入大頭照、UI/UX 或 LLM 專案時，不需要重寫網站。
+## 設計概念
+
+這一版採用「先吸引、再探索」的資訊架構：首頁先提供定位、代表成果與明確導向；技能和完整雙語履歷預設收合，由訪客自行選擇想深入的部分。動畫以 CSS 與少量原生 JavaScript 製作，並支援手機、鍵盤操作與 `prefers-reduced-motion`。
+
+## 檔案結構
+
+```text
+index.html  # 網站結構、SEO 與社群分享資訊
+style.css   # 視覺系統、響應式排版與動畫
+data.js     # 個人資料、技能、成果及完整中英文履歷
+main.js     # 資料渲染、收合、導覽、捲動動畫與複製 Email
+profile/    # 原始履歷與參考素材
+v1/         # 第一版網站封存
+```
+
+## 更新內容
+
+大部分更新只需要編輯 `data.js`：
+
+- `capabilities`：首頁可展開的能力分類。
+- `highlights`：預設顯示的三項代表成果。
+- `bilingualResume`：工作經驗、論文、學歷與其他經驗的中英文內容。
+- `facts`、`about`、`socials`：簡介與聯絡資料。
+
+若要調整版面或動畫，編輯 `style.css`；若要改變收合或互動方式，編輯 `main.js`。
 
 ## 本機預覽
 
-直接用瀏覽器開啟 [`v1/index.html`](./v1/index.html) 即可。若使用 VS Code，建議安裝 **Live Server** 擴充功能，對 `v1/index.html` 選擇「Open with Live Server」，每次儲存後瀏覽器會自動更新。
+可直接開啟 `index.html`，或在專案根目錄啟動任何靜態檔案伺服器，例如 VS Code Live Server。
 
-## 檔案說明
+## 部署
 
-```
-v1/
-├── index.html  # 網頁結構
-├── style.css   # 顏色、字體、版面與響應式規則
-├── data.js     # 個人資料、經歷、技能、專案、連結（主要編輯位置）
-└── main.js     # 將資料呈現在網頁上，以及手機選單互動
-profile/        # 原始履歷與素材，僅供製作時參考
-```
-
-## 日後更新內容
-
-一般情況只需要編輯 [`v1/data.js`](./v1/data.js)：
-
-- `about`、`facts`：更新自我介紹與基本資料。
-- `experiences`：更新首頁的精簡經歷。
-- `bilingualResume`：更新完整的中英文工作經驗、學歷與論文內容。
-- `skills`：新增或調整能力標籤。
-- `projects`：加入 UI/UX、LLM 或其他專案，每項可設定名稱、介紹與外部連結。
-- `socials`、`email`：更新聯絡方式。
-
-未來加入大頭照時，建議把圖片放在 `v1/assets/`，再於 `index.html` 加入圖片區塊，這樣網站資產會集中在 `v1` 中。
-
-## 上傳 GitHub
-
-在專案根目錄執行：
-
-```bash
-git init
-git add README.md v1 profile
-git commit -m "Create first version of personal website"
-```
-
-之後在 GitHub 建立空白 repository，依 GitHub 顯示的步驟加入遠端網址並推送。若原始履歷 PDF 或個人素材不想公開，請在第一次 `git add` 前將 `profile/` 加入 `.gitignore`。
+網站由 GitHub Pages 發佈，來源為 `main` 分支的根目錄。根目錄的 `.nojekyll` 會讓 GitHub Pages 直接提供靜態檔案，不進行 Jekyll 處理。

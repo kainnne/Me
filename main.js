@@ -1,76 +1,95 @@
-const $ = (selector) => document.querySelector(selector);
+const $ = (selector, scope = document) => scope.querySelector(selector);
+const $$ = (selector, scope = document) => [...scope.querySelectorAll(selector)];
 
 function setText(selector, value) {
-  $(selector).textContent = value;
+  const element = $(selector);
+  if (element) element.textContent = value;
 }
 
-function renderResume() {
+function renderLanguageItem(item) {
+  const organization = item.organization.replaceAll("\n", "<br>");
+  const bullets = item.bullets.length
+    ? `<ul>${item.bullets.map((bullet) => `<li>${bullet}</li>`).join("")}</ul>`
+    : "";
+  return `
+    ${item.period ? `<p class="resume-period">${item.period}</p>` : ""}
+    <h4>${item.role}</h4>
+    ${organization ? `<p class="resume-organization">${organization}</p>` : ""}
+    ${bullets}`;
+}
+
+function accordionMarkup({ id, index, title, subtitle, summary, content, tone = "" }) {
+  return `
+    <article class="accordion-item ${tone}">
+      <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="${id}">
+        <span class="accordion-number">${String(index + 1).padStart(2, "0")}</span>
+        <span class="accordion-title"><strong>${title}</strong><small>${subtitle}</small></span>
+        ${summary ? `<span class="accordion-summary">${summary}</span>` : ""}
+        <span class="accordion-icon" aria-hidden="true"><i></i><i></i></span>
+      </button>
+      <div class="accordion-panel" id="${id}" aria-hidden="true"><div class="accordion-panel-inner">${content}</div></div>
+    </article>`;
+}
+
+function renderSite() {
   const data = resumeData;
-  document.title = `${data.name}｜個人履歷`;
+  document.title = `${data.englishName} — AI, Learning & Creative Technology`;
   setText("#name", data.name);
   setText("#english-name", data.englishName);
-  setText("#footer-name", data.name);
   setText("#headline", data.headline);
-  setText("#location", data.location);
   setText("#availability", data.availability);
-  setText("#role-label", data.role);
+  setText("#location", data.location);
   setText("#about-title", data.aboutTitle);
   setText("#about-text", data.about);
+  setText("#footer-name", data.name);
   setText("#year", new Date().getFullYear());
 
   $("#facts").innerHTML = data.facts
     .map(([label, value]) => `<div class="fact"><span>${label}</span><strong>${value}</strong></div>`)
     .join("");
 
-  $("#experience-list").innerHTML = data.experiences
-    .map(
-      (item) => `
-        <article class="timeline-item">
-          <p class="period">${item.period}</p>
-          <div><h3>${item.role}</h3><p class="company">${item.company}</p></div>
-          <p class="description">${item.description}</p>
-        </article>`,
-    )
+  $("#capability-list").innerHTML = data.capabilities
+    .map((item, index) => accordionMarkup({
+      id: `capability-${index}`,
+      index,
+      title: item.name,
+      subtitle: item.label,
+      summary: item.summary,
+      tone: `tone-${index + 1}`,
+      content: `<p class="capability-description">${item.description}</p><ul class="tag-list">${item.items.map((skill) => `<li>${skill}</li>`).join("")}</ul>`,
+    }))
+    .join("");
+
+  $("#highlight-list").innerHTML = data.highlights
+    .map((item, index) => `
+      <article class="highlight-card card-${index + 1}">
+        <div class="highlight-top"><span>${item.type}</span><span>${String(index + 1).padStart(2, "0")}</span></div>
+        <div class="highlight-metric">${item.metric}</div>
+        <h3>${item.title}</h3>
+        <p>${item.description}</p>
+        <span class="highlight-foot">${item.foot}</span>
+      </article>`)
     .join("");
 
   $("#resume-detail-list").innerHTML = data.bilingualResume
-    .map(
-      (section) => `
-        <section class="resume-category">
-          <h3>${section.titleZh} <span>/ ${section.titleEn}</span></h3>
-          ${section.items.map((item) => `
-            <article class="bilingual-item">
-              <div class="language-block" lang="zh-Hant">${renderLanguageItem(item.zh)}</div>
-              <div class="language-block" lang="en">${renderLanguageItem(item.en)}</div>
-            </article>`).join("")}
-        </section>`,
-    )
-    .join("");
-
-  $("#skill-groups").innerHTML = data.skills
-    .map(
-      (group) => `
-        <section class="skill-group"><h3>${group.name}</h3>
-          <ul>${group.items.map((item) => `<li>${item}</li>`).join("")}</ul>
-        </section>`,
-    )
-    .join("");
-
-  $("#project-list").innerHTML = data.projects
-    .map(
-      (project, index) => `
-        <article class="project-card project-${index + 1}">
-          <p class="project-type">${project.type}</p>
-          <h3>${project.title}</h3>
-          <p>${project.description}</p>
-          <a href="${project.link}" ${project.link !== "#" ? 'target="_blank" rel="noreferrer"' : ""}>${project.linkLabel} <span>↗</span></a>
-        </article>`,
-    )
+    .map((section, index) => accordionMarkup({
+      id: `resume-${index}`,
+      index,
+      title: section.titleZh,
+      subtitle: section.titleEn,
+      summary: `${section.items.length} ${section.items.length === 1 ? "entry" : "entries"}`,
+      content: section.items.map((item) => `
+        <article class="bilingual-item">
+          <div class="language-block" lang="zh-Hant">${renderLanguageItem(item.zh)}</div>
+          <div class="language-block" lang="en">${renderLanguageItem(item.en)}</div>
+        </article>`).join(""),
+    }))
     .join("");
 
   const emailLink = $("#email-link");
   emailLink.href = `mailto:${data.email}`;
-  emailLink.firstChild.textContent = `${data.email} `;
+  const copyButton = $("#copy-email");
+  copyButton.dataset.email = data.email;
   const phoneLink = $("#phone-link");
   phoneLink.href = `tel:${data.phone.replaceAll(" ", "")}`;
   phoneLink.textContent = data.phone;
@@ -79,9 +98,26 @@ function renderResume() {
     .join("");
 }
 
-function renderLanguageItem(item) {
-  const organization = item.organization.replaceAll("\n", "<br>");
-  return `<p class="resume-period">${item.period}</p><h4>${item.role}</h4>${organization ? `<p class="resume-organization">${organization}</p>` : ""}${item.bullets.length ? `<ul>${item.bullets.map((bullet) => `<li>${bullet}</li>`).join("")}</ul>` : ""}`;
+function setupAccordions() {
+  $$(".accordion-trigger").forEach((button) => {
+    button.addEventListener("click", () => {
+      const item = button.closest(".accordion-item");
+      const group = item.parentElement;
+      const isOpen = item.classList.contains("is-open");
+
+      $$(".accordion-item.is-open", group).forEach((openItem) => {
+        openItem.classList.remove("is-open");
+        $(".accordion-trigger", openItem).setAttribute("aria-expanded", "false");
+        $(".accordion-panel", openItem).setAttribute("aria-hidden", "true");
+      });
+
+      if (!isOpen) {
+        item.classList.add("is-open");
+        button.setAttribute("aria-expanded", "true");
+        $(".accordion-panel", item).setAttribute("aria-hidden", "false");
+      }
+    });
+  });
 }
 
 function setupMenu() {
@@ -91,14 +127,68 @@ function setupMenu() {
     const isOpen = button.getAttribute("aria-expanded") === "true";
     button.setAttribute("aria-expanded", String(!isOpen));
     nav.classList.toggle("is-open", !isOpen);
+    document.body.classList.toggle("menu-open", !isOpen);
   });
-  nav.querySelectorAll("a").forEach((link) =>
-    link.addEventListener("click", () => {
-      button.setAttribute("aria-expanded", "false");
-      nav.classList.remove("is-open");
-    }),
-  );
+  $$("a", nav).forEach((link) => link.addEventListener("click", () => {
+    button.setAttribute("aria-expanded", "false");
+    nav.classList.remove("is-open");
+    document.body.classList.remove("menu-open");
+  }));
 }
 
-renderResume();
+function setupReveal() {
+  const elements = $$(".reveal:not(.is-visible)");
+  if (!("IntersectionObserver" in window)) {
+    elements.forEach((element) => element.classList.add("is-visible"));
+    return;
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  elements.forEach((element) => observer.observe(element));
+}
+
+function setupMotion() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const hero = $(".hero");
+  hero.addEventListener("pointermove", (event) => {
+    const rect = hero.getBoundingClientRect();
+    hero.style.setProperty("--pointer-x", `${((event.clientX - rect.left) / rect.width - 0.5) * 18}px`);
+    hero.style.setProperty("--pointer-y", `${((event.clientY - rect.top) / rect.height - 0.5) * 18}px`);
+  });
+}
+
+function setupHeader() {
+  const header = $("[data-header]");
+  const update = () => header.classList.toggle("is-scrolled", window.scrollY > 24);
+  update();
+  window.addEventListener("scroll", update, { passive: true });
+}
+
+function setupCopyEmail() {
+  const button = $("#copy-email");
+  const toast = $(".toast");
+  button.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(button.dataset.email);
+      toast.textContent = "Email 已複製";
+    } catch {
+      toast.textContent = button.dataset.email;
+    }
+    toast.classList.add("is-visible");
+    window.setTimeout(() => toast.classList.remove("is-visible"), 2200);
+  });
+}
+
+renderSite();
+setupAccordions();
 setupMenu();
+setupReveal();
+setupMotion();
+setupHeader();
+setupCopyEmail();
