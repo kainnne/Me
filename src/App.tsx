@@ -22,7 +22,7 @@ const INSTAGRAM = "https://www.instagram.com/kaine_z_/";
 const YOUTUBE_MUSIC = "https://music.youtube.com/channel/UCRk-djUeDdJ31-kcfAKKWwQ?si=engK-FXHeyWAduh6";
 const KCIS_PORTAL = "https://kcis.kainnne.com";
 const titleLetters = Array.from("Kainnne.");
-const disciplines = ["Software", "Websites", "AI", "Music", "Machine Learning"];
+const disciplines = ["Apps Design", "UI / UX", "AI", "Music", "Machine Learning"];
 const performancePhotos = [
   { src: "/photos/performance-01.jpg", shape: "wide", position: "62% 50%" },
   { src: "/photos/performance-02.jpg", shape: "square", position: "50% 42%" },
@@ -147,7 +147,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.18 }}
       whileHover={{ y: -8, scale: 1.012 }}
-      whileTap={{ scale: 0.992 }}
+      whileTap={{ y: -8, scale: 1.012 }}
       transition={{ type: "spring", stiffness: 240, damping: 24, delay: index * 0.04 }}
       aria-label={`開啟 ${project.title}`}
     >
@@ -198,10 +198,10 @@ function ContactPopover({ open, onClose }: { open: boolean; onClose: () => void 
             <span>Contact</span>
             <button type="button" onClick={onClose} aria-label="關閉聯絡方式"><X size={16} /></button>
           </div>
-          <motion.a href={`mailto:${EMAIL}`} onClick={onClose} whileHover={{ x: 4 }} whileTap={{ scale: 0.97 }}>
+          <motion.a href={`mailto:${EMAIL}`} onClick={onClose} whileHover={{ x: 4 }} whileTap={{ x: 4 }}>
             <Mail size={18} /><span><strong>Gmail</strong><small>{EMAIL}</small></span><ArrowUpRight size={15} />
           </motion.a>
-          <motion.a href={INSTAGRAM} target="_blank" rel="noreferrer" onClick={onClose} whileHover={{ x: 4 }} whileTap={{ scale: 0.97 }}>
+          <motion.a href={INSTAGRAM} target="_blank" rel="noreferrer" onClick={onClose} whileHover={{ x: 4 }} whileTap={{ x: 4 }}>
             <InstagramMark /><span><strong>Instagram</strong><small>@kaine_z_</small></span><ArrowUpRight size={15} />
           </motion.a>
         </motion.div>
@@ -233,7 +233,7 @@ function KcisPopover({ open, onClose }: { open: boolean; onClose: () => void }) 
             rel="noreferrer"
             onClick={onClose}
             whileHover={{ x: 4 }}
-            whileTap={{ scale: 0.97 }}
+            whileTap={{ x: 4 }}
           >
             <span className="kcis-popover-icon"><School size={20} /></span>
             <span><strong>康橋專區</strong><small>kcis.kainnne.com</small></span>
@@ -269,7 +269,7 @@ function ProjectsPopover({ open, onClose }: { open: boolean; onClose: () => void
                 key={project.id}
                 onClick={onClose}
                 whileHover={{ x: 4 }}
-                whileTap={{ scale: 0.97 }}
+                whileTap={{ x: 4 }}
               >
                 <span>{project.number}</span>
                 <strong>{project.title}</strong>
@@ -368,7 +368,7 @@ function App() {
               aria-expanded={projectsOpen}
               aria-haspopup="dialog"
               whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.96 }}
+              whileTap={{ y: -2 }}
             >
               Projects
             </motion.button>
@@ -382,7 +382,7 @@ function App() {
               aria-expanded={kcisOpen}
               aria-haspopup="dialog"
               whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.96 }}
+              whileTap={{ y: -2 }}
             >
               KCIS
             </motion.button>
@@ -396,7 +396,7 @@ function App() {
               aria-expanded={contactOpen}
               aria-haspopup="dialog"
               whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.96 }}
+              whileTap={{ y: -2 }}
             >
               Contact
             </motion.button>
@@ -410,7 +410,7 @@ function App() {
           onClick={() => setMood(mood === "dream" ? "dusk" : "dream")}
           aria-label={`切換至${mood === "dream" ? "深色" : "淺色"}模式`}
           whileHover={{ rotate: 8, scale: 1.06 }}
-          whileTap={{ scale: 0.9 }}
+          whileTap={{ rotate: 8, scale: 1.06 }}
         >
           {mood === "dream" ? <Moon size={17} /> : <Sun size={17} />}
         </motion.button>
@@ -420,7 +420,7 @@ function App() {
         <section id="top" className="hero section-shell">
           <PerformanceGallery />
           <div className="hero-center">
-            <motion.p className="hero-kicker" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.12 }}>KAINE ZHU / TAIWAN</motion.p>
+            <motion.p className="hero-kicker" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.12 }}>KAINE ZHU</motion.p>
             <motion.h1 className="hero-title" aria-label="Kainnne" initial="hidden" animate="visible" whileHover="hover">
               {titleLetters.map((letter, index) => (
                 <motion.span
@@ -443,7 +443,7 @@ function App() {
                   key={discipline}
                   className={`discipline discipline-${index + 1}`}
                   whileHover={{ y: -4, scale: 1.055 }}
-                  whileTap={{ scale: 0.94 }}
+                  whileTap={{ y: -4, scale: 1.055 }}
                   transition={{ type: "spring", stiffness: 390, damping: 22 }}
                 >
                   {discipline}
@@ -452,15 +452,15 @@ function App() {
             </motion.div>
 
             <motion.div className="hero-links" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.68 }}>
-              <motion.a href="https://github.com/kainnne" target="_blank" rel="noreferrer" whileHover={{ y: -4 }} whileTap={{ scale: 0.96 }}><Code2 size={17} /><span>GitHub</span><ArrowUpRight size={14} /></motion.a>
-              <motion.a href={INSTAGRAM} target="_blank" rel="noreferrer" whileHover={{ y: -4 }} whileTap={{ scale: 0.96 }}><InstagramMark /><span>Instagram</span><ArrowUpRight size={14} /></motion.a>
-              <motion.a className="music-link" href={YOUTUBE_MUSIC} target="_blank" rel="noreferrer" whileHover={{ y: -4 }} whileTap={{ scale: 0.96 }}><Music2 size={17} /><span>YT Music</span><ArrowUpRight size={14} /></motion.a>
+              <motion.a href="https://github.com/kainnne" target="_blank" rel="noreferrer" whileHover={{ y: -4 }} whileTap={{ y: -4 }}><Code2 size={17} /><span>GitHub</span><ArrowUpRight size={14} /></motion.a>
+              <motion.a href={INSTAGRAM} target="_blank" rel="noreferrer" whileHover={{ y: -4 }} whileTap={{ y: -4 }}><InstagramMark /><span>Instagram</span><ArrowUpRight size={14} /></motion.a>
+              <motion.a className="music-link" href={YOUTUBE_MUSIC} target="_blank" rel="noreferrer" whileHover={{ y: -4 }} whileTap={{ y: -4 }}><Music2 size={17} /><span>YT Music</span><ArrowUpRight size={14} /></motion.a>
             </motion.div>
           </div>
 
           <motion.nav className="project-dock" aria-label="專案快速連結" initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.78 }}>
             {projects.map((project) => (
-              <motion.a key={project.id} href={`#project-${project.id}`} whileHover={{ y: -4 }} whileTap={{ scale: 0.96 }}>
+              <motion.a key={project.id} href={`#project-${project.id}`} whileHover={{ y: -4 }} whileTap={{ y: -4 }}>
                 <span>{project.number}</span><strong>{project.title}</strong><ArrowDown size={14} />
               </motion.a>
             ))}

@@ -26,9 +26,11 @@
 
 ## 入口與導覽
 
-- 首頁主要領域包含 `Software`、`Websites`、`AI`、`Music`、`Machine Learning`，小標籤也要有微互動。
+- 首頁主要領域包含 `Apps Design`、`UI / UX`、`AI`、`Music`、`Machine Learning`，小標籤也要有微互動。
+- 觸控裝置按住互動元件時，必須顯示與滑鼠指向一致的視覺回饋，不只做縮小效果。
 - 首頁主要入口保留 `GitHub`、`Instagram`、`YT Music`；`Projects` 由頂部導覽與數字索引負責。`YT Music` 使用獨立色彩作為音樂入口。
 - 專案少時不顯示分類篩選或搜尋，直接呈現專案卡片；整張卡片都是跳轉連結。
+- 已有正式子網域的專案卡片直接開啟產品網站，不導向 GitHub repository。
 - 保留 `01 / 02 / 03` 向下索引列，方便未來增加專案。
 - 不使用大型 Contact 區塊；`Contact` 導覽以浮動面板顯示 Gmail 與 Instagram。
 - 浮動面板開啟後，點擊面板外任意位置必須立即收回；`Projects`、`Contact` 在頂部框內置中且字級一致。

@@ -35,8 +35,8 @@ export const projects: Project[] = [
     tags: ["Electron", "Reading UX", "Open source"],
     color: "rose",
     featured: true,
-    status: "source",
-    href: "https://github.com/kainnne/Kainnne-LumaReader",
+    status: "live",
+    href: "https://lumareader.kainnne.com",
     source: "https://github.com/kainnne/Kainnne-LumaReader",
   },
   {
@@ -51,7 +51,7 @@ export const projects: Project[] = [
     color: "lilac",
     featured: true,
     status: "live",
-    href: "https://kainnne.github.io/WikiNB/",
+    href: "https://wikinb.kainnne.com",
     source: "https://github.com/kainnne/WikiNB",
   },
   {
@@ -66,7 +66,7 @@ export const projects: Project[] = [
     color: "peach",
     featured: true,
     status: "live",
-    href: "https://kainnne.github.io/ScopeCut/",
+    href: "https://scopecut.kainnne.com",
     source: "https://github.com/kainnne/ScopeCut",
   },
 ];
