@@ -14,10 +14,13 @@ import {
 } from "lucide-react";
 import { MeshGradient } from "@paper-design/shaders-react";
 import { AnimatePresence, MotionConfig, motion, useReducedMotion, useScroll, useSpring } from "motion/react";
+import { marked } from "marked";
 import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
+import aboutMarkdown from "./content/about.md?raw";
 import { projects, type Project } from "./projects";
 
 const EMAIL = "chaos60649@gmail.com";
+const KCIS_EMAIL = "kainnne@kcis.com.tw";
 const INSTAGRAM = "https://www.instagram.com/kaine_z_/";
 const YOUTUBE_MUSIC = "https://music.youtube.com/channel/UCRk-djUeDdJ31-kcfAKKWwQ?si=engK-FXHeyWAduh6";
 const KCIS_PORTAL = "https://kcis.kainnne.com";
@@ -41,6 +44,18 @@ const performancePhotos = [
   { src: "/photos/performance-15.jpg", shape: "wide", position: "54% 48%" },
   { src: "/photos/performance-16.jpg", shape: "square", position: "55% 42%" },
 ];
+
+const aboutTitle = aboutMarkdown.match(/^#\s+(.+)$/m)?.[1]?.trim() || "Q&A";
+const aboutSections = aboutMarkdown
+  .replace(/\r\n/g, "\n")
+  .split(/^##\s+/m)
+  .slice(1)
+  .map((section) => {
+    const [question, ...answer] = section.trim().split("\n");
+    const html = (marked.parse(answer.join("\n").trim(), { async: false }) as string)
+      .replace(/<a href="(https?:\/\/[^"]+)"/g, '<a href="$1" target="_blank" rel="noreferrer"');
+    return { question: question.trim(), html };
+  });
 
 function InstagramMark() {
   return <span className="instagram-mark" aria-hidden="true" />;
@@ -128,19 +143,15 @@ function usePageEffects() {
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const Icon = project.id === "lumareader" ? MonitorDown : project.id === "wikinb" ? BookOpenText : Workflow;
   const features = project.detail.replace(/。$/, "").split("、");
-  const destination = project.href ?? project.source ?? "#top";
 
-  const handleMove = (event: ReactPointerEvent<HTMLAnchorElement>) => {
+  const handleMove = (event: ReactPointerEvent<HTMLElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
     event.currentTarget.style.setProperty("--spot-x", `${event.clientX - rect.left}px`);
     event.currentTarget.style.setProperty("--spot-y", `${event.clientY - rect.top}px`);
   };
 
   return (
-    <motion.a
-      href={destination}
-      target="_blank"
-      rel="noreferrer"
+    <motion.article
       className={`project-card tone-${project.color}`}
       onPointerMove={handleMove}
       initial={{ opacity: 0, y: 28 }}
@@ -149,7 +160,6 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       whileHover={{ y: -8, scale: 1.012 }}
       whileTap={{ y: -8, scale: 1.012 }}
       transition={{ type: "spring", stiffness: 240, damping: 24, delay: index * 0.04 }}
-      aria-label={`開啟 ${project.title}`}
     >
       <div className="project-spotlight" aria-hidden="true" />
 
@@ -174,10 +184,19 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         ))}
       </ul>
 
-      <span className="project-card-link">
-        {project.status === "live" ? "Open" : "GitHub"}<ArrowUpRight size={16} />
-      </span>
-    </motion.a>
+      <div className="project-card-actions">
+        {project.href && (
+          <motion.a href={project.href} target="_blank" rel="noreferrer" whileHover={{ y: -3 }} whileTap={{ y: -3 }}>
+            <span>Open</span><ArrowUpRight size={16} />
+          </motion.a>
+        )}
+        {project.source && (
+          <motion.a className="project-source-link" href={project.source} target="_blank" rel="noreferrer" whileHover={{ y: -3 }} whileTap={{ y: -3 }}>
+            <Code2 size={16} /><span>GitHub</span>
+          </motion.a>
+        )}
+      </div>
+    </motion.article>
   );
 }
 
@@ -200,6 +219,9 @@ function ContactPopover({ open, onClose }: { open: boolean; onClose: () => void 
           </div>
           <motion.a href={`mailto:${EMAIL}`} onClick={onClose} whileHover={{ x: 4 }} whileTap={{ x: 4 }}>
             <Mail size={18} /><span><strong>Gmail</strong><small>{EMAIL}</small></span><ArrowUpRight size={15} />
+          </motion.a>
+          <motion.a href={`mailto:${KCIS_EMAIL}`} onClick={onClose} whileHover={{ x: 4 }} whileTap={{ x: 4 }}>
+            <Mail size={18} /><span><strong>KCIS Mail</strong><small>{KCIS_EMAIL}</small></span><ArrowUpRight size={15} />
           </motion.a>
           <motion.a href={INSTAGRAM} target="_blank" rel="noreferrer" onClick={onClose} whileHover={{ x: 4 }} whileTap={{ x: 4 }}>
             <InstagramMark /><span><strong>Instagram</strong><small>@kaine_z_</small></span><ArrowUpRight size={15} />
@@ -280,6 +302,54 @@ function ProjectsPopover({ open, onClose }: { open: boolean; onClose: () => void
         </motion.div>
       )}
     </AnimatePresence>
+  );
+}
+
+function AboutQuestion({ question, html, index }: { question: string; html: string; index: number }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <article className={`about-question${open ? " is-open" : ""}`}>
+      <motion.button
+        type="button"
+        aria-expanded={open}
+        aria-controls={`about-answer-${index}`}
+        onClick={() => setOpen((value) => !value)}
+        whileHover={{ x: 4 }}
+        whileTap={{ x: 4 }}
+      >
+        <span>{String(index + 1).padStart(2, "0")}</span>
+        <strong>{question}</strong>
+        <ArrowDown size={18} />
+      </motion.button>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            id={`about-answer-${index}`}
+            className="about-answer-wrap"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="about-answer" dangerouslySetInnerHTML={{ __html: html }} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </article>
+  );
+}
+
+function AboutSection() {
+  return (
+    <section id="about" className="about section-shell" aria-labelledby="about-title">
+      <h2 id="about-title">{aboutTitle}</h2>
+      <div className="about-questions">
+        {aboutSections.map((section, index) => (
+          <AboutQuestion key={section.question} {...section} index={index} />
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -384,7 +454,7 @@ function App() {
               whileHover={{ y: -2 }}
               whileTap={{ y: -2 }}
             >
-              KCIS
+              <span className="kcis-nav-label">KCIS</span>
             </motion.button>
             <KcisPopover open={kcisOpen} onClose={() => setKcisOpen(false)} />
           </div>
@@ -421,21 +491,23 @@ function App() {
           <PerformanceGallery />
           <div className="hero-center">
             <motion.p className="hero-kicker" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.12 }}>KAINE ZHU</motion.p>
-            <motion.h1 className="hero-title" aria-label="Kainnne" initial="hidden" animate="visible" whileHover="hover">
-              {titleLetters.map((letter, index) => (
-                <motion.span
-                  key={`${letter}-${index}`}
-                  aria-hidden="true"
-                  variants={{
-                    hidden: { opacity: 0, y: 34, filter: "blur(12px)" },
-                    visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { delay: 0.05 + index * 0.055, type: "spring", stiffness: 190, damping: 20 } },
-                    hover: { y: index % 2 === 0 ? -6 : 4, transition: { type: "spring", stiffness: 260, damping: 17 } },
-                  }}
-                >
-                  {letter}
-                </motion.span>
-              ))}
-            </motion.h1>
+            <a className="hero-title-link" href="#about" aria-label="Kainnne — 前往 Q&A">
+              <motion.h1 className="hero-title" aria-label="Kainnne" initial="hidden" animate="visible" whileHover="hover" whileTap="hover">
+                {titleLetters.map((letter, index) => (
+                  <motion.span
+                    key={`${letter}-${index}`}
+                    aria-hidden="true"
+                    variants={{
+                      hidden: { opacity: 0, y: 34, filter: "blur(12px)" },
+                      visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { delay: 0.05 + index * 0.055, type: "spring", stiffness: 190, damping: 20 } },
+                      hover: { y: index % 2 === 0 ? -6 : 4, transition: { type: "spring", stiffness: 260, damping: 17 } },
+                    }}
+                  >
+                    {letter}
+                  </motion.span>
+                ))}
+              </motion.h1>
+            </a>
 
             <motion.div className="hero-disciplines" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.58 }}>
               {disciplines.map((discipline, index) => (
@@ -476,6 +548,8 @@ function App() {
             ))}
           </div>
         </section>
+
+        <AboutSection />
       </main>
 
       <footer className="site-footer section-shell">
