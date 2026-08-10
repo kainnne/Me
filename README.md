@@ -1,39 +1,63 @@
-# Kaine Zhu — Personal Website
+# Kainnne — Personal Portal
 
-朱璽（Kaine Zhu）的互動式個人網站，呈現 AI 軟體、數位學習、資料系統、研究與音樂創作經驗。
+<https://kainnne.com> 是 Kaine Zhu 的個人品牌入口：集中展示產品、網站、知識系統、研究與持續進行中的創作實驗。這一版刻意不再以學歷或工作年表為主，而是讓訪客直接進入作品。
 
-線上網站：<https://zx50416.github.io/Me/>
+## 網站特色
 
-## 設計概念
+- 夢幻粉紅與深莓色的雙模式視覺系統
+- 作品分類篩選、滑鼠立體卡片、捲動進場與細節動畫
+- `⌘/Ctrl + K` 作品快速入口
+- 完整手機導覽、觸控版面與 `prefers-reduced-motion`
+- GitHub Actions 自動建置並部署到 GitHub Pages
 
-這一版採用「先吸引、再探索」的資訊架構：首頁先提供定位、代表成果與明確導向；技能和完整雙語履歷預設收合，由訪客自行選擇想深入的部分。動畫以 CSS 與少量原生 JavaScript 製作，並支援手機、鍵盤操作與 `prefers-reduced-motion`。
+## 更新作品
 
-## 檔案結構
+所有入口資料集中在 `src/projects.ts`。新增一個 `Project` 物件就會同步出現在作品網格、分類數量與快速搜尋選單，不需要改動主要頁面。
 
-```text
-index.html  # 網站結構、SEO 與社群分享資訊
-style.css   # 視覺系統、響應式排版與動畫
-data.js     # 個人資料、技能、成果及完整中英文履歷
-main.js     # 資料渲染、收合、導覽、捲動動畫與複製 Email
-profile/    # 原始履歷與參考素材
-v1/         # 第一版網站封存
+## 本機開發
+
+```bash
+npm install
+npm run dev
 ```
 
-## 更新內容
+正式建置：
 
-大部分更新只需要編輯 `data.js`：
+```bash
+npm run build
+```
 
-- `capabilities`：首頁可展開的能力分類。
-- `highlights`：預設顯示的三項代表成果。
-- `bilingualResume`：工作經驗、論文、學歷與其他經驗的中英文內容。
-- `facts`、`about`、`socials`：簡介與聯絡資料。
+## GitHub Pages 設定
 
-若要調整版面或動畫，編輯 `style.css`；若要改變收合或互動方式，編輯 `main.js`。
+1. 進入 `kainnne/Me` → **Settings** → **Pages**。
+2. 在 **Build and deployment / Source** 選擇 **GitHub Actions**。
+3. 在 **Custom domain** 輸入 `kainnne.com` 並儲存。
+4. 推送到 `main` 後，`.github/workflows/deploy-pages.yml` 會自動建置與部署。
 
-## 本機預覽
+## Porkbun DNS 設定
 
-可直接開啟 `index.html`，或在專案根目錄啟動任何靜態檔案伺服器，例如 VS Code Live Server。
+在 Porkbun 的 **Domain Management** 找到 `kainnne.com`，按 **DNS** → **Add Record**，加入以下五筆：
 
-## 部署
+| Type | Host | Answer / Value | TTL |
+| --- | --- | --- | --- |
+| A | 留空 | `185.199.108.153` | Default |
+| A | 留空 | `185.199.109.153` | Default |
+| A | 留空 | `185.199.110.153` | Default |
+| A | 留空 | `185.199.111.153` | Default |
+| CNAME | `www` | `kainnne.github.io` | Default |
 
-網站由 GitHub Pages 發佈，來源為 `main` 分支的根目錄。根目錄的 `.nojekyll` 會讓 GitHub Pages 直接提供靜態檔案，不進行 Jekyll 處理。
+若 Porkbun 已有指向停放頁面（例如 `pixie.porkbun.com`）的根網域 A／ALIAS，或 `www` 的舊 CNAME，先刪除那些互相衝突的網站記錄；不要誤刪郵件使用的 MX、DKIM、DMARC 或 SPF 記錄。
+
+DNS 可能需要最多 24 小時傳播。GitHub Pages 顯示 DNS 檢查成功後，再勾選 **Enforce HTTPS**。`www.kainnne.com` 會自動轉址到主要的 `kainnne.com`。
+
+## 專案結構
+
+```text
+src/App.tsx            # 一頁式入口、互動與元件
+src/projects.ts        # 可擴充作品資料
+src/styles.css         # 視覺系統、動畫與響應式設計
+public/CNAME           # 自訂網域備份
+.github/workflows/     # GitHub Pages 自動部署
+v1/                    # 第一版網站封存
+profile/               # 原始個人資料（不在入口頁呈現）
+```
