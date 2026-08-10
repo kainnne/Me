@@ -1,7 +1,6 @@
 import {
   ArrowDown,
   ArrowUpRight,
-  AtSign,
   BookOpenText,
   Code2,
   Mail,
@@ -24,6 +23,67 @@ const YOUTUBE_MUSIC = "https://music.youtube.com/channel/UCRk-djUeDdJ31-kcfAKKWw
 const KCIS_PORTAL = "https://kcis.kainnne.com";
 const titleLetters = Array.from("Kainnne.");
 const disciplines = ["Software", "Websites", "AI", "Music", "Machine Learning"];
+const performancePhotos = [
+  { src: "/photos/performance-01.jpg", shape: "wide", position: "62% 50%" },
+  { src: "/photos/performance-02.jpg", shape: "square", position: "50% 42%" },
+  { src: "/photos/performance-03.jpg", shape: "wide", position: "62% 70%" },
+  { src: "/photos/performance-04.jpg", shape: "tall", position: "50% 44%" },
+  { src: "/photos/performance-05.jpg", shape: "tall", position: "50% 46%" },
+  { src: "/photos/performance-06.jpg", shape: "square", position: "52% 42%" },
+  { src: "/photos/performance-07.jpg", shape: "tall", position: "50% 40%" },
+  { src: "/photos/performance-08.jpg", shape: "square", position: "50% 42%" },
+  { src: "/photos/performance-09.jpg", shape: "tall", position: "50% 36%" },
+  { src: "/photos/performance-10.jpg", shape: "wide", position: "66% 48%" },
+  { src: "/photos/performance-11.jpg", shape: "tall", position: "50% 44%" },
+  { src: "/photos/performance-12.jpg", shape: "wide", position: "42% 50%" },
+  { src: "/photos/performance-13.jpg", shape: "wide", position: "45% 50%" },
+  { src: "/photos/performance-14.jpg", shape: "tall", position: "50% 42%" },
+  { src: "/photos/performance-15.jpg", shape: "wide", position: "54% 48%" },
+  { src: "/photos/performance-16.jpg", shape: "square", position: "55% 42%" },
+];
+
+function InstagramMark() {
+  return <span className="instagram-mark" aria-hidden="true" />;
+}
+
+function PhotoLoop({ photos, copy }: { photos: typeof performancePhotos; copy: string }) {
+  return (
+    <div className="photo-loop">
+      {photos.map((photo, index) => (
+        <div className={`photo-frame photo-${photo.shape}`} key={`${copy}-${photo.src}`}>
+          <img
+            src={photo.src}
+            alt=""
+            loading={index < 4 && copy === "a" ? "eager" : "lazy"}
+            decoding="async"
+            style={{ objectPosition: photo.position }}
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function PerformanceGallery() {
+  const reversePhotos = [...performancePhotos.slice(8), ...performancePhotos.slice(0, 8)];
+
+  return (
+    <div className="performance-gallery" aria-hidden="true">
+      <div className="photo-rail rail-left">
+        <div className="photo-rail-track">
+          <PhotoLoop photos={performancePhotos} copy="a" />
+          <PhotoLoop photos={performancePhotos} copy="b" />
+        </div>
+      </div>
+      <div className="photo-rail rail-right">
+        <div className="photo-rail-track">
+          <PhotoLoop photos={reversePhotos} copy="c" />
+          <PhotoLoop photos={reversePhotos} copy="d" />
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function DreamBackground({ mood }: { mood: "dream" | "dusk" }) {
   const reduceMotion = useReducedMotion();
@@ -98,7 +158,6 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         <motion.span className="project-icon" whileHover={{ rotate: -8, scale: 1.08 }}>
           <Icon size={22} strokeWidth={1.7} />
         </motion.span>
-        <span className={`project-status status-${project.status}`}><i />{project.status === "live" ? "LIVE" : "SOURCE"}</span>
       </div>
 
       <div className="project-copy">
@@ -143,7 +202,7 @@ function ContactPopover({ open, onClose }: { open: boolean; onClose: () => void 
             <Mail size={18} /><span><strong>Gmail</strong><small>{EMAIL}</small></span><ArrowUpRight size={15} />
           </motion.a>
           <motion.a href={INSTAGRAM} target="_blank" rel="noreferrer" onClick={onClose} whileHover={{ x: 4 }} whileTap={{ scale: 0.97 }}>
-            <AtSign size={18} /><span><strong>Instagram</strong><small>@kaine_z_</small></span><ArrowUpRight size={15} />
+            <InstagramMark /><span><strong>Instagram</strong><small>@kaine_z_</small></span><ArrowUpRight size={15} />
           </motion.a>
         </motion.div>
       )}
@@ -186,7 +245,47 @@ function KcisPopover({ open, onClose }: { open: boolean; onClose: () => void }) 
   );
 }
 
+function ProjectsPopover({ open, onClose }: { open: boolean; onClose: () => void }) {
+  return (
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          className="projects-popover"
+          role="dialog"
+          aria-label="Projects"
+          initial={{ opacity: 0, y: -12, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -8, scale: 0.98 }}
+          transition={{ type: "spring", stiffness: 330, damping: 27 }}
+        >
+          <div className="projects-popover-head">
+            <span>Projects</span>
+            <button type="button" onClick={onClose} aria-label="關閉專案選單"><X size={16} /></button>
+          </div>
+          <nav aria-label="選擇專案">
+            {projects.map((project) => (
+              <motion.a
+                href={`#project-${project.id}`}
+                key={project.id}
+                onClick={onClose}
+                whileHover={{ x: 4 }}
+                whileTap={{ scale: 0.97 }}
+              >
+                <span>{project.number}</span>
+                <strong>{project.title}</strong>
+                <ArrowDown size={15} />
+              </motion.a>
+            ))}
+          </nav>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
 function App() {
+  const [projectsOpen, setProjectsOpen] = useState(false);
+  const projectsControlRef = useRef<HTMLDivElement>(null);
   const [contactOpen, setContactOpen] = useState(false);
   const contactControlRef = useRef<HTMLDivElement>(null);
   const [kcisOpen, setKcisOpen] = useState(false);
@@ -204,6 +303,7 @@ function App() {
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
+        setProjectsOpen(false);
         setContactOpen(false);
         setKcisOpen(false);
       }
@@ -211,6 +311,19 @@ function App() {
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
+
+  useEffect(() => {
+    if (!projectsOpen) return;
+
+    const onPointerDown = (event: PointerEvent) => {
+      if (projectsControlRef.current && !projectsControlRef.current.contains(event.target as Node)) {
+        setProjectsOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => document.removeEventListener("pointerdown", onPointerDown);
+  }, [projectsOpen]);
 
   useEffect(() => {
     if (!contactOpen) return;
@@ -247,9 +360,23 @@ function App() {
 
       <header className="site-header">
         <nav className="site-nav" aria-label="主要導覽">
-          <motion.a href="#projects" whileHover={{ y: -2 }} whileTap={{ scale: 0.96 }}>Projects</motion.a>
+          <div className="projects-control" ref={projectsControlRef}>
+            <motion.button
+              className="nav-projects"
+              type="button"
+              onClick={() => setProjectsOpen((value) => !value)}
+              aria-expanded={projectsOpen}
+              aria-haspopup="dialog"
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.96 }}
+            >
+              Projects
+            </motion.button>
+            <ProjectsPopover open={projectsOpen} onClose={() => setProjectsOpen(false)} />
+          </div>
           <div className="kcis-control" ref={kcisControlRef}>
             <motion.button
+              className="kcis-nav-button"
               type="button"
               onClick={() => setKcisOpen((value) => !value)}
               aria-expanded={kcisOpen}
@@ -263,6 +390,7 @@ function App() {
           </div>
           <div className="contact-control" ref={contactControlRef}>
             <motion.button
+              className="contact-nav-button"
               type="button"
               onClick={() => setContactOpen((value) => !value)}
               aria-expanded={contactOpen}
@@ -290,6 +418,7 @@ function App() {
 
       <main id="main">
         <section id="top" className="hero section-shell">
+          <PerformanceGallery />
           <div className="hero-center">
             <motion.p className="hero-kicker" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.12 }}>KAINE ZHU / TAIWAN</motion.p>
             <motion.h1 className="hero-title" aria-label="Kainnne" initial="hidden" animate="visible" whileHover="hover">
@@ -323,10 +452,9 @@ function App() {
             </motion.div>
 
             <motion.div className="hero-links" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.68 }}>
-              <motion.a href="#projects" whileHover={{ y: -4 }} whileTap={{ scale: 0.96 }}><ArrowDown size={17} /><span>Projects</span></motion.a>
               <motion.a href="https://github.com/kainnne" target="_blank" rel="noreferrer" whileHover={{ y: -4 }} whileTap={{ scale: 0.96 }}><Code2 size={17} /><span>GitHub</span><ArrowUpRight size={14} /></motion.a>
-              <motion.a href={INSTAGRAM} target="_blank" rel="noreferrer" whileHover={{ y: -4 }} whileTap={{ scale: 0.96 }}><AtSign size={17} /><span>Instagram</span><ArrowUpRight size={14} /></motion.a>
-              <motion.a href={YOUTUBE_MUSIC} target="_blank" rel="noreferrer" whileHover={{ y: -4 }} whileTap={{ scale: 0.96 }}><Music2 size={17} /><span>YT Music</span><ArrowUpRight size={14} /></motion.a>
+              <motion.a href={INSTAGRAM} target="_blank" rel="noreferrer" whileHover={{ y: -4 }} whileTap={{ scale: 0.96 }}><InstagramMark /><span>Instagram</span><ArrowUpRight size={14} /></motion.a>
+              <motion.a className="music-link" href={YOUTUBE_MUSIC} target="_blank" rel="noreferrer" whileHover={{ y: -4 }} whileTap={{ scale: 0.96 }}><Music2 size={17} /><span>YT Music</span><ArrowUpRight size={14} /></motion.a>
             </motion.div>
           </div>
 
