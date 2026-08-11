@@ -45,17 +45,43 @@ const performancePhotos = [
   { src: "/photos/performance-16.jpg", shape: "square", position: "55% 42%" },
 ];
 
-const aboutTitle = aboutMarkdown.match(/^#\s+(.+)$/m)?.[1]?.trim() || "Q&A";
-const aboutSections = aboutMarkdown
+type AboutQuestionContent = {
+  question: string;
+  html: string;
+};
+
+type AboutCategoryContent = {
+  title: string;
+  questions: AboutQuestionContent[];
+};
+
+const aboutTitle = "Q&A";
+const aboutCategories = aboutMarkdown
   .replace(/\r\n/g, "\n")
-  .split(/^##\s+/m)
-  .slice(1)
-  .map((section) => {
-    const [question, ...answer] = section.trim().split("\n");
-    const html = (marked.parse(answer.join("\n").trim(), { async: false }) as string)
-      .replace(/<a href="(https?:\/\/[^"]+)"/g, '<a href="$1" target="_blank" rel="noreferrer"');
-    return { question: question.trim(), html };
-  });
+  .split(/(?=^#\s+)/m)
+  .map((block) => {
+    const lines = block.trim().split("\n");
+    const hasCategoryHeading = lines[0]?.startsWith("# ");
+    const title = hasCategoryHeading ? lines[0].replace(/^#\s+/, "").trim() : "關於我";
+    const content = (hasCategoryHeading ? lines.slice(1) : lines)
+      .join("\n")
+      .replace(/\n---\s*$/, "")
+      .trim();
+    const questions = content
+      .split(/^##\s+/m)
+      .slice(1)
+      .map((section) => {
+        const [question, ...answer] = section.trim().split("\n");
+        const html = (marked.parse(answer.join("\n").trim(), { async: false }) as string)
+          .replace(/<a href="(https?:\/\/[^"]+)"/g, '<a href="$1" target="_blank" rel="noreferrer"');
+        return { question: question.trim(), html };
+      })
+      .filter(({ question }) => question.length > 0);
+
+    return { title, questions };
+  })
+  .filter(({ questions }) => questions.length > 0);
+const aboutQuestionCount = aboutCategories.reduce((total, category) => total + category.questions.length, 0);
 
 function InstagramMark() {
   return <span className="instagram-mark" aria-hidden="true" />;
@@ -305,15 +331,21 @@ function ProjectsPopover({ open, onClose }: { open: boolean; onClose: () => void
   );
 }
 
-function AboutQuestion({ question, html, index }: { question: string; html: string; index: number }) {
+function AboutQuestion({
+  question,
+  html,
+  categoryIndex,
+  index,
+}: AboutQuestionContent & { categoryIndex: number; index: number }) {
   const [open, setOpen] = useState(false);
+  const answerId = `about-answer-${categoryIndex}-${index}`;
 
   return (
     <article className={`about-question${open ? " is-open" : ""}`}>
       <motion.button
         type="button"
         aria-expanded={open}
-        aria-controls={`about-answer-${index}`}
+        aria-controls={answerId}
         onClick={() => setOpen((value) => !value)}
         whileHover={{ x: 4 }}
         whileTap={{ x: 4 }}
@@ -325,7 +357,7 @@ function AboutQuestion({ question, html, index }: { question: string; html: stri
       <AnimatePresence initial={false}>
         {open && (
           <motion.div
-            id={`about-answer-${index}`}
+            id={answerId}
             className="about-answer-wrap"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
@@ -340,14 +372,96 @@ function AboutQuestion({ question, html, index }: { question: string; html: stri
   );
 }
 
+function AboutCategory({
+  title,
+  questions,
+  index,
+}: AboutCategoryContent & { index: number }) {
+  const [open, setOpen] = useState(false);
+  const categoryId = `about-category-${index}`;
+
+  return (
+    <article className={`about-category${open ? " is-open" : ""}`}>
+      <motion.button
+        className="about-category-toggle"
+        type="button"
+        aria-expanded={open}
+        aria-controls={categoryId}
+        onClick={() => setOpen((value) => !value)}
+        whileHover={{ x: 4 }}
+        whileTap={{ x: 4 }}
+      >
+        <span className="about-category-index">{String(index + 1).padStart(2, "0")}</span>
+        <strong>{title}</strong>
+        <span className="about-category-count">{questions.length}</span>
+        <ArrowDown size={19} />
+      </motion.button>
+
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            id={categoryId}
+            className="about-category-body"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="about-questions">
+              {questions.map((question, questionIndex) => (
+                <AboutQuestion
+                  key={question.question}
+                  {...question}
+                  categoryIndex={index}
+                  index={questionIndex}
+                />
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </article>
+  );
+}
+
 function AboutSection() {
+  const [open, setOpen] = useState(false);
+
   return (
     <section id="about" className="about section-shell" aria-labelledby="about-title">
-      <h2 id="about-title">{aboutTitle}</h2>
-      <div className="about-questions">
-        {aboutSections.map((section, index) => (
-          <AboutQuestion key={section.question} {...section} index={index} />
-        ))}
+      <div className={`about-panel${open ? " is-open" : ""}`}>
+        <motion.button
+          className="about-master-toggle"
+          type="button"
+          aria-expanded={open}
+          aria-controls="about-categories"
+          onClick={() => setOpen((value) => !value)}
+          whileHover={{ y: -3 }}
+          whileTap={{ y: -3 }}
+        >
+          <h2 id="about-title">{aboutTitle}</h2>
+          <span>{aboutQuestionCount}</span>
+          <ArrowDown size={24} />
+        </motion.button>
+
+        <AnimatePresence initial={false}>
+          {open && (
+            <motion.div
+              id="about-categories"
+              className="about-master-body"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <div className="about-categories">
+                {aboutCategories.map((category, index) => (
+                  <AboutCategory key={category.title} {...category} index={index} />
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );
