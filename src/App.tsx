@@ -608,40 +608,38 @@ function App() {
           </div>
         </nav>
 
-        <div className="header-tools">
-          <motion.button
-            className="icon-button"
-            type="button"
-            onClick={() => setMood(mood === "dream" ? "dusk" : "dream")}
-            aria-label={
-              language === "en"
-                ? `Switch to ${mood === "dream" ? "dark" : "light"} mode`
-                : `切換至${mood === "dream" ? "深色" : "淺色"}模式`
-            }
-            whileHover={{ rotate: 8, scale: 1.06 }}
-            whileTap={{ rotate: 8, scale: 1.06 }}
-          >
-            {mood === "dream" ? <Moon size={17} /> : <Sun size={17} />}
-          </motion.button>
+        <motion.button
+          className="icon-button"
+          type="button"
+          onClick={() => setMood(mood === "dream" ? "dusk" : "dream")}
+          aria-label={
+            language === "en"
+              ? `Switch to ${mood === "dream" ? "dark" : "light"} mode`
+              : `切換至${mood === "dream" ? "深色" : "淺色"}模式`
+          }
+          whileHover={{ rotate: 8, scale: 1.06 }}
+          whileTap={{ rotate: 8, scale: 1.06 }}
+        >
+          {mood === "dream" ? <Moon size={17} /> : <Sun size={17} />}
+        </motion.button>
 
-          <div className="site-language-switch" role="group" aria-label="Site language">
-            <button
-              type="button"
-              className={language === "en" ? "is-active" : ""}
-              aria-pressed={language === "en"}
-              onClick={() => setLanguage("en")}
-            >
-              EN
-            </button>
-            <button
-              type="button"
-              className={language === "zh" ? "is-active" : ""}
-              aria-pressed={language === "zh"}
-              onClick={() => setLanguage("zh")}
-            >
-              中文
-            </button>
-          </div>
+        <div className="site-language-switch" role="group" aria-label="Site language">
+          <button
+            type="button"
+            className={language === "en" ? "is-active" : ""}
+            aria-pressed={language === "en"}
+            onClick={() => setLanguage("en")}
+          >
+            EN
+          </button>
+          <button
+            type="button"
+            className={language === "zh" ? "is-active" : ""}
+            aria-pressed={language === "zh"}
+            onClick={() => setLanguage("zh")}
+          >
+            中文
+          </button>
         </div>
       </header>
 
