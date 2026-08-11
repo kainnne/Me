@@ -1,9 +1,8 @@
 # 關於我
 
-## Q：你的名字是什麼？
+## Q：你的名字
 
-- 中文姓名：朱璽
-- 英文名：Kaine
+朱璽 / Kaine
 
 ## Q：你目前的職業是什麼？
 
@@ -14,11 +13,10 @@
 ## Q：你目前主要負責什麼工作？
 
 - AI 導入
-- AI 程式設計
-- AI 應用開發
+- 程式設計與應用開發
 - AI 教育訓練
 - AI Project 規劃與執行
-- AI 工作流程設計與改善
+- 工作流程設計與改善
 
 ## Q：你的主要專業領域是什麼？
 
@@ -35,17 +33,14 @@
 
 # 學歷
 
-## Q：你的大學與碩士學歷是什麼？
+## Q：你的大學系所與學位是什麼？
 
-- 國立中山大學
-- 海洋環境及工程學系
-- 學士、碩士
+- 國立中山大學海洋環境及工程學系，學士、碩士。
 
 ## Q：你的碩士研究方向是什麼？
 
 - 結構工程
 - Machine Learning
-- 將 Machine Learning 應用於工程問題與結構分析。
 
 ---
 
@@ -81,61 +76,38 @@
 
 # AI 與工作
 
-## Q：你現在如何使用 AI？
+## Q：你現在用 AI 完成什麼樣的任務？
 
-- AI 系統開發
-- Agent-assisted development
-- AI workflow 設計
-- 程式開發
-- 文件與資料處理
-- 研究
-- 教育訓練
-- Project planning
+- AI 系統與應用開發
+- 程式開發、測試、除錯與部署
+- 文件、資料與知識庫整理
+- 研究、資料分析與實驗規劃
+- 教育訓練與教材製作
+- Project planning 與工作流程自動化
 
-## Q：你有 AI Agent 經驗嗎？
+## Q：我的 AI Agent 操作方式
 
-- 有。
-- 使用 AI Agent 進行程式開發與專案執行。
-- 設計 Agent workflow。
-- 管理 context、memory 與工作流程。
-
-## Q：你會自己開發 AI 應用嗎？
-
-- 會。
-- 從需求規劃、程式開發到部署均有實際經驗。
+- 我是 AI Agent 的重度使用者，將 Agent 作為長期開發、研究與專案執行的協作者，而不是單次問答或產生程式碼的工具。
+- 同時維護多個長期專案，使用 `AGENTS.md`、Markdown、Project Contract、Git 紀錄與任務交接保存 context、memory、規則與目前狀態。
+- 將大型目標拆成研究、實作、測試、文件與部署等可驗收任務；需要時讓多個 Agent 平行處理獨立工作，再由主要 Agent 整合結果。
+- 執行前提供目標、檔案範圍、不可修改項目、完成條件與既有決策，降低誤解與重工。
+- 將重複流程自動化，例如建置、測試、部署、HTTPS 狀態檢查、網域設定追蹤、文件同步與知識庫維護。
+- 保留需求、設計、權限核可與最終驗收的人工決策，並要求 Agent 以實際結果驗證功能，而不是只回報已完成。
 
 ---
 
 # Software Development
-
-## Q：你有網站開發經驗嗎？
-
-- 有。
-- 曾獨立或透過 Agent-assisted development 完成多個網站與 Web Application。
 
 ## Q：你有 Full-stack 開發經驗嗎？
 
 - 有實際 Full-stack Project Development 經驗。
 - 包含前端、後端、Authentication、API、資料處理與 Deployment。
 
-## Q：你常使用哪些程式或技術？
-
-- Python
-- JavaScript / TypeScript
-- HTML / CSS
-- Astro
-- Tailwind CSS
-- Node.js / Express
-- Git
-- GitHub
-- GitHub Actions
-- Google Cloud Platform
-- LLM API
-
 ## Q：你有 Deployment 經驗嗎？
 
 - 有。
-- 包含 Web Application、API、GitHub Pages、GitHub Actions 與 Cloud Deployment。
+- 擁有並管理自己的網域，具備 IP、DNS 記錄、自訂網域、HTTPS / TLS 憑證等部署知識與實際設定經驗。
+- 部署範圍包含 Web Application、API、GitHub Pages、GitHub Actions、ChatGPT Sites、Cloudflare、Azure 與 Google Cloud Platform。
 
 ## Q：你的程式開發方式有什麼特色？
 
@@ -184,9 +156,3 @@
 
 - 朱璽於 2026 年推出的個人音樂專輯。
 - 為個人作曲與音樂創作作品。
-
-## Q：音樂是你的主要職業嗎？
-
-- 不是目前的主要職業。
-- 目前主要職業領域為 AI、Software 與 Educational Technology。
-- Music 為長期持續投入的創作領域。
