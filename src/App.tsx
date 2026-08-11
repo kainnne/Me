@@ -16,7 +16,8 @@ import { MeshGradient } from "@paper-design/shaders-react";
 import { AnimatePresence, MotionConfig, motion, useReducedMotion, useScroll, useSpring } from "motion/react";
 import { marked } from "marked";
 import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
-import aboutMarkdown from "./content/about.md?raw";
+import aboutEnglishMarkdown from "./content/about.en.md?raw";
+import aboutChineseMarkdown from "./content/about.md?raw";
 import { projects, type Project } from "./projects";
 
 const EMAIL = "chaos60649@gmail.com";
@@ -55,33 +56,41 @@ type AboutCategoryContent = {
   questions: AboutQuestionContent[];
 };
 
-const aboutTitle = "Q&A";
-const aboutCategories = aboutMarkdown
-  .replace(/\r\n/g, "\n")
-  .split(/(?=^#\s+)/m)
-  .map((block) => {
-    const lines = block.trim().split("\n");
-    const hasCategoryHeading = lines[0]?.startsWith("# ");
-    const title = hasCategoryHeading ? lines[0].replace(/^#\s+/, "").trim() : "關於我";
-    const content = (hasCategoryHeading ? lines.slice(1) : lines)
-      .join("\n")
-      .replace(/\n---\s*$/, "")
-      .trim();
-    const questions = content
-      .split(/^##\s+/m)
-      .slice(1)
-      .map((section) => {
-        const [question, ...answer] = section.trim().split("\n");
-        const html = (marked.parse(answer.join("\n").trim(), { async: false }) as string)
-          .replace(/<a href="(https?:\/\/[^"]+)"/g, '<a href="$1" target="_blank" rel="noreferrer"');
-        return { question: question.trim(), html };
-      })
-      .filter(({ question }) => question.length > 0);
+type AboutLanguage = "en" | "zh";
 
-    return { title, questions };
-  })
-  .filter(({ questions }) => questions.length > 0);
-const aboutQuestionCount = aboutCategories.reduce((total, category) => total + category.questions.length, 0);
+const aboutTitle = "Q&A";
+function parseAboutMarkdown(markdown: string, fallbackTitle: string) {
+  return markdown
+    .replace(/\r\n/g, "\n")
+    .split(/(?=^#\s+)/m)
+    .map((block) => {
+      const lines = block.trim().split("\n");
+      const hasCategoryHeading = lines[0]?.startsWith("# ");
+      const title = hasCategoryHeading ? lines[0].replace(/^#\s+/, "").trim() : fallbackTitle;
+      const content = (hasCategoryHeading ? lines.slice(1) : lines)
+        .join("\n")
+        .replace(/\n---\s*$/, "")
+        .trim();
+      const questions = content
+        .split(/^##\s+/m)
+        .slice(1)
+        .map((section) => {
+          const [question, ...answer] = section.trim().split("\n");
+          const html = (marked.parse(answer.join("\n").trim(), { async: false }) as string)
+            .replace(/<a href="(https?:\/\/[^"]+)"/g, '<a href="$1" target="_blank" rel="noreferrer"');
+          return { question: question.trim(), html };
+        })
+        .filter(({ question }) => question.length > 0);
+
+      return { title, questions };
+    })
+    .filter(({ questions }) => questions.length > 0);
+}
+
+const aboutContent: Record<AboutLanguage, AboutCategoryContent[]> = {
+  en: parseAboutMarkdown(aboutEnglishMarkdown, "About Me"),
+  zh: parseAboutMarkdown(aboutChineseMarkdown, "關於我"),
+};
 
 function InstagramMark() {
   return <span className="instagram-mark" aria-hidden="true" />;
@@ -426,23 +435,47 @@ function AboutCategory({
 
 function AboutSection() {
   const [open, setOpen] = useState(false);
+  const [language, setLanguage] = useState<AboutLanguage>("en");
+  const categories = aboutContent[language];
+  const questionCount = categories.reduce((total, category) => total + category.questions.length, 0);
 
   return (
     <section id="about" className="about section-shell" aria-labelledby="about-title">
       <div className={`about-panel${open ? " is-open" : ""}`}>
-        <motion.button
-          className="about-master-toggle"
-          type="button"
-          aria-expanded={open}
-          aria-controls="about-categories"
-          onClick={() => setOpen((value) => !value)}
-          whileHover={{ y: -3 }}
-          whileTap={{ y: -3 }}
-        >
-          <h2 id="about-title">{aboutTitle}</h2>
-          <span>{aboutQuestionCount}</span>
-          <ArrowDown size={24} />
-        </motion.button>
+        <div className="about-master-head">
+          <motion.button
+            className="about-master-toggle"
+            type="button"
+            aria-expanded={open}
+            aria-controls="about-categories"
+            onClick={() => setOpen((value) => !value)}
+            whileHover={{ y: -3 }}
+            whileTap={{ y: -3 }}
+          >
+            <h2 id="about-title">{aboutTitle}</h2>
+            <span>{questionCount}</span>
+            <ArrowDown size={24} />
+          </motion.button>
+
+          <div className="about-language-switch" role="group" aria-label="Q&A language">
+            <button
+              type="button"
+              className={language === "en" ? "is-active" : ""}
+              aria-pressed={language === "en"}
+              onClick={() => setLanguage("en")}
+            >
+              EN
+            </button>
+            <button
+              type="button"
+              className={language === "zh" ? "is-active" : ""}
+              aria-pressed={language === "zh"}
+              onClick={() => setLanguage("zh")}
+            >
+              中文
+            </button>
+          </div>
+        </div>
 
         <AnimatePresence initial={false}>
           {open && (
@@ -454,8 +487,8 @@ function AboutSection() {
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="about-categories">
-                {aboutCategories.map((category, index) => (
+              <div className="about-categories" lang={language === "en" ? "en" : "zh-Hant"}>
+                {categories.map((category, index) => (
                   <AboutCategory key={category.title} {...category} index={index} />
                 ))}
               </div>
