@@ -18,7 +18,7 @@ import { marked } from "marked";
 import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
 import aboutEnglishMarkdown from "./content/about.en.md?raw";
 import aboutChineseMarkdown from "./content/about.md?raw";
-import { projects, type Project } from "./projects";
+import { projects, type Project, type SiteLanguage } from "./projects";
 
 const EMAIL = "chaos60649@gmail.com";
 const KCIS_EMAIL = "kainnne@kcis.com.tw";
@@ -56,8 +56,6 @@ type AboutCategoryContent = {
   questions: AboutQuestionContent[];
 };
 
-type AboutLanguage = "en" | "zh";
-
 const aboutTitle = "Q&A";
 function parseAboutMarkdown(markdown: string, fallbackTitle: string) {
   return markdown
@@ -87,7 +85,7 @@ function parseAboutMarkdown(markdown: string, fallbackTitle: string) {
     .filter(({ questions }) => questions.length > 0);
 }
 
-const aboutContent: Record<AboutLanguage, AboutCategoryContent[]> = {
+const aboutContent: Record<SiteLanguage, AboutCategoryContent[]> = {
   en: parseAboutMarkdown(aboutEnglishMarkdown, "About Me"),
   zh: parseAboutMarkdown(aboutChineseMarkdown, "關於我"),
 };
@@ -175,9 +173,9 @@ function usePageEffects() {
   return smoothProgress;
 }
 
-function ProjectCard({ project, index }: { project: Project; index: number }) {
+function ProjectCard({ project, index, language }: { project: Project; index: number; language: SiteLanguage }) {
   const Icon = project.id === "lumareader" ? MonitorDown : project.id === "wikinb" ? BookOpenText : Workflow;
-  const features = project.detail.replace(/。$/, "").split("、");
+  const features = project.features.map((feature) => feature[language]);
 
   const handleMove = (event: ReactPointerEvent<HTMLElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
@@ -208,10 +206,16 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       <div className="project-copy">
         <p className="project-eyebrow">{project.eyebrow}</p>
         <h2>{project.title}</h2>
-        <p className="project-description">{project.description}</p>
+        <p className="project-description" lang={language === "en" ? "en" : "zh-Hant"}>
+          {project.description[language]}
+        </p>
       </div>
 
-      <ul className="feature-list" aria-label={`${project.title} 功能`}>
+      <ul
+        className="feature-list"
+        aria-label={`${project.title} ${language === "en" ? "features" : "功能"}`}
+        lang={language === "en" ? "en" : "zh-Hant"}
+      >
         {features.map((feature, featureIndex) => (
           <motion.li key={feature} whileHover={{ x: 4 }} transition={{ type: "spring", stiffness: 420, damping: 26 }}>
             <span>{String(featureIndex + 1).padStart(2, "0")}</span>{feature}
@@ -433,49 +437,27 @@ function AboutCategory({
   );
 }
 
-function AboutSection() {
+function AboutSection({ language }: { language: SiteLanguage }) {
   const [open, setOpen] = useState(false);
-  const [language, setLanguage] = useState<AboutLanguage>("en");
   const categories = aboutContent[language];
   const questionCount = categories.reduce((total, category) => total + category.questions.length, 0);
 
   return (
     <section id="about" className="about section-shell" aria-labelledby="about-title">
       <div className={`about-panel${open ? " is-open" : ""}`}>
-        <div className="about-master-head">
-          <motion.button
-            className="about-master-toggle"
-            type="button"
-            aria-expanded={open}
-            aria-controls="about-categories"
-            onClick={() => setOpen((value) => !value)}
-            whileHover={{ y: -3 }}
-            whileTap={{ y: -3 }}
-          >
-            <h2 id="about-title">{aboutTitle}</h2>
-            <span>{questionCount}</span>
-            <ArrowDown size={24} />
-          </motion.button>
-
-          <div className="about-language-switch" role="group" aria-label="Q&A language">
-            <button
-              type="button"
-              className={language === "en" ? "is-active" : ""}
-              aria-pressed={language === "en"}
-              onClick={() => setLanguage("en")}
-            >
-              EN
-            </button>
-            <button
-              type="button"
-              className={language === "zh" ? "is-active" : ""}
-              aria-pressed={language === "zh"}
-              onClick={() => setLanguage("zh")}
-            >
-              中文
-            </button>
-          </div>
-        </div>
+        <motion.button
+          className="about-master-toggle"
+          type="button"
+          aria-expanded={open}
+          aria-controls="about-categories"
+          onClick={() => setOpen((value) => !value)}
+          whileHover={{ y: -3 }}
+          whileTap={{ y: -3 }}
+        >
+          <h2 id="about-title">{aboutTitle}</h2>
+          <span>{questionCount}</span>
+          <ArrowDown size={24} />
+        </motion.button>
 
         <AnimatePresence initial={false}>
           {open && (
@@ -510,12 +492,17 @@ function App() {
   const [mood, setMood] = useState<"dream" | "dusk">(() =>
     window.localStorage.getItem("kainnne-mood") === "dusk" ? "dusk" : "dream",
   );
+  const [language, setLanguage] = useState<SiteLanguage>("en");
   const scrollProgress = usePageEffects();
 
   useEffect(() => {
     document.documentElement.dataset.mood = mood;
     window.localStorage.setItem("kainnne-mood", mood);
   }, [mood]);
+
+  useEffect(() => {
+    document.documentElement.lang = language === "en" ? "en" : "zh-Hant";
+  }, [language]);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -621,16 +608,41 @@ function App() {
           </div>
         </nav>
 
-        <motion.button
-          className="icon-button"
-          type="button"
-          onClick={() => setMood(mood === "dream" ? "dusk" : "dream")}
-          aria-label={`切換至${mood === "dream" ? "深色" : "淺色"}模式`}
-          whileHover={{ rotate: 8, scale: 1.06 }}
-          whileTap={{ rotate: 8, scale: 1.06 }}
-        >
-          {mood === "dream" ? <Moon size={17} /> : <Sun size={17} />}
-        </motion.button>
+        <div className="header-tools">
+          <div className="site-language-switch" role="group" aria-label="Site language">
+            <button
+              type="button"
+              className={language === "en" ? "is-active" : ""}
+              aria-pressed={language === "en"}
+              onClick={() => setLanguage("en")}
+            >
+              EN
+            </button>
+            <button
+              type="button"
+              className={language === "zh" ? "is-active" : ""}
+              aria-pressed={language === "zh"}
+              onClick={() => setLanguage("zh")}
+            >
+              中文
+            </button>
+          </div>
+
+          <motion.button
+            className="icon-button"
+            type="button"
+            onClick={() => setMood(mood === "dream" ? "dusk" : "dream")}
+            aria-label={
+              language === "en"
+                ? `Switch to ${mood === "dream" ? "dark" : "light"} mode`
+                : `切換至${mood === "dream" ? "深色" : "淺色"}模式`
+            }
+            whileHover={{ rotate: 8, scale: 1.06 }}
+            whileTap={{ rotate: 8, scale: 1.06 }}
+          >
+            {mood === "dream" ? <Moon size={17} /> : <Sun size={17} />}
+          </motion.button>
+        </div>
       </header>
 
       <main id="main">
@@ -690,13 +702,13 @@ function App() {
           <div className="project-grid">
             {projects.map((project, index) => (
               <div id={`project-${project.id}`} className="project-anchor" key={project.id}>
-                <ProjectCard project={project} index={index} />
+                <ProjectCard project={project} index={index} language={language} />
               </div>
             ))}
           </div>
         </section>
 
-        <AboutSection />
+        <AboutSection language={language} />
       </main>
 
       <footer className="site-footer section-shell">

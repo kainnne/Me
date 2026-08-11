@@ -1,12 +1,14 @@
 export type ProjectCategory = "all" | "product" | "knowledge" | "workflow";
+export type SiteLanguage = "en" | "zh";
+export type LocalizedText = Record<SiteLanguage, string>;
 
 export type Project = {
   id: string;
   number: string;
   title: string;
   eyebrow: string;
-  description: string;
-  detail: string;
+  description: LocalizedText;
+  features: LocalizedText[];
   category: Exclude<ProjectCategory, "all">;
   tags: string[];
   color: "rose" | "lilac" | "peach" | "blue" | "berry";
@@ -29,8 +31,17 @@ export const projects: Project[] = [
     number: "01",
     title: "LumaReader",
     eyebrow: "MARKDOWN DESKTOP READER",
-    description: "本機 Markdown 閱讀器（macOS / Windows）。",
-    detail: "資料夾文件庫、Mermaid、KaTeX、媒體預覽、20 組主題、11 種介面語言。",
+    description: {
+      en: "Local Markdown reader for macOS and Windows.",
+      zh: "本機 Markdown 閱讀器（macOS / Windows）。",
+    },
+    features: [
+      { en: "Folder-based library", zh: "資料夾文件庫" },
+      { en: "Mermaid and KaTeX", zh: "Mermaid、KaTeX" },
+      { en: "Media previews", zh: "媒體預覽" },
+      { en: "20 themes", zh: "20 組主題" },
+      { en: "11 interface languages", zh: "11 種介面語言" },
+    ],
     category: "product",
     tags: ["Electron", "Reading UX", "Open source"],
     color: "rose",
@@ -44,8 +55,16 @@ export const projects: Project[] = [
     number: "02",
     title: "WikiNB",
     eyebrow: "MARKDOWN KNOWLEDGE BASE",
-    description: "Markdown 知識庫與 AI 複習助理。",
-    detail: "登入、筆記同步、全文瀏覽、Codex 對話。",
+    description: {
+      en: "Markdown knowledge base with an AI review assistant.",
+      zh: "Markdown 知識庫與 AI 複習助理。",
+    },
+    features: [
+      { en: "Sign-in", zh: "登入" },
+      { en: "Note synchronization", zh: "筆記同步" },
+      { en: "Full-text browsing", zh: "全文瀏覽" },
+      { en: "Codex conversations", zh: "Codex 對話" },
+    ],
     category: "knowledge",
     tags: ["Astro", "Knowledge system", "AI"],
     color: "lilac",
@@ -59,8 +78,16 @@ export const projects: Project[] = [
     number: "03",
     title: "ScopeCut",
     eyebrow: "CODEX PROJECT SCOPING TOOL",
-    description: "把想法轉換成 Codex Project Contract。",
-    detail: "分步輸入、範圍收斂、本機 Bridge、輸出至 WikiNB。",
+    description: {
+      en: "Turns ideas into Codex Project Contracts.",
+      zh: "把想法轉換成 Codex Project Contract。",
+    },
+    features: [
+      { en: "Guided input", zh: "分步輸入" },
+      { en: "Scope refinement", zh: "範圍收斂" },
+      { en: "Local Bridge", zh: "本機 Bridge" },
+      { en: "Export to WikiNB", zh: "輸出至 WikiNB" },
+    ],
     category: "workflow",
     tags: ["Codex", "Workflow design", "Local bridge"],
     color: "peach",
