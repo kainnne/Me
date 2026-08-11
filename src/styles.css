@@ -284,10 +284,10 @@ a {
 .kcis-nav-label {
   display: inline-block;
   color: transparent;
-  background: linear-gradient(90deg, #fff0f8, #ffd66b 25%, #76f2d5 50%, #aebdff 75%, #ff9bc8);
+  background: linear-gradient(90deg, #ff3b88 0%, #ff7600 30%, #00c9a7 58%, #a83cff 82%, #ff35bd 100%);
   background-clip: text;
   -webkit-background-clip: text;
-  filter: drop-shadow(0 1px 7px rgba(26, 39, 92, 0.34));
+  filter: drop-shadow(0 1px 7px rgba(17, 28, 75, 0.54));
 }
 
 .site-nav > .projects-control > button::after,
@@ -1686,8 +1686,33 @@ a {
   transform: translateY(-2px);
 }
 
-.site-footer > span {
+.footer-meta {
   justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.view-counter {
+  display: inline-flex;
+  min-height: 20px;
+  align-items: center;
+  opacity: 0.82;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.view-counter:is(:hover, :active) {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.view-counter img {
+  display: block;
+  height: 20px;
+  width: auto;
+}
+
+.footer-meta > span {
   color: var(--ink-soft);
   font: 400 0.59rem "DM Mono", monospace;
 }
@@ -1975,7 +2000,7 @@ a {
     grid-row: 1;
   }
 
-  .site-footer > span:last-child {
+  .footer-meta {
     grid-column: 2;
     grid-row: 1;
   }

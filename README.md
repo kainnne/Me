@@ -8,7 +8,22 @@
 - 作品分類篩選、滑鼠立體卡片、捲動進場與細節動畫
 - `⌘/Ctrl + K` 作品快速入口
 - 完整手機導覽、觸控版面與 `prefers-reduced-motion`
+- Person／ProfilePage／WebSite 結構化資料、`robots.txt` 與 `sitemap.xml`
+- 允許搜尋引擎與 OAI-SearchBot 索引的 GEO／SEO 基礎
+- 頁尾顯示免 Cookie 的公開總瀏覽數
 - GitHub Actions 自動建置並部署到 GitHub Pages
+
+## 搜尋與 GEO
+
+- 正式 canonical URL：`https://kainnne.com/`
+- Sitemap：`https://kainnne.com/sitemap.xml`
+- Robots：`https://kainnne.com/robots.txt`
+- 結構化資料描述 `Kainnne`、`Kaine Zhu`、`朱璽` 與主要作品之間的關聯。
+- `robots.txt` 明確允許 `OAI-SearchBot`，讓網站具備進入 ChatGPT 搜尋結果的技術條件。
+
+部署後仍需由網域擁有者在 Google Search Console 與 Bing Webmaster Tools 驗證網域並提交 sitemap；技術設定能協助發現與理解網站，但不保證排名或被引用。
+
+頁尾瀏覽數由 [Hits](https://hits.sh/docs/) 提供。這是公開的頁面載入次數，不是去除重複訪客後的唯一人數，也可能包含機器人流量。
 
 ## 更新作品
 

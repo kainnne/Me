@@ -674,7 +674,24 @@ function App() {
           <a href={YOUTUBE_MUSIC} target="_blank" rel="noreferrer">YT Music ↗</a>
           <a href="#top">Top ↑</a>
         </nav>
-        <span>© {new Date().getFullYear()}</span>
+        <div className="footer-meta">
+          <a
+            className="view-counter"
+            href="https://hits.sh/kainnne.com/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="查看 Kainnne 網站瀏覽數統計"
+            title="總瀏覽數"
+          >
+            <img
+              src="https://hits.sh/kainnne.com.svg?view=total&style=flat-square&label=Total%20views&color=ff8fab&labelColor=4a2038"
+              alt="Kainnne 總瀏覽數"
+              decoding="async"
+              referrerPolicy="no-referrer"
+            />
+          </a>
+          <span>© {new Date().getFullYear()}</span>
+        </div>
       </footer>
     </MotionConfig>
   );
