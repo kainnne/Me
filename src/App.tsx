@@ -609,6 +609,21 @@ function App() {
         </nav>
 
         <div className="header-tools">
+          <motion.button
+            className="icon-button"
+            type="button"
+            onClick={() => setMood(mood === "dream" ? "dusk" : "dream")}
+            aria-label={
+              language === "en"
+                ? `Switch to ${mood === "dream" ? "dark" : "light"} mode`
+                : `切換至${mood === "dream" ? "深色" : "淺色"}模式`
+            }
+            whileHover={{ rotate: 8, scale: 1.06 }}
+            whileTap={{ rotate: 8, scale: 1.06 }}
+          >
+            {mood === "dream" ? <Moon size={17} /> : <Sun size={17} />}
+          </motion.button>
+
           <div className="site-language-switch" role="group" aria-label="Site language">
             <button
               type="button"
@@ -627,21 +642,6 @@ function App() {
               中文
             </button>
           </div>
-
-          <motion.button
-            className="icon-button"
-            type="button"
-            onClick={() => setMood(mood === "dream" ? "dusk" : "dream")}
-            aria-label={
-              language === "en"
-                ? `Switch to ${mood === "dream" ? "dark" : "light"} mode`
-                : `切換至${mood === "dream" ? "深色" : "淺色"}模式`
-            }
-            whileHover={{ rotate: 8, scale: 1.06 }}
-            whileTap={{ rotate: 8, scale: 1.06 }}
-          >
-            {mood === "dream" ? <Moon size={17} /> : <Sun size={17} />}
-          </motion.button>
         </div>
       </header>
 
@@ -650,7 +650,7 @@ function App() {
           <PerformanceGallery />
           <div className="hero-center">
             <motion.p className="hero-kicker" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.12 }}>KAINE ZHU</motion.p>
-            <a className="hero-title-link" href="#about" aria-label="Kainnne — 前往 Q&A">
+            <div className="hero-title-interaction">
               <motion.h1 className="hero-title" aria-label="Kainnne" initial="hidden" animate="visible" whileHover="hover" whileTap="hover">
                 {titleLetters.map((letter, index) => (
                   <motion.span
@@ -666,7 +666,7 @@ function App() {
                   </motion.span>
                 ))}
               </motion.h1>
-            </a>
+            </div>
 
             <motion.div className="hero-disciplines" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.58 }}>
               {disciplines.map((discipline, index) => (
@@ -689,6 +689,8 @@ function App() {
             </motion.div>
           </div>
 
+          <AboutSection language={language} />
+
           <motion.nav className="project-dock" aria-label="專案快速連結" initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.78 }}>
             {projects.map((project) => (
               <motion.a key={project.id} href={`#project-${project.id}`} whileHover={{ y: -4 }} whileTap={{ y: -4 }}>
@@ -708,7 +710,6 @@ function App() {
           </div>
         </section>
 
-        <AboutSection language={language} />
       </main>
 
       <footer className="site-footer section-shell">
