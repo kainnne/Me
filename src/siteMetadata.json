@@ -1,0 +1,42 @@
+{
+  "siteUrl": "https://kainnne.com/",
+  "siteName": "Kainnne",
+  "title": "Kainnne（Kaine Zhu／朱璽）— Apps、UI / UX、AI 與音樂作品",
+  "description": "Kainnne 是 Kaine Zhu（朱璽）的個人作品入口，展示 Apps、UI / UX、AI、Machine Learning、Markdown 知識工具與音樂創作。",
+  "openGraphDescription": "探索 Kaine Zhu（朱璽）的 Apps、UI / UX、AI、Machine Learning、知識工具與音樂創作。",
+  "shortDescription": "Apps、UI / UX、AI、Machine Learning、知識工具與音樂創作。",
+  "themeColor": "#fff7fc",
+  "locale": "zh_TW",
+  "alternateLocale": "en_US",
+  "languages": ["zh-Hant", "en"],
+  "contentLastModified": "2026-08-12",
+  "brandMark": {
+    "path": "/brand/kainnne-mark.png",
+    "width": 1024,
+    "height": 1024,
+    "alt": "Kainnne pink K brand mark"
+  },
+  "person": {
+    "id": "kaine-zhu",
+    "name": "Kaine Zhu",
+    "alternateName": ["Kainnne", "朱璽", "Kaine"],
+    "jobTitle": "AI Engineer",
+    "knowsAbout": [
+      "App Design",
+      "UI / UX",
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Markdown Knowledge Systems",
+      "Music Composition",
+      "Piano",
+      "Flute"
+    ],
+    "sameAs": [
+      "https://github.com/kainnne",
+      "https://www.instagram.com/kaine_z_/",
+      "https://music.youtube.com/channel/UCRk-djUeDdJ31-kcfAKKWwQ",
+      "https://open.spotify.com/album/7kH1LtAHtDu2H0evbe5Jib",
+      "https://music.apple.com/tw/album/everything-before-24/1891561916"
+    ]
+  }
+}
