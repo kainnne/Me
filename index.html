@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- GEO:HEAD:START -->
     <meta name="theme-color" content="#fff7fc" />
     <meta name="author" content="Kaine Zhu（朱璽）" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
@@ -13,40 +14,92 @@
     <meta property="og:url" content="https://kainnne.com/" />
     <meta property="og:site_name" content="Kainnne" />
     <meta property="og:locale" content="zh_TW" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:image" content="https://kainnne.com/brand/kainnne-mark.png" />
+    <meta property="og:image:width" content="1024" />
+    <meta property="og:image:height" content="1024" />
+    <meta property="og:image:alt" content="Kainnne pink K brand mark" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Kainnne（Kaine Zhu／朱璽）" />
     <meta name="twitter:description" content="Apps、UI / UX、AI、Machine Learning、知識工具與音樂創作。" />
+    <meta name="twitter:image" content="https://kainnne.com/brand/kainnne-mark.png" />
+    <meta name="twitter:image:alt" content="Kainnne pink K brand mark" />
     <link rel="canonical" href="https://kainnne.com/" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <title>Kainnne（Kaine Zhu／朱璽）— Apps、UI / UX、AI 與音樂作品</title>
+    <!-- GEO:HEAD:END -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600;700&amp;family=DM+Mono:wght@300;400;500&amp;family=Nunito:wght@400;600;700;800&amp;family=Quicksand:wght@500;600;700&amp;family=Noto+Sans+TC:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
-    <title>Kainnne（Kaine Zhu／朱璽）— Apps、UI / UX、AI 與音樂作品</title>
+    <!-- GEO:JSONLD:START -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@graph": [
           {
+            "@type": "ImageObject",
+            "@id": "https://kainnne.com/#brand-image",
+            "url": "https://kainnne.com/brand/kainnne-mark.png",
+            "contentUrl": "https://kainnne.com/brand/kainnne-mark.png",
+            "width": 1024,
+            "height": 1024,
+            "caption": "Kainnne pink K brand mark"
+          },
+          {
+            "@type": "Brand",
+            "@id": "https://kainnne.com/#brand",
+            "name": "Kainnne",
+            "url": "https://kainnne.com/",
+            "logo": {
+              "@id": "https://kainnne.com/#brand-image"
+            }
+          },
+          {
             "@type": "WebSite",
             "@id": "https://kainnne.com/#website",
             "url": "https://kainnne.com/",
             "name": "Kainnne",
-            "description": "Kaine Zhu（朱璽）的 Apps、UI / UX、AI、Machine Learning、知識工具與音樂作品入口。",
-            "inLanguage": ["zh-Hant", "en"]
+            "description": "Kainnne 是 Kaine Zhu（朱璽）的個人作品入口，展示 Apps、UI / UX、AI、Machine Learning、Markdown 知識工具與音樂創作。",
+            "inLanguage": [
+              "zh-Hant",
+              "en"
+            ],
+            "image": {
+              "@id": "https://kainnne.com/#brand-image"
+            },
+            "about": {
+              "@id": "https://kainnne.com/#kaine-zhu"
+            }
           },
           {
             "@type": "ProfilePage",
             "@id": "https://kainnne.com/#profile",
             "url": "https://kainnne.com/",
             "name": "Kainnne — Kaine Zhu（朱璽）",
-            "isPartOf": { "@id": "https://kainnne.com/#website" },
-            "mainEntity": { "@id": "https://kainnne.com/#kaine-zhu" },
-            "about": { "@id": "https://kainnne.com/#kaine-zhu" }
+            "isPartOf": {
+              "@id": "https://kainnne.com/#website"
+            },
+            "mainEntity": {
+              "@id": "https://kainnne.com/#kaine-zhu"
+            },
+            "about": {
+              "@id": "https://kainnne.com/#kaine-zhu"
+            },
+            "image": {
+              "@id": "https://kainnne.com/#brand-image"
+            }
           },
           {
             "@type": "Person",
             "@id": "https://kainnne.com/#kaine-zhu",
             "name": "Kaine Zhu",
-            "alternateName": ["Kainnne", "朱璽", "Kaine"],
+            "alternateName": [
+              "Kainnne",
+              "朱璽",
+              "Kaine"
+            ],
             "url": "https://kainnne.com/",
             "jobTitle": "AI Engineer",
             "knowsAbout": [
@@ -65,7 +118,10 @@
               "https://music.youtube.com/channel/UCRk-djUeDdJ31-kcfAKKWwQ",
               "https://open.spotify.com/album/7kH1LtAHtDu2H0evbe5Jib",
               "https://music.apple.com/tw/album/everything-before-24/1891561916"
-            ]
+            ],
+            "brand": {
+              "@id": "https://kainnne.com/#brand"
+            }
           },
           {
             "@type": "ItemList",
@@ -95,6 +151,7 @@
         ]
       }
     </script>
+    <!-- GEO:JSONLD:END -->
   </head>
   <body>
     <div id="root"></div>

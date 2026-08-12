@@ -9,6 +9,8 @@
 - `⌘/Ctrl + K` 作品快速入口
 - 完整手機導覽、觸控版面與 `prefers-reduced-motion`
 - Person／ProfilePage／WebSite 結構化資料、`robots.txt` 與 `sitemap.xml`
+- 集中式網站 metadata 與建置前 GEO／SEO 同步檢查
+- 粉紅 `K` 品牌 mark、favicon、Apple touch icon 與社群分享圖片
 - 允許搜尋引擎與 OAI-SearchBot 索引的 GEO／SEO 基礎
 - 頁尾顯示免 Cookie 的公開總瀏覽數
 - GitHub Actions 自動建置並部署到 GitHub Pages
@@ -27,7 +29,16 @@
 
 ## 更新作品
 
-所有入口資料集中在 `src/projects.ts`。新增一個 `Project` 物件就會同步出現在作品網格、分類數量與快速搜尋選單，不需要改動主要頁面。
+所有入口資料集中在 `src/projects.json`，並由 `src/projects.ts` 提供型別。新增一個 `Project` 物件就會同步出現在作品網格、分類數量、快速搜尋選單與 JSON-LD，不需要改動主要頁面。
+
+網站名稱、正式網址、個人公開名稱關係、品牌圖片與社群連結集中在 `src/siteMetadata.json`。修改上述資料後執行：
+
+```bash
+npm run seo:generate
+npm run seo:check
+```
+
+產生器會同步 `index.html`、`robots.txt`、`sitemap.xml` 與 `site.webmanifest`；CI 會在部署前阻擋未同步的 GEO／SEO artifacts。
 
 ## 本機開發
 
@@ -69,8 +80,11 @@ DNS 可能需要最多 24 小時傳播。GitHub Pages 顯示 DNS 檢查成功後
 
 ```text
 src/App.tsx            # 一頁式入口、互動與元件
-src/projects.ts        # 可擴充作品資料
+src/projects.json      # 可擴充作品資料與 JSON-LD 來源
+src/projects.ts        # Project 型別與資料轉接
+src/siteMetadata.json  # 網站、人物、品牌與搜尋 metadata 單一來源
 src/styles.css         # 視覺系統、動畫與響應式設計
+scripts/generate-seo.mjs # GEO／SEO artifacts 產生與一致性檢查
 public/CNAME           # 自訂網域備份
 .github/workflows/     # GitHub Pages 自動部署
 v1/                    # 第一版網站封存
