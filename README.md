@@ -10,7 +10,7 @@
 - 完整手機導覽、觸控版面與 `prefers-reduced-motion`
 - Person／ProfilePage／WebSite 結構化資料、`robots.txt` 與 `sitemap.xml`
 - 集中式網站 metadata 與建置前 GEO／SEO 同步檢查
-- 粉紅 `K` 品牌 mark、favicon、Apple touch icon 與社群分享圖片
+- 柔和漸層 `K` 品牌 mark、favicon、Apple touch icon 與社群分享圖片
 - 允許搜尋引擎與 OAI-SearchBot 索引的 GEO／SEO 基礎
 - 頁尾顯示免 Cookie 的公開總瀏覽數
 - GitHub Actions 自動建置並部署到 GitHub Pages
