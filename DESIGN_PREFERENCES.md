@@ -42,6 +42,7 @@
 - Q&A 使用「總入口 → 分類 → 問題」三層收合結構；Markdown 只保留具有辨識價值的個人、研究、開發、軍事與音樂資訊，刪除重複問答。
 - English／中文切換放在亮暗模式旁並預設 English，不放進 Q&A 框內；寬螢幕時亮暗模式留在頂部導覽框內，只有語言開關放在框外右側，手機維持兩者都在框內的緊湊排列。同一開關控制專案卡片說明與 Q&A。翻譯皆由本機檔案手工維護，不使用自動翻譯，兩個版本必須維持相同結構與內容意義。
 - Q&A 位於 GitHub、Instagram、YT Music 三個入口正下方、專案數字索引之前。
+- Q&A 下方使用與 WikiNB 首頁相同結構、光影與互動的 `Kainnne x Gemini` 按鈕，直接開啟 `https://wikinb.kainnne.com/gemini/` 的訪客 Email 驗證與 AI 入口。
 - 首頁大型 `Kainnne.` 字標不作為連結，只保留滑鼠指向與觸控按壓的字母動畫。
 - 桌面頁尾的 `Kainnne` 靠分隔線左側對齊，四個導覽連結維持整體置中。
 - 保留 Person／ProfilePage／WebSite 結構化資料、`robots.txt`、`sitemap.xml` 與頁尾免 Cookie 公開瀏覽數，作為網站目前的 SEO／GEO 基準。

@@ -25,6 +25,7 @@ const KCIS_EMAIL = "kainnne@kcis.com.tw";
 const INSTAGRAM = "https://www.instagram.com/kaine_z_/";
 const YOUTUBE_MUSIC = "https://music.youtube.com/channel/UCRk-djUeDdJ31-kcfAKKWwQ?si=engK-FXHeyWAduh6";
 const KCIS_PORTAL = "https://kcis.kainnne.com";
+const WIKINB_GEMINI = "https://wikinb.kainnne.com/gemini/";
 const titleLetters = Array.from("Kainnne.");
 const disciplines = ["Apps Design", "UI / UX", "AI", "Music", "Machine Learning"];
 const performancePhotos = [
@@ -130,6 +131,23 @@ function PerformanceGallery() {
         </div>
       </div>
     </div>
+  );
+}
+
+function GeminiPortal() {
+  return (
+    <a className="home-gemini-btn" href={WIKINB_GEMINI} aria-label="Open Kainnne x Gemini guest access">
+      <span className="home-gemini-aura" aria-hidden="true" />
+      <span className="home-gemini-orbit home-gemini-orbit-a" aria-hidden="true" />
+      <span className="home-gemini-orbit home-gemini-orbit-b" aria-hidden="true" />
+      <span className="home-gemini-copy">
+        <span className="home-gemini-label">Kainnne x Gemini</span>
+      </span>
+      <span className="home-gemini-particles" aria-hidden="true">
+        <i /><i /><i /><i />
+      </span>
+      <span className="home-gemini-light" aria-hidden="true" />
+    </a>
   );
 }
 
@@ -688,6 +706,7 @@ function App() {
           </div>
 
           <AboutSection language={language} />
+          <GeminiPortal />
 
           <motion.nav className="project-dock" aria-label="專案快速連結" initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.78 }}>
             {projects.map((project) => (
