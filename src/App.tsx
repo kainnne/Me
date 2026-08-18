@@ -29,8 +29,8 @@ const WIKINB_GEMINI = "https://wikinb.kainnne.com/gemini/";
 const titleLetters = Array.from("Kainnne.");
 const disciplines = ["Apps Design", "UI / UX", "AI", "Music", "Machine Learning"];
 const heroIntroduction: Record<SiteLanguage, string> = {
-  en: "Digital products that save you time, automate repetitive work, and reduce mental load.",
-  zh: "一些讓你更省時、自動化、同時節省你思考時間的數位產品",
+  en: "AI products that save you time and reduce mental load.",
+  zh: "一些讓你更省時、更節省你思考時間的 AI 產品",
 };
 const performancePhotos = [
   { src: "/photos/performance-01.jpg", shape: "wide", position: "62% 50%" },
