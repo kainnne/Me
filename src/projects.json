@@ -68,5 +68,27 @@
     "status": "live",
     "href": "https://scopecut.kainnne.com",
     "source": "https://github.com/kainnne/ScopeCut"
+  },
+  {
+    "id": "studio",
+    "number": "04",
+    "title": "Kainnne Studio",
+    "eyebrow": "MUSIC · VISUAL NOVELS · WRITING",
+    "description": {
+      "en": "Music, visual novels, writing, and performance works.",
+      "zh": "音樂、視覺小說、文字與演出作品。"
+    },
+    "features": [
+      { "en": "Music", "zh": "音樂" },
+      { "en": "Visual novels", "zh": "視覺小說" },
+      { "en": "Writing", "zh": "文字作品" },
+      { "en": "Performance", "zh": "演出作品" }
+    ],
+    "category": "product",
+    "tags": ["Music", "Visual novels", "Writing"],
+    "color": "berry",
+    "featured": true,
+    "status": "live",
+    "href": "https://studio.kainnne.com"
   }
 ]

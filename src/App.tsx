@@ -192,7 +192,13 @@ function usePageEffects() {
 }
 
 function ProjectCard({ project, index, language }: { project: Project; index: number; language: SiteLanguage }) {
-  const Icon = project.id === "lumareader" ? MonitorDown : project.id === "wikinb" ? BookOpenText : Workflow;
+  const Icon = project.id === "lumareader"
+    ? MonitorDown
+    : project.id === "wikinb"
+      ? BookOpenText
+      : project.id === "studio"
+        ? Music2
+        : Workflow;
   const features = project.features.map((feature) => feature[language]);
 
   const handleMove = (event: ReactPointerEvent<HTMLElement>) => {
@@ -331,17 +337,17 @@ function ProjectsPopover({ open, onClose }: { open: boolean; onClose: () => void
         <motion.div
           className="projects-popover"
           role="dialog"
-          aria-label="Projects"
+          aria-label="Products"
           initial={{ opacity: 0, y: -12, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: -8, scale: 0.98 }}
           transition={{ type: "spring", stiffness: 330, damping: 27 }}
         >
           <div className="projects-popover-head">
-            <span>Projects</span>
-            <button type="button" onClick={onClose} aria-label="關閉專案選單"><X size={16} /></button>
+            <span>Products</span>
+            <button type="button" onClick={onClose} aria-label="關閉產品選單"><X size={16} /></button>
           </div>
-          <nav aria-label="選擇專案">
+          <nav aria-label="選擇產品">
             {projects.map((project) => (
               <motion.a
                 href={`#project-${project.id}`}
@@ -592,7 +598,7 @@ function App() {
               whileHover={{ y: -2 }}
               whileTap={{ y: -2 }}
             >
-              Projects
+              Products
             </motion.button>
             <ProjectsPopover open={projectsOpen} onClose={() => setProjectsOpen(false)} />
           </div>
@@ -708,7 +714,7 @@ function App() {
           <AboutSection language={language} />
           <GeminiPortal />
 
-          <motion.nav className="project-dock" aria-label="專案快速連結" initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.78 }}>
+          <motion.nav className="project-dock" aria-label="產品快速連結" initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.78 }}>
             {projects.map((project) => (
               <motion.a key={project.id} href={`#project-${project.id}`} whileHover={{ y: -4 }} whileTap={{ y: -4 }}>
                 <span>{project.number}</span><strong>{project.title}</strong><ArrowDown size={14} />
@@ -717,7 +723,7 @@ function App() {
           </motion.nav>
         </section>
 
-        <section id="projects" className="projects section-shell" aria-label="Projects">
+        <section id="projects" className="projects section-shell" aria-label="Products">
           <div className="project-grid">
             {projects.map((project, index) => (
               <div id={`project-${project.id}`} className="project-anchor" key={project.id}>

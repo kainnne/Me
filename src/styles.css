@@ -1210,7 +1210,7 @@ a {
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
 
@@ -1244,6 +1244,10 @@ a {
 
 .project-card.tone-peach {
   --tone: 255, 177, 148;
+}
+
+.project-card.tone-berry {
+  --tone: 225, 91, 155;
 }
 
 .project-card::after {
