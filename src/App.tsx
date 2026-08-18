@@ -28,6 +28,10 @@ const KCIS_PORTAL = "https://kcis.kainnne.com";
 const WIKINB_GEMINI = "https://wikinb.kainnne.com/gemini/";
 const titleLetters = Array.from("Kainnne.");
 const disciplines = ["Apps Design", "UI / UX", "AI", "Music", "Machine Learning"];
+const heroIntroduction: Record<SiteLanguage, string> = {
+  en: "Digital products that save you time, automate repetitive work, and reduce mental load.",
+  zh: "一些讓你更省時、自動化、同時節省你思考時間的數位產品",
+};
 const performancePhotos = [
   { src: "/photos/performance-01.jpg", shape: "wide", position: "62% 50%" },
   { src: "/photos/performance-02.jpg", shape: "square", position: "50% 42%" },
@@ -671,7 +675,15 @@ function App() {
         <section id="top" className="hero section-shell">
           <PerformanceGallery />
           <div className="hero-center">
-            <motion.p className="hero-kicker" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.12 }}>KAINE ZHU</motion.p>
+            <motion.p
+              className="hero-kicker"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.12 }}
+              lang={language === "en" ? "en" : "zh-Hant"}
+            >
+              {heroIntroduction[language]}
+            </motion.p>
             <div className="hero-title-interaction">
               <motion.h1 className="hero-title" aria-label="Kainnne" initial="hidden" animate="visible" whileHover="hover" whileTap="hover">
                 {titleLetters.map((letter, index) => (
