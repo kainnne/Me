@@ -520,7 +520,7 @@ function App() {
   const [mood, setMood] = useState<"dream" | "dusk">(() =>
     window.localStorage.getItem("kainnne-mood") === "dusk" ? "dusk" : "dream",
   );
-  const [language, setLanguage] = useState<SiteLanguage>("en");
+  const [language, setLanguage] = useState<SiteLanguage>("zh");
   const scrollProgress = usePageEffects();
 
   useEffect(() => {
