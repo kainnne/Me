@@ -511,6 +511,7 @@ function AboutSection({ language }: { language: SiteLanguage }) {
 }
 
 function App() {
+  const isPersonalArchive = /^\/me(?:\/|$)/.test(window.location.pathname);
   const [projectsOpen, setProjectsOpen] = useState(false);
   const projectsControlRef = useRef<HTMLDivElement>(null);
   const [contactOpen, setContactOpen] = useState(false);
@@ -673,7 +674,7 @@ function App() {
 
       <main id="main">
         <section id="top" className="hero section-shell">
-          <PerformanceGallery />
+          {isPersonalArchive && <PerformanceGallery />}
           <div className="hero-center">
             <motion.p
               className="hero-kicker"
