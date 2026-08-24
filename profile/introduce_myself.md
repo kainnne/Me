@@ -15,7 +15,7 @@
 2.前端設計
 3.LLM
 
-聯絡信箱chaos60649@gmail.com
+聯絡信箱ryanzhu@kainnne.com
 
 以及GitHub : zx50416 IG: kaine_z_
 

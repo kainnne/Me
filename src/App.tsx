@@ -20,7 +20,7 @@ import aboutEnglishMarkdown from "./content/about.en.md?raw";
 import aboutChineseMarkdown from "./content/about.md?raw";
 import { projects, type Project, type SiteLanguage } from "./projects";
 
-const EMAIL = "chaos60649@gmail.com";
+const EMAIL = "ryanzhu@kainnne.com";
 const KCIS_EMAIL = "kainnne@kcis.com.tw";
 const INSTAGRAM = "https://www.instagram.com/kaine_z_/";
 const YOUTUBE_MUSIC = "https://music.youtube.com/channel/UCRk-djUeDdJ31-kcfAKKWwQ?si=engK-FXHeyWAduh6";

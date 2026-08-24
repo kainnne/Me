@@ -69,7 +69,7 @@ const resumeData = {
     { title: "AI Agent 與快速原型", type: "IN PROGRESS · AI", description: "以 AI 輔助程式開發，練習在快速產出、Token 使用效率與成果驗證之間取得平衡。", link: "#", linkLabel: "專案整理中" },
     { title: "音樂創作與製作", type: "CREATION · MUSIC", description: "累積多場音樂會主辦經驗，並發行個人專輯；持續以作曲、指揮與演奏記錄創作。", link: "#", linkLabel: "內容整理中" },
   ],
-  email: "chaos60649@gmail.com",
+  email: "ryanzhu@kainnne.com",
   phone: "+886 909 505 931",
   socials: [
     { label: "GitHub", url: "https://github.com/zx50416" },
