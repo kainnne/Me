@@ -285,7 +285,7 @@ function ContactPopover({ open, onClose }: { open: boolean; onClose: () => void 
             <button type="button" onClick={onClose} aria-label="關閉聯絡方式"><X size={16} /></button>
           </div>
           <motion.a href={`mailto:${EMAIL}`} onClick={onClose} whileHover={{ x: 4 }} whileTap={{ x: 4 }}>
-            <Mail size={18} /><span><strong>Gmail</strong><small>{EMAIL}</small></span><ArrowUpRight size={15} />
+            <Mail size={18} /><span><strong>EMAIL</strong><small>{EMAIL}</small></span><ArrowUpRight size={15} />
           </motion.a>
           <motion.a href={`mailto:${KCIS_EMAIL}`} onClick={onClose} whileHover={{ x: 4 }} whileTap={{ x: 4 }}>
             <Mail size={18} /><span><strong>KCIS Mail</strong><small>{KCIS_EMAIL}</small></span><ArrowUpRight size={15} />
