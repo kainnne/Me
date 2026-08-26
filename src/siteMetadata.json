@@ -9,12 +9,12 @@
   "locale": "zh_TW",
   "alternateLocale": "en_US",
   "languages": ["zh-Hant", "en"],
-  "contentLastModified": "2026-08-12",
+  "contentLastModified": "2026-08-26",
   "brandMark": {
     "path": "/brand/kainnne-mark.png",
-    "width": 1024,
-    "height": 1024,
-    "alt": "Kainnne pastel gradient K brand mark"
+    "width": 1254,
+    "height": 1254,
+    "alt": "Kainnne flowing ribbon K brand mark"
   },
   "person": {
     "id": "kaine-zhu",

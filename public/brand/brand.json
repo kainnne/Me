@@ -1,0 +1,11 @@
+{
+  "brand": "Kainnne",
+  "asset": "https://kainnne.com/brand/kainnne-mark.png",
+  "source": "brand-assets/kainnne-primary-visual-v1.png",
+  "version": "1.0.0",
+  "width": 1254,
+  "height": 1254,
+  "format": "image/png",
+  "background": "transparent",
+  "usage": ["favicon", "apple-touch-icon", "open-graph", "twitter-card"]
+}

@@ -16,7 +16,7 @@ const escapeHtml = (value) => String(value)
   .replaceAll(">", "&gt;");
 
 const absolute = (pathname) => new URL(pathname, metadata.siteUrl).href;
-const imageUrl = absolute(metadata.brandMark.path);
+const brandImageUrl = absolute(metadata.brandMark.path);
 const publicProjects = projects.filter((project) => project.status === "live" && project.href);
 
 const jsonLd = {
@@ -25,8 +25,8 @@ const jsonLd = {
     {
       "@type": "ImageObject",
       "@id": `${metadata.siteUrl}#brand-image`,
-      url: imageUrl,
-      contentUrl: imageUrl,
+      url: brandImageUrl,
+      contentUrl: brandImageUrl,
       width: metadata.brandMark.width,
       height: metadata.brandMark.height,
       caption: metadata.brandMark.alt,
@@ -95,14 +95,14 @@ const head = [
   `<meta property="og:site_name" content="${escapeHtml(metadata.siteName)}" />`,
   `<meta property="og:locale" content="${escapeHtml(metadata.locale)}" />`,
   `<meta property="og:locale:alternate" content="${escapeHtml(metadata.alternateLocale)}" />`,
-  `<meta property="og:image" content="${escapeHtml(imageUrl)}" />`,
+  `<meta property="og:image" content="${escapeHtml(brandImageUrl)}" />`,
   `<meta property="og:image:width" content="${metadata.brandMark.width}" />`,
   `<meta property="og:image:height" content="${metadata.brandMark.height}" />`,
   `<meta property="og:image:alt" content="${escapeHtml(metadata.brandMark.alt)}" />`,
   '<meta name="twitter:card" content="summary" />',
   `<meta name="twitter:title" content="${escapeHtml(metadata.siteName)}（Kaine Zhu／朱璽）" />`,
   `<meta name="twitter:description" content="${escapeHtml(metadata.shortDescription)}" />`,
-  `<meta name="twitter:image" content="${escapeHtml(imageUrl)}" />`,
+  `<meta name="twitter:image" content="${escapeHtml(brandImageUrl)}" />`,
   `<meta name="twitter:image:alt" content="${escapeHtml(metadata.brandMark.alt)}" />`,
   `<link rel="canonical" href="${escapeHtml(metadata.siteUrl)}" />`,
   '<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />',
