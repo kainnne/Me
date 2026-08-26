@@ -105,8 +105,8 @@ const head = [
   `<meta name="twitter:image" content="${escapeHtml(brandImageUrl)}" />`,
   `<meta name="twitter:image:alt" content="${escapeHtml(metadata.brandMark.alt)}" />`,
   `<link rel="canonical" href="${escapeHtml(metadata.siteUrl)}" />`,
-  '<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />',
-  '<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />',
+  `<link rel="icon" type="image/png" href="${escapeHtml(brandImageUrl)}" />`,
+  `<link rel="apple-touch-icon" href="${escapeHtml(brandImageUrl)}" />`,
   '<link rel="manifest" href="/site.webmanifest" />',
   `<title>${escapeHtml(metadata.title)}</title>`,
 ].map((line) => `    ${line}`).join("\n");
