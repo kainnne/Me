@@ -18,6 +18,8 @@ import { marked } from "marked";
 import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
 import aboutEnglishMarkdown from "./content/about.en.md?raw";
 import aboutChineseMarkdown from "./content/about.md?raw";
+import productEnglishMarkdown from "./content/product.en.md?raw";
+import productChineseMarkdown from "./content/product.md?raw";
 import { projects, type Project, type SiteLanguage } from "./projects";
 
 const EMAIL = "ryanzhu@kainnne.com";
@@ -31,6 +33,10 @@ const disciplines = ["Apps Design", "UI / UX", "AI", "Music", "Machine Learning"
 const heroIntroduction: Record<SiteLanguage, string> = {
   en: "Digital products that save you time doing and thinking.",
   zh: "一些替你省下操作與思考時間的數位產品。",
+};
+const personalIntroduction: Record<SiteLanguage, string> = {
+  en: "Kaine's personal website.",
+  zh: "kaine 的個人網頁。",
 };
 const performancePhotos = [
   { src: "/photos/performance-01.jpg", shape: "wide", position: "62% 50%" },
@@ -50,7 +56,6 @@ const performancePhotos = [
   { src: "/photos/performance-15.jpg", shape: "wide", position: "54% 48%" },
   { src: "/photos/performance-16.jpg", shape: "square", position: "55% 42%" },
 ];
-
 type AboutQuestionContent = {
   question: string;
   html: string;
@@ -90,9 +95,14 @@ function parseAboutMarkdown(markdown: string, fallbackTitle: string) {
     .filter(({ questions }) => questions.length > 0);
 }
 
-const aboutContent: Record<SiteLanguage, AboutCategoryContent[]> = {
+const personalAboutContent: Record<SiteLanguage, AboutCategoryContent[]> = {
   en: parseAboutMarkdown(aboutEnglishMarkdown, "About Me"),
   zh: parseAboutMarkdown(aboutChineseMarkdown, "關於我"),
+};
+
+const productAboutContent: Record<SiteLanguage, AboutCategoryContent[]> = {
+  en: parseAboutMarkdown(productEnglishMarkdown, "Kainnne"),
+  zh: parseAboutMarkdown(productChineseMarkdown, "Kainnne"),
 };
 
 function InstagramMark() {
@@ -140,7 +150,7 @@ function PerformanceGallery() {
 
 function GeminiPortal() {
   return (
-    <a className="home-gemini-btn" href={WIKINB_GEMINI} aria-label="Open Kainnne x Gemini guest access">
+    <a id="gemini" className="home-gemini-btn" href={WIKINB_GEMINI} aria-label="Open Kainnne x Gemini guest access">
       <span className="home-gemini-aura" aria-hidden="true" />
       <span className="home-gemini-orbit home-gemini-orbit-a" aria-hidden="true" />
       <span className="home-gemini-orbit home-gemini-orbit-b" aria-hidden="true" />
@@ -465,9 +475,17 @@ function AboutCategory({
   );
 }
 
-function AboutSection({ language }: { language: SiteLanguage }) {
-  const [open, setOpen] = useState(false);
-  const categories = aboutContent[language];
+function AboutSection({
+  language,
+  content,
+  defaultOpen = false,
+}: {
+  language: SiteLanguage;
+  content: Record<SiteLanguage, AboutCategoryContent[]>;
+  defaultOpen?: boolean;
+}) {
+  const [open, setOpen] = useState(defaultOpen);
+  const categories = content[language];
   const questionCount = categories.reduce((total, category) => total + category.questions.length, 0);
 
   return (
@@ -592,50 +610,64 @@ function App() {
       <div className="page-grain" aria-hidden="true" />
 
       <header className="site-header">
-        <nav className="site-nav" aria-label="主要導覽">
-          <div className="projects-control" ref={projectsControlRef}>
-            <motion.button
-              className="nav-projects"
-              type="button"
-              onClick={() => setProjectsOpen((value) => !value)}
-              aria-expanded={projectsOpen}
-              aria-haspopup="dialog"
+        {isPersonalArchive ? (
+          <nav className="site-nav site-nav-personal" aria-label="主站導覽">
+            <motion.a
+              className="home-nav-link"
+              href="/"
               whileHover={{ y: -2 }}
               whileTap={{ y: -2 }}
             >
-              Products
-            </motion.button>
-            <ProjectsPopover open={projectsOpen} onClose={() => setProjectsOpen(false)} />
-          </div>
-          <div className="kcis-control" ref={kcisControlRef}>
-            <motion.button
-              className="kcis-nav-button"
-              type="button"
-              onClick={() => setKcisOpen((value) => !value)}
-              aria-expanded={kcisOpen}
-              aria-haspopup="dialog"
-              whileHover={{ y: -2 }}
-              whileTap={{ y: -2 }}
-            >
-              <span className="kcis-nav-label">KCIS</span>
-            </motion.button>
-            <KcisPopover open={kcisOpen} onClose={() => setKcisOpen(false)} />
-          </div>
-          <div className="contact-control" ref={contactControlRef}>
-            <motion.button
-              className="contact-nav-button"
-              type="button"
-              onClick={() => setContactOpen((value) => !value)}
-              aria-expanded={contactOpen}
-              aria-haspopup="dialog"
-              whileHover={{ y: -2 }}
-              whileTap={{ y: -2 }}
-            >
-              Contact
-            </motion.button>
-            <ContactPopover open={contactOpen} onClose={() => setContactOpen(false)} />
-          </div>
-        </nav>
+              <span>Kainnne.com</span>
+              <ArrowUpRight size={15} />
+            </motion.a>
+          </nav>
+        ) : (
+          <nav className="site-nav" aria-label="主要導覽">
+            <div className="projects-control" ref={projectsControlRef}>
+              <motion.button
+                className="nav-projects"
+                type="button"
+                onClick={() => setProjectsOpen((value) => !value)}
+                aria-expanded={projectsOpen}
+                aria-haspopup="dialog"
+                whileHover={{ y: -2 }}
+                whileTap={{ y: -2 }}
+              >
+                Products
+              </motion.button>
+              <ProjectsPopover open={projectsOpen} onClose={() => setProjectsOpen(false)} />
+            </div>
+            <div className="kcis-control" ref={kcisControlRef}>
+              <motion.button
+                className="kcis-nav-button"
+                type="button"
+                onClick={() => setKcisOpen((value) => !value)}
+                aria-expanded={kcisOpen}
+                aria-haspopup="dialog"
+                whileHover={{ y: -2 }}
+                whileTap={{ y: -2 }}
+              >
+                <span className="kcis-nav-label">KCIS</span>
+              </motion.button>
+              <KcisPopover open={kcisOpen} onClose={() => setKcisOpen(false)} />
+            </div>
+            <div className="contact-control" ref={contactControlRef}>
+              <motion.button
+                className="contact-nav-button"
+                type="button"
+                onClick={() => setContactOpen((value) => !value)}
+                aria-expanded={contactOpen}
+                aria-haspopup="dialog"
+                whileHover={{ y: -2 }}
+                whileTap={{ y: -2 }}
+              >
+                Contact
+              </motion.button>
+              <ContactPopover open={contactOpen} onClose={() => setContactOpen(false)} />
+            </div>
+          </nav>
+        )}
 
         <motion.button
           className="icon-button"
@@ -683,7 +715,7 @@ function App() {
               transition={{ delay: 0.12 }}
               lang={language === "en" ? "en" : "zh-Hant"}
             >
-              {heroIntroduction[language]}
+              {(isPersonalArchive ? personalIntroduction : heroIntroduction)[language]}
             </motion.p>
             <div className="hero-title-interaction">
               <motion.h1 className="hero-title" aria-label="Kainnne" initial="hidden" animate="visible" whileHover="hover" whileTap="hover">
@@ -724,8 +756,17 @@ function App() {
             </motion.div>
           </div>
 
-          <AboutSection language={language} />
-          <GeminiPortal />
+          {isPersonalArchive ? (
+            <>
+              <AboutSection language={language} content={personalAboutContent} defaultOpen />
+              <GeminiPortal />
+            </>
+          ) : (
+            <>
+              <GeminiPortal />
+              <AboutSection language={language} content={productAboutContent} />
+            </>
+          )}
 
           <motion.nav className="project-dock" aria-label="產品快速連結" initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.78 }}>
             {projects.map((project) => (
@@ -757,6 +798,11 @@ function App() {
           <a href="#top">Top ↑</a>
         </nav>
         <div className="footer-meta">
+          {!isPersonalArchive && (
+            <a className="creator-link" href="/me/" aria-label="About the producer">
+              Producer ↗
+            </a>
+          )}
           <a
             className="view-counter"
             href="https://hits.sh/kainnne.com/"

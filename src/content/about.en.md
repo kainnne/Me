@@ -1,9 +1,5 @@
 # About Me
 
-## Q: What is your name?
-
-Kaine / 朱璽
-
 ## Q: What is your current role?
 
 - Kang Hsuan Educational Publishing Group / Kang Chiao International School

@@ -208,6 +208,71 @@ a {
   text-transform: uppercase;
 }
 
+.site-nav-personal {
+  display: flex;
+}
+
+.home-nav-link {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 56px;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.56);
+  border-radius: 17px;
+  background:
+    linear-gradient(110deg, rgba(255, 255, 255, 0.5), rgba(255, 226, 242, 0.42) 42%, rgba(218, 222, 255, 0.48) 74%, rgba(204, 255, 242, 0.38));
+  box-shadow: 0 10px 28px rgba(116, 69, 111, 0.1), inset 0 1px rgba(255, 255, 255, 0.62);
+  color: var(--ink-strong);
+  transition: box-shadow 0.24s ease, border-color 0.24s ease;
+}
+
+.home-nav-link::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background: conic-gradient(from 120deg, rgba(255, 94, 168, 0.2), rgba(115, 138, 255, 0.22), rgba(92, 221, 194, 0.18), rgba(255, 94, 168, 0.2));
+  filter: blur(18px);
+  opacity: 0.72;
+  transition: transform 0.45s ease, opacity 0.3s ease;
+}
+
+.home-nav-link:is(:hover, :active) {
+  border-color: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 14px 34px rgba(116, 69, 111, 0.16), inset 0 1px rgba(255, 255, 255, 0.72);
+}
+
+.home-nav-link:is(:hover, :active)::before {
+  opacity: 1;
+  transform: rotate(24deg) scale(1.12);
+}
+
+.home-nav-link span {
+  color: transparent;
+  background: var(--brand-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  font-family: "Comfortaa", "Quicksand", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  text-transform: none;
+}
+
+[data-mood="dusk"] .home-nav-link {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: linear-gradient(110deg, rgba(255, 255, 255, 0.065), rgba(255, 82, 164, 0.08), rgba(113, 120, 255, 0.1));
+  box-shadow: 0 12px 34px rgba(3, 1, 16, 0.28), inset 0 1px rgba(255, 255, 255, 0.08);
+}
+
 .site-nav > .projects-control > button,
 .site-nav > .kcis-control > button,
 .site-nav > .contact-control > button {
@@ -1974,6 +2039,18 @@ a {
   gap: 12px;
 }
 
+.creator-link {
+  color: var(--ink-soft);
+  font: 700 0.68rem "Quicksand", sans-serif;
+  white-space: nowrap;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.creator-link:is(:hover, :active) {
+  color: var(--ink-strong);
+  transform: translateY(-2px);
+}
+
 .view-counter {
   display: inline-flex;
   min-height: 20px;
@@ -2142,6 +2219,16 @@ a {
     min-height: 48px;
     padding: 0 8px;
     border-radius: 14px;
+  }
+
+  .home-nav-link {
+    min-height: 48px;
+    padding: 0 10px;
+    border-radius: 14px;
+  }
+
+  .home-nav-link span {
+    font-size: 0.82rem;
   }
 
   .projects-popover,

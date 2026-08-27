@@ -1,7 +1,7 @@
 import { defineConfig, type Plugin } from "vite";
 import react from "@vitejs/plugin-react";
 
-function mirrorPortalAtMe(): Plugin {
+function mirrorPortalAtPersonalRoutes(): Plugin {
   return {
     name: "mirror-portal-at-me",
     enforce: "post",
@@ -12,16 +12,18 @@ function mirrorPortalAtMe(): Plugin {
         throw new Error("Unable to create the /me mirror: index.html was not generated.");
       }
 
-      this.emitFile({
-        type: "asset",
-        fileName: "me/index.html",
-        source: indexHtml.source,
-      });
+      for (const fileName of ["me/index.html", "me/me/index.html"]) {
+        this.emitFile({
+          type: "asset",
+          fileName,
+          source: indexHtml.source,
+        });
+      }
     },
   };
 }
 
 export default defineConfig({
-  plugins: [react(), mirrorPortalAtMe()],
+  plugins: [react(), mirrorPortalAtPersonalRoutes()],
   base: "/",
 });
