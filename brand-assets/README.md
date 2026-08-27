@@ -1,6 +1,6 @@
 # Kainnne 品牌主視覺
 
-`kainnne-primary-visual-v1.png` 是目前正式的 Kainnne 品牌總圖案：透明背景、流線 ribbon K。它是原始保存檔，不直接由頁面程式重畫，也不應被拉伸或加上白色、黑色底圖。
+`kainnne-primary-visual-v2.png` 是目前正式的 Kainnne 品牌總圖案：透明背景、粉紅色幾何 `K`。它是原始保存檔，不直接由頁面程式重畫，也不應被拉伸或加上白色、黑色底圖。上一版 `kainnne-primary-visual-v1.png` 保留作為可復原的歷史版本。
 
 ## 線上固定入口
 
