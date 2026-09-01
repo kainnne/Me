@@ -1314,6 +1314,10 @@ a {
   --tone: 255, 177, 148;
 }
 
+.project-card.tone-blue {
+  --tone: 100, 174, 255;
+}
+
 .project-card.tone-berry {
   --tone: 225, 91, 155;
 }

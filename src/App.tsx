@@ -3,6 +3,7 @@ import {
   ArrowUpRight,
   BookOpenText,
   Code2,
+  Grid2X2,
   Mail,
   MonitorDown,
   Moon,
@@ -212,7 +213,9 @@ function ProjectCard({ project, index, language }: { project: Project; index: nu
       ? BookOpenText
       : project.id === "studio"
         ? Music2
-        : Workflow;
+        : project.id === "ai-tools"
+          ? Grid2X2
+          : Workflow;
   const features = project.features.map((feature) => feature[language]);
 
   const handleMove = (event: ReactPointerEvent<HTMLElement>) => {

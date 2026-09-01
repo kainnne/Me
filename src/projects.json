@@ -90,5 +90,27 @@
     "featured": true,
     "status": "live",
     "href": "https://studio.kainnne.com"
+  },
+  {
+    "id": "ai-tools",
+    "number": "05",
+    "title": "AI TOOLS",
+    "eyebrow": "PERSONAL AI TOOL DIRECTORY",
+    "description": {
+      "en": "A curated gateway to Kainnne's live AI tools and websites.",
+      "zh": "Kainnne 個人 AI 工具與網站導航入口。"
+    },
+    "features": [
+      { "en": "Taiwan Car Finder", "zh": "台灣選車網" },
+      { "en": "MusicAI", "zh": "MusicAI" },
+      { "en": "NIGHTINDEX", "zh": "NIGHTINDEX" },
+      { "en": "Continuously updated", "zh": "持續更新" }
+    ],
+    "category": "product",
+    "tags": ["AI", "Tool directory", "Web apps"],
+    "color": "blue",
+    "featured": true,
+    "status": "live",
+    "href": "https://ai-tools.kainnne.com"
   }
 ]
