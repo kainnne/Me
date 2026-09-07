@@ -142,7 +142,7 @@ function PerformanceGallery() {
 function GeminiPortal() {
   return (
     <a id="gemini" className="gemini-entry" href={WIKINB_GEMINI}>
-      <span>Kainnne <span className="gemini-entry-cross">×</span> Gemini</span>
+      <span className="gemini-entry-wordmark">Kainnne <span className="gemini-entry-cross">×</span> Gemini</span>
       <ArrowUpRight className="gemini-entry-arrow" aria-hidden="true" />
     </a>
   );
