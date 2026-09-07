@@ -2533,62 +2533,64 @@ a {
   }
 }
 
-/* The Q&A glass material, with a tactile edge and the shared brand wordmark. */
+/* Compact glass key: centered branding, a beveled rim, and physical travel. */
 .gemini-entry {
-  --entry-edge: rgba(163, 133, 177, 0.38);
+  --entry-edge: rgba(163, 133, 177, 0.48);
+  --entry-glass: rgba(255, 255, 255, 0.24);
   position: relative;
   z-index: 2;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  width: min(820px, 100%);
-  min-height: clamp(112px, 15vw, 174px);
-  margin: 1.25rem auto 0;
-  padding: clamp(1.3rem, 4vw, 2.8rem);
+  justify-content: center;
+  width: min(510px, 100%);
+  min-height: clamp(78px, 8vw, 98px);
+  margin: 1.75rem auto 0.5rem;
+  padding: 1.2rem clamp(1.2rem, 4vw, 2.5rem);
   border: 1px solid var(--glass-line);
-  border-radius: 34px;
-  background:
-    radial-gradient(circle at 14% 20%, rgba(255, 255, 255, 0.25), transparent 40%),
-    linear-gradient(120deg, rgba(183, 148, 255, 0.07), rgba(255, 143, 171, 0.09), rgba(94, 234, 212, 0.06)),
-    var(--glass);
-  backdrop-filter: blur(25px) saturate(1.25);
-  box-shadow: 0 5px 0 var(--entry-edge), var(--shadow), inset 0 1px rgba(255, 255, 255, 0.52);
+  border-radius: 999px;
+  background: linear-gradient(165deg, rgba(255,255,255,0.3), transparent 55%), var(--entry-glass);
+  backdrop-filter: blur(18px) saturate(1.3);
+  box-shadow: 0 6px 0 var(--entry-edge), 0 14px 22px rgba(121,65,105,0.16), inset 0 2px 2px rgba(255,255,255,0.6), inset 0 -2px 4px rgba(163,133,177,0.14);
   color: var(--ink-soft);
   text-decoration: none;
-  text-align: left;
-  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  text-align: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+.gemini-entry::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid var(--glass-line);
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0.55;
 }
 .gemini-entry-wordmark {
   color: transparent;
   background: var(--brand-gradient);
   background-clip: text;
   -webkit-background-clip: text;
-  font: 700 clamp(1.4rem, 4.5vw, 3rem) / 1.3 "Comfortaa", "Quicksand", sans-serif;
+  font: 700 clamp(1.5rem, 4.2vw, 2.25rem) / 1.3 "Comfortaa", "Quicksand", sans-serif;
   letter-spacing: -0.065em;
-  filter: drop-shadow(0 8px 18px rgba(178, 115, 191, 0.12));
+  white-space: nowrap;
+  filter: drop-shadow(0 4px 8px rgba(178,115,191,0.12));
 }
 .gemini-entry-cross { font-weight: 400; }
-.gemini-entry-arrow {
-  width: clamp(36px, 4.5vw, 52px);
-  height: clamp(36px, 4.5vw, 52px);
-  padding: 9px;
-  flex: 0 0 auto;
-  border: 1px solid var(--glass-line);
-  border-radius: 50%;
-  background: var(--glass-strong);
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.3);
-  transition: transform 180ms ease;
-}
 .gemini-entry:hover {
   transform: translateY(-2px);
-  border-color: rgba(183, 148, 255, 0.4);
-  box-shadow: 0 7px 0 var(--entry-edge), var(--shadow), inset 0 1px rgba(255, 255, 255, 0.58);
+  background-color: rgba(183,148,255,0.1);
+  box-shadow: 0 8px 0 var(--entry-edge), 0 18px 26px rgba(121,65,105,0.18), inset 0 2px 2px rgba(255,255,255,0.65);
 }
-.gemini-entry:is(:hover, :active) .gemini-entry-arrow { transform: translate(2px, -2px); }
-.gemini-entry:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--entry-edge), var(--shadow); }
-.gemini-entry:focus-visible { outline: 3px solid #b794ff; outline-offset: 7px; }
-:root[data-mood="dusk"] .gemini-entry { --entry-edge: rgba(109, 79, 122, 0.55); }
-@media (prefers-reduced-motion: reduce) {
-  .gemini-entry, .gemini-entry-arrow { transition: none; }
+.gemini-entry:active {
+  transform: translateY(4px);
+  background-color: rgba(183,148,255,0.16);
+  box-shadow: 0 2px 0 var(--entry-edge), 0 5px 10px rgba(121,65,105,0.12), inset 0 2px 5px rgba(163,133,177,0.18);
 }
+.gemini-entry:focus-visible { outline: 3px solid #b794ff; outline-offset: 9px; }
+:root[data-mood="dusk"] .gemini-entry {
+  --entry-edge: rgba(109,79,122,0.65);
+  --entry-glass: rgba(42,20,38,0.28);
+}
+@media (prefers-reduced-motion: reduce) { .gemini-entry { transition: none; } }
