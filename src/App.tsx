@@ -19,8 +19,6 @@ import { marked } from "marked";
 import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
 import aboutEnglishMarkdown from "./content/about.en.md?raw";
 import aboutChineseMarkdown from "./content/about.md?raw";
-import productEnglishMarkdown from "./content/product.en.md?raw";
-import productChineseMarkdown from "./content/product.md?raw";
 import { projects, type Project, type SiteLanguage } from "./projects";
 
 const EMAIL = "ryanzhu@kainnne.com";
@@ -31,10 +29,6 @@ const KCIS_PORTAL = "https://kcis.kainnne.com";
 const WIKINB_GEMINI = "https://wikinb.kainnne.com/gemini/";
 const titleLetters = Array.from("Kainnne.");
 const disciplines = ["Apps Design", "UI / UX", "AI", "Music", "Machine Learning"];
-const heroIntroduction: Record<SiteLanguage, string> = {
-  en: "Digital products that save you time doing and thinking.",
-  zh: "一些替你省下操作與思考時間的數位產品。",
-};
 const personalIntroduction: Record<SiteLanguage, string> = {
   en: "Kaine's personal website.",
   zh: "kaine 的個人網頁。",
@@ -101,10 +95,6 @@ const personalAboutContent: Record<SiteLanguage, AboutCategoryContent[]> = {
   zh: parseAboutMarkdown(aboutChineseMarkdown, "關於我"),
 };
 
-const productAboutContent: Record<SiteLanguage, AboutCategoryContent[]> = {
-  en: parseAboutMarkdown(productEnglishMarkdown, "Kainnne"),
-  zh: parseAboutMarkdown(productChineseMarkdown, "Kainnne"),
-};
 
 function InstagramMark() {
   return <span className="instagram-mark" aria-hidden="true" />;
@@ -151,17 +141,9 @@ function PerformanceGallery() {
 
 function GeminiPortal() {
   return (
-    <a id="gemini" className="home-gemini-btn" href={WIKINB_GEMINI} aria-label="Open Kainnne x Gemini guest access">
-      <span className="home-gemini-aura" aria-hidden="true" />
-      <span className="home-gemini-orbit home-gemini-orbit-a" aria-hidden="true" />
-      <span className="home-gemini-orbit home-gemini-orbit-b" aria-hidden="true" />
-      <span className="home-gemini-copy">
-        <span className="home-gemini-label">Kainnne x Gemini</span>
-      </span>
-      <span className="home-gemini-particles" aria-hidden="true">
-        <i /><i /><i /><i />
-      </span>
-      <span className="home-gemini-light" aria-hidden="true" />
+    <a id="gemini" className="gemini-entry" href={WIKINB_GEMINI}>
+      <span>Kainnne <span className="gemini-entry-cross">×</span> Gemini</span>
+      <ArrowUpRight className="gemini-entry-arrow" aria-hidden="true" />
     </a>
   );
 }
@@ -711,15 +693,15 @@ function App() {
         <section id="top" className="hero section-shell">
           {isPersonalArchive && <PerformanceGallery />}
           <div className="hero-center">
-            <motion.p
+            {isPersonalArchive && <motion.p
               className="hero-kicker"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.12 }}
               lang={language === "en" ? "en" : "zh-Hant"}
             >
-              {(isPersonalArchive ? personalIntroduction : heroIntroduction)[language]}
-            </motion.p>
+              {personalIntroduction[language]}
+            </motion.p>}
             <div className="hero-title-interaction">
               <motion.h1 className="hero-title" aria-label="Kainnne" initial="hidden" animate="visible" whileHover="hover" whileTap="hover">
                 {titleLetters.map((letter, index) => (
@@ -752,6 +734,8 @@ function App() {
               ))}
             </motion.div>
 
+            {!isPersonalArchive && <GeminiPortal />}
+
             <motion.div className="hero-links" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.68 }}>
               <motion.a href="https://github.com/kainnne" target="_blank" rel="noreferrer" whileHover={{ y: -4 }} whileTap={{ y: -4 }}><Code2 size={17} /><span>GitHub</span><ArrowUpRight size={14} /></motion.a>
               <motion.a href={INSTAGRAM} target="_blank" rel="noreferrer" whileHover={{ y: -4 }} whileTap={{ y: -4 }}><InstagramMark /><span>Instagram</span><ArrowUpRight size={14} /></motion.a>
@@ -764,12 +748,7 @@ function App() {
               <AboutSection language={language} content={personalAboutContent} defaultOpen />
               <GeminiPortal />
             </>
-          ) : (
-            <>
-              <GeminiPortal />
-              <AboutSection language={language} content={productAboutContent} />
-            </>
-          )}
+          ) : null}
 
           <motion.nav className="project-dock" aria-label="產品快速連結" initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.78 }}>
             {projects.map((project) => (

@@ -2532,3 +2532,32 @@ a {
     transition-duration: 0.001ms !important;
   }
 }
+
+/* Main entry: a broad, quiet control adapted from the former Q&A panel. */
+.gemini-entry {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: min(820px, 100%);
+  min-height: clamp(112px, 15vw, 174px);
+  margin: 1.25rem auto 0;
+  padding: clamp(1.3rem, 4vw, 2.8rem);
+  border: 1px solid #ad8bbb;
+  border-radius: 28px;
+  background: linear-gradient(115deg, #f3eaff, #fbe2ee 65%, #e8f5f2);
+  box-shadow: 0 5px 0 #b798be, 0 18px 40px rgba(103, 59, 94, 0.12), inset 0 1px #fff;
+  color: #51355f;
+  font: 700 clamp(1.4rem, 4.5vw, 3rem) / 1.2 "Comfortaa", "Quicksand", sans-serif;
+  text-decoration: none;
+  text-align: left;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+.gemini-entry-cross { color: #996c9e; }
+.gemini-entry-arrow { width: clamp(28px, 4vw, 44px); height: auto; flex: 0 0 auto; }
+.gemini-entry:hover { transform: translateY(-2px); box-shadow: 0 7px 0 #b798be, 0 22px 44px rgba(103, 59, 94, 0.16); }
+.gemini-entry:active { transform: translateY(3px); box-shadow: 0 2px 0 #b798be; background: #ecdaf2; }
+.gemini-entry:focus-visible { outline: 3px solid #77508f; outline-offset: 5px; }
+@media (prefers-reduced-motion: reduce) { .gemini-entry { transition: none; } }
