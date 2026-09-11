@@ -7,8 +7,10 @@
     "dev": "vite",
     "seo:generate": "node scripts/generate-seo.mjs",
     "seo:check": "node scripts/generate-seo.mjs --check",
-    "build": "npm run seo:generate && tsc -b && vite build",
-    "preview": "vite preview"
+    "build": "npm run resume:generate && npm run seo:generate && tsc -b && vite build",
+    "preview": "vite preview",
+    "resume:generate": "node scripts/build-resume.mjs",
+    "resume:check": "node scripts/build-resume.mjs --check"
   },
   "dependencies": {
     "@paper-design/shaders-react": "^0.0.72",

@@ -44,11 +44,13 @@ npm run seo:check
 
 ## 履歷入口
 
-- 中文：<https://kainnne.com/resume/>；英文：<https://kainnne.com/resume/en.html>。
-- 由 `public/resume/` 的獨立 HTML 直接提供，沿用本網站 GitHub Pages 部署，免登入瀏覽。
-- 正式頁面只保留履歷內容與中英文切換，不顯示草稿標示、編輯、下載、列印控制或內部編修說明。
-- 後續正式入口內容以 `public/resume/` 為維護位置。既有 PDF 檔案保留，但正式頁面不提供下載選項。
-- 保留 `noindex`，不加入主站 sitemap。既有 ChatGPT Sites 網址保留為先前版本。
+- 中文：<https://kainnne.com/resume/>；英文：<https://kainnne.com/resume/en.html>，沿用 GitHub Pages，免登入瀏覽。
+- 單一內容來源：`public/resume/resume.zh.md` 與 `public/resume/resume.en.md`。修改 Markdown 後執行 `npm run resume:generate`；`npm run resume:check` 檢查 HTML 是否同步。正式 build 會自動產生兩份 HTML，無 JavaScript 時也能閱讀內容。
+- 使用 LumaReader Web 的閱讀介面：22 組色系、深淺色、字級、11 種介面語言、四種閱讀排列、目錄、搜尋、原文、媒體預覽及圖片瀏覽。介面語言與履歷的中英文內容各自切換。
+- PDF 匯出開啟瀏覽器列印視窗，選擇「儲存為 PDF」。依目前內容與外框設定輸出；自訂頁尾／色框依瀏覽器支援，瀏覽器無法回報實際存檔成功與否。
+- `resume-bridge.js` 只提供兩份固定 Markdown 的讀取與閱讀偏好，沒有上傳、建立、寫入、刪除或開啟任意來源的 API。上游 editor 相容節點保持 inert／停用，編輯能力固定為 false；分享連結指向正式永久網址。閱讀偏好僅存於訪客瀏覽器。
+- LumaReader Web 程式碼取自 [v1.3.1](https://github.com/kainnne/Kainnne-LumaReader/tree/1fcc69ea659ce9b15ca48fbaf8997e60b458a075/site/web)，置於 `public/resume/vendor/lumareader/`，保留 MIT 與各套件授權。適配修改包含：停用編輯／匯入／新手教學／輪詢、固定履歷路由、lazy Mermaid 路徑與瀏覽器 PDF 說明。`scripts/resume/template.html` 保留上游 HTML，產生器統一適配兩種語言。
+- 保留 `noindex`，不加入主站 sitemap。既有 PDF 與 ChatGPT Sites 網址保留為先前版本。
 
 ## 本機開發
 

@@ -1,0 +1,30 @@
+/* Public résumé adaptation; reading controls retain upstream LumaReader behavior. */
+.resume-reader .library-controls,
+.resume-reader #edit-document,
+.resume-reader #cancel-edit,
+.resume-reader #editor-preview-control,
+.resume-reader #editor-insert-control,
+.resume-reader #source-editor,
+.resume-reader #new-markdown-dialog,
+.resume-reader #discard-edit-dialog,
+.resume-reader #session-dialog,
+.resume-reader #drop-overlay,
+.resume-reader #onboarding { display: none !important; }
+.resume-languages { display: flex; gap: 8px; margin: 12px 0 4px; }
+.resume-languages a { flex: 1; text-align: center; border: 1px solid var(--line); border-radius: 10px; padding: 10px; color: var(--ink); text-decoration: none; font-size: 13px; }
+.resume-languages a[aria-current="page"] { background: var(--accent-soft); color: var(--accent-strong); font-weight: 650; }
+.resume-languages a:hover { border-color: var(--accent); }
+.resume-languages a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.resume-reader .prose img[src$="/assets/portrait.png"],
+.resume-reader .prose img[src="assets/portrait.png"] { width: 120px; height: 150px; object-fit: cover; border-radius: 12px; }
+.resume-reader .reader-shell[data-mode="vertical"] .prose > p:has(img[src$="assets/portrait.png"]) { float: right; margin: 0 0 20px 28px; }
+.resume-reader .reader-shell[data-mode="vertical"] .prose h2 { clear: both; }
+.resume-reader .prose { overflow-wrap: anywhere; }
+@media (max-width: 600px) {
+  .resume-reader .prose img[src$="assets/portrait.png"] { width: 88px; height: 110px; }
+  .resume-reader .reader-shell[data-mode="vertical"] .prose > p:has(img[src$="assets/portrait.png"]) { margin-left: 16px; }
+}
+@media print {
+  .resume-languages, dialog, .boot-loader { display: none !important; }
+  .resume-reader .prose { font-size: 11pt; }
+}
