@@ -107,4 +107,4 @@ Used LS-DYNA simulation data to predict maximum and permanent deflections of cor
 
 Former chamber music club president with experience in concert planning and production, composition, conducting and instrumental performance.
 
-Released the original album Everything Before 24 in 2026 and continues working on music and writing.
+Released the original album [Everything Before 24](https://music.youtube.com/playlist?list=OLAK5uy_mnNVxpjDw5dwcnLaquhOUxn_S_Jn6a46Q) in 2026 and continues working on music and writing.

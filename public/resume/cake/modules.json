@@ -1,6 +1,6 @@
 {
   "zh": {
-    "sourceSha256": "9d308254ddb91d851c00d025562e8a58cccf07b90924558058af21694ceb71a7",
+    "sourceSha256": "0b33d0be1d4d0ddeda611bd6ee20783387b2d14ab26af130cf0964f70b510d9e",
     "modules": [
       {
         "id": "01-profile",
@@ -126,16 +126,16 @@
         "id": "13-creative",
         "type": "Paragraph",
         "title": "跨領域創作與領導",
-        "body": "曾任室內樂社社長，參與音樂會規劃與製作，具作曲、指揮及器樂演出經驗。\n\n2026 年推出個人原創音樂專輯《Everything Before 24》，持續進行音樂與文字創作。",
-        "markdown": "### 跨領域創作與領導\n\n曾任室內樂社社長，參與音樂會規劃與製作，具作曲、指揮及器樂演出經驗。\n\n2026 年推出個人原創音樂專輯《Everything Before 24》，持續進行音樂與文字創作。\n",
-        "text": "跨領域創作與領導\n\n曾任室內樂社社長，參與音樂會規劃與製作，具作曲、指揮及器樂演出經驗。\n\n2026 年推出個人原創音樂專輯《Everything Before 24》，持續進行音樂與文字創作。",
-        "bodyText": "曾任室內樂社社長，參與音樂會規劃與製作，具作曲、指揮及器樂演出經驗。\n\n2026 年推出個人原創音樂專輯《Everything Before 24》，持續進行音樂與文字創作。",
-        "html": "<h3 style=\"font-family:Arial,sans-serif;font-size:20px;line-height:1.4;color:#17202a;margin:0 0 12px;font-weight:700;\">跨領域創作與領導</h3>\n<p style=\"font-family:Arial,sans-serif;font-size:14px;line-height:1.75;color:#27313c;margin:0 0 12px;\">曾任室內樂社社長，參與音樂會規劃與製作，具作曲、指揮及器樂演出經驗。</p>\n<p style=\"font-family:Arial,sans-serif;font-size:14px;line-height:1.75;color:#27313c;margin:0 0 12px;\">2026 年推出個人原創音樂專輯《Everything Before 24》，持續進行音樂與文字創作。</p>\n"
+        "body": "曾任室內樂社社長，參與音樂會規劃與製作，具作曲、指揮及器樂演出經驗。\n\n2026 年推出個人原創音樂專輯《[Everything Before 24](https://music.youtube.com/playlist?list=OLAK5uy_mnNVxpjDw5dwcnLaquhOUxn_S_Jn6a46Q)》，持續進行音樂與文字創作。",
+        "markdown": "### 跨領域創作與領導\n\n曾任室內樂社社長，參與音樂會規劃與製作，具作曲、指揮及器樂演出經驗。\n\n2026 年推出個人原創音樂專輯《[Everything Before 24](https://music.youtube.com/playlist?list=OLAK5uy_mnNVxpjDw5dwcnLaquhOUxn_S_Jn6a46Q)》，持續進行音樂與文字創作。\n",
+        "text": "跨領域創作與領導\n\n曾任室內樂社社長，參與音樂會規劃與製作，具作曲、指揮及器樂演出經驗。\n\n2026 年推出個人原創音樂專輯《Everything Before 24\nhttps://music.youtube.com/playlist?list=OLAK5uy_mnNVxpjDw5dwcnLaquhOUxn_S_Jn6a46Q》，持續進行音樂與文字創作。",
+        "bodyText": "曾任室內樂社社長，參與音樂會規劃與製作，具作曲、指揮及器樂演出經驗。\n\n2026 年推出個人原創音樂專輯《Everything Before 24\nhttps://music.youtube.com/playlist?list=OLAK5uy_mnNVxpjDw5dwcnLaquhOUxn_S_Jn6a46Q》，持續進行音樂與文字創作。",
+        "html": "<h3 style=\"font-family:Arial,sans-serif;font-size:20px;line-height:1.4;color:#17202a;margin:0 0 12px;font-weight:700;\">跨領域創作與領導</h3>\n<p style=\"font-family:Arial,sans-serif;font-size:14px;line-height:1.75;color:#27313c;margin:0 0 12px;\">曾任室內樂社社長，參與音樂會規劃與製作，具作曲、指揮及器樂演出經驗。</p>\n<p style=\"font-family:Arial,sans-serif;font-size:14px;line-height:1.75;color:#27313c;margin:0 0 12px;\">2026 年推出個人原創音樂專輯《<a style=\"color:#243c56;text-decoration:underline;\" href=\"https://music.youtube.com/playlist?list=OLAK5uy_mnNVxpjDw5dwcnLaquhOUxn_S_Jn6a46Q\">Everything Before 24</a>》，持續進行音樂與文字創作。</p>\n"
       }
     ]
   },
   "en": {
-    "sourceSha256": "df223c4a285cb6ef349af91e1c9a0cd8299ad4871e914a01133269a66a41abf3",
+    "sourceSha256": "d030447f9b90a2acbe4871c3dd3c7bfe1b8346ee4b9c29933b9444558fdfa1fe",
     "modules": [
       {
         "id": "01-profile",
@@ -261,11 +261,11 @@
         "id": "13-creative",
         "type": "Paragraph",
         "title": "Creative Work & Leadership",
-        "body": "Former chamber music club president with experience in concert planning and production, composition, conducting and instrumental performance.\n\nReleased the original album Everything Before 24 in 2026 and continues working on music and writing.",
-        "markdown": "### Creative Work & Leadership\n\nFormer chamber music club president with experience in concert planning and production, composition, conducting and instrumental performance.\n\nReleased the original album Everything Before 24 in 2026 and continues working on music and writing.\n",
-        "text": "Creative Work & Leadership\n\nFormer chamber music club president with experience in concert planning and production, composition, conducting and instrumental performance.\n\nReleased the original album Everything Before 24 in 2026 and continues working on music and writing.",
-        "bodyText": "Former chamber music club president with experience in concert planning and production, composition, conducting and instrumental performance.\n\nReleased the original album Everything Before 24 in 2026 and continues working on music and writing.",
-        "html": "<h3 style=\"font-family:Arial,sans-serif;font-size:20px;line-height:1.4;color:#17202a;margin:0 0 12px;font-weight:700;\">Creative Work &amp; Leadership</h3>\n<p style=\"font-family:Arial,sans-serif;font-size:14px;line-height:1.75;color:#27313c;margin:0 0 12px;\">Former chamber music club president with experience in concert planning and production, composition, conducting and instrumental performance.</p>\n<p style=\"font-family:Arial,sans-serif;font-size:14px;line-height:1.75;color:#27313c;margin:0 0 12px;\">Released the original album Everything Before 24 in 2026 and continues working on music and writing.</p>\n"
+        "body": "Former chamber music club president with experience in concert planning and production, composition, conducting and instrumental performance.\n\nReleased the original album [Everything Before 24](https://music.youtube.com/playlist?list=OLAK5uy_mnNVxpjDw5dwcnLaquhOUxn_S_Jn6a46Q) in 2026 and continues working on music and writing.",
+        "markdown": "### Creative Work & Leadership\n\nFormer chamber music club president with experience in concert planning and production, composition, conducting and instrumental performance.\n\nReleased the original album [Everything Before 24](https://music.youtube.com/playlist?list=OLAK5uy_mnNVxpjDw5dwcnLaquhOUxn_S_Jn6a46Q) in 2026 and continues working on music and writing.\n",
+        "text": "Creative Work & Leadership\n\nFormer chamber music club president with experience in concert planning and production, composition, conducting and instrumental performance.\n\nReleased the original album Everything Before 24\nhttps://music.youtube.com/playlist?list=OLAK5uy_mnNVxpjDw5dwcnLaquhOUxn_S_Jn6a46Q in 2026 and continues working on music and writing.",
+        "bodyText": "Former chamber music club president with experience in concert planning and production, composition, conducting and instrumental performance.\n\nReleased the original album Everything Before 24\nhttps://music.youtube.com/playlist?list=OLAK5uy_mnNVxpjDw5dwcnLaquhOUxn_S_Jn6a46Q in 2026 and continues working on music and writing.",
+        "html": "<h3 style=\"font-family:Arial,sans-serif;font-size:20px;line-height:1.4;color:#17202a;margin:0 0 12px;font-weight:700;\">Creative Work &amp; Leadership</h3>\n<p style=\"font-family:Arial,sans-serif;font-size:14px;line-height:1.75;color:#27313c;margin:0 0 12px;\">Former chamber music club president with experience in concert planning and production, composition, conducting and instrumental performance.</p>\n<p style=\"font-family:Arial,sans-serif;font-size:14px;line-height:1.75;color:#27313c;margin:0 0 12px;\">Released the original album <a style=\"color:#243c56;text-decoration:underline;\" href=\"https://music.youtube.com/playlist?list=OLAK5uy_mnNVxpjDw5dwcnLaquhOUxn_S_Jn6a46Q\">Everything Before 24</a> in 2026 and continues working on music and writing.</p>\n"
       }
     ]
   }
