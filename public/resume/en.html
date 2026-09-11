@@ -19,7 +19,7 @@
   <link id="highlight-dark" rel="stylesheet" href="vendor/lumareader/vendor/highlight/github-dark.min.css?v=2" disabled />
   <link rel="stylesheet" href="vendor/lumareader/styles.css?v=1.3.1" />
   <link rel="stylesheet" href="vendor/lumareader/library-ui.css?v=1.3.1" />
-  <link rel="stylesheet" href="resume.css?v=1" />
+  <link rel="stylesheet" href="resume.css?v=2" />
 </head>
 <body class="resume-reader" data-resume-language="en">
   <div id="boot-loader" class="boot-loader" role="status" aria-live="polite" aria-label="Loading LumaReader Web">
@@ -130,9 +130,9 @@
               </div></section>
             </div>
           </div>
-          <button id="share-document" class="icon-button labeled-button share-document-button" data-tooltip-key="shareMarkdown" type="button" data-i18n-title="shareMarkdown" title="Share this Markdown" aria-label="Share this Markdown" hidden><span class="share-button-icon" aria-hidden="true">↗</span><span data-i18n="shareMarkdown">Share Markdown</span></button>
-          <button id="source-view" class="icon-button labeled-button" data-tooltip-key="source" type="button" data-i18n-title="source" title="Source" aria-label="Source"><span aria-hidden="true">⌘</span><span data-i18n="source">Source</span></button>
-          <button id="media-view" class="icon-button labeled-button" data-tooltip-key="media" type="button" data-i18n-title="media" title="Media" aria-label="Media"><span aria-hidden="true">▧</span><span data-i18n="media">Media</span></button>
+          <button id="share-document" class="icon-button labeled-button share-document-button" data-tooltip-key="shareMarkdown" type="button" data-i18n-title="shareMarkdown" title="Share this Markdown" aria-label="Share this Markdown" hidden inert><span class="share-button-icon" aria-hidden="true">↗</span><span data-i18n="shareMarkdown">Share Markdown</span></button>
+          <button id="source-view" class="icon-button labeled-button" data-tooltip-key="source" type="button" data-i18n-title="source" title="Source" aria-label="Source" inert><span aria-hidden="true">⌘</span><span data-i18n="source">Source</span></button>
+          <button id="media-view" class="icon-button labeled-button" data-tooltip-key="media" type="button" data-i18n-title="media" title="Media" aria-label="Media" inert><span aria-hidden="true">▧</span><span data-i18n="media">Media</span></button>
           <button id="export-pdf" class="icon-button labeled-button export-pdf-button" data-tooltip-key="exportPdf" type="button" data-i18n-title="exportPdf" title="Export PDF" aria-label="Export PDF" hidden><span class="pdf-button-icon" aria-hidden="true">PDF</span><span data-i18n="exportPdf">Export PDF</span></button>
           <div id="reading-mode-control" class="toolbar-dropdown">
             <button id="reading-mode-toggle" class="toolbar-select-button reading-mode-button" data-tooltip-key="readingMode" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="reading-mode-menu" data-i18n-aria="readingMode" aria-label="Reading mode">
@@ -162,10 +162,8 @@
                 <option value="en">English</option><option value="zh-Hant">繁體中文</option><option value="zh-Hans">简体中文</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="es">Español</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="pt-BR">Português (Brasil)</option><option value="ru">Русский</option><option value="it">Italiano</option>
               </select></section>
               <section class="appearance-section toolbar-visibility-section"><strong data-i18n="toolbarVisibility">Toolbar visibility</strong>
-                <label><span data-i18n="language">Interface language</span><input type="checkbox" data-toolbar-visibility="language" checked /></label>
+                <label><span data-i18n="language">Interface language</span><input type="checkbox" data-toolbar-visibility="language" /></label>
                 <label><span data-i18n="readingMode">Reading mode</span><input type="checkbox" data-toolbar-visibility="readingMode" checked /></label>
-                <label><span data-i18n="source">Source</span><input type="checkbox" data-toolbar-visibility="source" /></label>
-                <label><span data-i18n="media">Media</span><input type="checkbox" data-toolbar-visibility="media" /></label>
                 <label><span data-i18n="textSize">Text size</span><input type="checkbox" data-toolbar-visibility="textSize" checked /></label>
                 <button id="toolbar-reset" class="toolbar-reset" type="button" data-i18n="restoreToolbar">Restore default toolbar</button>
               </section>
@@ -203,17 +201,26 @@
       <div class="progress-track" aria-hidden="true"><span id="progress"></span></div>
       <div class="document-stage">
         <article id="content" class="content prose" lang="en"><h1>Kaine Zhu 朱璽</h1>
-<p><img src="assets/portrait.png" alt="朱璽 Kaine Zhu"></p>
+<p><img src="assets/portrait.jpg" alt="朱璽 Kaine Zhu"></p>
 <p>AI Applications · Product Development · EdTech</p>
-<p>AI engineer combining machine learning research, product development and staff training. Works across requirements, UI/UX, integration and release with AI agents, and turns practical methods into reusable workflows and learning materials.</p>
-<p><a href="mailto:chaos60649@gmail.com">chaos60649@gmail.com</a> · <a href="tel:+886909505931">0909 505 931</a> · <a href="https://kainnne.com">kainnne.com</a> · <a href="https://github.com/kainnne">github.com/kainnne</a></p>
+<ul>
+<li><strong>AI application delivery:</strong> Combines machine learning research with AI development, taking products from requirements and UI/UX through system integration, release and real-world use.</li>
+<li><strong>AI / AI agent adoption:</strong> Drives AI adoption and digital workflows at Kang Chiao International School, using AI agents in product development and translating practical methods into training and reusable workflows.</li>
+<li><strong>Ongoing research collaboration:</strong> Works with NTU’s Department of Bioenvironmental Systems Engineering on research and related projects exploring LLM and NLP applications in ESG sustainability data, sustainable buildings, energy systems and power grids.</li>
+</ul>
+<hr>
+<ul>
+<li><a href="mailto:ryanzhu@kinnne.com">ryanzhu@kinnne.com</a></li>
+<li><a href="https://kainnne.com">kainnne.com</a></li>
+<li><a href="https://github.com/kainnne">github.com/kainnne</a></li>
+</ul>
 <h2>Experience</h2>
 <h3>Kang Hsuan Educational Publishing Group / Kang Chiao International School</h3>
 <p>AI Engineer / Digital Learning Engineer | Jul 2026 - Present</p>
 <ul>
-<li>Builds and refines an AI needs survey, tool directory and prompt generator to support requirements gathering and staff AI use.</li>
+<li>Drives school-wide AI applications and digital workflows, bringing AI adoption into practice.</li>
 <li>Delivered two Kuse AI staff workshops on August 25 and 28, 2026, with presentations, guides and exercises adapted to participants’ AI experience.</li>
-<li>Plans short AI training videos and learning schedules for teachers and administrative staff; develops materials and reusable templates.</li>
+<li>Uses AI tools to produce instructional videos efficiently while maintaining content quality, clear teaching and a distinctive personal style for teachers and administrative staff.</li>
 </ul>
 <h2>Selected Recent Work</h2>
 <h3>LumaReader Released</h3>
@@ -221,11 +228,9 @@
 <ul>
 <li>Developed a local-first Markdown app with folder libraries, Mermaid, KaTeX, media previews, themes and interface languages.</li>
 <li>Refined source/preview editing, undo/redo and PDF export with page breaks, optional footers and frames.</li>
-<li>Released v1.3.1 on GitHub with macOS, Windows and Linux packages, alongside a web presence.</li>
+<li>Released v1.3.1 for macOS, Windows and Linux, alongside a web edition; delivered an app used by real customers and continues to refine the reading experience.</li>
 </ul>
-<p><a href="https://github.com/kainnne/Kainnne-LumaReader/releases/tag/v1.3.1">github.com/kainnne/Kainnne-LumaReader</a></p>
-<h2>Collaboration &amp; Studio Planning In planning</h2>
-<p>Exploring initial collaborations and a potential studio for AI applications, product development and adoption services. Scope and operating structure remain in planning.</p>
+<p><a href="https://lumareader.kainnne.com">lumareader.kainnne.com</a></p>
 <h2>Additional Projects</h2>
 <h3>WikiNB</h3>
 <p>Personal edition | Markdown knowledge base &amp; AI study assistant</p>
@@ -249,20 +254,21 @@
 </li>
 <li><p><strong>Research &amp; Analysis</strong> — Machine learning, features, time series, validation</p>
 </li>
-<li><p><strong>Adoption &amp; Training</strong> — Training, materials, stakeholder communication</p>
+<li><p><strong>AI / AI Agent Adoption &amp; Communication</strong> — AI integration, agent workflows, training, learning materials, stakeholder communication</p>
 </li>
 </ul>
 <h2>Research Experience</h2>
 <h3>National Taiwan University</h3>
-<p>Bioenvironmental Systems Engineering<br>Research Assistant<br>Sep - Dec 2025</p>
+<p>Bioenvironmental Systems Engineering<br>Research Assistant<br>Sep - Dec 2025; Aug 2026 - Present</p>
 <p>Developed the model architecture and Python implementation of a real-time flood early-warning system. Packaged models and designed data transmission workflows to support partner integration with government web platforms.</p>
-<p>Tracked project progress and coordinated requirements with government agencies and technology partners. Separately continues research collaboration on LLM applications in ESG.</p>
+<p>Tracked project progress and coordinated requirements with government agencies and technology partners. Continues research collaboration and related projects on LLM and NLP applications in ESG sustainability data, sustainable buildings, energy systems and power grids.</p>
 <h3>National Sun Yat-sen University</h3>
 <p>Marine Environment and Engineering<br>Research Assistant | Jan 2026</p>
 <p>Analyzed data patterns and feature relationships to inform predictive model improvements and research design.</p>
-<h3>Master’s Research</h3>
+<h3>Master’s Thesis (Written in English)</h3>
 <p>Structural Engineering × Machine Learning</p>
 <p>Used LS-DYNA simulation data to predict maximum and permanent deflections of corrugated blast walls under explosion loads. Conducted preprocessing, feature engineering, model tuning and validation, and feature importance analysis.</p>
+<p><a href="https://ethesys.lis.nsysu.edu.tw/eThesys-dbs/ETD-search/view_etd.php?urn=etd-0723125-151645">Read the thesis — Prediction of Deflections on Corrugated Blast Wall under Explosion Loads Using Machine Learning</a></p>
 <h2>Education</h2>
 <h3>National Sun Yat-sen University</h3>
 <p>M.S., Marine Environment and Engineering<br>2023 - 2025</p>
@@ -353,7 +359,7 @@
         </footer>
       </form>
     </dialog>
-    <dialog id="share-dialog" class="share-dialog" aria-labelledby="share-dialog-title" aria-describedby="share-dialog-copy">
+    <dialog id="share-dialog" class="share-dialog" aria-labelledby="share-dialog-title" aria-describedby="share-dialog-copy" inert>
       <form method="dialog">
         <header class="share-dialog-header">
           <span class="share-dialog-symbol" aria-hidden="true">↗</span>
@@ -420,7 +426,7 @@
   <script src="vendor/lumareader/vendor/katex/katex.min.js?v=0.18.3"></script>
   <script src="vendor/lumareader/vendor/katex/contrib/auto-render.min.js?v=0.18.3"></script>
   <script src="vendor/lumareader/vendor/highlight/highlight.min.js?v=11.11.1"></script>
-  <script src="resume-bridge.js?v=1"></script>
+  <script src="resume-bridge.js?v=2"></script>
   <script src="resume-print.js?v=1"></script>
   <script src="vendor/lumareader/reader-utils.js?v=1.3.1"></script>
   <script src="vendor/lumareader/adapters/core.js?v=1.2.0"></script>
@@ -429,7 +435,7 @@
   <script src="vendor/lumareader/library-search.js?v=1.3.1"></script>
   <script src="vendor/lumareader/pdf-tools.js?v=1.3.1"></script>
   <script src="vendor/lumareader/pdf-dialog.js?v=1.3.1"></script>
-  <script src="vendor/lumareader/app.js?v=1.3.1"></script>
+  <script src="vendor/lumareader/app.js?v=resume-2"></script>
   <script src="vendor/lumareader/multiformat-ui.js?v=1.3.1"></script>
 <noscript><style>.boot-loader,.reader-actions,.sidebar-tools,.format-filter,.sidebar-tabs,#sidebar-toggle{display:none!important}</style></noscript>
 </body>

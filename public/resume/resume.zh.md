@@ -1,12 +1,18 @@
 # 朱璽 Kaine Zhu
 
-![朱璽 Kaine Zhu](assets/portrait.png)
+![朱璽 Kaine Zhu](assets/portrait.jpg)
 
 AI 應用開發｜產品設計｜教育科技
 
-具機器學習研究與 AI 應用開發背景，現於康橋國際學校推動 AI 導入、工具開發與教育訓練。從需求整理、UI／UX、系統整合到測試與發布，運用 AI Agent 協作完成產品迭代，並將使用方法整理為可實作的課程與工作流程。
+- **AI 應用落地**：結合機器學習研究與 AI 應用開發，具備從需求定義、UI／UX、系統整合到產品發布與實際使用的完整實作經驗。
+- **AI／AI Agent 導入**：現於康橋國際學校推動 AI 導入與數位工作流程，運用 AI Agent 協作開發產品，並將實務方法轉化為教育訓練與可重複使用的工作流程。
+- **持續研究合作**：持續與臺大生物環境系統工程學系進行研究合作及相關計畫，聚焦 LLM、NLP 在 ESG 永續數據、永續建築與能源電網上的應用。
 
-[chaos60649@gmail.com](mailto:chaos60649@gmail.com) · [0909 505 931](tel:+886909505931) · [kainnne.com](https://kainnne.com) · [github.com/kainnne](https://github.com/kainnne)
+---
+
+- [ryanzhu@kinnne.com](mailto:ryanzhu@kinnne.com)
+- [kainnne.com](https://kainnne.com)
+- [github.com/kainnne](https://github.com/kainnne)
 
 ## 工作經歷
 
@@ -14,9 +20,9 @@ AI 應用開發｜產品設計｜教育科技
 
 AI 工程師／數位教學工程師｜2026.07 - 至今
 
-- 推動校內 AI 應用與數位工作流程，建置並持續優化 AI 需求問卷、工具導航與提示詞產生器，支援需求蒐集與工具使用。
+- 推動校內 AI 應用與數位工作流程，完成 AI 導入。
 - 完成 2026 年 8 月 25 日、28 日兩場 Kuse AI 教職員實作訓練；依同仁使用程度設計課程流程、簡報、教學文件與實作範例。
-- 規劃教師與行政同仁的短篇 AI 課程影片，整理影片形式、時程與學習安排，並持續製作教材與工作範本。
+- 運用 AI 工具高效率製作教學影片，兼顧內容品質、清楚的教學表達與個人風格，支援教師與行政同仁學習。
 
 ## 近期代表成果
 
@@ -26,13 +32,9 @@ AI 工程師／數位教學工程師｜2026.07 - 至今
 
 - 開發本機優先的 Markdown 應用，整合資料夾文件庫、Mermaid、KaTeX 與媒體預覽，並設計多主題、多語介面。
 - 迭代原文／預覽對照、編輯復原與重做，以及分頁、頁尾和外框可調整的 PDF 匯出，處理閱讀與編輯流程中的細節問題。
-- 於 GitHub 發布 v1.3.1，提供 macOS、Windows 與 Linux 發行檔；建立可持續更新的桌面產品與網頁入口。
+- 完成 v1.3.1 發布，提供 macOS、Windows 與 Linux 版本及網頁入口；將產品落地為已有客戶實際使用的 App，持續迭代閱讀體驗。
 
-[github.com/kainnne/Kainnne-LumaReader](https://github.com/kainnne/Kainnne-LumaReader/releases/tag/v1.3.1)
-
-## 合作與工作室規劃 規劃中
-
-持續洽談初步合作，並評估以工作室形式承接 AI 應用、產品開發與導入服務；目前仍在合作範圍與營運形式的規劃階段。
+[lumareader.kainnne.com](https://lumareader.kainnne.com)
 
 ## 其他作品
 
@@ -62,18 +64,18 @@ AI 工程師／數位教學工程師｜2026.07 - 至今
 
 - **研究與分析** — 機器學習、特徵工程、時間序列預測、模型驗證
 
-- **導入與溝通** — 教育訓練、教材設計、實作引導、跨單位需求溝通
+- **AI／AI Agent 導入與溝通** — AI 應用導入、Agent 工作流程、教育訓練、教材設計、跨單位需求溝通
 
 ## 研究經歷
 
 ### 國立臺灣大學
 
 生物環境系統工程學系  
-研究助理｜2025.09 - 2025.12
+研究助理｜2025.09 - 2025.12、2026.08 - 至今
 
 以 Python 開發即時淹水預警系統的模型架構與程式，封裝模型並設計資料傳輸流程，支援合作廠商介接政府公共網站平台。
 
-追蹤專案進度，與政府機關及外部技術公司溝通需求與進度。目前另持續參與 LLM 於 ESG 應用的研究合作。
+追蹤專案進度，與政府機關及外部技術公司溝通需求與進度。目前持續參與 LLM、NLP 於 ESG 永續數據、永續建築與能源電網應用的研究合作及相關計畫。
 
 ### 國立中山大學
 
@@ -82,11 +84,13 @@ AI 工程師／數位教學工程師｜2026.07 - 至今
 
 分析資料模式與特徵關係，作為預測模型優化與研究設計的參考。
 
-### 碩士研究
+### 碩士論文（全英文撰寫）
 
 結構工程 × 機器學習
 
 利用 LS-DYNA 數值模擬資料，預測波紋鋼防爆牆在爆炸載荷下的最大與永久位移；完成資料前處理、特徵工程、模型調校與驗證，以及特徵重要性分析。
+
+[閱讀碩士論文｜Prediction of Deflections on Corrugated Blast Wall under Explosion Loads Using Machine Learning](https://ethesys.lis.nsysu.edu.tw/eThesys-dbs/ETD-search/view_etd.php?urn=etd-0723125-151645)
 
 ## 學歷
 

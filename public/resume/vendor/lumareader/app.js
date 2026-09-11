@@ -165,7 +165,7 @@
   ].map(([id,name,zh,colors]) => ({id,name,zh,colors}));
 
   const emojiMap = { smile:"😊",heart:"❤️",sparkles:"✨",star:"⭐",warning:"⚠️",info:"ℹ️",check:"✅",x:"❌",rocket:"🚀",bulb:"💡",book:"📖",memo:"📝",fire:"🔥",tada:"🎉",eyes:"👀",wave:"👋",thumbsup:"👍",coffee:"☕" };
-  const DEFAULT_TOOLBAR_VISIBILITY = Object.freeze({language:true,readingMode:true,source:false,media:false,textSize:true});
+  const DEFAULT_TOOLBAR_VISIBILITY = Object.freeze({language:false,readingMode:true,source:false,media:false,textSize:true});
   function storedToolbarVisibility(){try{return{...DEFAULT_TOOLBAR_VISIBILITY,...JSON.parse(localStorage.getItem("lumareader-toolbar-visibility")||"{}")} }catch{return{...DEFAULT_TOOLBAR_VISIBILITY}}}
   const librarySearchTranslations = {
     en:{chooseScannedFile:"Choose a document from the sidebar to start reading.",search:"Search files and folders",scanProgress:"Finding documents… {count} found. You can open results now.",scanWaiting:"Waiting for a folder to respond. Existing results remain available; check cloud downloads or disk access.",scanPartial:"Some files or folders could not be checked. Verify their access or cloud download, then refresh.",scanLimited:"This library is too large to finish safely. Select a smaller folder to find the remaining documents.",scanComplete:"{count} documents found.",scanInterrupted:"The scan stopped before completion. Use Refresh to try again.",searchScanningHint:"The scan is still running; more subfolder results may appear shortly.",searchRefreshHint:"Try Refresh above, check the selected folder and file formats, and make sure cloud files are downloaded and accessible.",searchWebHint:"Search the documents currently open in this session, or open another Markdown file.",showMoreFiles:"Show more",showMoreMatches:"Show more matches ({shown} of {total})",scanFinished:"Library scan complete"},
@@ -394,8 +394,8 @@
 
   function updateToolbarCapabilities(kind,capabilities={}){
     const markdown=kind==="markdown";const sourceButton=$("#source-view");
-    sourceButton.hidden=!(markdown||capabilities.source||capabilities.raw);
-    $("#media-view").hidden=!(markdown&&capabilities.media!==false);
+    sourceButton.hidden=true;
+    $("#media-view").hidden=true;
     const paged=markdown||Boolean(capabilities.paged);
     readingModeControlEl.hidden=!paged;
     updateEditorControls();
@@ -466,7 +466,7 @@
     if(!state.editing&&!editorInsertMenuEl.hidden)closeToolbarMenu(editorInsertMenuEl,editorInsertToggleEl);
     const sourceButton=$("#source-view");
     sourceButton.setAttribute("aria-disabled",state.editing?"true":"false");
-    shareButtonEl.hidden=!state.currentPath||!isMarkdown(state.currentPath);
+    shareButtonEl.hidden=!window.lumaWeb?.createShareUrl||!state.currentPath||!isMarkdown(state.currentPath);
     shareButtonEl.disabled=state.saving;
     document.body.classList.toggle("editing-document",state.editing);
     updateEditorPreviewLayout();
@@ -914,7 +914,7 @@
     shellEl.dataset.mode=state.mode;shellEl.dataset.pageDirection=state.pagedDirection;readingModeEl.value=currentReadingLayout();renderReadingModeMenu();
     if(!state.activeAdapter){contentEl.scrollLeft=0;contentEl.scrollTop=0;}window.scrollTo({top:0,behavior:"auto"});requestAnimationFrame(()=>{updatePagination();updateToolbarCapabilities(state.documentKind,state.activeAdapter?.document?.meta?.capabilities||{});});
   }
-  function setView(view){const sourceButton=$("#source-view");if(view==="source"&&sourceButton.hidden)return false;if(state.editing&&view!=="source"){blockWhileEditing();return false;}state.view=view;const source=view==="source",comparison=source&&state.editing&&state.editorPreview;contentEl.hidden=source&&!comparison;rawEl.hidden=!source||state.editing;sourceEditorEl.hidden=!source||!state.editing;shellEl.dataset.view=source?"source":"rendered";sourceButton.classList.toggle("active",source);sourceButton.setAttribute("aria-label",t(source?"renderedView":"sourceView"));sourceButton.removeAttribute("title");updateEditorPreviewLayout();requestAnimationFrame(updatePagination);return true;}
+  function setView(view){if(view==="source")return false;const sourceButton=$("#source-view");if(view==="source"&&sourceButton.hidden)return false;if(state.editing&&view!=="source"){blockWhileEditing();return false;}state.view=view;const source=view==="source",comparison=source&&state.editing&&state.editorPreview;contentEl.hidden=source&&!comparison;rawEl.hidden=!source||state.editing;sourceEditorEl.hidden=!source||!state.editing;shellEl.dataset.view=source?"source":"rendered";sourceButton.classList.toggle("active",source);sourceButton.setAttribute("aria-label",t(source?"renderedView":"sourceView"));sourceButton.removeAttribute("title");updateEditorPreviewLayout();requestAnimationFrame(updatePagination);return true;}
   function sourceScrollTarget(){return state.editing?sourceEditorEl:rawEl;}
   function activeScrollTarget(){return state.activeAdapter?.viewport||null;}
   function readingRatio(){const adapterTarget=activeScrollTarget();if(adapterTarget){const horizontal=adapterTarget.scrollWidth>adapterTarget.clientWidth&&adapterTarget.scrollHeight<=adapterTarget.clientHeight*1.2;const max=horizontal?adapterTarget.scrollWidth-adapterTarget.clientWidth:adapterTarget.scrollHeight-adapterTarget.clientHeight;return max>0?(horizontal?adapterTarget.scrollLeft:adapterTarget.scrollTop)/max:0;}if(state.editing){const max=sourceEditorEl.scrollHeight-sourceEditorEl.clientHeight;return max>0?sourceEditorEl.scrollTop/max:0;}if(state.mode==="vertical"){const max=document.documentElement.scrollHeight-innerHeight;return max>0?scrollY/max:0;}const target=state.view==="source"?sourceScrollTarget():contentEl,vertical=usesVerticalAxis(),max=vertical?target.scrollHeight-target.clientHeight:target.scrollWidth-target.clientWidth;return max>0?(vertical?target.scrollTop:target.scrollLeft)/max:0;}
@@ -924,7 +924,7 @@
   function updatePagination(){if(state.editing){updatePageNavigation(false);updateProgress();return;}if(state.activeAdapter){const total=Math.max(1,state.activeAdapter.getPageCount?.()||1),current=Math.min(total,Math.max(1,state.activeAdapter.currentPage||1)),visible=state.mode==="paged"&&Boolean(state.activeAdapter.supportsPagedMode?.());updatePageNavigation(visible,current,total);updateProgress();return;}const paged=state.mode==="paged",target=state.view==="source"?sourceScrollTarget():contentEl;if(!paged){updatePageNavigation(false);updateProgress();return;}const vertical=usesVerticalAxis(),extent=Math.max(1,vertical?target.clientHeight:target.clientWidth),scrollExtent=vertical?target.scrollHeight:target.scrollWidth,offset=vertical?target.scrollTop:target.scrollLeft,total=Math.max(1,Math.ceil(scrollExtent/extent)),current=Math.min(total,Math.max(1,Math.round(offset/extent)+1));updatePageNavigation(true,current,total);updateProgress();}
   function moveReading(direction){if(state.editing)return;if(state.activeAdapter?.supportsPagedMode?.()){const next=(state.activeAdapter.currentPage||1)+direction;state.activeAdapter.goToPage?.(next);setTimeout(updatePagination,260);return;}if(state.mode==="vertical")return;const target=state.view==="source"?sourceScrollTarget():contentEl;if(state.mode==="paged"&&usesVerticalAxis())target.scrollBy({top:direction*target.clientHeight,behavior:"smooth"});else{const step=state.mode==="paged"?target.clientWidth:Math.max(360,target.clientWidth*.78);target.scrollBy({left:direction*step,behavior:"smooth"});}setTimeout(updatePagination,260);}
 
-  function openMediaPanel(){if(window.LumaReaderUI?.openUtilityPanel){window.LumaReaderUI.openUtilityPanel("media");return;}mediaPanelEl.classList.add("open");mediaPanelEl.setAttribute("aria-hidden","false");scrimEl.hidden=false;}
+  function openMediaPanel(){return; /* Résumé has no media panel. */if(window.LumaReaderUI?.openUtilityPanel){window.LumaReaderUI.openUtilityPanel("media");return;}mediaPanelEl.classList.add("open");mediaPanelEl.setAttribute("aria-hidden","false");scrimEl.hidden=false;}
   function closeMediaPanel(){if(window.LumaReaderUI?.closeUtilityPanel){window.LumaReaderUI.closeUtilityPanel();return;}mediaPanelEl.classList.remove("open");mediaPanelEl.setAttribute("aria-hidden","true");scrimEl.hidden=true;}
   function switchSidebarPanel(panelId){document.querySelectorAll(".sidebar-tab").forEach((tab)=>{const active=tab.dataset.panel===panelId;tab.classList.toggle("active",active);tab.setAttribute("aria-selected",active?"true":"false");});document.querySelectorAll(".sidebar-panel").forEach((panel)=>panel.hidden=panel.id!==panelId);}
 

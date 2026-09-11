@@ -1,4 +1,8 @@
 /* Public résumé adaptation; reading controls retain upstream LumaReader behavior. */
+.resume-reader #source-view,
+.resume-reader #media-view,
+.resume-reader #share-document,
+.resume-reader #share-dialog,
 .resume-reader .library-controls,
 .resume-reader #edit-document,
 .resume-reader #cancel-edit,
@@ -15,16 +19,31 @@
 .resume-languages a[aria-current="page"] { background: var(--accent-soft); color: var(--accent-strong); font-weight: 650; }
 .resume-languages a:hover { border-color: var(--accent); }
 .resume-languages a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.resume-reader .prose img[src$="/assets/portrait.png"],
-.resume-reader .prose img[src="assets/portrait.png"] { width: 120px; height: 150px; object-fit: cover; border-radius: 12px; }
-.resume-reader .reader-shell[data-mode="vertical"] .prose > p:has(img[src$="assets/portrait.png"]) { float: right; margin: 0 0 20px 28px; }
+.resume-reader .prose img[src$="/assets/portrait.jpg"],
+.resume-reader .prose img[src="assets/portrait.jpg"] { width: 156px; height: 180px; object-fit: cover; object-position: 70% center; border-radius: 12px; }
+.resume-reader .reader-shell[data-mode="vertical"] .prose > p:has(img[src$="assets/portrait.jpg"]) { float: right; margin: 0 0 20px 28px; }
 .resume-reader .reader-shell[data-mode="vertical"] .prose h2 { clear: both; }
 .resume-reader .prose { overflow-wrap: anywhere; }
 @media (max-width: 600px) {
-  .resume-reader .prose img[src$="assets/portrait.png"] { width: 88px; height: 110px; }
-  .resume-reader .reader-shell[data-mode="vertical"] .prose > p:has(img[src$="assets/portrait.png"]) { margin-left: 16px; }
+  .resume-reader .prose img[src$="assets/portrait.jpg"] { width: 112px; height: 128px; }
+  .resume-reader .reader-shell[data-mode="vertical"] .prose > p:has(img[src$="assets/portrait.jpg"]) { margin-left: 16px; }
 }
 @media print {
   .resume-languages, dialog, .boot-loader { display: none !important; }
   .resume-reader .prose { font-size: 11pt; }
+}
+
+/* Keep the résumé and its controls usable in portrait without horizontal scrolling. */
+@media (max-width: 820px) {
+  .resume-reader .reader-bar { min-height: 92px; padding: 8px 10px 8px 54px; gap: 5px; }
+  .resume-reader .file-heading { min-width: 0; flex: 1 1 100%; }
+  .resume-reader .reader-actions { min-width: 0; flex-wrap: wrap; gap: 5px; padding: 0; }
+  .resume-reader .reader-shell[data-mode="vertical"] .content { width: calc(100% - 20px); margin: 10px auto 24px; padding: 22px; }
+  .resume-reader .reader-shell[data-mode="vertical"] .prose h1 { font-size: 1.7em; }
+}
+@media (max-width: 420px) {
+  .resume-reader #reading-mode-toggle .dropdown-label { display: none; }
+  .resume-reader #reading-mode-toggle { min-width: 40px; padding-inline: 8px; }
+  .resume-reader .reader-shell[data-mode="vertical"] .content { padding: 20px 18px; }
+  .resume-reader .reader-shell[data-mode="vertical"] .prose > p:has(img[src$="assets/portrait.jpg"]) { float: none; margin: 0 0 18px; }
 }
