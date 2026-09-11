@@ -42,6 +42,14 @@ npm run seo:check
 
 主視覺的來源檔、固定網址、新網站接法與日後更換流程記錄在 [`brand-assets/README.md`](brand-assets/README.md)。
 
+## 履歷入口
+
+- 中文：<https://kainnne.com/resume/>；英文：<https://kainnne.com/resume/en.html>。
+- 由 `public/resume/` 的獨立 HTML 與 PDF 直接提供，沿用本網站 GitHub Pages 部署，免登入瀏覽。
+- 兩份 HTML 內含照片、樣式與文字編輯功能；頁面可下載可編輯 HTML，或列印／另存 PDF。瀏覽器中的修改不會自動同步回網站。
+- 後續正式入口內容以 `public/resume/` 為維護位置；更新中英文 HTML 時，同步重新輸出各自的 PDF。
+- 初稿仍保留 `noindex`，不加入主站 sitemap。既有 ChatGPT Sites 網址保留為先前版本。
+
 ## 本機開發
 
 ```bash
