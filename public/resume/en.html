@@ -19,9 +19,9 @@
   <link id="highlight-dark" rel="stylesheet" href="vendor/lumareader/vendor/highlight/github-dark.min.css?v=2" disabled />
   <link rel="stylesheet" href="vendor/lumareader/styles.css?v=1.3.1" />
   <link rel="stylesheet" href="vendor/lumareader/library-ui.css?v=1.3.1" />
-  <link rel="stylesheet" href="resume.css?v=2" />
+  <link rel="stylesheet" href="resume.css?v=3" />
 </head>
-<body class="resume-reader" data-resume-language="en">
+<body class="resume-reader resume-minimal-toolbar" data-resume-language="en">
   <div id="boot-loader" class="boot-loader" role="status" aria-live="polite" aria-label="Loading LumaReader Web">
     <section class="boot-loader-card">
       <div class="boot-loader-mark" aria-hidden="true">
@@ -133,8 +133,8 @@
           <button id="share-document" class="icon-button labeled-button share-document-button" data-tooltip-key="shareMarkdown" type="button" data-i18n-title="shareMarkdown" title="Share this Markdown" aria-label="Share this Markdown" hidden inert><span class="share-button-icon" aria-hidden="true">↗</span><span data-i18n="shareMarkdown">Share Markdown</span></button>
           <button id="source-view" class="icon-button labeled-button" data-tooltip-key="source" type="button" data-i18n-title="source" title="Source" aria-label="Source" inert><span aria-hidden="true">⌘</span><span data-i18n="source">Source</span></button>
           <button id="media-view" class="icon-button labeled-button" data-tooltip-key="media" type="button" data-i18n-title="media" title="Media" aria-label="Media" inert><span aria-hidden="true">▧</span><span data-i18n="media">Media</span></button>
-          <button id="export-pdf" class="icon-button labeled-button export-pdf-button" data-tooltip-key="exportPdf" type="button" data-i18n-title="exportPdf" title="Export PDF" aria-label="Export PDF" hidden><span class="pdf-button-icon" aria-hidden="true">PDF</span><span data-i18n="exportPdf">Export PDF</span></button>
-          <div id="reading-mode-control" class="toolbar-dropdown">
+          <button id="export-pdf" data-user-hidden="true" class="icon-button labeled-button export-pdf-button" data-tooltip-key="exportPdf" type="button" data-i18n-title="exportPdf" title="Export PDF" aria-label="Export PDF" hidden><span class="pdf-button-icon" aria-hidden="true">PDF</span><span data-i18n="exportPdf">Export PDF</span></button>
+          <div id="reading-mode-control" data-user-hidden="true" class="toolbar-dropdown">
             <button id="reading-mode-toggle" class="toolbar-select-button reading-mode-button" data-tooltip-key="readingMode" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="reading-mode-menu" data-i18n-aria="readingMode" aria-label="Reading mode">
               <span id="reading-mode-icon" class="dropdown-leading-icon" aria-hidden="true">↕</span>
               <span id="reading-mode-name" class="dropdown-label">Vertical</span>
@@ -163,14 +163,15 @@
               </select></section>
               <section class="appearance-section toolbar-visibility-section"><strong data-i18n="toolbarVisibility">Toolbar visibility</strong>
                 <label><span data-i18n="language">Interface language</span><input type="checkbox" data-toolbar-visibility="language" /></label>
-                <label><span data-i18n="readingMode">Reading mode</span><input type="checkbox" data-toolbar-visibility="readingMode" checked /></label>
-                <label><span data-i18n="textSize">Text size</span><input type="checkbox" data-toolbar-visibility="textSize" checked /></label>
+                <label><span data-i18n="readingMode">Reading mode</span><input type="checkbox" data-toolbar-visibility="readingMode" /></label>
+                <label><span data-i18n="textSize">Text size</span><input type="checkbox" data-toolbar-visibility="textSize" /></label>
+                <label><span data-i18n="exportPdf">Export PDF</span><input type="checkbox" data-toolbar-visibility="exportPdf" /></label>
                 <button id="toolbar-reset" class="toolbar-reset" type="button" data-i18n="restoreToolbar">Restore default toolbar</button>
               </section>
             </div>
           </div>
 
-          <div class="toolbar-dropdown language-control">
+          <div class="toolbar-dropdown language-control" data-user-hidden="true">
             <button id="language-toggle" class="toolbar-select-button language-button" data-tooltip-key="language" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="language-menu" data-i18n-aria="language" aria-label="Interface language">
               <span class="dropdown-leading-icon language-glyph" aria-hidden="true">文</span>
               <span id="language-name" class="dropdown-label">English</span>
@@ -192,8 +193,8 @@
             <div id="language-menu" class="toolbar-menu language-menu" role="menu" hidden></div>
           </div>
 
-          <button id="font-down" class="icon-button text-button" data-tooltip-key="fontDown" type="button" data-i18n-title="smallerText" title="Smaller text" aria-label="Smaller text">A−</button>
-          <button id="font-up" class="icon-button text-button" data-tooltip-key="fontUp" type="button" data-i18n-title="largerText" title="Larger text" aria-label="Larger text">A＋</button>
+          <button id="font-down" data-user-hidden="true" class="icon-button text-button" data-tooltip-key="fontDown" type="button" data-i18n-title="smallerText" title="Smaller text" aria-label="Smaller text">A−</button>
+          <button id="font-up" data-user-hidden="true" class="icon-button text-button" data-tooltip-key="fontUp" type="button" data-i18n-title="largerText" title="Larger text" aria-label="Larger text">A＋</button>
 
         </div>
       </header>
@@ -210,73 +211,72 @@
 </ul>
 <hr>
 <ul>
-<li><a href="mailto:ryanzhu@kinnne.com">ryanzhu@kinnne.com</a></li>
-<li><a href="https://kainnne.com">kainnne.com</a></li>
-<li><a href="https://github.com/kainnne">github.com/kainnne</a></li>
+<li>✉️ <a href="mailto:ryanzhu@kainnne.com">ryanzhu@kainnne.com</a></li>
+<li>🌐 <a href="https://kainnne.com">kainnne.com</a></li>
+<li>💻 <a href="https://github.com/kainnne">github.com/kainnne</a></li>
 </ul>
 <h2>Experience</h2>
 <h3>Kang Hsuan Educational Publishing Group / Kang Chiao International School</h3>
 <p>AI Engineer / Digital Learning Engineer | Jul 2026 - Present</p>
 <ul>
 <li>Drives school-wide AI applications and digital workflows, bringing AI adoption into practice.</li>
-<li>Delivered two Kuse AI staff workshops on August 25 and 28, 2026, with presentations, guides and exercises adapted to participants’ AI experience.</li>
-<li>Uses AI tools to produce instructional videos efficiently while maintaining content quality, clear teaching and a distinctive personal style for teachers and administrative staff.</li>
+<li>Delivered staff training on August 19, 25 and 28, 2026, and designed session plans, presentations, guides and exercises around participants’ experience levels.</li>
+<li>Uses AI tools to produce instructional videos efficiently while maintaining content quality, clear teaching and a personal style for teachers and administrative staff.</li>
 </ul>
-<h2>Selected Recent Work</h2>
-<h3>LumaReader Released</h3>
-<p>Personal product | Markdown reading, editing &amp; PDF export</p>
-<ul>
-<li>Developed a local-first Markdown app with folder libraries, Mermaid, KaTeX, media previews, themes and interface languages.</li>
-<li>Refined source/preview editing, undo/redo and PDF export with page breaks, optional footers and frames.</li>
-<li>Released v1.3.1 for macOS, Windows and Linux, alongside a web edition; delivered an app used by real customers and continues to refine the reading experience.</li>
-</ul>
-<p><a href="https://lumareader.kainnne.com">lumareader.kainnne.com</a></p>
-<h2>Additional Projects</h2>
-<h3>WikiNB</h3>
-<p>Personal edition | Markdown knowledge base &amp; AI study assistant</p>
-<ul>
-<li>Integrated sign-in, note synchronization and full-text browsing to organize Markdown notes into a maintainable knowledge system.</li>
-<li>Connects AI conversations with note workflows for knowledge organization, review and project context retention.</li>
-</ul>
-<p><a href="https://wikinb.kainnne.com">wikinb.kainnne.com</a></p>
-<h3>ScopeCut</h3>
-<p>Project scoping tool | AI development workflows</p>
-<ul>
-<li>Designed guided input and scope refinement to turn conversational ideas into Project Contracts with goals, constraints and acceptance criteria.</li>
-<li>Connected a local Bridge with WikiNB to link project planning and document storage.</li>
-</ul>
-<p><a href="https://scopecut.kainnne.com">scopecut.kainnne.com</a></p>
-<h2>Core Capabilities</h2>
-<ul>
-<li><p><strong>AI &amp; Systems</strong> — Python, LLM applications, APIs, data workflows</p>
-</li>
-<li><p><strong>Product &amp; Interface</strong> — Requirements, UI/UX, full-stack apps, Electron</p>
-</li>
-<li><p><strong>Research &amp; Analysis</strong> — Machine learning, features, time series, validation</p>
-</li>
-<li><p><strong>AI / AI Agent Adoption &amp; Communication</strong> — AI integration, agent workflows, training, learning materials, stakeholder communication</p>
-</li>
-</ul>
-<h2>Research Experience</h2>
 <h3>National Taiwan University</h3>
-<p>Bioenvironmental Systems Engineering<br>Research Assistant<br>Sep - Dec 2025; Aug 2026 - Present</p>
+<p>Bioenvironmental Systems Engineering<br>Research Assistant<br>Sep - Dec 2025, Aug 2026 - Present</p>
 <p>Developed the model architecture and Python implementation of a real-time flood early-warning system. Packaged models and designed data transmission workflows to support partner integration with government web platforms.</p>
 <p>Tracked project progress and coordinated requirements with government agencies and technology partners. Continues research collaboration and related projects on LLM and NLP applications in ESG sustainability data, sustainable buildings, energy systems and power grids.</p>
 <h3>National Sun Yat-sen University</h3>
 <p>Marine Environment and Engineering<br>Research Assistant | Jan 2026</p>
 <p>Analyzed data patterns and feature relationships to inform predictive model improvements and research design.</p>
-<h3>Master’s Thesis (Written in English)</h3>
-<p>Structural Engineering × Machine Learning</p>
-<p>Used LS-DYNA simulation data to predict maximum and permanent deflections of corrugated blast walls under explosion loads. Conducted preprocessing, feature engineering, model tuning and validation, and feature importance analysis.</p>
-<p><a href="https://ethesys.lis.nsysu.edu.tw/eThesys-dbs/ETD-search/view_etd.php?urn=etd-0723125-151645">Read the thesis — Prediction of Deflections on Corrugated Blast Wall under Explosion Loads Using Machine Learning</a></p>
+<h2>Selected Recent Work</h2>
+<h3>LumaReader</h3>
+<p>Personal product | Markdown reading, editing &amp; PDF export</p>
+<ul>
+<li>Developed a local-first Markdown app with folder libraries, Mermaid, KaTeX, media previews, themes and interface languages.</li>
+<li>Refined source/preview editing, undo/redo and PDF export with page breaks, optional footers and frames.</li>
+<li>Released v1.3.1 for macOS, Windows and Linux alongside a web edition, bringing the product into real customer use and continuing to improve the reading experience.</li>
+</ul>
+<p><a href="https://lumareader.kainnne.com">lumareader.kainnne.com</a></p>
+<h2>Additional Projects</h2>
+<h3>WikiNB</h3>
+<p>Personal edition | Markdown knowledge base &amp; digital twin</p>
+<ul>
+<li>Integrated sign-in, note synchronization and full-text browsing to organize Markdown notes into a maintainable knowledge system.</li>
+<li>Built a personal project assistant and digital twin, offering a simple Q&amp;A entry point for visitors to learn about my experience and work, start conversations or explore collaboration.</li>
+</ul>
+<p><a href="https://wikinb.kainnne.com">wikinb.kainnne.com</a></p>
+<h3>AI Tools</h3>
+<p>Free tools | From everyday ideas to useful applications</p>
+<ul>
+<li>Quickly turns everyday ideas into small, free tools, exploring uses that could solve practical problems.</li>
+<li>Developed Taiwan Car Finder and other tools and gathered them in the AI Tools hub for people to try, with ongoing improvements.</li>
+</ul>
+<p><a href="https://ai-tools.kainnne.com">ai-tools.kainnne.com</a></p>
+<h2>Core Capabilities</h2>
+<ul>
+<li><p><strong>AI &amp; Systems</strong> — Python, LLM applications, data processing and feature engineering, automation</p>
+</li>
+<li><p><strong>Product &amp; Interface</strong> — UI/UX, full-stack applications, product delivery experience</p>
+</li>
+<li><p><strong>Research &amp; Analysis</strong> — Machine learning, structural engineering, time-series prediction, model validation, machine learning competition experience</p>
+</li>
+<li><p><strong>AI / AI Agent Adoption</strong> — Training, learning materials, cross-team requirements communication</p>
+</li>
+</ul>
 <h2>Education</h2>
 <h3>National Sun Yat-sen University</h3>
 <p>M.S., Marine Environment and Engineering<br>2023 - 2025</p>
 <h3>National Sun Yat-sen University</h3>
 <p>B.S., Marine Environment and Engineering<br>2019 - 2023</p>
+<h3>Master’s Thesis</h3>
+<p>Structural Engineering × Machine Learning</p>
+<p>Used LS-DYNA simulation data to predict maximum and permanent deflections of corrugated blast walls under explosion loads. Conducted preprocessing, feature engineering, model tuning and validation, and feature importance analysis.</p>
+<p><a href="https://ethesys.lis.nsysu.edu.tw/eThesys-dbs/ETD-search/view_etd.php?urn=etd-0723125-151645">Read the thesis — Prediction of Deflections on Corrugated Blast Wall under Explosion Loads Using Machine Learning</a></p>
 <h2>Creative Work &amp; Leadership</h2>
 <p>Former chamber music club president with experience in concert planning and production, composition, conducting and instrumental performance.</p>
-<p>Released the original album Everything Before 24 in 2026; continues working on music and writing.</p>
+<p>Released the original album Everything Before 24 in 2026 and continues working on music and writing.</p>
 <p><a href="https://studio.kainnne.com">studio.kainnne.com</a></p>
 </article>
         <pre id="raw-source" class="raw-source" hidden><code></code></pre>
@@ -426,7 +426,7 @@
   <script src="vendor/lumareader/vendor/katex/katex.min.js?v=0.18.3"></script>
   <script src="vendor/lumareader/vendor/katex/contrib/auto-render.min.js?v=0.18.3"></script>
   <script src="vendor/lumareader/vendor/highlight/highlight.min.js?v=11.11.1"></script>
-  <script src="resume-bridge.js?v=2"></script>
+  <script src="resume-bridge.js?v=3"></script>
   <script src="resume-print.js?v=1"></script>
   <script src="vendor/lumareader/reader-utils.js?v=1.3.1"></script>
   <script src="vendor/lumareader/adapters/core.js?v=1.2.0"></script>
@@ -435,7 +435,7 @@
   <script src="vendor/lumareader/library-search.js?v=1.3.1"></script>
   <script src="vendor/lumareader/pdf-tools.js?v=1.3.1"></script>
   <script src="vendor/lumareader/pdf-dialog.js?v=1.3.1"></script>
-  <script src="vendor/lumareader/app.js?v=resume-2"></script>
+  <script src="vendor/lumareader/app.js?v=resume-3"></script>
   <script src="vendor/lumareader/multiformat-ui.js?v=1.3.1"></script>
 <noscript><style>.boot-loader,.reader-actions,.sidebar-tools,.format-filter,.sidebar-tabs,#sidebar-toggle{display:none!important}</style></noscript>
 </body>

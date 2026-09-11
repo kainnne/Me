@@ -10,9 +10,9 @@ AI 應用開發｜產品設計｜教育科技
 
 ---
 
-- [ryanzhu@kinnne.com](mailto:ryanzhu@kinnne.com)
-- [kainnne.com](https://kainnne.com)
-- [github.com/kainnne](https://github.com/kainnne)
+- ✉️ [ryanzhu@kainnne.com](mailto:ryanzhu@kainnne.com)
+- 🌐 [kainnne.com](https://kainnne.com)
+- 💻 [github.com/kainnne](https://github.com/kainnne)
 
 ## 工作經歷
 
@@ -21,56 +21,12 @@ AI 應用開發｜產品設計｜教育科技
 AI 工程師／數位教學工程師｜2026.07 - 至今
 
 - 推動校內 AI 應用與數位工作流程，完成 AI 導入。
-- 完成 2026 年 8 月 25 日、28 日兩場 Kuse AI 教職員實作訓練；依同仁使用程度設計課程流程、簡報、教學文件與實作範例。
+- 完成 2026 年 8 月 19 日、25 日、28 日的教職員教育訓練，並依同仁使用程度設計課程流程、簡報、教學文件與實作範例。
 - 運用 AI 工具高效率製作教學影片，兼顧內容品質、清楚的教學表達與個人風格，支援教師與行政同仁學習。
-
-## 近期代表成果
-
-### LumaReader 已發布
-
-個人產品開發｜Markdown 閱讀、編輯與 PDF 匯出
-
-- 開發本機優先的 Markdown 應用，整合資料夾文件庫、Mermaid、KaTeX 與媒體預覽，並設計多主題、多語介面。
-- 迭代原文／預覽對照、編輯復原與重做，以及分頁、頁尾和外框可調整的 PDF 匯出，處理閱讀與編輯流程中的細節問題。
-- 完成 v1.3.1 發布，提供 macOS、Windows 與 Linux 版本及網頁入口；將產品落地為已有客戶實際使用的 App，持續迭代閱讀體驗。
-
-[lumareader.kainnne.com](https://lumareader.kainnne.com)
-
-## 其他作品
-
-### WikiNB
-
-個人版｜Markdown 知識庫與 AI 複習助理
-
-- 整合登入、筆記同步與全文瀏覽，將 Markdown 筆記組織為可持續維護的知識系統。
-- 結合 AI 對話與筆記工作流程，探索知識整理、複習及專案脈絡保存的使用情境。
-
-[wikinb.kainnne.com](https://wikinb.kainnne.com)
-
-### ScopeCut
-
-需求規劃工具｜AI 開發工作流程
-
-- 設計分步輸入與範圍收斂流程，將口語想法轉為具目標、限制與驗收條件的 Project Contract。
-- 串接本機 Bridge 與 WikiNB，銜接需求規劃及專案文件保存。
-
-[scopecut.kainnne.com](https://scopecut.kainnne.com)
-
-## 核心能力
-
-- **AI 應用與系統** — Python、LLM 應用、API 整合、資料處理、自動化流程
-
-- **產品與介面** — 需求定義、UI／UX、全端應用、Electron、版本迭代
-
-- **研究與分析** — 機器學習、特徵工程、時間序列預測、模型驗證
-
-- **AI／AI Agent 導入與溝通** — AI 應用導入、Agent 工作流程、教育訓練、教材設計、跨單位需求溝通
-
-## 研究經歷
 
 ### 國立臺灣大學
 
-生物環境系統工程學系  
+生物環境系統工程學系\
 研究助理｜2025.09 - 2025.12、2026.08 - 至今
 
 以 Python 開發即時淹水預警系統的模型架構與程式，封裝模型並設計資料傳輸流程，支援合作廠商介接政府公共網站平台。
@@ -79,30 +35,72 @@ AI 工程師／數位教學工程師｜2026.07 - 至今
 
 ### 國立中山大學
 
-海洋環境及工程學系  
+海洋環境及工程學系\
 研究助理｜2026.01
 
 分析資料模式與特徵關係，作為預測模型優化與研究設計的參考。
 
-### 碩士論文（全英文撰寫）
+## 近期代表成果
 
-結構工程 × 機器學習
+### LumaReader
 
-利用 LS-DYNA 數值模擬資料，預測波紋鋼防爆牆在爆炸載荷下的最大與永久位移；完成資料前處理、特徵工程、模型調校與驗證，以及特徵重要性分析。
+個人產品開發｜Markdown 閱讀、編輯與 PDF 匯出
 
-[閱讀碩士論文｜Prediction of Deflections on Corrugated Blast Wall under Explosion Loads Using Machine Learning](https://ethesys.lis.nsysu.edu.tw/eThesys-dbs/ETD-search/view_etd.php?urn=etd-0723125-151645)
+- 開發本機優先的 Markdown 應用，整合資料夾文件庫、Mermaid、KaTeX 與媒體預覽，並設計多主題、多語介面。
+- 迭代原文／預覽對照、編輯復原與重做，以及分頁、頁尾和外框可調整的 PDF 匯出，處理閱讀與編輯流程中的細節問題。
+- 完成 v1.3.1 發布，提供 macOS、Windows 與 Linux 版本及網頁入口，同時將產品落地為已有客戶實際使用的 App，持續改善閱讀體驗。
+
+[lumareader.kainnne.com](https://lumareader.kainnne.com)
+
+## 其他作品
+
+### WikiNB
+
+個人版｜Markdown 知識庫與數位分身
+
+- 整合登入、筆記同步與全文瀏覽，將 Markdown 筆記組織為可持續維護的知識系統。
+- 建立個人專案助理與數位分身，讓訪客透過簡易問答認識我的經歷與作品，作為交流或合作的入口。
+
+[wikinb.kainnne.com](https://wikinb.kainnne.com)
+
+### AI Tools
+
+免費小工具｜從日常靈感到實用應用
+
+- 將日常想到的點子快速做成免費小工具，探索能解決實際問題的使用情境。
+- 開發台灣選車網等工具，集中於 AI Tools 入口，讓使用者直接體驗並持續改善。
+
+[ai-tools.kainnne.com](https://ai-tools.kainnne.com)
+
+## 核心能力
+
+- **AI 應用與系統** — Python、LLM 應用、資料處理與特徵工程、自動化
+
+- **產品與介面** — UI／UX、全端應用、產品落地經驗
+
+- **研究與分析** — 機器學習、結構工程、時間序列預測、模型驗證、機器學習競賽經驗
+
+- **AI／AI Agent 導入** — 教育訓練、教材設計、跨單位需求溝通
 
 ## 學歷
 
 ### 國立中山大學
 
-海洋環境及工程學系 碩士  
+海洋環境及工程學系 碩士\
 2023 - 2025
 
 ### 國立中山大學
 
-海洋環境及工程學系 學士  
+海洋環境及工程學系 學士\
 2019 - 2023
+
+### 碩士論文
+
+結構工程 × 機器學習
+
+Used LS-DYNA simulation data to predict maximum and permanent deflections of corrugated blast walls under explosion loads. Conducted preprocessing, feature engineering, model tuning and validation, and feature importance analysis.
+
+[閱讀碩士論文｜Prediction of Deflections on Corrugated Blast Wall under Explosion Loads Using Machine Learning](https://ethesys.lis.nsysu.edu.tw/eThesys-dbs/ETD-search/view_etd.php?urn=etd-0723125-151645)
 
 ## 跨領域創作與領導
 

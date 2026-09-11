@@ -47,3 +47,7 @@
   .resume-reader .reader-shell[data-mode="vertical"] .content { padding: 20px 18px; }
   .resume-reader .reader-shell[data-mode="vertical"] .prose > p:has(img[src$="assets/portrait.jpg"]) { float: none; margin: 0 0 18px; }
 }
+
+.resume-reader.resume-minimal-toolbar .reader-bar { min-height: 64px; flex-wrap: nowrap; align-items: center; }
+.resume-reader.resume-minimal-toolbar .file-heading { flex: 1 1 auto; min-width: 0; }
+.resume-reader.resume-minimal-toolbar .reader-actions { flex: 0 0 auto; width: auto; }

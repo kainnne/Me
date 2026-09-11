@@ -19,9 +19,9 @@
   <link id="highlight-dark" rel="stylesheet" href="vendor/lumareader/vendor/highlight/github-dark.min.css?v=2" disabled />
   <link rel="stylesheet" href="vendor/lumareader/styles.css?v=1.3.1" />
   <link rel="stylesheet" href="vendor/lumareader/library-ui.css?v=1.3.1" />
-  <link rel="stylesheet" href="resume.css?v=2" />
+  <link rel="stylesheet" href="resume.css?v=3" />
 </head>
-<body class="resume-reader" data-resume-language="zh-Hant">
+<body class="resume-reader resume-minimal-toolbar" data-resume-language="zh-Hant">
   <div id="boot-loader" class="boot-loader" role="status" aria-live="polite" aria-label="Loading LumaReader Web">
     <section class="boot-loader-card">
       <div class="boot-loader-mark" aria-hidden="true">
@@ -133,8 +133,8 @@
           <button id="share-document" class="icon-button labeled-button share-document-button" data-tooltip-key="shareMarkdown" type="button" data-i18n-title="shareMarkdown" title="Share this Markdown" aria-label="Share this Markdown" hidden inert><span class="share-button-icon" aria-hidden="true">↗</span><span data-i18n="shareMarkdown">Share Markdown</span></button>
           <button id="source-view" class="icon-button labeled-button" data-tooltip-key="source" type="button" data-i18n-title="source" title="Source" aria-label="Source" inert><span aria-hidden="true">⌘</span><span data-i18n="source">Source</span></button>
           <button id="media-view" class="icon-button labeled-button" data-tooltip-key="media" type="button" data-i18n-title="media" title="Media" aria-label="Media" inert><span aria-hidden="true">▧</span><span data-i18n="media">Media</span></button>
-          <button id="export-pdf" class="icon-button labeled-button export-pdf-button" data-tooltip-key="exportPdf" type="button" data-i18n-title="exportPdf" title="Export PDF" aria-label="Export PDF" hidden><span class="pdf-button-icon" aria-hidden="true">PDF</span><span data-i18n="exportPdf">Export PDF</span></button>
-          <div id="reading-mode-control" class="toolbar-dropdown">
+          <button id="export-pdf" data-user-hidden="true" class="icon-button labeled-button export-pdf-button" data-tooltip-key="exportPdf" type="button" data-i18n-title="exportPdf" title="Export PDF" aria-label="Export PDF" hidden><span class="pdf-button-icon" aria-hidden="true">PDF</span><span data-i18n="exportPdf">Export PDF</span></button>
+          <div id="reading-mode-control" data-user-hidden="true" class="toolbar-dropdown">
             <button id="reading-mode-toggle" class="toolbar-select-button reading-mode-button" data-tooltip-key="readingMode" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="reading-mode-menu" data-i18n-aria="readingMode" aria-label="Reading mode">
               <span id="reading-mode-icon" class="dropdown-leading-icon" aria-hidden="true">↕</span>
               <span id="reading-mode-name" class="dropdown-label">Vertical</span>
@@ -163,14 +163,15 @@
               </select></section>
               <section class="appearance-section toolbar-visibility-section"><strong data-i18n="toolbarVisibility">Toolbar visibility</strong>
                 <label><span data-i18n="language">Interface language</span><input type="checkbox" data-toolbar-visibility="language" /></label>
-                <label><span data-i18n="readingMode">Reading mode</span><input type="checkbox" data-toolbar-visibility="readingMode" checked /></label>
-                <label><span data-i18n="textSize">Text size</span><input type="checkbox" data-toolbar-visibility="textSize" checked /></label>
+                <label><span data-i18n="readingMode">Reading mode</span><input type="checkbox" data-toolbar-visibility="readingMode" /></label>
+                <label><span data-i18n="textSize">Text size</span><input type="checkbox" data-toolbar-visibility="textSize" /></label>
+                <label><span data-i18n="exportPdf">Export PDF</span><input type="checkbox" data-toolbar-visibility="exportPdf" /></label>
                 <button id="toolbar-reset" class="toolbar-reset" type="button" data-i18n="restoreToolbar">Restore default toolbar</button>
               </section>
             </div>
           </div>
 
-          <div class="toolbar-dropdown language-control">
+          <div class="toolbar-dropdown language-control" data-user-hidden="true">
             <button id="language-toggle" class="toolbar-select-button language-button" data-tooltip-key="language" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="language-menu" data-i18n-aria="language" aria-label="Interface language">
               <span class="dropdown-leading-icon language-glyph" aria-hidden="true">文</span>
               <span id="language-name" class="dropdown-label">English</span>
@@ -192,8 +193,8 @@
             <div id="language-menu" class="toolbar-menu language-menu" role="menu" hidden></div>
           </div>
 
-          <button id="font-down" class="icon-button text-button" data-tooltip-key="fontDown" type="button" data-i18n-title="smallerText" title="Smaller text" aria-label="Smaller text">A−</button>
-          <button id="font-up" class="icon-button text-button" data-tooltip-key="fontUp" type="button" data-i18n-title="largerText" title="Larger text" aria-label="Larger text">A＋</button>
+          <button id="font-down" data-user-hidden="true" class="icon-button text-button" data-tooltip-key="fontDown" type="button" data-i18n-title="smallerText" title="Smaller text" aria-label="Smaller text">A−</button>
+          <button id="font-up" data-user-hidden="true" class="icon-button text-button" data-tooltip-key="fontUp" type="button" data-i18n-title="largerText" title="Larger text" aria-label="Larger text">A＋</button>
 
         </div>
       </header>
@@ -210,54 +211,18 @@
 </ul>
 <hr>
 <ul>
-<li><a href="mailto:ryanzhu@kinnne.com">ryanzhu@kinnne.com</a></li>
-<li><a href="https://kainnne.com">kainnne.com</a></li>
-<li><a href="https://github.com/kainnne">github.com/kainnne</a></li>
+<li>✉️ <a href="mailto:ryanzhu@kainnne.com">ryanzhu@kainnne.com</a></li>
+<li>🌐 <a href="https://kainnne.com">kainnne.com</a></li>
+<li>💻 <a href="https://github.com/kainnne">github.com/kainnne</a></li>
 </ul>
 <h2>工作經歷</h2>
 <h3>康軒文教集團／康橋國際學校</h3>
 <p>AI 工程師／數位教學工程師｜2026.07 - 至今</p>
 <ul>
 <li>推動校內 AI 應用與數位工作流程，完成 AI 導入。</li>
-<li>完成 2026 年 8 月 25 日、28 日兩場 Kuse AI 教職員實作訓練；依同仁使用程度設計課程流程、簡報、教學文件與實作範例。</li>
+<li>完成 2026 年 8 月 19 日、25 日、28 日的教職員教育訓練，並依同仁使用程度設計課程流程、簡報、教學文件與實作範例。</li>
 <li>運用 AI 工具高效率製作教學影片，兼顧內容品質、清楚的教學表達與個人風格，支援教師與行政同仁學習。</li>
 </ul>
-<h2>近期代表成果</h2>
-<h3>LumaReader 已發布</h3>
-<p>個人產品開發｜Markdown 閱讀、編輯與 PDF 匯出</p>
-<ul>
-<li>開發本機優先的 Markdown 應用，整合資料夾文件庫、Mermaid、KaTeX 與媒體預覽，並設計多主題、多語介面。</li>
-<li>迭代原文／預覽對照、編輯復原與重做，以及分頁、頁尾和外框可調整的 PDF 匯出，處理閱讀與編輯流程中的細節問題。</li>
-<li>完成 v1.3.1 發布，提供 macOS、Windows 與 Linux 版本及網頁入口；將產品落地為已有客戶實際使用的 App，持續迭代閱讀體驗。</li>
-</ul>
-<p><a href="https://lumareader.kainnne.com">lumareader.kainnne.com</a></p>
-<h2>其他作品</h2>
-<h3>WikiNB</h3>
-<p>個人版｜Markdown 知識庫與 AI 複習助理</p>
-<ul>
-<li>整合登入、筆記同步與全文瀏覽，將 Markdown 筆記組織為可持續維護的知識系統。</li>
-<li>結合 AI 對話與筆記工作流程，探索知識整理、複習及專案脈絡保存的使用情境。</li>
-</ul>
-<p><a href="https://wikinb.kainnne.com">wikinb.kainnne.com</a></p>
-<h3>ScopeCut</h3>
-<p>需求規劃工具｜AI 開發工作流程</p>
-<ul>
-<li>設計分步輸入與範圍收斂流程，將口語想法轉為具目標、限制與驗收條件的 Project Contract。</li>
-<li>串接本機 Bridge 與 WikiNB，銜接需求規劃及專案文件保存。</li>
-</ul>
-<p><a href="https://scopecut.kainnne.com">scopecut.kainnne.com</a></p>
-<h2>核心能力</h2>
-<ul>
-<li><p><strong>AI 應用與系統</strong> — Python、LLM 應用、API 整合、資料處理、自動化流程</p>
-</li>
-<li><p><strong>產品與介面</strong> — 需求定義、UI／UX、全端應用、Electron、版本迭代</p>
-</li>
-<li><p><strong>研究與分析</strong> — 機器學習、特徵工程、時間序列預測、模型驗證</p>
-</li>
-<li><p><strong>AI／AI Agent 導入與溝通</strong> — AI 應用導入、Agent 工作流程、教育訓練、教材設計、跨單位需求溝通</p>
-</li>
-</ul>
-<h2>研究經歷</h2>
 <h3>國立臺灣大學</h3>
 <p>生物環境系統工程學系<br>研究助理｜2025.09 - 2025.12、2026.08 - 至今</p>
 <p>以 Python 開發即時淹水預警系統的模型架構與程式，封裝模型並設計資料傳輸流程，支援合作廠商介接政府公共網站平台。</p>
@@ -265,15 +230,50 @@
 <h3>國立中山大學</h3>
 <p>海洋環境及工程學系<br>研究助理｜2026.01</p>
 <p>分析資料模式與特徵關係，作為預測模型優化與研究設計的參考。</p>
-<h3>碩士論文（全英文撰寫）</h3>
-<p>結構工程 × 機器學習</p>
-<p>利用 LS-DYNA 數值模擬資料，預測波紋鋼防爆牆在爆炸載荷下的最大與永久位移；完成資料前處理、特徵工程、模型調校與驗證，以及特徵重要性分析。</p>
-<p><a href="https://ethesys.lis.nsysu.edu.tw/eThesys-dbs/ETD-search/view_etd.php?urn=etd-0723125-151645">閱讀碩士論文｜Prediction of Deflections on Corrugated Blast Wall under Explosion Loads Using Machine Learning</a></p>
+<h2>近期代表成果</h2>
+<h3>LumaReader</h3>
+<p>個人產品開發｜Markdown 閱讀、編輯與 PDF 匯出</p>
+<ul>
+<li>開發本機優先的 Markdown 應用，整合資料夾文件庫、Mermaid、KaTeX 與媒體預覽，並設計多主題、多語介面。</li>
+<li>迭代原文／預覽對照、編輯復原與重做，以及分頁、頁尾和外框可調整的 PDF 匯出，處理閱讀與編輯流程中的細節問題。</li>
+<li>完成 v1.3.1 發布，提供 macOS、Windows 與 Linux 版本及網頁入口，同時將產品落地為已有客戶實際使用的 App，持續改善閱讀體驗。</li>
+</ul>
+<p><a href="https://lumareader.kainnne.com">lumareader.kainnne.com</a></p>
+<h2>其他作品</h2>
+<h3>WikiNB</h3>
+<p>個人版｜Markdown 知識庫與數位分身</p>
+<ul>
+<li>整合登入、筆記同步與全文瀏覽，將 Markdown 筆記組織為可持續維護的知識系統。</li>
+<li>建立個人專案助理與數位分身，讓訪客透過簡易問答認識我的經歷與作品，作為交流或合作的入口。</li>
+</ul>
+<p><a href="https://wikinb.kainnne.com">wikinb.kainnne.com</a></p>
+<h3>AI Tools</h3>
+<p>免費小工具｜從日常靈感到實用應用</p>
+<ul>
+<li>將日常想到的點子快速做成免費小工具，探索能解決實際問題的使用情境。</li>
+<li>開發台灣選車網等工具，集中於 AI Tools 入口，讓使用者直接體驗並持續改善。</li>
+</ul>
+<p><a href="https://ai-tools.kainnne.com">ai-tools.kainnne.com</a></p>
+<h2>核心能力</h2>
+<ul>
+<li><p><strong>AI 應用與系統</strong> — Python、LLM 應用、資料處理與特徵工程、自動化</p>
+</li>
+<li><p><strong>產品與介面</strong> — UI／UX、全端應用、產品落地經驗</p>
+</li>
+<li><p><strong>研究與分析</strong> — 機器學習、結構工程、時間序列預測、模型驗證、機器學習競賽經驗</p>
+</li>
+<li><p><strong>AI／AI Agent 導入</strong> — 教育訓練、教材設計、跨單位需求溝通</p>
+</li>
+</ul>
 <h2>學歷</h2>
 <h3>國立中山大學</h3>
 <p>海洋環境及工程學系 碩士<br>2023 - 2025</p>
 <h3>國立中山大學</h3>
 <p>海洋環境及工程學系 學士<br>2019 - 2023</p>
+<h3>碩士論文</h3>
+<p>結構工程 × 機器學習</p>
+<p>Used LS-DYNA simulation data to predict maximum and permanent deflections of corrugated blast walls under explosion loads. Conducted preprocessing, feature engineering, model tuning and validation, and feature importance analysis.</p>
+<p><a href="https://ethesys.lis.nsysu.edu.tw/eThesys-dbs/ETD-search/view_etd.php?urn=etd-0723125-151645">閱讀碩士論文｜Prediction of Deflections on Corrugated Blast Wall under Explosion Loads Using Machine Learning</a></p>
 <h2>跨領域創作與領導</h2>
 <p>曾任室內樂社社長，參與音樂會規劃與製作，具作曲、指揮及器樂演出經驗。</p>
 <p>2026 年推出個人原創音樂專輯《Everything Before 24》，持續進行音樂與文字創作。</p>
@@ -426,7 +426,7 @@
   <script src="vendor/lumareader/vendor/katex/katex.min.js?v=0.18.3"></script>
   <script src="vendor/lumareader/vendor/katex/contrib/auto-render.min.js?v=0.18.3"></script>
   <script src="vendor/lumareader/vendor/highlight/highlight.min.js?v=11.11.1"></script>
-  <script src="resume-bridge.js?v=2"></script>
+  <script src="resume-bridge.js?v=3"></script>
   <script src="resume-print.js?v=1"></script>
   <script src="vendor/lumareader/reader-utils.js?v=1.3.1"></script>
   <script src="vendor/lumareader/adapters/core.js?v=1.2.0"></script>
@@ -435,7 +435,7 @@
   <script src="vendor/lumareader/library-search.js?v=1.3.1"></script>
   <script src="vendor/lumareader/pdf-tools.js?v=1.3.1"></script>
   <script src="vendor/lumareader/pdf-dialog.js?v=1.3.1"></script>
-  <script src="vendor/lumareader/app.js?v=resume-2"></script>
+  <script src="vendor/lumareader/app.js?v=resume-3"></script>
   <script src="vendor/lumareader/multiformat-ui.js?v=1.3.1"></script>
 <noscript><style>.boot-loader,.reader-actions,.sidebar-tools,.format-filter,.sidebar-tabs,#sidebar-toggle{display:none!important}</style></noscript>
 </body>

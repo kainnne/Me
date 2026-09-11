@@ -7,14 +7,14 @@
   const paths = ['resume.zh.md', 'resume.en.md'];
   const documents = new Map();
   const key = 'kainnne-resume-reader-preferences-v1';
-  const defaults = { readerDefaultsVersion: 6, resumeLayoutVersion: 2, onboardingVersion: 5, readingMode: 'vertical', language: document.body.dataset.resumeLanguage, languagePromptSeen: true, toolbarVisibility: { language: false, readingMode: true, source: false, media: false, textSize: true } };
+  const defaults = { readerDefaultsVersion: 6, resumeLayoutVersion: 3, onboardingVersion: 5, readingMode: 'vertical', language: document.body.dataset.resumeLanguage, languagePromptSeen: true, toolbarVisibility: { language: false, readingMode: false, source: false, media: false, textSize: false, exportPdf: false } };
   const loadPreferences = () => {
     let saved = {};
     try { saved = JSON.parse(localStorage.getItem(key) || '{}'); } catch { /* Use résumé defaults. */ }
     const currentLayout = saved?.resumeLayoutVersion === defaults.resumeLayoutVersion;
     return {...defaults, ...saved, resumeLayoutVersion: defaults.resumeLayoutVersion,
       readingMode: currentLayout ? (saved.readingMode || 'vertical') : 'vertical',
-      toolbarVisibility: {...defaults.toolbarVisibility, ...saved?.toolbarVisibility,
+      toolbarVisibility: {...defaults.toolbarVisibility, ...(currentLayout ? saved?.toolbarVisibility : {}),
         language: currentLayout ? saved?.toolbarVisibility?.language === true : false,
         source: false, media: false}};
   };
