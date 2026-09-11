@@ -1,0 +1,9 @@
+National Taiwan University
+
+Bioenvironmental Systems Engineering
+Research Assistant
+Sep - Dec 2025, Aug 2026 - Present
+
+Developed the model architecture and Python implementation of a real-time flood early-warning system. Packaged models and designed data transmission workflows to support partner integration with government web platforms.
+
+Tracked project progress and coordinated requirements with government agencies and technology partners. Continues research collaboration and related projects on LLM and NLP applications in ESG sustainability data, sustainable buildings, energy systems and power grids.

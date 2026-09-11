@@ -53,6 +53,14 @@ npm run seo:check
 - LumaReader Web 程式碼取自 [v1.3.1](https://github.com/kainnne/Kainnne-LumaReader/tree/1fcc69ea659ce9b15ca48fbaf8997e60b458a075/site/web)，置於 `public/resume/vendor/lumareader/`，保留 MIT 與各套件授權。適配修改包含：停用編輯／匯入／新手教學／輪詢、固定履歷路由、lazy Mermaid 路徑與瀏覽器 PDF 說明。`scripts/resume/template.html` 保留上游 HTML，產生器統一適配兩種語言。
 - 保留 `noindex`，不加入主站 sitemap。含舊聯絡資訊的靜態 PDF 已撤下；PDF 由目前頁面匯出。既有 ChatGPT Sites 網址為先前版本，並非此網站的正式入口。
 
+## Cake 履歷素材
+
+- 逐塊複製頁：<https://kainnne.com/resume/cake/>，採白底與深灰字，可切換中文、英文或中英對照。
+- 從正式 Markdown 自動拆成 13 組模組，不改寫工作內容與成果。提供含格式的整塊複製、純文字內文複製、TXT／HTML 單檔、完整文字、原始照片與 ZIP 素材包。
+- 在 Cake 先新增 Profile／Lists／Paragraph 等區塊，再複製貼入文字；ZIP 並非 Cake 專用匯入檔。
+- 產生器：`scripts/build-cake.mjs`；樣式與互動：`scripts/cake/`；輸出：`public/resume/cake/`。
+- 正式 build 自動同步，`npm run cake:check` 驗證素材與目前 Markdown 一致。正式履歷頁只移除 Ryan 音樂網站連結，保留創作經驗。
+
 ## 本機開發
 
 ```bash

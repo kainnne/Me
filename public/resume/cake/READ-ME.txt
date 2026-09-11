@@ -1,0 +1,17 @@
+Cake résumé modules / Cake 履歷模組
+
+1. Open index.html or https://kainnne.com/resume/cake/ .
+2. Add a Profile, Lists or Paragraph snippet inside Cake.
+3. Copy one module and paste it into the text area. Use body-only copy for templates with a separate heading field.
+4. If Cake changes the formatting, use the plain-text file and adjust the native Cake snippet.
+5. Upload portrait.jpg separately through an image block.
+
+在 Cake 先新增對應區塊，再逐塊複製貼上。本素材包不是 Cake 的專用匯入檔。
+每塊有 TXT 與 HTML，zh / en 各有全套文字檔與原始 Markdown。
+文字由已確認的 Markdown 自動拆分，未改寫成果。中文論文摘要依原稿保留英文。
+
+建議順序：個人資訊 → 簡介 → 三筆工作經歷 → LumaReader → WikiNB → AI Tools → 核心能力 → 碩士 → 學士 → 碩士論文 → 創作與領導。
+版面：白底、深灰字、單欄正文。聯絡資訊可與照片分欄，工作／專案描述保留完整寬度。
+
+Cake official snippet guide:
+https://help.cake.me/en/articles/11532128-how-to-add-and-edit-snippet-or-block

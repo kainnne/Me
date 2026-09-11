@@ -1,0 +1,5 @@
+Profile Summary
+
+- AI application delivery: Combines machine learning research with AI development, taking products from requirements and UI/UX through system integration, release and real-world use.
+- AI / AI agent adoption: Drives AI adoption and digital workflows at Kang Chiao International School, using AI agents in product development and translating practical methods into training and reusable workflows.
+- Ongoing research collaboration: Works with NTU’s Department of Bioenvironmental Systems Engineering on research and related projects exploring LLM and NLP applications in ESG sustainability data, sustainable buildings, energy systems and power grids.

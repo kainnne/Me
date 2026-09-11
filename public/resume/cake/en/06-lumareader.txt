@@ -1,0 +1,9 @@
+LumaReader
+
+Personal product | Markdown reading, editing & PDF export
+
+- Developed a local-first Markdown app with folder libraries, Mermaid, KaTeX, media previews, themes and interface languages.
+- Refined source/preview editing, undo/redo and PDF export with page breaks, optional footers and frames.
+- Released v1.3.1 for macOS, Windows and Linux alongside a web edition, bringing the product into real customer use and continuing to improve the reading experience.
+
+lumareader.kainnne.com

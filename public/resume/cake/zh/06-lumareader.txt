@@ -1,0 +1,9 @@
+LumaReader
+
+個人產品開發｜Markdown 閱讀、編輯與 PDF 匯出
+
+- 開發本機優先的 Markdown 應用，整合資料夾文件庫、Mermaid、KaTeX 與媒體預覽，並設計多主題、多語介面。
+- 迭代原文／預覽對照、編輯復原與重做，以及分頁、頁尾和外框可調整的 PDF 匯出，處理閱讀與編輯流程中的細節問題。
+- 完成 v1.3.1 發布，提供 macOS、Windows 與 Linux 版本及網頁入口，同時將產品落地為已有客戶實際使用的 App，持續改善閱讀體驗。
+
+lumareader.kainnne.com

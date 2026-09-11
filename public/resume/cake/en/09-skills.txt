@@ -1,0 +1,9 @@
+Core Capabilities
+
+- AI & Systems — Python, LLM applications, data processing and feature engineering, automation
+
+- Product & Interface — UI/UX, full-stack applications, product delivery experience
+
+- Research & Analysis — Machine learning, structural engineering, time-series prediction, model validation, machine learning competition experience
+
+- AI / AI Agent Adoption — Training, learning materials, cross-team requirements communication

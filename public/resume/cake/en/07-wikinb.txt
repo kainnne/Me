@@ -1,0 +1,8 @@
+WikiNB
+
+Personal edition | Markdown knowledge base & digital twin
+
+- Integrated sign-in, note synchronization and full-text browsing to organize Markdown notes into a maintainable knowledge system.
+- Built a personal project assistant and digital twin, offering a simple Q&A entry point for visitors to learn about my experience and work, start conversations or explore collaboration.
+
+wikinb.kainnne.com

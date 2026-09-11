@@ -1,0 +1,8 @@
+碩士論文
+
+結構工程 × 機器學習
+
+Used LS-DYNA simulation data to predict maximum and permanent deflections of corrugated blast walls under explosion loads. Conducted preprocessing, feature engineering, model tuning and validation, and feature importance analysis.
+
+閱讀碩士論文｜Prediction of Deflections on Corrugated Blast Wall under Explosion Loads Using Machine Learning
+https://ethesys.lis.nsysu.edu.tw/eThesys-dbs/ETD-search/view_etd.php?urn=etd-0723125-151645
