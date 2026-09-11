@@ -108,4 +108,4 @@ Used LS-DYNA simulation data to predict maximum and permanent deflections of cor
 
 2026 年推出個人原創音樂專輯《Everything Before 24》，持續進行音樂與文字創作。
 
-[studio.kainnne.com](https://studio.kainnne.com)
+[Ryan Zhu｜音樂作品](https://studio.kainnne.com/ryan)

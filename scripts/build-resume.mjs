@@ -23,21 +23,22 @@ template = template.replace('<html lang="zh-Hant"', '<html lang="{{LANG}}"')
   .replace(/(href|src)="(vendor\/[^\"]+|styles.css[^\"]*|library-ui.css[^\"]*|reader-utils.js[^\"]*|adapters\/[^\"]+|library-search.js[^\"]*|pdf-tools.js[^\"]*|pdf-dialog.js[^\"]*|app.js[^\"]*|multiformat-ui.js[^\"]*)"/g, '$1="vendor/lumareader/$2"')
   .replace('src="web-bridge.js?v=1.3.1"', 'src="resume-bridge.js?v=3"')
   .replaceAll('src="assets/app-icon-192.webp"', 'src="assets/lumareader.webp"')
-  .replace('</head>', '  <link rel="stylesheet" href="resume.css?v=3" />\n</head>')
-  .replace('<body class="booting">', '<body class="resume-reader resume-minimal-toolbar" data-resume-language="{{LANG}}">')
-  .replace('Preparing your reading space', '{{TITLE}}').replace('Loading the example document…', 'LumaReader')
+  .replace('</head>', '  <link rel="stylesheet" href="resume.css?v=4" />\n</head>')
+  .replace('<body class="booting">', '<body class="booting resume-reader resume-minimal-toolbar" data-resume-language="{{LANG}}">')
+  .replace('Loading the example document…', 'Loading résumé Markdown…')
   .replace('<div class="library-controls">', `<nav class="resume-languages" aria-label="履歷語言 / Résumé language"><a href="./" lang="zh-Hant" {{ZH_CURRENT}}>中文履歷</a><a href="en.html" lang="en" {{EN_CURRENT}}>English</a></nav>
       <div class="library-controls" hidden inert>`)
+  .replace('<script src="vendor/lumareader/vendor/marked/marked.umd.js', '<script src="resume-boot.js?v=1"></script>\n  <script src="vendor/lumareader/vendor/marked/marked.umd.js')
   .replace('<textarea id="source-editor"', '<textarea readonly disabled id="source-editor"')
   .replace(/<article id="content"[\s\S]*?<\/article>/, '<article id="content" class="content prose" lang="{{LANG}}">{{CONTENT}}</article>')
   .replace('<script src="resume-bridge.js?v=3"></script>', '<script src="resume-bridge.js?v=3"></script>\n  <script src="resume-print.js?v=1"></script>')
-  .replace('app.js?v=1.3.1', 'app.js?v=resume-3')
+  .replace('app.js?v=1.3.1', 'app.js?v=resume-4')
   .replace(/^[ \t]*<label><span data-i18n="(?:source|media)">[^\n]*?<\/label>\n/gm, '')
   .replace(/(data-toolbar-visibility="[^"]+") checked/g, '$1')
   .replace('<button id="toolbar-reset"', '<label><span data-i18n="exportPdf">Export PDF</span><input type="checkbox" data-toolbar-visibility="exportPdf" /></label>\n                <button id="toolbar-reset"')
   .replaceAll('href="../#download"', 'href="https://lumareader.kainnne.com/#download"')
   .replace('<details><summary>Markdown → PDF</summary>', '<details hidden><summary>Markdown → PDF</summary>')
-  .replace('</body>', '<noscript><style>.boot-loader,.reader-actions,.sidebar-tools,.format-filter,.sidebar-tabs,#sidebar-toggle{display:none!important}</style></noscript>\n</body>');
+  .replace('</body>', '<noscript><style>body.booting{overflow:auto}body.booting #app{visibility:visible;pointer-events:auto}.boot-loader,.reader-actions,.sidebar-tools,.format-filter,.sidebar-tabs,#sidebar-toggle{display:none!important}</style></noscript>\n</body>');
 const inertIds = ['edit-document','cancel-edit','editor-preview-control','editor-insert-control','new-markdown-dialog','discard-edit-dialog','session-dialog','drop-overlay','onboarding','source-view','media-view','share-document','share-dialog'];
 for (const id of inertIds) template = template.replace(new RegExp(`(<[a-z]+ id="${id}"[^>]*)(>)`), '$1 inert$2');
 for (const id of ['reading-mode-control','font-down','font-up','export-pdf']) template = template.replace(`id="${id}"`, `id="${id}" data-user-hidden="true"`);

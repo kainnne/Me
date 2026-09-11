@@ -19,9 +19,9 @@
   <link id="highlight-dark" rel="stylesheet" href="vendor/lumareader/vendor/highlight/github-dark.min.css?v=2" disabled />
   <link rel="stylesheet" href="vendor/lumareader/styles.css?v=1.3.1" />
   <link rel="stylesheet" href="vendor/lumareader/library-ui.css?v=1.3.1" />
-  <link rel="stylesheet" href="resume.css?v=3" />
+  <link rel="stylesheet" href="resume.css?v=4" />
 </head>
-<body class="resume-reader resume-minimal-toolbar" data-resume-language="zh-Hant">
+<body class="booting resume-reader resume-minimal-toolbar" data-resume-language="zh-Hant">
   <div id="boot-loader" class="boot-loader" role="status" aria-live="polite" aria-label="Loading LumaReader Web">
     <section class="boot-loader-card">
       <div class="boot-loader-mark" aria-hidden="true">
@@ -30,8 +30,8 @@
       </div>
       <div>
         <p class="boot-loader-kicker">LumaReader Web</p>
-        <h1>朱璽 Kaine Zhu — 履歷</h1>
-        <p class="boot-loader-copy">LumaReader</p>
+        <h1>Preparing your reading space</h1>
+        <p class="boot-loader-copy">Loading résumé Markdown…</p>
       </div>
       <span class="boot-loader-progress" aria-hidden="true"><i></i></span>
     </section>
@@ -277,7 +277,7 @@
 <h2>跨領域創作與領導</h2>
 <p>曾任室內樂社社長，參與音樂會規劃與製作，具作曲、指揮及器樂演出經驗。</p>
 <p>2026 年推出個人原創音樂專輯《Everything Before 24》，持續進行音樂與文字創作。</p>
-<p><a href="https://studio.kainnne.com">studio.kainnne.com</a></p>
+<p><a href="https://studio.kainnne.com/ryan">Ryan Zhu｜音樂作品</a></p>
 </article>
         <pre id="raw-source" class="raw-source" hidden><code></code></pre>
         <textarea readonly disabled id="source-editor" class="source-editor" aria-label="Markdown source editor" data-i18n-aria="markdownEditor" autocomplete="off" autocapitalize="off" spellcheck="false" wrap="soft" hidden></textarea>
@@ -422,6 +422,7 @@
     </div>
   </div>
 
+  <script src="resume-boot.js?v=1"></script>
   <script src="vendor/lumareader/vendor/marked/marked.umd.js?v=17.0.5"></script>
   <script src="vendor/lumareader/vendor/katex/katex.min.js?v=0.18.3"></script>
   <script src="vendor/lumareader/vendor/katex/contrib/auto-render.min.js?v=0.18.3"></script>
@@ -435,8 +436,8 @@
   <script src="vendor/lumareader/library-search.js?v=1.3.1"></script>
   <script src="vendor/lumareader/pdf-tools.js?v=1.3.1"></script>
   <script src="vendor/lumareader/pdf-dialog.js?v=1.3.1"></script>
-  <script src="vendor/lumareader/app.js?v=resume-3"></script>
+  <script src="vendor/lumareader/app.js?v=resume-4"></script>
   <script src="vendor/lumareader/multiformat-ui.js?v=1.3.1"></script>
-<noscript><style>.boot-loader,.reader-actions,.sidebar-tools,.format-filter,.sidebar-tabs,#sidebar-toggle{display:none!important}</style></noscript>
+<noscript><style>body.booting{overflow:auto}body.booting #app{visibility:visible;pointer-events:auto}.boot-loader,.reader-actions,.sidebar-tools,.format-filter,.sidebar-tabs,#sidebar-toggle{display:none!important}</style></noscript>
 </body>
 </html>

@@ -109,4 +109,4 @@ Former chamber music club president with experience in concert planning and prod
 
 Released the original album Everything Before 24 in 2026 and continues working on music and writing.
 
-[studio.kainnne.com](https://studio.kainnne.com)
+[Ryan Zhu | Music](https://studio.kainnne.com/ryan)

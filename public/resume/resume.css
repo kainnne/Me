@@ -51,3 +51,18 @@
 .resume-reader.resume-minimal-toolbar .reader-bar { min-height: 64px; flex-wrap: nowrap; align-items: center; }
 .resume-reader.resume-minimal-toolbar .file-heading { flex: 1 1 auto; min-width: 0; }
 .resume-reader.resume-minimal-toolbar .reader-actions { flex: 0 0 auto; width: auto; }
+
+/* Hide intermediate layout behind LumaReader's original loading card. */
+body.booting #app { visibility: hidden; pointer-events: none; }
+.resume-static-fallback .reader-actions,
+.resume-static-fallback .sidebar-tools,
+.resume-static-fallback .format-filter,
+.resume-static-fallback .sidebar-tabs,
+.resume-static-fallback .sidebar-toggle { display: none !important; }
+.resume-static-fallback .reader-shell { position: static; height: auto; overflow: visible; }
+.resume-static-fallback .content { display: block !important; height: auto !important; columns: auto !important; overflow: visible !important; }
+@media (prefers-reduced-motion: reduce) {
+  .resume-reader .boot-loader-orbit,
+  .resume-reader .boot-loader-progress i { animation: none; }
+  .resume-reader .boot-loader { transition: none; }
+}
