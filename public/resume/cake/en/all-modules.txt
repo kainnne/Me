@@ -51,15 +51,16 @@ Analyzed data patterns and feature relationships to inform predictive model impr
 
 Custom AI Document Processing Platform
 
-Client project | Requirements analysis, AI agent orchestration & interface design
+Client project | UI/UX, AI agents & local integration
 
-- Completed the initial design in three days of spare time and secured the project through a seven-minute presentation, then iterated on requirements through delivery for use.
-- Designed a web interface and local CLI processing workflow around the user's budget and preference for local execution, integrating document submission, progress display and result reading.
-- Designed segmented recognition, cross-segment assembly and parallel AI agent processing for long documents, multiple PDFs and large volumes of content. Adjusted batch sizes by content length and workload, with concurrency limits to control resource use.
-- Assembled Markdown in the original order using fixed identifiers, saved results after each batch, and supported partial downloads and resuming failed batches without regenerating the entire document.
-- Checked output completeness and ordering in a batch test with over 100 content items, and refined requirement options, progress indicators and the reading interface so users could operate the workflow through the web page.
+- Completed the initial design in 3 days of spare time.
+- Secured the client project through a 7-minute presentation.
+- Designed and delivered a web platform to meet budget and local execution requirements.
+- Tested over 100 content items in batches, confirming complete output in the correct order.
 
-A demonstration can be provided during an interview.
+> Technical design: Document segmentation, concurrency-limited AI agents, saved results and failed-batch recovery, with Markdown output.
+
+Demonstration available during an interview.
 
 ────────────────────────
 
