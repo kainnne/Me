@@ -10,7 +10,7 @@ Cake résumé modules / Cake 履歷模組
 每塊有 TXT 與 HTML，zh / en 各有全套文字檔與原始 Markdown。
 文字由已確認的 Markdown 自動拆分，未改寫成果。中文論文摘要依原稿保留英文。
 
-建議順序：個人資訊 → 簡介 → 三筆工作經歷 → LumaReader → WikiNB → AI Tools → 核心能力 → 碩士 → 學士 → 碩士論文 → 創作與領導。
+建議順序：個人資訊 → 簡介 → 三筆工作經歷 → 客製化 AI 文件處理平台 → LumaReader → WikiNB → AI Tools → 核心能力 → 碩士 → 學士 → 碩士論文 → 創作與領導。
 版面：白底、深灰字、單欄正文。聯絡資訊可與照片分欄，工作／專案描述保留完整寬度。
 
 Cake official snippet guide:

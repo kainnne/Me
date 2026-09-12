@@ -28,7 +28,7 @@ for (const lang of ['zh','en']) {
   const sections=chunks.map(chunk=>({heading:chunk.slice(0,chunk.indexOf('\n')),body:chunk.slice(chunk.indexOf('\n')+1).trim()}));
   const leaves = section => section.body.split(/^### /m).filter(x=>x.trim()).map(text=>({title:text.slice(0,text.indexOf('\n')),body:text.slice(text.indexOf('\n')+1).trim()}));
   const jobs=leaves(sections[0]),project=leaves(sections[1]),others=leaves(sections[2]),education=leaves(sections[4]);
-  if(jobs.length!==3||project.length!==1||others.length!==2||education.length!==3)throw new Error('Résumé structure changed. Review Cake module mapping.');
+  if(jobs.length!==3||project.length!==2||others.length!==2||education.length!==3)throw new Error('Résumé structure changed. Review Cake module mapping.');
   const lines=intro.split('\n'),name=lines[0].replace(/^# /,''),tagline=lines.filter(x=>x.trim()&&!x.startsWith('#')&&!x.startsWith('!')&&!x.startsWith('-'))[0];
   const summary=intro.slice(intro.indexOf('- **'),intro.indexOf('\n---')).trim();
   const contact=intro.slice(intro.indexOf('\n---')+4).trim();
@@ -37,7 +37,8 @@ for (const lang of ['zh','en']) {
     {id:'01-profile',type:'Profile',title:name,body:`${role}\n\n${tagline}\n\n${contact}`},
     {id:'02-summary',type:'Lists',title:lang==='zh'?'個人簡介':'Profile Summary',body:summary},
     ...jobs.map((item,index)=>({id:`0${index+3}-experience`,type:'Paragraph',...item})),
-    {id:'06-lumareader',type:'Lists',...project[0]},
+    {id:'client-project',type:'Lists',...project[0]},
+    {id:'06-lumareader',type:'Lists',...project[1]},
     {id:'07-wikinb',type:'Lists',...others[0]},
     {id:'08-ai-tools',type:'Lists',...others[1]},
     {id:'09-skills',type:'Lists',title:sections[3].heading,body:sections[3].body},
@@ -56,12 +57,12 @@ for (const lang of ['zh','en']) {
 }
 await addFile('portrait.jpg',await readFile(new URL('public/resume/assets/portrait.jpg',root)));
 await addFile('modules.json',JSON.stringify(records,null,2)+'\n');
-const guide=`Cake résumé modules / Cake 履歷模組\n\n1. Open index.html or https://kainnne.com/resume/cake/ .\n2. Add a Profile, Lists or Paragraph snippet inside Cake.\n3. Copy one module and paste it into the text area. Use body-only copy for templates with a separate heading field.\n4. If Cake changes the formatting, use the plain-text file and adjust the native Cake snippet.\n5. Upload portrait.jpg separately through an image block.\n\n在 Cake 先新增對應區塊，再逐塊複製貼上。本素材包不是 Cake 的專用匯入檔。\n每塊有 TXT 與 HTML，zh / en 各有全套文字檔與原始 Markdown。\n文字由已確認的 Markdown 自動拆分，未改寫成果。中文論文摘要依原稿保留英文。\n\n建議順序：個人資訊 → 簡介 → 三筆工作經歷 → LumaReader → WikiNB → AI Tools → 核心能力 → 碩士 → 學士 → 碩士論文 → 創作與領導。\n版面：白底、深灰字、單欄正文。聯絡資訊可與照片分欄，工作／專案描述保留完整寬度。\n\nCake official snippet guide:\nhttps://help.cake.me/en/articles/11532128-how-to-add-and-edit-snippet-or-block\n`;
+const guide=`Cake résumé modules / Cake 履歷模組\n\n1. Open index.html or https://kainnne.com/resume/cake/ .\n2. Add a Profile, Lists or Paragraph snippet inside Cake.\n3. Copy one module and paste it into the text area. Use body-only copy for templates with a separate heading field.\n4. If Cake changes the formatting, use the plain-text file and adjust the native Cake snippet.\n5. Upload portrait.jpg separately through an image block.\n\n在 Cake 先新增對應區塊，再逐塊複製貼上。本素材包不是 Cake 的專用匯入檔。\n每塊有 TXT 與 HTML，zh / en 各有全套文字檔與原始 Markdown。\n文字由已確認的 Markdown 自動拆分，未改寫成果。中文論文摘要依原稿保留英文。\n\n建議順序：個人資訊 → 簡介 → 三筆工作經歷 → 客製化 AI 文件處理平台 → LumaReader → WikiNB → AI Tools → 核心能力 → 碩士 → 學士 → 碩士論文 → 創作與領導。\n版面：白底、深灰字、單欄正文。聯絡資訊可與照片分欄，工作／專案描述保留完整寬度。\n\nCake official snippet guide:\nhttps://help.cake.me/en/articles/11532128-how-to-add-and-edit-snippet-or-block\n`;
 await addFile('READ-ME.txt',guide);
 const blocks=records.zh.modules.map((module,index)=>`<section class="module" id="${module.id}"><header class="module-bar"><span class="number">${String(index+1).padStart(2,'0')}</span><h2>${escape(module.title)}</h2><span class="type">${module.type}</span></header><div class="pair">${['zh','en'].map(lang=>{const m=records[lang].modules[index];return `<article class="language-pane" data-lang="${lang}" lang="${lang==='zh'?'zh-Hant':'en'}"><div class="language-label">${lang==='zh'?'繁體中文':'English'}</div><div class="paste-content">${m.html}</div><footer><button data-copy="rich" data-lang="${lang}" data-index="${index}">複製整塊</button><button class="secondary" data-copy="body" data-lang="${lang}" data-index="${index}">複製內文</button><a href="${lang}/${m.id}.txt" download>TXT</a></footer></article>`;}).join('')}</div></section>`).join('\n');
 const nav=records.zh.modules.map((m,i)=>`<a href="#${m.id}"><span>${String(i+1).padStart(2,'0')}</span>${escape(m.title)}</a>`).join('');
 const template=await read('scripts/cake/template.html');
-const html=template.replace('{{CSS}}',await read('scripts/cake/style.css')).replace('{{BLOCKS}}',blocks).replace('{{NAV}}',nav).replace('{{DATA}}',JSON.stringify(records).replace(/</g,'\\u003c')).replace('{{SCRIPT}}',await read('scripts/cake/copy.js'));
+const html=template.replace('{{COUNT}}',String(records.zh.modules.length)).replace('{{CSS}}',await read('scripts/cake/style.css')).replace('{{BLOCKS}}',blocks).replace('{{NAV}}',nav).replace('{{DATA}}',JSON.stringify(records).replace(/</g,'\\u003c')).replace('{{SCRIPT}}',await read('scripts/cake/copy.js'));
 await addFile('index.html',html);
 // A dependency-free, deterministic ZIP using the standard uncompressed ZIP format.
 const crcTable=Array.from({length:256},(_,n)=>{for(let i=0;i<8;i++)n=n&1?0xedb88320^(n>>>1):n>>>1;return n>>>0;});

@@ -43,6 +43,18 @@ Analyzed data patterns and feature relationships to inform predictive model impr
 
 ## Selected Recent Work
 
+### Custom AI Document Processing Platform
+
+Client project | Requirements analysis, AI agent orchestration & interface design
+
+- Completed the initial design in three days of spare time and secured the project through a seven-minute presentation, then iterated on requirements through delivery for use.
+- Designed a web interface and local CLI processing workflow around the user's budget and preference for local execution, integrating document submission, progress display and result reading.
+- Designed segmented recognition, cross-segment assembly and parallel AI agent processing for long documents, multiple PDFs and large volumes of content. Adjusted batch sizes by content length and workload, with concurrency limits to control resource use.
+- Assembled Markdown in the original order using fixed identifiers, saved results after each batch, and supported partial downloads and resuming failed batches without regenerating the entire document.
+- Checked output completeness and ordering in a batch test with over 100 content items, and refined requirement options, progress indicators and the reading interface so users could operate the workflow through the web page.
+
+A demonstration can be provided during an interview.
+
 ### LumaReader
 
 Personal product | Markdown reading, editing & PDF export

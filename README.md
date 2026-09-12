@@ -56,7 +56,7 @@ npm run seo:check
 ## Cake 履歷素材
 
 - 逐塊複製頁：<https://kainnne.com/resume/cake/>，採白底與深灰字，可切換中文、英文或中英對照。
-- 從正式 Markdown 自動拆成 13 組模組，不改寫工作內容與成果。提供含格式的整塊複製、純文字內文複製、TXT／HTML 單檔、完整文字、原始照片與 ZIP 素材包。
+- 從正式 Markdown 自動拆成 14 組模組，不改寫工作內容與成果。提供含格式的整塊複製、純文字內文複製、TXT／HTML 單檔、完整文字、原始照片與 ZIP 素材包。
 - 在 Cake 先新增 Profile／Lists／Paragraph 等區塊，再複製貼入文字；ZIP 並非 Cake 專用匯入檔。
 - 產生器：`scripts/build-cake.mjs`；樣式與互動：`scripts/cake/`；輸出：`public/resume/cake/`。
 - 正式 build 自動同步，`npm run cake:check` 驗證素材與目前 Markdown 一致。正式履歷頁只移除 Ryan 音樂網站連結，保留創作經驗。
