@@ -2,7 +2,7 @@
 (() => {
   'use strict';
   const nativeFetch = window.fetch.bind(window);
-  const base = new URL('/resume-v2/', location.origin);
+  const base = new URL('/resume_V2/', location.origin);
   const initialPath = document.body.dataset.resumeLanguage === 'en' ? 'resume.en.md' : 'resume.zh.md';
   const paths = ['resume.zh.md', 'resume.en.md'];
   const documents = new Map();
