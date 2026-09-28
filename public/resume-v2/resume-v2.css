@@ -1,0 +1,5 @@
+/* The shared Web stylesheet hides PDF export unconditionally.
+   V2 exposes the existing print control only when enabled in reader settings. */
+.resume-reader .export-pdf-button:not([hidden]):not([data-user-hidden="true"]) {
+  display: inline-flex !important;
+}

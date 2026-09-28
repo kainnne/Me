@@ -53,6 +53,16 @@ npm run seo:check
 - LumaReader Web 程式碼取自 [v1.3.1](https://github.com/kainnne/Kainnne-LumaReader/tree/1fcc69ea659ce9b15ca48fbaf8997e60b458a075/site/web)，置於 `public/resume/vendor/lumareader/`，保留 MIT 與各套件授權。適配修改包含：停用編輯／匯入／新手教學／輪詢、固定履歷路由、lazy Mermaid 路徑與瀏覽器 PDF 說明。`scripts/resume/template.html` 保留上游 HTML，產生器統一適配兩種語言。
 - 保留 `noindex`，不加入主站 sitemap。含舊聯絡資訊的靜態 PDF 已撤下；PDF 由目前頁面匯出。既有 ChatGPT Sites 網址為先前版本，並非此網站的正式入口。
 
+## 履歷 V2
+
+- 中文：<https://kainnne.com/resume-v2/>；英文：<https://kainnne.com/resume-v2/en.html>。原 `/resume/` 中英文履歷與 Cake 素材保持原內容。
+- V2 聚焦 AI 導入、Agent 產品交付、UI／UX 與研究基礎。內容來源：`public/resume-v2/resume.zh.md`、`public/resume-v2/resume.en.md`。
+- 沿用原履歷已調整的 LumaReader shell，以及 `/resume/` 下的同一份 CSS、JS、列印功能與照片；不複製或更換閱讀器。只為 V2 產生文件路由 adapter，從原版來源衍生並保留唯讀限制。
+- `resume-v2.css` 僅修正共用 Web 樣式原本無條件隱藏 PDF 按鈕的行為：設定中勾選後顯示，預設仍隱藏。此修正不影響原版。
+- 修改內容後執行 `npm run resume:generate && npm run resume:v2:generate`；以 `npm run resume:v2:check` 檢查同步。正式 build 依序產生原版與 V2。
+- 延續靜態 HTML fallback、唯讀文件、`noindex` 與不加入 sitemap 的設定。公開資料不包含私人職涯筆記。V2 adapter 使用獨立偏好 key；閱讀器原有的部分全站 localStorage 外觀設定仍共用。
+- 部署：GitHub Pages，repository `kainnne/Me`、分支 `main`，由既有 `.github/workflows/deploy-pages.yml` 發布；沿用 `kainnne.com` 與 HTTPS，不變更 DNS。
+
 ## Cake 履歷素材
 
 - 逐塊複製頁：<https://kainnne.com/resume/cake/>，採白底與深灰字，可切換中文、英文或中英對照。
