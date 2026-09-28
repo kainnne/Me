@@ -29,8 +29,8 @@ async function output(file, content) {
 }
 
 for (const [code, file, title, description] of [
-  ['zh', 'index.html', '朱璽 Kaine Zhu — 履歷 V2', 'AI 導入、AI Agent 產品開發、UI／UX 與機器學習研究。'],
-  ['en', 'en.html', 'Kaine Zhu — Résumé V2', 'AI adoption, AI agent product development, UI/UX and machine learning research.'],
+  ['zh', 'index.html', '朱璽 Kaine Zhu — 履歷 V2 工作稿', 'AI 導入、Agent 產品開發與 LumaReader 開源作品。含教學構想、未來目標與編輯建議的履歷工作稿。'],
+  ['en', 'en.html', 'Kaine Zhu — Résumé V2 Working Draft', 'AI adoption, agent product development and the open-source LumaReader. Working draft with proposed training, future goals and editorial feedback.'],
 ]) {
   const markdown = await read(`public/resume-v2/resume.${code}.md`);
   if (/\]\(\s*(?:javascript|data|vbscript):/i.test(markdown)) throw new Error('Unsupported résumé link scheme');

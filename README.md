@@ -56,7 +56,7 @@ npm run seo:check
 ## 履歷 V2
 
 - 中文：<https://kainnne.com/resume-v2/>；英文：<https://kainnne.com/resume-v2/en.html>。原 `/resume/` 中英文履歷與 Cake 素材保持原內容。
-- V2 聚焦 AI 導入、Agent 產品交付、UI／UX 與研究基礎。內容來源：`public/resume-v2/resume.zh.md`、`public/resume-v2/resume.en.md`。
+- V2 為持續修訂的工作稿，聚焦 AI 導入、Agent 產品交付、UI／UX 與研究基礎。2026-09-28 補充 AI 槓桿教學構想、LumaReader 的履歷適配示範、未完成的職涯目標及獨立標示的 AI 編輯建議。未來規劃不列為已完成成果。內容來源：`public/resume-v2/resume.zh.md`、`public/resume-v2/resume.en.md`。
 - 沿用原履歷已調整的 LumaReader shell，以及 `/resume/` 下的同一份 CSS、JS、列印功能與照片；不複製或更換閱讀器。只為 V2 產生文件路由 adapter，從原版來源衍生並保留唯讀限制。
 - `resume-v2.css` 僅修正共用 Web 樣式原本無條件隱藏 PDF 按鈕的行為：設定中勾選後顯示，預設仍隱藏。此修正不影響原版。
 - 修改內容後執行 `npm run resume:generate && npm run resume:v2:generate`；以 `npm run resume:v2:check` 檢查同步。正式 build 依序產生原版與 V2。
