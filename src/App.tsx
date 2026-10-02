@@ -8,7 +8,6 @@ import {
   MonitorDown,
   Moon,
   Music2,
-  School,
   Sun,
   Workflow,
   X,
@@ -25,7 +24,6 @@ const EMAIL = "ryanzhu@kainnne.com";
 const KCIS_EMAIL = "kainnne@kcis.com.tw";
 const INSTAGRAM = "https://www.instagram.com/kaine_z_/";
 const YOUTUBE_MUSIC = "https://music.youtube.com/channel/UCRk-djUeDdJ31-kcfAKKWwQ?si=engK-FXHeyWAduh6";
-const KCIS_PORTAL = "https://kcis.kainnne.com";
 const WIKINB_GEMINI = "https://wikinb.kainnne.com/gemini/";
 const titleLetters = Array.from("Kaine.");
 const disciplines = ["Apps Design", "UI / UX", "AI", "Music", "Machine Learning"];
@@ -293,41 +291,6 @@ function ContactPopover({ open, onClose }: { open: boolean; onClose: () => void 
   );
 }
 
-function KcisPopover({ open, onClose }: { open: boolean; onClose: () => void }) {
-  return (
-    <AnimatePresence>
-      {open && (
-        <motion.div
-          className="kcis-popover"
-          role="dialog"
-          aria-label="KCIS 專區"
-          initial={{ opacity: 0, y: -12, scale: 0.96 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: -8, scale: 0.98 }}
-          transition={{ type: "spring", stiffness: 330, damping: 27 }}
-        >
-          <div className="kcis-popover-head">
-            <span>KCIS</span>
-            <button type="button" onClick={onClose} aria-label="關閉 KCIS 專區"><X size={16} /></button>
-          </div>
-          <motion.a
-            href={KCIS_PORTAL}
-            target="_blank"
-            rel="noreferrer"
-            onClick={onClose}
-            whileHover={{ x: 4 }}
-            whileTap={{ x: 4 }}
-          >
-            <span className="kcis-popover-icon"><School size={20} /></span>
-            <span><strong>康橋專區</strong><small>kcis.kainnne.com</small></span>
-            <ArrowUpRight size={16} />
-          </motion.a>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
-}
-
 function ProjectsPopover({ open, onClose }: { open: boolean; onClose: () => void }) {
   return (
     <AnimatePresence>
@@ -518,8 +481,6 @@ function App() {
   const projectsControlRef = useRef<HTMLDivElement>(null);
   const [contactOpen, setContactOpen] = useState(false);
   const contactControlRef = useRef<HTMLDivElement>(null);
-  const [kcisOpen, setKcisOpen] = useState(false);
-  const kcisControlRef = useRef<HTMLDivElement>(null);
   const [mood, setMood] = useState<"dream" | "dusk">(() =>
     window.localStorage.getItem("kainnne-mood") === "dusk" ? "dusk" : "dream",
   );
@@ -540,7 +501,6 @@ function App() {
       if (event.key === "Escape") {
         setProjectsOpen(false);
         setContactOpen(false);
-        setKcisOpen(false);
       }
     };
     window.addEventListener("keydown", onKeyDown);
@@ -572,19 +532,6 @@ function App() {
     document.addEventListener("pointerdown", onPointerDown);
     return () => document.removeEventListener("pointerdown", onPointerDown);
   }, [contactOpen]);
-
-  useEffect(() => {
-    if (!kcisOpen) return;
-
-    const onPointerDown = (event: PointerEvent) => {
-      if (kcisControlRef.current && !kcisControlRef.current.contains(event.target as Node)) {
-        setKcisOpen(false);
-      }
-    };
-
-    document.addEventListener("pointerdown", onPointerDown);
-    return () => document.removeEventListener("pointerdown", onPointerDown);
-  }, [kcisOpen]);
 
   return (
     <MotionConfig reducedMotion="user">
@@ -621,20 +568,6 @@ function App() {
                 Products
               </motion.button>
               <ProjectsPopover open={projectsOpen} onClose={() => setProjectsOpen(false)} />
-            </div>
-            <div className="kcis-control" ref={kcisControlRef}>
-              <motion.button
-                className="kcis-nav-button"
-                type="button"
-                onClick={() => setKcisOpen((value) => !value)}
-                aria-expanded={kcisOpen}
-                aria-haspopup="dialog"
-                whileHover={{ y: -2 }}
-                whileTap={{ y: -2 }}
-              >
-                <span className="kcis-nav-label">KCIS</span>
-              </motion.button>
-              <KcisPopover open={kcisOpen} onClose={() => setKcisOpen(false)} />
             </div>
             <div className="contact-control" ref={contactControlRef}>
               <motion.button
