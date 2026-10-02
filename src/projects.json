@@ -49,7 +49,7 @@
   {
     "id": "studio",
     "number": "04",
-    "title": "Kainnne Studio",
+    "title": "Kain³e Studio",
     "eyebrow": "MUSIC · VISUAL NOVELS · WRITING",
     "description": {
       "en": "Music, visual novels, writing, and performance works.",
@@ -72,7 +72,7 @@
   {
     "id": "stories",
     "number": "04",
-    "title": "Kainnne Stories",
+    "title": "Kain³e Stories",
     "eyebrow": "VISUAL NOVEL PRODUCTION",
     "description": {
       "en": "Custom visual novels and adaptations of written stories.",
@@ -97,8 +97,8 @@
     "title": "AI TOOLS",
     "eyebrow": "PERSONAL AI TOOL DIRECTORY",
     "description": {
-      "en": "A curated gateway to Kainnne's live AI tools and websites.",
-      "zh": "Kainnne 個人 AI 工具與網站導航入口。"
+      "en": "A curated gateway to Kain³e's live AI tools and websites.",
+      "zh": "Kain³e 個人 AI 工具與網站導航入口。"
     },
     "features": [
       { "en": "Taiwan Car Finder", "zh": "台灣選車網" },

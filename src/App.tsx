@@ -27,7 +27,7 @@ const INSTAGRAM = "https://www.instagram.com/kaine_z_/";
 const YOUTUBE_MUSIC = "https://music.youtube.com/channel/UCRk-djUeDdJ31-kcfAKKWwQ?si=engK-FXHeyWAduh6";
 const KCIS_PORTAL = "https://kcis.kainnne.com";
 const WIKINB_GEMINI = "https://wikinb.kainnne.com/gemini/";
-const titleLetters = Array.from("Kainnne.");
+const titleLetters = Array.from("Kaine.");
 const disciplines = ["Apps Design", "UI / UX", "AI", "Music", "Machine Learning"];
 const personalIntroduction: Record<SiteLanguage, string> = {
   en: "Kaine's personal website.",
@@ -142,7 +142,7 @@ function PerformanceGallery() {
 function GeminiPortal() {
   return (
     <a id="gemini" className="gemini-entry" href={WIKINB_GEMINI}>
-      <span className="gemini-entry-wordmark">Kainnne <span className="gemini-entry-cross">×</span> Gemini</span>
+      <span className="gemini-entry-wordmark">Kain³e <span className="gemini-entry-cross">×</span> Gemini</span>
     </a>
   );
 }
@@ -602,7 +602,7 @@ function App() {
               whileHover={{ y: -2 }}
               whileTap={{ y: -2 }}
             >
-              <span>Kainnne.com</span>
+              <span>kainnne.com</span>
               <ArrowUpRight size={15} />
             </motion.a>
           </nav>
@@ -702,10 +702,11 @@ function App() {
               {personalIntroduction[language]}
             </motion.p>}
             <div className="hero-title-interaction">
-              <motion.h1 className="hero-title" aria-label="Kainnne" initial="hidden" animate="visible" whileHover="hover" whileTap="hover">
+              <motion.h1 className="hero-title" aria-label="Kain³e" initial="hidden" animate="visible" whileHover="hover" whileTap="hover">
                 {titleLetters.map((letter, index) => (
                   <motion.span
                     key={`${letter}-${index}`}
+                    className={letter === "n" ? "brand-cubed-n" : undefined}
                     aria-hidden="true"
                     variants={{
                       hidden: { opacity: 0, y: 34, filter: "blur(12px)" },
@@ -714,6 +715,7 @@ function App() {
                     }}
                   >
                     {letter}
+                    {letter === "n" && <sup className="brand-exponent">3</sup>}
                   </motion.span>
                 ))}
               </motion.h1>
@@ -771,7 +773,7 @@ function App() {
       </main>
 
       <footer className="site-footer section-shell">
-        <span>Kainnne</span>
+        <span>Kain³e</span>
         <nav>
           <a href="https://github.com/kainnne" target="_blank" rel="noreferrer">GitHub ↗</a>
           <a href={INSTAGRAM} target="_blank" rel="noreferrer">Instagram ↗</a>
@@ -789,12 +791,12 @@ function App() {
             href="https://hits.sh/kainnne.com/"
             target="_blank"
             rel="noreferrer"
-            aria-label="查看 Kainnne 網站瀏覽數統計"
+            aria-label="查看 Kain³e 網站瀏覽數統計"
             title="總瀏覽數"
           >
             <img
               src="https://hits.sh/kainnne.com.svg?view=total&style=flat-square&label=Total%20views&color=ff8fab&labelColor=4a2038"
-              alt="Kainnne 總瀏覽數"
+              alt="Kain³e 總瀏覽數"
               decoding="async"
               referrerPolicy="no-referrer"
             />

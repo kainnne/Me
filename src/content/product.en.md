@@ -1,6 +1,6 @@
 # Product Principles
 
-## Q: What do Kainnne products have in common?
+## Q: What do Kain³e products have in common?
 
 - Intuitive interactions
 - Consistent interfaces and behavior
@@ -15,9 +15,9 @@
 
 ---
 
-# Kainnne x Gemini
+# Kain³e x Gemini
 
-## Q: What is Kainnne x Gemini?
+## Q: What is Kain³e x Gemini?
 
 - WikiNB's guest AI entry point.
 - Visitors can interact with Gemini after Email verification.

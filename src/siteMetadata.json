@@ -1,14 +1,17 @@
 {
   "siteUrl": "https://kainnne.com/",
-  "siteName": "Kainnne",
-  "title": "Kainnne（Kaine Zhu／朱璽）— Apps、UI / UX、AI 與音樂作品",
-  "description": "Kainnne 是 Kaine Zhu（朱璽）的個人作品入口，展示 Apps、UI / UX、AI、Machine Learning、Markdown 知識工具與音樂創作。",
+  "siteName": "Kain³e",
+  "title": "Kain³e（Kaine Zhu／朱璽）— Apps、UI / UX、AI 與音樂作品",
+  "description": "Kain³e 是 Kaine Zhu（朱璽）的個人作品入口，展示 Apps、UI / UX、AI、Machine Learning、Markdown 知識工具與音樂創作。",
   "openGraphDescription": "探索 Kaine Zhu（朱璽）的 Apps、UI / UX、AI、Machine Learning、知識工具與音樂創作。",
   "shortDescription": "Apps、UI / UX、AI、Machine Learning、知識工具與音樂創作。",
   "themeColor": "#fff7fc",
   "locale": "zh_TW",
   "alternateLocale": "en_US",
-  "languages": ["zh-Hant", "en"],
+  "languages": [
+    "zh-Hant",
+    "en"
+  ],
   "contentLastModified": "2026-08-26",
   "brandMark": {
     "path": "/brand/kainnne-mark.png",
@@ -19,7 +22,11 @@
   "person": {
     "id": "kaine-zhu",
     "name": "Kaine Zhu",
-    "alternateName": ["Kainnne", "朱璽", "Kaine"],
+    "alternateName": [
+      "Kainnne",
+      "朱璽",
+      "Kaine"
+    ],
     "jobTitle": "AI Engineer",
     "knowsAbout": [
       "App Design",
@@ -38,5 +45,17 @@
       "https://open.spotify.com/album/7kH1LtAHtDu2H0evbe5Jib",
       "https://music.apple.com/tw/album/everything-before-24/1891561916"
     ]
+  },
+  "brandWordmark": {
+    "path": "/brand/kain-cubed-wordmark.png",
+    "width": 3015,
+    "height": 1050,
+    "alt": "Kain³e wordmark"
+  },
+  "shareImage": {
+    "path": "/brand/kain-cubed-share.jpg",
+    "width": 1200,
+    "height": 630,
+    "alt": "Kain³e — Kaine Zhu personal projects"
   }
 }

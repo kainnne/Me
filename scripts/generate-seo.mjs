@@ -16,7 +16,9 @@ const escapeHtml = (value) => String(value)
   .replaceAll(">", "&gt;");
 
 const absolute = (pathname) => new URL(pathname, metadata.siteUrl).href;
-const brandImageUrl = absolute(metadata.brandMark.path);
+const iconImageUrl = absolute(metadata.brandMark.path);
+const brandImageUrl = absolute(metadata.brandWordmark.path);
+const shareImageUrl = absolute(metadata.shareImage.path);
 const publicProjects = projects.filter((project) => !project.hidden && project.status === "live" && project.href);
 
 const jsonLd = {
@@ -27,9 +29,9 @@ const jsonLd = {
       "@id": `${metadata.siteUrl}#brand-image`,
       url: brandImageUrl,
       contentUrl: brandImageUrl,
-      width: metadata.brandMark.width,
-      height: metadata.brandMark.height,
-      caption: metadata.brandMark.alt,
+      width: metadata.brandWordmark.width,
+      height: metadata.brandWordmark.height,
+      caption: metadata.brandWordmark.alt,
     },
     {
       "@type": "Brand",
@@ -95,18 +97,18 @@ const head = [
   `<meta property="og:site_name" content="${escapeHtml(metadata.siteName)}" />`,
   `<meta property="og:locale" content="${escapeHtml(metadata.locale)}" />`,
   `<meta property="og:locale:alternate" content="${escapeHtml(metadata.alternateLocale)}" />`,
-  `<meta property="og:image" content="${escapeHtml(brandImageUrl)}" />`,
-  `<meta property="og:image:width" content="${metadata.brandMark.width}" />`,
-  `<meta property="og:image:height" content="${metadata.brandMark.height}" />`,
-  `<meta property="og:image:alt" content="${escapeHtml(metadata.brandMark.alt)}" />`,
-  '<meta name="twitter:card" content="summary" />',
+  `<meta property="og:image" content="${escapeHtml(shareImageUrl)}" />`,
+  `<meta property="og:image:width" content="${metadata.shareImage.width}" />`,
+  `<meta property="og:image:height" content="${metadata.shareImage.height}" />`,
+  `<meta property="og:image:alt" content="${escapeHtml(metadata.shareImage.alt)}" />`,
+  '<meta name="twitter:card" content="summary_large_image" />',
   `<meta name="twitter:title" content="${escapeHtml(metadata.siteName)}（Kaine Zhu／朱璽）" />`,
   `<meta name="twitter:description" content="${escapeHtml(metadata.shortDescription)}" />`,
-  `<meta name="twitter:image" content="${escapeHtml(brandImageUrl)}" />`,
-  `<meta name="twitter:image:alt" content="${escapeHtml(metadata.brandMark.alt)}" />`,
+  `<meta name="twitter:image" content="${escapeHtml(shareImageUrl)}" />`,
+  `<meta name="twitter:image:alt" content="${escapeHtml(metadata.shareImage.alt)}" />`,
   `<link rel="canonical" href="${escapeHtml(metadata.siteUrl)}" />`,
-  `<link rel="icon" type="image/png" href="${escapeHtml(brandImageUrl)}" />`,
-  `<link rel="apple-touch-icon" href="${escapeHtml(brandImageUrl)}" />`,
+  `<link rel="icon" type="image/png" href="${escapeHtml(iconImageUrl)}" />`,
+  `<link rel="apple-touch-icon" href="${escapeHtml(iconImageUrl)}" />`,
   '<link rel="manifest" href="/site.webmanifest" />',
   `<title>${escapeHtml(metadata.title)}</title>`,
 ].map((line) => `    ${line}`).join("\n");

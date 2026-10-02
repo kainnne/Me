@@ -1,6 +1,6 @@
 # 產品特色
 
-## Q：Kainnne 的產品有什麼共同特色？
+## Q：Kain³e 的產品有什麼共同特色？
 
 - 直覺操作
 - 一致的介面與互動
@@ -15,9 +15,9 @@
 
 ---
 
-# Kainnne x Gemini
+# Kain³e x Gemini
 
-## Q：Kainnne x Gemini 是什麼？
+## Q：Kain³e x Gemini 是什麼？
 
 - WikiNB 的訪客 AI 入口。
 - 完成 Email 驗證後即可使用 Gemini 互動。
