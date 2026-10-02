@@ -1,27 +1,18 @@
-# Kainnne 品牌主視覺
+# Kain³e 共用品牌素材
 
-`kainnne-primary-visual-v2.png` 是目前正式的 Kainnne 品牌總圖案：透明背景、粉紅色幾何 `K`。它是原始保存檔，不直接由頁面程式重畫，也不應被拉伸或加上白色、黑色底圖。上一版 `kainnne-primary-visual-v1.png` 保留作為可復原的歷史版本。
+2026-10-02：Kaine 核准將 `Kainnne.` 字標改為 `Kain³e.`，保留 Comfortaa 圓體、彩色漸層與 n 右上角的 3。
 
-## 線上固定入口
+- 正式字標：`kain-cubed-wordmark.svg`；另提供透明 PNG（3015 × 1050）。
+- 主站分享圖：`kain-cubed-share.jpg`（1200 × 630）。子站可保留產品視覺並使用新版字標。
+- 幾何 K 圖示：保留 `kainnne-primary-visual-v2.png`，供 favicon、Apple touch icon 和 App icon 使用。
+- 歷史素材保留供復原；頁面字標使用新版檔名。
 
-- 品牌圖片：`https://kainnne.com/brand/kainnne-mark.png`
-- 機器可讀資訊：`https://kainnne.com/brand/brand.json`
+公開素材：
 
-所有 Kainnne 網站的 favicon、Apple 圖示與 Open Graph／Twitter 分享圖片，應由單一 metadata／layout 設定引用上面的品牌圖片。新建立的 `*.kainnne.com` 網站也使用同一網址；DNS 不會自動加入網頁圖示，仍需在新網站的 `<head>` 或框架 metadata 中套用這項設定。
+- 字標：`https://kainnne.com/brand/kain-cubed-wordmark.svg`
+- PNG：`https://kainnne.com/brand/kain-cubed-wordmark.png`
+- 分享圖：`https://kainnne.com/brand/kain-cubed-share.jpg`
+- 圖示：`https://kainnne.com/brand/kainnne-mark.png`
+- 素材資訊：`https://kainnne.com/brand/brand.json`
 
-```html
-<link rel="icon" type="image/png" href="https://kainnne.com/brand/kainnne-mark.png" />
-<link rel="apple-touch-icon" href="https://kainnne.com/brand/kainnne-mark.png" />
-<meta property="og:image" content="https://kainnne.com/brand/kainnne-mark.png" />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:image" content="https://kainnne.com/brand/kainnne-mark.png" />
-```
-
-## 日後更換 Logo
-
-1. 保留新原始檔於本資料夾，使用新的版本檔名。
-2. 等比例輸出 `public/brand/kainnne-mark.png`、192、512、180 與 32 px 衍生圖，不裁掉圖案、不加背景。
-3. 更新 `public/brand/brand.json` 的版本、尺寸與來源檔名。
-4. 維持線上固定入口 `/brand/kainnne-mark.png` 不變，再執行 `npm run seo:generate`、測試與部署。
-
-沿用固定入口的子網域會跟著更新；瀏覽器、LINE 或其他社群服務的圖片快取可能需要一段時間才會刷新。
+Open Graph 與 Twitter 使用 1200 × 630 的分享圖，並設定 `summary_large_image`。完整字標與幾何 K 圖示各自保留用途。網址、電子郵件、GitHub 名稱與既有技術識別維持 `kainnne`。

@@ -1,11 +1,26 @@
 {
-  "brand": "Kainnne",
+  "brand": "Kain³e",
   "asset": "https://kainnne.com/brand/kainnne-mark.png",
   "source": "brand-assets/kainnne-primary-visual-v2.png",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "width": 1229,
   "height": 1280,
   "format": "image/png",
   "background": "transparent",
-  "usage": ["favicon", "apple-touch-icon", "open-graph", "twitter-card"]
+  "usage": [
+    "favicon",
+    "apple-touch-icon"
+  ],
+  "wordmark": {
+    "asset": "https://kainnne.com/brand/kain-cubed-wordmark.svg",
+    "png": "https://kainnne.com/brand/kain-cubed-wordmark.png",
+    "width": 3015,
+    "height": 1050,
+    "background": "transparent"
+  },
+  "shareImage": {
+    "asset": "https://kainnne.com/brand/kain-cubed-share.jpg",
+    "width": 1200,
+    "height": 630
+  }
 }
