@@ -66,7 +66,30 @@
     "color": "berry",
     "featured": true,
     "status": "live",
-    "href": "https://studio.kainnne.com"
+    "href": "https://studio.kainnne.com",
+    "hidden": true
+  },
+  {
+    "id": "stories",
+    "number": "04",
+    "title": "Kainnne Stories",
+    "eyebrow": "VISUAL NOVEL PRODUCTION",
+    "description": {
+      "en": "Custom visual novels and adaptations of written stories.",
+      "zh": "將小說與文字內容改編成客製化視覺小說。"
+    },
+    "features": [
+      { "en": "Try a story", "zh": "作品試閱" },
+      { "en": "Novel adaptations", "zh": "小說改編" },
+      { "en": "Custom visual styles", "zh": "客製視覺風格" },
+      { "en": "Publishing partnerships", "zh": "出版／企業合作" }
+    ],
+    "category": "product",
+    "tags": ["Visual novels", "Story adaptation", "Custom production"],
+    "color": "berry",
+    "featured": true,
+    "status": "live",
+    "href": "https://stories.kainnne.com/"
   },
   {
     "id": "ai-tools",

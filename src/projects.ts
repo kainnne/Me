@@ -15,6 +15,7 @@ export type Project = {
   tags: string[];
   color: "rose" | "lilac" | "peach" | "blue" | "berry";
   featured?: boolean;
+  hidden?: boolean;
   status: "live" | "source" | "private";
   href?: string;
   source?: string;
@@ -27,4 +28,4 @@ export const projectCategories: { id: ProjectCategory; label: string }[] = [
   { id: "workflow", label: "Workflows" },
 ];
 
-export const projects = projectData as Project[];
+export const projects = (projectData as Project[]).filter((project) => !project.hidden);

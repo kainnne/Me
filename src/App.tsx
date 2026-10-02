@@ -192,8 +192,8 @@ function ProjectCard({ project, index, language }: { project: Project; index: nu
     ? MonitorDown
     : project.id === "wikinb"
       ? BookOpenText
-      : project.id === "studio"
-        ? Music2
+      : project.id === "stories"
+        ? BookOpenText
         : project.id === "ai-tools"
           ? Grid2X2
           : Workflow;

@@ -17,7 +17,7 @@ const escapeHtml = (value) => String(value)
 
 const absolute = (pathname) => new URL(pathname, metadata.siteUrl).href;
 const brandImageUrl = absolute(metadata.brandMark.path);
-const publicProjects = projects.filter((project) => project.status === "live" && project.href);
+const publicProjects = projects.filter((project) => !project.hidden && project.status === "live" && project.href);
 
 const jsonLd = {
   "@context": "https://schema.org",
