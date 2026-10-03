@@ -6,9 +6,7 @@ import {
   Grid2X2,
   Mail,
   MonitorDown,
-  Moon,
   Music2,
-  Sun,
   Workflow,
   X,
 } from "lucide-react";
@@ -26,7 +24,11 @@ const INSTAGRAM = "https://www.instagram.com/kaine_z_/";
 const YOUTUBE_MUSIC = "https://music.youtube.com/channel/UCRk-djUeDdJ31-kcfAKKWwQ?si=engK-FXHeyWAduh6";
 const WIKINB_GEMINI = "https://wikinb.kainnne.com/gemini/";
 const titleLetters = Array.from("Kaine.");
-const disciplines = ["Apps Design", "UI / UX", "AI", "Music", "Machine Learning"];
+const disciplines = ["Knowledge", "AI", "Nuance", "Narrative", "Novelty", "Experience"];
+const brandTagline: Record<SiteLanguage, string> = {
+  zh: "最前沿的 AI 技術，最細膩的人文藝術團隊。",
+  en: "A team with cutting-edge AI expertise and a deep appreciation for art and culture.",
+};
 const personalIntroduction: Record<SiteLanguage, string> = {
   en: "Kaine's personal website.",
   zh: "kaine 的個人網頁。",
@@ -482,10 +484,22 @@ function App() {
   const [contactOpen, setContactOpen] = useState(false);
   const contactControlRef = useRef<HTMLDivElement>(null);
   const [mood, setMood] = useState<"dream" | "dusk">(() =>
-    window.localStorage.getItem("kainnne-mood") === "dusk" ? "dusk" : "dream",
+    window.localStorage.getItem("kainnne-mood") === "dusk"
+      || (!window.localStorage.getItem("kainnne-mood") && window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ? "dusk" : "dream",
   );
   const [language, setLanguage] = useState<SiteLanguage>("zh");
   const scrollProgress = usePageEffects();
+  const previousMenuState = useRef({ projectsOpen, contactOpen });
+
+  useEffect(() => {
+    const previous = previousMenuState.current;
+    if (previous.projectsOpen !== projectsOpen || previous.contactOpen !== contactOpen) {
+      // Opening one menu can also dismiss another: change the palette once per update.
+      setMood((current) => current === "dream" ? "dusk" : "dream");
+      previousMenuState.current = { projectsOpen, contactOpen };
+    }
+  }, [projectsOpen, contactOpen]);
 
   useEffect(() => {
     document.documentElement.dataset.mood = mood;
@@ -586,21 +600,6 @@ function App() {
           </nav>
         )}
 
-        <motion.button
-          className="icon-button"
-          type="button"
-          onClick={() => setMood(mood === "dream" ? "dusk" : "dream")}
-          aria-label={
-            language === "en"
-              ? `Switch to ${mood === "dream" ? "dark" : "light"} mode`
-              : `切換至${mood === "dream" ? "深色" : "淺色"}模式`
-          }
-          whileHover={{ rotate: 8, scale: 1.06 }}
-          whileTap={{ rotate: 8, scale: 1.06 }}
-        >
-          {mood === "dream" ? <Moon size={17} /> : <Sun size={17} />}
-        </motion.button>
-
         <div className="site-language-switch" role="group" aria-label="Site language">
           <button
             type="button"
@@ -636,6 +635,12 @@ function App() {
             </motion.p>}
             <div className="hero-title-interaction">
               <motion.h1 className="hero-title" aria-label="Kain³e" initial="hidden" animate="visible" whileHover="hover" whileTap="hover">
+                <button
+                  className="brand-theme-trigger"
+                  type="button"
+                  aria-label={language === "en" ? "Kain³e — switch site colors" : "Kain³e：切換網站色彩"}
+                  onClick={() => setMood((current) => current === "dream" ? "dusk" : "dream")}
+                >
                 {titleLetters.map((letter, index) => (
                   <motion.span
                     key={`${letter}-${index}`}
@@ -651,20 +656,35 @@ function App() {
                     {letter === "n" && <sup className="brand-exponent">3</sup>}
                   </motion.span>
                 ))}
+                </button>
               </motion.h1>
             </div>
 
-            <motion.div className="hero-disciplines" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.58 }}>
+            <motion.p
+              className="hero-tagline"
+              lang={language === "en" ? "en" : "zh-Hant"}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.48 }}
+            >
+              {brandTagline[language]}
+            </motion.p>
+
+            <motion.div className="hero-disciplines" aria-label="Knowledge, AI, Nuance, Narrative, Novelty, Experience" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.58 }}>
               {disciplines.map((discipline, index) => (
-                <motion.span
+                <motion.button
                   key={discipline}
+                  type="button"
+                  aria-label={language === "en" ? `${discipline} — switch site colors` : `${discipline}：切換網站色彩`}
+                  onClick={() => setMood((current) => current === "dream" ? "dusk" : "dream")}
                   className={`discipline discipline-${index + 1}`}
                   whileHover={{ y: -4, scale: 1.055 }}
                   whileTap={{ y: -4, scale: 1.055 }}
                   transition={{ type: "spring", stiffness: 390, damping: 22 }}
                 >
-                  {discipline}
-                </motion.span>
+                  <span className="discipline-initial">{discipline === "AI" ? discipline : discipline[0]}</span>
+                  {discipline !== "AI" && <span className="discipline-rest">{discipline.slice(1)}</span>}
+                </motion.button>
               ))}
             </motion.div>
 

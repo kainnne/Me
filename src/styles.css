@@ -183,7 +183,7 @@ a {
   z-index: 200;
   width: min(820px, calc(100% - 36px));
   height: 72px;
-  padding: 7px 64px 7px 7px;
+  padding: 7px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -989,6 +989,26 @@ a {
   cursor: pointer;
 }
 
+.brand-theme-trigger {
+  display: inline-flex;
+  align-items: baseline;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.brand-theme-trigger:focus-visible,
+.discipline:focus-visible {
+  outline: 2px solid var(--ink-soft);
+  outline-offset: 5px;
+  border-radius: 14px;
+}
+
 .hero-title-interaction {
   display: block;
   border-radius: 28px;
@@ -1022,24 +1042,49 @@ a {
   -webkit-background-clip: text;
 }
 
+.hero-tagline {
+  max-width: min(52ch, 100%);
+  margin: 24px 12px 0;
+  color: #656068;
+  font-size: clamp(0.72rem, 1.1vw, 0.8rem);
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.025em;
+  text-align: center;
+  text-wrap: balance;
+}
+
+[data-mood="dusk"] .hero-tagline {
+  color: #c1bac3;
+}
+
+.hero-tagline + .hero-disciplines {
+  margin-top: 18px;
+}
+
 .hero-disciplines {
   margin-top: clamp(25px, 4vh, 38px);
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 9px;
+  gap: 10px 10px;
+  padding-inline: 12px;
 }
 
 .discipline {
   --discipline-tone: 183, 148, 255;
+  --discipline-ink: #302d32;
   position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
   padding: 7px 11px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.18);
-  color: var(--ink-strong);
+  color: var(--discipline-ink);
   font-family: "Quicksand", sans-serif;
   font-size: clamp(0.66rem, 1.1vw, 0.76rem);
   font-weight: 700;
@@ -1047,8 +1092,34 @@ a {
   text-transform: uppercase;
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(8px);
-  cursor: default;
+  cursor: pointer;
+  touch-action: manipulation;
   transition: color 0.22s ease, border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+}
+
+.discipline-initial,
+.discipline-rest {
+  display: inline-block;
+  line-height: 1.15;
+}
+
+.discipline-initial {
+  font-size: 1.35em;
+  letter-spacing: 0.015em;
+  color: var(--discipline-ink);
+}
+
+.discipline-rest {
+  font-size: 1.05em;
+  color: #656068;
+}
+
+[data-mood="dusk"] .discipline {
+  --discipline-ink: #eee9ed;
+}
+
+[data-mood="dusk"] .discipline-rest {
+  color: #c1bac3;
 }
 
 .discipline::after {
@@ -1074,9 +1145,10 @@ a {
 }
 
 .discipline-2 { --discipline-tone: 110, 168, 255; }
-.discipline-3 { --discipline-tone: 255, 143, 171; }
+.discipline-3 { --discipline-tone: 255, 177, 148; }
 .discipline-4 { --discipline-tone: 94, 234, 212; }
-.discipline-5 { --discipline-tone: 255, 177, 148; }
+.discipline-5 { --discipline-tone: 255, 143, 171; }
+.discipline-6 { --discipline-tone: 183, 148, 255; }
 
 [data-mood="dusk"] .discipline {
   background: rgba(255, 255, 255, 0.05);
@@ -2187,11 +2259,11 @@ a {
 
 @media (max-width: 1160px) {
   .site-header {
-    padding: 7px 154px 7px 7px;
+    padding: 7px 104px 7px 7px;
   }
 
   .site-header > .site-language-switch {
-    right: 59px;
+    right: 9px;
     left: auto;
   }
 }
@@ -2205,7 +2277,7 @@ a {
     top: 10px;
     width: calc(100% - 20px);
     height: 62px;
-    padding: 6px 142px 6px 6px;
+    padding: 6px 95px 6px 6px;
     border-radius: 20px;
   }
 
@@ -2216,7 +2288,7 @@ a {
 
   .site-header > .site-language-switch {
     top: 9px;
-    right: 56px;
+    right: 9px;
     left: auto;
   }
 
@@ -2288,7 +2360,7 @@ a {
   }
 
   .hero-disciplines {
-    gap: 9px;
+    gap: 10px;
   }
 
   .hero-links {
@@ -2449,7 +2521,7 @@ a {
 
 @media (max-width: 480px) {
   .site-header {
-    padding: 6px 130px 6px 6px;
+    padding: 6px 83px 6px 6px;
   }
 
   .site-language-switch button {
@@ -2490,7 +2562,7 @@ a {
   }
 
   .hero-disciplines {
-    gap: 7px;
+    gap: 8px;
   }
 
   .discipline {
