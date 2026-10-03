@@ -142,7 +142,7 @@ function PerformanceGallery() {
 function GeminiPortal() {
   return (
     <a id="gemini" className="gemini-entry" href={WIKINB_GEMINI}>
-      <span className="gemini-entry-wordmark">Kain³e <span className="gemini-entry-cross">×</span> Gemini</span>
+      <span className="gemini-entry-wordmark">Get Started</span>
     </a>
   );
 }
@@ -600,24 +600,15 @@ function App() {
           </nav>
         )}
 
-        <div className="site-language-switch" role="group" aria-label="Site language">
-          <button
-            type="button"
-            className={language === "en" ? "is-active" : ""}
-            aria-pressed={language === "en"}
-            onClick={() => setLanguage("en")}
-          >
-            EN
-          </button>
-          <button
-            type="button"
-            className={language === "zh" ? "is-active" : ""}
-            aria-pressed={language === "zh"}
-            onClick={() => setLanguage("zh")}
-          >
-            中文
-          </button>
-        </div>
+        <button
+          type="button"
+          className="site-language-switch"
+          aria-label={language === "zh" ? "切換至英文" : "Switch to Chinese"}
+          lang={language === "zh" ? "en" : "zh-Hant"}
+          onClick={() => setLanguage((current) => current === "zh" ? "en" : "zh")}
+        >
+          {language === "zh" ? "EN" : "中文"}
+        </button>
       </header>
 
       <main id="main">
@@ -704,13 +695,6 @@ function App() {
             </>
           ) : null}
 
-          <motion.nav className="project-dock" aria-label="產品快速連結" initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.78 }}>
-            {projects.map((project) => (
-              <motion.a key={project.id} href={`#project-${project.id}`} whileHover={{ y: -4 }} whileTap={{ y: -4 }}>
-                <span>{project.number}</span><strong>{project.title}</strong><ArrowDown size={14} />
-              </motion.a>
-            ))}
-          </motion.nav>
         </section>
 
         <section id="projects" className="projects section-shell" aria-label="Products">

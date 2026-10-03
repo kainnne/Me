@@ -28,4 +28,6 @@ export const projectCategories: { id: ProjectCategory; label: string }[] = [
   { id: "workflow", label: "Workflows" },
 ];
 
-export const projects = (projectData as Project[]).filter((project) => !project.hidden);
+export const projects = (projectData as Project[])
+  .filter((project) => !project.hidden)
+  .map((project, index) => ({ ...project, number: String(index + 1).padStart(2, "0") }));
