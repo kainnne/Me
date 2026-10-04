@@ -482,9 +482,7 @@ function App() {
   const isPersonalArchive = /^\/me(?:\/|$)/.test(window.location.pathname);
   const [{ menu, mood }, dispatchNavigation] = useReducer(navigationThemeReducer, {
     menu: null,
-    mood: window.localStorage.getItem("kainnne-mood") === "dusk"
-      || (!window.localStorage.getItem("kainnne-mood") && window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ? "dusk" : "dream",
+    mood: "dream",
   });
   const projectsOpen = menu === "products";
   const contactOpen = menu === "contact";
@@ -499,7 +497,6 @@ function App() {
 
   useLayoutEffect(() => {
     document.documentElement.dataset.mood = mood;
-    window.localStorage.setItem("kainnne-mood", mood);
   }, [mood]);
 
   useEffect(() => {

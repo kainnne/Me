@@ -19,6 +19,8 @@ for (const mood of ['dream', 'dusk']) {
 assert.deepEqual(reduce({ menu: null, mood: 'dream' }, { type: 'toggle-mood' }), { menu: null, mood: 'dusk' });
 assert.deepEqual(reduce({ menu: null, mood: 'dusk' }, { type: 'toggle-mood' }), { menu: null, mood: 'dream' });
 const app = readFileSync(new URL('../src/App.tsx', import.meta.url), 'utf8');
+assert.match(app, /useReducer\(navigationThemeReducer, \{\s*menu: null,\s*mood: "dream",\s*\}\)/);
+assert.doesNotMatch(app, /kainnne-mood|prefers-color-scheme/);
 assert.match(app, /navigationRef\.current\.contains\(event\.target as Node\)/);
 assert.match(app, /aria-label="主要導覽" ref=\{navigationRef\}/);
 const labels = app.slice(app.indexOf('{disciplines.map'), app.indexOf('</motion.div>', app.indexOf('{disciplines.map')));

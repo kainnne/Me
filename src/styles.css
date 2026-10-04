@@ -181,10 +181,12 @@ a {
   top: 16px;
   left: 50%;
   z-index: 200;
-  width: min(820px, calc(100% - 156px));
+  width: min(884px, calc(100% - 36px));
   height: 72px;
   padding: 0;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 52px;
+  gap: 12px;
   align-items: center;
   justify-content: center;
   transform: translateX(-50%);
@@ -469,12 +471,8 @@ a {
 }
 
 .site-header > .site-language-switch {
-  position: absolute;
-  top: 50%;
-  left: calc(100% + 12px);
   width: 52px;
   min-height: 48px;
-  transform: translateY(-50%);
 }
 
 .site-language-switch:is(:hover, :active) {
@@ -2252,9 +2250,11 @@ a {
 
   .site-header {
     top: 10px;
-    width: calc(100% - 132px);
+    width: calc(100% - 20px);
     height: 62px;
     padding: 0;
+    grid-template-columns: minmax(0, 1fr) 46px;
+    gap: 10px;
   }
 
   .site-header > .icon-button {
@@ -2263,9 +2263,6 @@ a {
   }
 
   .site-header > .site-language-switch {
-    top: 50%;
-    left: calc(100% + 10px);
-    right: auto;
     width: 46px;
   }
 
@@ -2313,19 +2310,19 @@ a {
   .contact-popover {
     position: absolute;
     top: 72px;
-    width: calc(100% + 104px);
+    width: calc(100% + 56px);
     margin-right: 0;
     transform-origin: top center;
   }
 
   .projects-popover {
-    left: -52px;
+    left: 0;
     right: auto;
   }
 
   .contact-popover {
-    right: -52px;
-    left: auto;
+    right: auto;
+    left: 0;
   }
 
   .hero {
