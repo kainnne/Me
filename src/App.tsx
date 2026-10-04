@@ -18,12 +18,12 @@ import aboutEnglishMarkdown from "./content/about.en.md?raw";
 import aboutChineseMarkdown from "./content/about.md?raw";
 import { projects, type Project, type SiteLanguage } from "./projects";
 import { navigationThemeReducer } from "./navigationTheme";
+import { assistantUrl, initialLanguage } from "./assistantNavigation";
 
 const EMAIL = "ryanzhu@kainnne.com";
 const GMAIL = "kaine60649@gmail.com";
 const INSTAGRAM = "https://www.instagram.com/kaine_z_/";
 const YOUTUBE_MUSIC = "https://music.youtube.com/channel/UCRk-djUeDdJ31-kcfAKKWwQ?si=engK-FXHeyWAduh6";
-const WIKINB_GEMINI = "https://wikinb.kainnne.com/gemini/";
 const titleLetters = Array.from("Kaine.");
 const disciplines = ["Knowledge", "AI", "Nuance", "Narrative", "Novelty", "Experience"];
 const brandTagline: Record<SiteLanguage, string> = {
@@ -140,9 +140,9 @@ function PerformanceGallery() {
   );
 }
 
-function GeminiPortal() {
+function GeminiPortal({ language }: { language: SiteLanguage }) {
   return (
-    <a id="gemini" className="gemini-entry" href={WIKINB_GEMINI}>
+    <a id="gemini" className="gemini-entry" href={assistantUrl(language)}>
       <span className="gemini-entry-wordmark">Get Started</span>
     </a>
   );
@@ -490,7 +490,11 @@ function App() {
   const contactOpen = menu === "contact";
   const navigationRef = useRef<HTMLElement>(null);
   const closeMenu = () => dispatchNavigation({ type: "close-menu" });
-  const [language, setLanguage] = useState<SiteLanguage>("zh");
+  const [language, setLanguage] = useState<SiteLanguage>(() => {
+    let saved = null;
+    try { saved = window.localStorage.getItem("kainnne-language"); } catch { /* ignore */ }
+    return initialLanguage(window.location.search, saved);
+  });
   const scrollProgress = usePageEffects();
 
   useLayoutEffect(() => {
@@ -500,6 +504,12 @@ function App() {
 
   useEffect(() => {
     document.documentElement.lang = language === "en" ? "en" : "zh-Hant";
+    try { window.localStorage.setItem("kainnne-language", language); } catch { /* ignore */ }
+    const url = new URL(window.location.href);
+    if (url.searchParams.has("lang")) {
+      url.searchParams.set("lang", language === "en" ? "en" : "zh-TW");
+      window.history.replaceState(window.history.state, "", url);
+    }
   }, [language]);
 
   useEffect(() => {
@@ -651,7 +661,7 @@ function App() {
               ))}
             </motion.div>
 
-            {!isPersonalArchive && <GeminiPortal />}
+            {!isPersonalArchive && <GeminiPortal language={language} />}
 
             <motion.div className="hero-links" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.68 }}>
               <motion.a href="https://github.com/kainnne" target="_blank" rel="noreferrer" whileHover={{ y: -4 }} whileTap={{ y: -4 }}><Code2 size={17} /><span>GitHub</span><ArrowUpRight size={14} /></motion.a>
@@ -663,7 +673,7 @@ function App() {
           {isPersonalArchive ? (
             <>
               <AboutSection language={language} content={personalAboutContent} defaultOpen />
-              <GeminiPortal />
+              <GeminiPortal language={language} />
             </>
           ) : null}
 

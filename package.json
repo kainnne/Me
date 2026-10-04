@@ -9,7 +9,7 @@
     "seo:check": "node scripts/generate-seo.mjs --check",
     "build": "npm run resume:generate && npm run resume:v2:generate && npm run cake:generate && npm run seo:generate && tsc -b && vite build",
     "preview": "vite preview",
-    "test:navigation": "node scripts/test-navigation-theme.mjs",
+    "test:navigation": "node scripts/test-navigation-theme.mjs && node scripts/test-assistant-navigation.mjs",
     "resume:generate": "node scripts/build-resume.mjs",
     "resume:check": "node scripts/build-resume.mjs --check",
     "resume:v2:generate": "node scripts/build-resume-v2.mjs",
