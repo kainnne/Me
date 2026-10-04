@@ -13,13 +13,14 @@ import {
 import { MeshGradient } from "@paper-design/shaders-react";
 import { AnimatePresence, MotionConfig, motion, useReducedMotion, useScroll, useSpring } from "motion/react";
 import { marked } from "marked";
-import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
+import { useEffect, useLayoutEffect, useReducer, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
 import aboutEnglishMarkdown from "./content/about.en.md?raw";
 import aboutChineseMarkdown from "./content/about.md?raw";
 import { projects, type Project, type SiteLanguage } from "./projects";
+import { navigationThemeReducer } from "./navigationTheme";
 
 const EMAIL = "ryanzhu@kainnne.com";
-const KCIS_EMAIL = "kainnne@kcis.com.tw";
+const GMAIL = "kaine60649@gmail.com";
 const INSTAGRAM = "https://www.instagram.com/kaine_z_/";
 const YOUTUBE_MUSIC = "https://music.youtube.com/channel/UCRk-djUeDdJ31-kcfAKKWwQ?si=engK-FXHeyWAduh6";
 const WIKINB_GEMINI = "https://wikinb.kainnne.com/gemini/";
@@ -281,8 +282,8 @@ function ContactPopover({ open, onClose }: { open: boolean; onClose: () => void 
           <motion.a href={`mailto:${EMAIL}`} onClick={onClose} whileHover={{ x: 4 }} whileTap={{ x: 4 }}>
             <Mail size={18} /><span><strong>EMAIL</strong><small>{EMAIL}</small></span><ArrowUpRight size={15} />
           </motion.a>
-          <motion.a href={`mailto:${KCIS_EMAIL}`} onClick={onClose} whileHover={{ x: 4 }} whileTap={{ x: 4 }}>
-            <Mail size={18} /><span><strong>KCIS Mail</strong><small>{KCIS_EMAIL}</small></span><ArrowUpRight size={15} />
+          <motion.a href={`mailto:${GMAIL}`} onClick={onClose} whileHover={{ x: 4 }} whileTap={{ x: 4 }}>
+            <Mail size={18} /><span><strong>Gmail</strong><small>{GMAIL}</small></span><ArrowUpRight size={15} />
           </motion.a>
           <motion.a href={INSTAGRAM} target="_blank" rel="noreferrer" onClick={onClose} whileHover={{ x: 4 }} whileTap={{ x: 4 }}>
             <InstagramMark /><span><strong>Instagram</strong><small>@kaine_z_</small></span><ArrowUpRight size={15} />
@@ -479,29 +480,20 @@ function AboutSection({
 
 function App() {
   const isPersonalArchive = /^\/me(?:\/|$)/.test(window.location.pathname);
-  const [projectsOpen, setProjectsOpen] = useState(false);
-  const projectsControlRef = useRef<HTMLDivElement>(null);
-  const [contactOpen, setContactOpen] = useState(false);
-  const contactControlRef = useRef<HTMLDivElement>(null);
-  const [mood, setMood] = useState<"dream" | "dusk">(() =>
-    window.localStorage.getItem("kainnne-mood") === "dusk"
+  const [{ menu, mood }, dispatchNavigation] = useReducer(navigationThemeReducer, {
+    menu: null,
+    mood: window.localStorage.getItem("kainnne-mood") === "dusk"
       || (!window.localStorage.getItem("kainnne-mood") && window.matchMedia("(prefers-color-scheme: dark)").matches)
       ? "dusk" : "dream",
-  );
+  });
+  const projectsOpen = menu === "products";
+  const contactOpen = menu === "contact";
+  const navigationRef = useRef<HTMLElement>(null);
+  const closeMenu = () => dispatchNavigation({ type: "close-menu" });
   const [language, setLanguage] = useState<SiteLanguage>("zh");
   const scrollProgress = usePageEffects();
-  const previousMenuState = useRef({ projectsOpen, contactOpen });
 
-  useEffect(() => {
-    const previous = previousMenuState.current;
-    if (previous.projectsOpen !== projectsOpen || previous.contactOpen !== contactOpen) {
-      // Opening one menu can also dismiss another: change the palette once per update.
-      setMood((current) => current === "dream" ? "dusk" : "dream");
-      previousMenuState.current = { projectsOpen, contactOpen };
-    }
-  }, [projectsOpen, contactOpen]);
-
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.documentElement.dataset.mood = mood;
     window.localStorage.setItem("kainnne-mood", mood);
   }, [mood]);
@@ -512,40 +504,23 @@ function App() {
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setProjectsOpen(false);
-        setContactOpen(false);
-      }
+      if (event.key === "Escape") dispatchNavigation({ type: "close-menu" });
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
 
   useEffect(() => {
-    if (!projectsOpen) return;
-
+    if (!menu) return;
     const onPointerDown = (event: PointerEvent) => {
-      if (projectsControlRef.current && !projectsControlRef.current.contains(event.target as Node)) {
-        setProjectsOpen(false);
+      // Both menu triggers share this boundary, so switching menus never closes first.
+      if (navigationRef.current && !navigationRef.current.contains(event.target as Node)) {
+        dispatchNavigation({ type: "close-menu" });
       }
     };
-
     document.addEventListener("pointerdown", onPointerDown);
     return () => document.removeEventListener("pointerdown", onPointerDown);
-  }, [projectsOpen]);
-
-  useEffect(() => {
-    if (!contactOpen) return;
-
-    const onPointerDown = (event: PointerEvent) => {
-      if (contactControlRef.current && !contactControlRef.current.contains(event.target as Node)) {
-        setContactOpen(false);
-      }
-    };
-
-    document.addEventListener("pointerdown", onPointerDown);
-    return () => document.removeEventListener("pointerdown", onPointerDown);
-  }, [contactOpen]);
+  }, [menu]);
 
   return (
     <MotionConfig reducedMotion="user">
@@ -568,12 +543,12 @@ function App() {
             </motion.a>
           </nav>
         ) : (
-          <nav className="site-nav" aria-label="主要導覽">
-            <div className="projects-control" ref={projectsControlRef}>
+          <nav className="site-nav" aria-label="主要導覽" ref={navigationRef}>
+            <div className="projects-control">
               <motion.button
                 className="nav-projects"
                 type="button"
-                onClick={() => setProjectsOpen((value) => !value)}
+                onClick={() => dispatchNavigation({ type: "toggle-menu", menu: "products" })}
                 aria-expanded={projectsOpen}
                 aria-haspopup="dialog"
                 whileHover={{ y: -2 }}
@@ -581,13 +556,13 @@ function App() {
               >
                 Products
               </motion.button>
-              <ProjectsPopover open={projectsOpen} onClose={() => setProjectsOpen(false)} />
+              <ProjectsPopover open={projectsOpen} onClose={closeMenu} />
             </div>
-            <div className="contact-control" ref={contactControlRef}>
+            <div className="contact-control">
               <motion.button
                 className="contact-nav-button"
                 type="button"
-                onClick={() => setContactOpen((value) => !value)}
+                onClick={() => dispatchNavigation({ type: "toggle-menu", menu: "contact" })}
                 aria-expanded={contactOpen}
                 aria-haspopup="dialog"
                 whileHover={{ y: -2 }}
@@ -595,7 +570,7 @@ function App() {
               >
                 Contact
               </motion.button>
-              <ContactPopover open={contactOpen} onClose={() => setContactOpen(false)} />
+              <ContactPopover open={contactOpen} onClose={closeMenu} />
             </div>
           </nav>
         )}
@@ -630,7 +605,7 @@ function App() {
                   className="brand-theme-trigger"
                   type="button"
                   aria-label={language === "en" ? "Kain³e — switch site colors" : "Kain³e：切換網站色彩"}
-                  onClick={() => setMood((current) => current === "dream" ? "dusk" : "dream")}
+                  onClick={() => dispatchNavigation({ type: "toggle-mood" })}
                 >
                 {titleLetters.map((letter, index) => (
                   <motion.span
@@ -663,11 +638,8 @@ function App() {
 
             <motion.div className="hero-disciplines" aria-label="Knowledge, AI, Nuance, Narrative, Novelty, Experience" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.58 }}>
               {disciplines.map((discipline, index) => (
-                <motion.button
+                <motion.span
                   key={discipline}
-                  type="button"
-                  aria-label={language === "en" ? `${discipline} — switch site colors` : `${discipline}：切換網站色彩`}
-                  onClick={() => setMood((current) => current === "dream" ? "dusk" : "dream")}
                   className={`discipline discipline-${index + 1}`}
                   whileHover={{ y: -4, scale: 1.055 }}
                   whileTap={{ y: -4, scale: 1.055 }}
@@ -675,7 +647,7 @@ function App() {
                 >
                   <span className="discipline-initial">{discipline === "AI" ? discipline : discipline[0]}</span>
                   {discipline !== "AI" && <span className="discipline-rest">{discipline.slice(1)}</span>}
-                </motion.button>
+                </motion.span>
               ))}
             </motion.div>
 
