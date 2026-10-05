@@ -1052,8 +1052,10 @@ a {
 
 .hero-disciplines {
   margin-top: clamp(25px, 4vh, 38px);
+  width: max-content;
+  max-width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, max-content);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: center;
   justify-content: center;
   gap: 10px 10px;
@@ -1062,6 +1064,7 @@ a {
 
 .discipline-target {
   display: inline-flex;
+  min-width: 0;
 }
 
 .discipline {
@@ -1070,6 +1073,7 @@ a {
   --discipline-muted: #656068;
   position: relative;
   display: inline-flex;
+  width: 100%;
   align-items: baseline;
   justify-content: center;
   padding: 7px 11px;
