@@ -1114,7 +1114,7 @@ a {
   right: 100%;
   bottom: 1px;
   left: 0;
-  height: 2px;
+  height: 3px;
   border-radius: 99px;
   background: rgb(var(--discipline-tone));
   transition: right 0.26s ease;
