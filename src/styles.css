@@ -1060,6 +1060,10 @@ a {
   padding-inline: 12px;
 }
 
+.discipline-target {
+  display: inline-flex;
+}
+
 .discipline {
   --discipline-tone: 183, 148, 255;
   --discipline-ink: #302d32;
@@ -1083,7 +1087,17 @@ a {
   backdrop-filter: blur(8px);
   cursor: pointer;
   touch-action: manipulation;
-  transition: color 0.22s ease, border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+  transition: color 0.22s ease, border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease-out;
+}
+
+.discipline-target:active .discipline {
+  transform: translateY(-4px) scale(1.055);
+}
+
+@media (hover: hover) {
+  .discipline-target:hover .discipline {
+    transform: translateY(-4px) scale(1.055);
+  }
 }
 
 .discipline-initial,
@@ -1125,7 +1139,8 @@ a {
   box-shadow: 0 9px 28px rgba(var(--discipline-tone), 0.13), inset 0 1px rgba(255, 255, 255, 0.48);
 }
 
-.discipline:is(:hover, :focus-visible, [aria-pressed="true"])::after {
+.discipline-target:hover .discipline::after,
+.discipline:is(:focus-visible, [aria-pressed="true"])::after {
   clip-path: inset(0);
 }
 

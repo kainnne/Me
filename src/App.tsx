@@ -646,22 +646,23 @@ function App() {
 
             <motion.div className="hero-disciplines" aria-label="Knowledge, AI, Nuance, Narrative, Novelty, Experience" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.58 }}>
               {disciplines.map((discipline, index) => (
-                <motion.button
+                <span
                   key={discipline}
-                  className={`discipline discipline-${index + 1}`}
-                  type="button"
-                  aria-label={discipline}
-                  aria-pressed={activeDisciplines.includes(index)}
-                  onClick={() => setActiveDisciplines(current => current.includes(index)
-                    ? current.filter(active => active !== index)
-                    : [...current, index])}
-                  whileHover={{ y: -4, scale: 1.055 }}
-                  whileTap={{ y: -4, scale: 1.055 }}
-                  transition={{ type: "spring", stiffness: 390, damping: 22 }}
+                  className="discipline-target"
                 >
-                  <span className="discipline-initial">{discipline === "AI" ? discipline : discipline[0]}</span>
-                  {discipline !== "AI" && <span className="discipline-rest">{discipline.slice(1)}</span>}
-                </motion.button>
+                  <button
+                    className={`discipline discipline-${index + 1}`}
+                    type="button"
+                    aria-label={discipline}
+                    aria-pressed={activeDisciplines.includes(index)}
+                    onClick={() => setActiveDisciplines(current => current.includes(index)
+                      ? current.filter(active => active !== index)
+                      : [...current, index])}
+                  >
+                    <span className="discipline-initial">{discipline === "AI" ? discipline : discipline[0]}</span>
+                    {discipline !== "AI" && <span className="discipline-rest">{discipline.slice(1)}</span>}
+                  </button>
+                </span>
               ))}
             </motion.div>
 
