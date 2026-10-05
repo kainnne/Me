@@ -1108,30 +1108,16 @@ a {
   --discipline-muted: #c1bac3;
 }
 
-.discipline::before,
 .discipline::after {
   content: "";
   position: absolute;
-  pointer-events: none;
-  right: 88%;
-  left: 12%;
-  border-radius: 99px;
-  opacity: 0;
-  transition: right 0.26s ease, opacity 0.22s ease;
-}
-
-.discipline::before {
-  bottom: -2px;
-  height: 9px;
-  background: rgb(var(--discipline-tone));
-  filter: blur(4px);
-}
-
-.discipline::after {
-  bottom: 0;
+  right: 100%;
+  bottom: 1px;
+  left: 0;
   height: 2px;
-  background: linear-gradient(90deg, rgba(var(--discipline-tone), 0), rgb(var(--discipline-tone)) 22%, rgba(255, 255, 255, 0.9) 50%, rgb(var(--discipline-tone)) 78%, rgba(var(--discipline-tone), 0));
-  box-shadow: 0 -1px 4px rgba(var(--discipline-tone), 0.85), 0 -3px 9px rgba(var(--discipline-tone), 0.65);
+  border-radius: 99px;
+  background: rgb(var(--discipline-tone));
+  transition: right 0.26s ease;
 }
 
 .discipline[aria-pressed="true"] {
@@ -1140,10 +1126,8 @@ a {
   box-shadow: 0 9px 28px rgba(var(--discipline-tone), 0.13), inset 0 1px rgba(255, 255, 255, 0.48);
 }
 
-.discipline:is(:hover, :focus-visible, [aria-pressed="true"])::before,
 .discipline:is(:hover, :focus-visible, [aria-pressed="true"])::after {
-  right: 12%;
-  opacity: 1;
+  right: 0;
 }
 
 .discipline-2 { --discipline-tone: 110, 168, 255; }
