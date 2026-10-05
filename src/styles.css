@@ -1081,7 +1081,7 @@ a {
   text-transform: uppercase;
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(8px);
-  cursor: default;
+  cursor: pointer;
   touch-action: manipulation;
   transition: color 0.22s ease, border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
 }
@@ -1120,13 +1120,13 @@ a {
   transition: right 0.26s ease;
 }
 
-.discipline:is(:hover, :active) {
+.discipline[aria-pressed="true"] {
   border-color: rgba(var(--discipline-tone), 0.43);
   background: rgba(var(--discipline-tone), 0.13);
   box-shadow: 0 9px 28px rgba(var(--discipline-tone), 0.13), inset 0 1px rgba(255, 255, 255, 0.48);
 }
 
-.discipline:is(:hover, :active)::after {
+.discipline:is(:hover, :focus-visible, [aria-pressed="true"])::after {
   right: 0;
 }
 
@@ -1138,6 +1138,10 @@ a {
 
 [data-mood="dusk"] .discipline {
   background: rgba(255, 255, 255, 0.05);
+}
+
+[data-mood="dusk"] .discipline[aria-pressed="true"] {
+  background: rgba(var(--discipline-tone), 0.13);
 }
 
 .hero-links {

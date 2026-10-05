@@ -24,5 +24,6 @@ assert.doesNotMatch(app, /kainnne-mood|prefers-color-scheme/);
 assert.match(app, /navigationRef\.current\.contains\(event\.target as Node\)/);
 assert.match(app, /aria-label="主要導覽" ref=\{navigationRef\}/);
 const labels = app.slice(app.indexOf('{disciplines.map'), app.indexOf('</motion.div>', app.indexOf('{disciplines.map')));
-assert.doesNotMatch(labels, /onClick|switch site colors|切換網站色彩/);
-console.log('Navigation: open stays dark, menu switching stays dark, all close paths return light, title toggles, labels are decorative.');
+assert.doesNotMatch(labels, /dispatchNavigation|switch site colors|切換網站色彩/);
+assert.match(labels, /aria-pressed=\{activeDisciplines\.includes\(index\)\}/);
+console.log('Navigation: open stays dark, menu switching stays dark, all close paths return light, title toggles, word selection does not switch the page theme.');
