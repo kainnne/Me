@@ -111,6 +111,80 @@
     "color": "blue",
     "featured": true,
     "status": "live",
-    "href": "https://ai-tools.kainnne.com"
+    "href": "https://ai-tools.kainnne.com",
+    "hidden": true
+  },
+  {
+    "id": "development",
+    "number": "05",
+    "title": "Development",
+    "eyebrow": "WEB APPS · INTERACTIVE EXPERIMENTS",
+    "description": {
+      "en": "Web applications and interactive experiments.",
+      "zh": "網頁應用與互動實驗。"
+    },
+    "features": [
+      {
+        "en": "Web apps",
+        "zh": "網頁應用"
+      },
+      {
+        "en": "Interactive experiments",
+        "zh": "互動實驗"
+      },
+      {
+        "en": "Project directory",
+        "zh": "專案入口"
+      }
+    ],
+    "category": "product",
+    "tags": [
+      "Web apps",
+      "Development",
+      "Experiments"
+    ],
+    "color": "blue",
+    "featured": true,
+    "status": "live",
+    "href": "https://development.kainnne.com/"
+  },
+  {
+    "id": "learning",
+    "number": "06",
+    "title": "Kain³e Academy",
+    "eyebrow": "COURSES · ARTICLES · VIDEOS",
+    "description": {
+      "en": "Courses and articles, connected to Kain³e AI.",
+      "zh": "課程與文章，串接 Kain³e AI。"
+    },
+    "features": [
+      {
+        "en": "Course collections",
+        "zh": "課程導覽"
+      },
+      {
+        "en": "Article search",
+        "zh": "文章搜尋"
+      },
+      {
+        "en": "Video category",
+        "zh": "影片分類"
+      },
+      {
+        "en": "Kain³e AI",
+        "zh": "AI 學習入口"
+      }
+    ],
+    "category": "knowledge",
+    "tags": [
+      "Learning",
+      "Articles",
+      "AI"
+    ],
+    "color": "peach",
+    "featured": true,
+    "status": "live",
+    "href": "https://academy.kainnne.com/",
+    "source": "https://github.com/kainnne/Kainnne-Learn"
   }
 ]

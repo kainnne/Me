@@ -195,9 +195,11 @@ function ProjectCard({ project, index, language }: { project: Project; index: nu
       ? BookOpenText
       : project.id === "stories"
         ? BookOpenText
-        : project.id === "ai-tools"
-          ? Grid2X2
-          : Workflow;
+        : project.id === "learning"
+          ? BookOpenText
+          : project.id === "development" || project.id === "ai-tools"
+            ? Grid2X2
+            : Workflow;
   const features = project.features.map((feature) => feature[language]);
 
   const handleMove = (event: ReactPointerEvent<HTMLElement>) => {
