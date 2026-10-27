@@ -5,3 +5,11 @@ dist/
 *.tsbuildinfo
 vite.config.js
 vite.config.d.ts
+
+# BEGIN KAINNNE PRIVATE AGENT RULES
+# Local private agent context installed by the agents CLI.
+/AGENTS.local.md
+/CLAUDE.md
+/AGENTS_Intro/
+/Intro.md
+# END KAINNNE PRIVATE AGENT RULES

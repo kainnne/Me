@@ -7,3 +7,9 @@
 - 若遇到 clone、fetch、push、GitHub 登入、部署、GitHub Pages、webhook 或 CI 錯誤，先檢查設定中是否仍寫死 `zx50416`。
 - GitHub 可能暫時重新導向舊網址，但 agent 應優先更新為 `kainnne` 的新網址。
 - 使用者名稱遷移不代表專案內容遺失，不要因此刪除或重建既有檔案。
+
+<!-- BEGIN KAINNNE PUBLIC AGENT BRIDGE -->
+## Local private Agent context
+
+If `AGENTS.local.md` exists, read it after this file and follow its routes into `AGENTS_Intro/` only as needed. These local files must not be staged or published.
+<!-- END KAINNNE PUBLIC AGENT BRIDGE -->
