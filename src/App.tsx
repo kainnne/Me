@@ -670,11 +670,12 @@ function App() {
 
             {!isPersonalArchive && <GeminiPortal language={language} />}
 
-            <motion.div className="hero-links" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.68 }}>
+            {/* 2026-10-27: social links temporarily hidden on the main site; /me keeps them. */}
+            {isPersonalArchive && <motion.div className="hero-links" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.68 }}>
               <motion.a href="https://github.com/kainnne" target="_blank" rel="noreferrer" whileHover={{ y: -4 }} whileTap={{ y: -4 }}><Code2 size={17} /><span>GitHub</span><ArrowUpRight size={14} /></motion.a>
               <motion.a href={INSTAGRAM} target="_blank" rel="noreferrer" whileHover={{ y: -4 }} whileTap={{ y: -4 }}><InstagramMark /><span>Instagram</span><ArrowUpRight size={14} /></motion.a>
               <motion.a className="music-link" href={YOUTUBE_MUSIC} target="_blank" rel="noreferrer" whileHover={{ y: -4 }} whileTap={{ y: -4 }}><Music2 size={17} /><span>YT Music</span><ArrowUpRight size={14} /></motion.a>
-            </motion.div>
+            </motion.div>}
           </div>
 
           {isPersonalArchive ? (
@@ -698,38 +699,6 @@ function App() {
 
       </main>
 
-      <footer className="site-footer section-shell">
-        <span>Kain³e</span>
-        <nav>
-          <a href="https://github.com/kainnne" target="_blank" rel="noreferrer">GitHub ↗</a>
-          <a href={INSTAGRAM} target="_blank" rel="noreferrer">Instagram ↗</a>
-          <a href={YOUTUBE_MUSIC} target="_blank" rel="noreferrer">YT Music ↗</a>
-          <a href="#top">Top ↑</a>
-        </nav>
-        <div className="footer-meta">
-          {!isPersonalArchive && (
-            <a className="creator-link" href="/me/" aria-label="About the producer">
-              Producer ↗
-            </a>
-          )}
-          <a
-            className="view-counter"
-            href="https://hits.sh/kainnne.com/"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="查看 Kain³e 網站瀏覽數統計"
-            title="總瀏覽數"
-          >
-            <img
-              src="https://hits.sh/kainnne.com.svg?view=total&style=flat-square&label=Total%20views&color=ff8fab&labelColor=4a2038"
-              alt="Kain³e 總瀏覽數"
-              decoding="async"
-              referrerPolicy="no-referrer"
-            />
-          </a>
-          <span>© {new Date().getFullYear()}</span>
-        </div>
-      </footer>
     </MotionConfig>
   );
 }

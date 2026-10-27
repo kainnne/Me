@@ -43,14 +43,13 @@
 - English／中文切換放在亮暗模式旁並預設中文，不放進 Q&A 框內；寬螢幕時亮暗模式留在頂部導覽框內，只有語言開關放在框外右側，手機維持兩者都在框內的緊湊排列。同一開關控制專案卡片說明與 Q&A。翻譯皆由本機檔案手工維護，不使用自動翻譯，兩個版本必須維持相同結構與內容意義。
 - 主站的 `Kainnne x Gemini` 位於 GitHub、Instagram、YT Music 三個入口下方，產品 Q&A 再接在 Gemini 下方；`/me` 維持個人 Q&A 在前、Gemini 在後的舊版順序。兩個路徑都將這些內容放在專案數字索引之前。
 - 首頁大型 `Kainnne.` 字標不作為連結，只保留滑鼠指向與觸控按壓的字母動畫。
-- 桌面頁尾的 `Kainnne` 靠分隔線左側對齊，四個導覽連結維持整體置中。
-- 保留 Person／ProfilePage／WebSite 結構化資料、`robots.txt`、`sitemap.xml` 與頁尾免 Cookie 公開瀏覽數，作為網站目前的 SEO／GEO 基準。
+- 保留 Person／ProfilePage／WebSite 結構化資料、`robots.txt`、`sitemap.xml`，作為網站目前的 SEO／GEO 基準。
 
 ## 主站與 `/me` 同步
 
 - `kainnne.com` 是產品入口；`/me` 是 Kaine 的個人頁面。
 - 兩個路徑共用產品資料、產品字卡、語言、主題與大部分介面。新增、刪除或調整 product／字卡時，必須同時新增或修改主站與 `/me` 對應的字卡、索引與導覽，不能只更新其中一個路徑。
-- 主站使用產品 Q&A，頁尾以 `Producer` 低調導向 `/me`；`/me` 使用個人 Q&A 並預設展開，頂部只保留一顆導向主站的 `Kainnne.com` 按鈕，個人 Q&A 之後再接 `Kainnne x Gemini`。
+- 主站使用產品 Q&A；`/me` 使用個人 Q&A 並預設展開，頂部只保留一顆導向主站的 `Kainnne.com` 按鈕，個人 Q&A 之後再接 `Kainnne x Gemini`。
 - `/me` 的入口短句固定為「kaine 的個人網頁。」／`Kaine's personal website.`；GitHub、Instagram、YT Music 三個個人入口維持不變。
 - 個人照片跑馬燈只在 `/me` 顯示；主站不得顯示。
 
@@ -76,3 +75,9 @@
 ## 2026-10-02 字標
 
 公開字標使用 Kain³e.（n 的右上角為 3），保留既有字體、漸層、動畫和玻璃按鈕。完整字標與分享圖使用版本化素材；幾何 K 圖示保留。網域與功能識別不變。
+
+## 2026-10-27 櫻花粉色系與頁尾
+
+- 主站與 `/me` 移除整個頁尾（字標、GitHub／Instagram／YT Music／Top、Producer、瀏覽數與年份）。
+- 色系改為櫻花粉：色票與按鈕顏色集中在 `src/refresh.css`，版面、字體與動畫維持 `src/styles.css` 原設計。
+- 卡片 `Open` 使用低飽和櫻花粉；`Get Started` 使用櫻花粉玻璃底與白粉漸層字。
