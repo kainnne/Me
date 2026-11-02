@@ -1,8 +1,6 @@
 {
-  "_說明": "哲威揚名片 QR code 轉址表。名片上的 QR 固定指向 https://kainnne.com/z/<代號>/ ，要換目的地只改這裡的 target，推上 main 後自動部署。",
+  "_說明": "哲威揚名片 QR code 轉址表。三張名片共用同一個 QR，固定指向 https://kainnne.com/zwy/ 。要換目的地（例如之後的哲威揚官網），只改這裡的 target，推上 main 後自動部署，已印好的名片不用重印。",
   "links": {
-    "roy":   { "name": "林子揚 Roy Lin",   "target": "https://kainnne.com/" },
-    "allen": { "name": "蕭哲安 Allen Xiao", "target": "https://kainnne.com/" },
-    "kaine": { "name": "朱璽 Kaine Zhu",   "target": "https://kainnne.com/" }
+    "zwy": { "name": "哲威揚科技 ZWY Tech", "target": "https://kainnne.com/" }
   }
 }
