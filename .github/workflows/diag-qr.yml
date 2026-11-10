@@ -1,0 +1,12 @@
+name: diag-qr
+on:
+  push:
+    branches: [diag-qr]
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          for u in "https://kainnne.com/zwy-kaine/?v=$RANDOM" "https://kainnne.com/zwy-roy/?v=$RANDOM" "https://kainnne.com/zwy-allen/?v=$RANDOM"; do
+            echo "RESULT $u"; curl -sS -m 20 -o body.html -w 'RESULT http %{http_code}\n' "$u"; grep -oE 'location.replace\([^)]*\)' body.html | sed 's/^/RESULT /'
+          done
