@@ -1,0 +1,10 @@
+name: diag-qr
+on:
+  push:
+    branches: [diag-qr]
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          curl -sS -m 20 https://rdap.verisign.com/com/v1/domain/kainnne.com | python3 -c "import json,sys;d=json.load(sys.stdin);[print('RESULT',e['eventAction'],e['eventDate']) for e in d.get('events',[])]"
