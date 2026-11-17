@@ -19,6 +19,7 @@ export type Project = {
   status: "live" | "source" | "private";
   href?: string;
   source?: string;
+  logo?: { light: string; dark: string };
 };
 
 export const projectCategories: { id: ProjectCategory; label: string }[] = [

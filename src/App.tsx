@@ -224,7 +224,14 @@ function ProjectCard({ project, index, language }: { project: Project; index: nu
       <div className="project-card-head">
         <span className="project-number">{project.number}</span>
         <motion.span className="project-icon" whileHover={{ rotate: -8, scale: 1.08 }}>
-          <Icon size={22} strokeWidth={1.7} />
+          {project.logo ? (
+            <>
+              <img className="project-logo project-logo-light" src={project.logo.light} alt="" width={26} height={26} />
+              <img className="project-logo project-logo-dark" src={project.logo.dark} alt="" width={26} height={26} />
+            </>
+          ) : (
+            <Icon size={22} strokeWidth={1.7} />
+          )}
         </motion.span>
       </div>
 

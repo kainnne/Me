@@ -165,6 +165,22 @@
   color: rgb(var(--tone-deep));
 }
 
+.project-logo {
+  display: block;
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.project-logo-dark,
+[data-mood="dusk"] .project-logo-light {
+  display: none;
+}
+
+[data-mood="dusk"] .project-logo-dark {
+  display: block;
+}
+
 .project-card-actions a:not(.project-source-link) {
   border-color: rgba(255, 255, 255, 0.7);
   background: linear-gradient(120deg, #ffc9dc, #ffb0cc);

@@ -1,5 +1,28 @@
 [
   {
+    "id": "zwy",
+    "number": "00",
+    "title": "ZWY TECH",
+    "eyebrow": "AI INTEGRATION · FIRMWARE · ELECTROMECHANICAL",
+    "description": {
+      "en": "ZWY TECH: AI integration, firmware, and electromechanical engineering.",
+      "zh": "哲威揚科技：企業 AI 導入、韌體與機電整合。"
+    },
+    "features": [
+      { "en": "Enterprise AI integration", "zh": "企業 AI 導入" },
+      { "en": "Loop Engineering", "zh": "Loop Engineering 導入" },
+      { "en": "Training and workshops", "zh": "教育訓練與企業內訓" },
+      { "en": "Firmware and electromechanical projects", "zh": "韌體與機電整合接案" }
+    ],
+    "category": "product",
+    "tags": ["Edge AI", "Firmware", "Electromechanical"],
+    "color": "blue",
+    "featured": true,
+    "status": "live",
+    "href": "https://electrical-software-roy.work/",
+    "logo": { "light": "/brand/zwy-y-light.svg", "dark": "/brand/zwy-y-dark.svg" }
+  },
+  {
     "id": "lumareader",
     "number": "01",
     "title": "LumaReader",
@@ -185,6 +208,7 @@
     "featured": true,
     "status": "live",
     "href": "https://academy.kainnne.com/",
+    "hidden": true,
     "source": "https://github.com/kainnne/Kainnne-Learn"
   }
 ]
