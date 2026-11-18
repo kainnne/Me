@@ -38,7 +38,7 @@ const SHADER = {
   mint: ["#f8fffd", "#d2f6ee", "#e0f0ff", "#ffd8e7", "#c9fff0", "#d6f7ea", "#ffffff"],
   dusk: ["#160b19", "#3c1733", "#56284c", "#273450", "#21463f", "#742d58", "#1a0c1a"], // kainnne.com dusk
 };
-let shader = null, tint = "blue";
+let shader = null, tint = "rose"; // 第 01 張 Title 的色調
 const mood = () => (root.dataset.mood === "dusk" ? "dusk" : "dream");
 const colorsNow = () => (mood() === "dusk" ? SHADER.dusk : SHADER[tint] || SHADER.rose);
 (function initShader() {
@@ -270,9 +270,16 @@ const vnItems = () => (S.VN_VIDEO.src ? [asVid(S.VN_VIDEO)] : []).concat(WORK("v
 
 /* 輪播第 1、4 張的媒體 */
 (function heroMedia() {
-  const vh = $("#vnHero");
-  vh.innerHTML = S.VN_VIDEO.src ? vidFrame(S.VN_VIDEO, 0) : imgFrame({ src: S.VN_VIDEO.poster, w: S.VN_VIDEO.w, h: S.VN_VIDEO.h, alt: "視覺小說 CG" }, 0, false);
-  bindGroup(vh, vnItems());
+  // 視覺小說：影片直接在卡片裡播放（不開放大檢視，不附 CG，CG 在下方 Details）
+  const vh = $("#vnHero"), V = S.VN_VIDEO;
+  vh.innerHTML = V.src
+    ? `<video class="vn-inline" controls playsinline preload="metadata" poster="${V.poster}" width="${V.w}" height="${V.h}" aria-label="${esc(V.title)}"><source src="${V.src}" type="video/mp4"></video>`
+    : `<img class="vn-inline" src="${V.poster}" alt="視覺小說 CG" width="${V.w}" height="${V.h}">`;
+  const vEl = $("video", vh);
+  if (vEl) {
+    vEl.addEventListener("play", () => heroHold("video", true));
+    ["pause", "ended"].forEach((t) => vEl.addEventListener(t, () => heroHold("video", false)));
+  }
   const reel = $("#reelHero");
   const vids = S.VIDEOS.filter((v) => v.w > v.h).concat(S.VIDEOS.filter((v) => v.w <= v.h));
   reel.innerHTML = vids.map((v, k) => vidFrame(v, k)).join("");
@@ -284,7 +291,7 @@ const vnItems = () => (S.VN_VIDEO.src ? [asVid(S.VN_VIDEO)] : []).concat(WORK("v
 const slides = $$(".slide"), steps = $$(".step");
 const DUR = 7, HOLD = 1.75; // 每張 7 秒；手動切換後停 DUR×HOLD 秒再回到自動
 let cur = 0, prog = null, busy = false, holdNext = false, heroDragged = false;
-const hold = { hover: false, view: false, box: false, tab: false, contact: false, role: false, notes: false };
+const hold = { hover: false, view: false, box: false, tab: false, contact: false, role: false, notes: false, video: false };
 const tw = (tl, method, els, ...args) => (els.length ? tl[method](els, ...args) : tl);
 const parts = (sl) => ({ panel: $$(".panel, .skill", sl), title: $$(".panel__title, .face", sl), body: $$(".eyebrow, .stats, .feature-list > li, .actions", sl), media: $$(".panel__media", sl) });
 slides.forEach((sl, i) => { if (i !== cur) { sl.inert = true; } });
@@ -316,6 +323,7 @@ function show(n, dir = 1) {
   setTint(to.dataset.tint);
   if (roleOpen) closeRole(true);
   hold.notes = false;
+  $$("video", from).forEach((v) => v.pause());
   fitTrack(to);
   if (!hasGsap || reduce) { from.classList.remove("is-active"); to.classList.add("is-active"); cur = n; runProgress(); return; }
   busy = true;
@@ -353,7 +361,7 @@ function dragGuard() { if (heroDragged) { heroDragged = false; return true; } re
   const track = $("#heroTrack");
   let x0 = null, y0 = 0, dx = 0, id = null, moved = false;
   track.addEventListener("pointerdown", (e) => {
-    if (e.button !== 0) return;
+    if (e.button !== 0 || e.target.closest("video")) return; // 在影片上拖曳是調進度，不換張
     x0 = e.clientX; y0 = e.clientY; dx = 0; id = e.pointerId; moved = false; heroDragged = false;
   });
   track.addEventListener("pointermove", (e) => {
@@ -379,7 +387,7 @@ function dragGuard() { if (heroDragged) { heroDragged = false; return true; } re
 })();
 
 /* 點名字：跳到 02 Title。已經在 Title 時，同一張照樣淡出再淡入。 */
-const TITLE = 1;
+const TITLE = 0; // Title 是第 01 張
 function goTitle() {
   if (cur !== TITLE) { manual(TITLE, TITLE > cur ? 1 : -1); return; }
   if (busy) return;

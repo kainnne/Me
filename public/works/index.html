@@ -46,24 +46,7 @@
     <section class="hero shell" aria-roledescription="輪播" aria-label="朱璽 Kaine Zhu">
       <div class="hero__track" id="heroTrack">
 
-        <article class="slide is-active" data-tint="blue" aria-roledescription="投影片" aria-label="1 / 5 Main Project">
-          <div class="panel tone-blue">
-            <span class="panel__spot" aria-hidden="true"></span>
-            <div class="panel__copy">
-              <p class="eyebrow">遊戲委託案</p>
-              <h2 class="panel__title">視覺小說</h2>
-              <dl class="stats">
-                <div><dt>6</dt><dd>種語言</dd></div>
-                <div><dt>32</dt><dd>章</dd></div>
-                <div><dt>86</dt><dd>個配樂節點</dd></div>
-              </dl>
-              <div class="actions"><button class="act act--main ix" type="button" data-open="vn">Details</button></div>
-            </div>
-            <figure class="panel__media" id="vnHero"></figure>
-          </div>
-        </article>
-
-        <article class="slide" data-tint="rose" aria-roledescription="投影片" aria-label="2 / 5 Title" aria-hidden="true">
+        <article class="slide is-active" data-tint="rose" aria-roledescription="投影片" aria-label="1 / 5 Title">
           <div class="panel panel--title tone-rose">
             <span class="panel__spot" aria-hidden="true"></span>
             <span class="face ix"><img src="assets/me/portrait.jpg" alt="朱璽" width="360" height="360"></span>
@@ -76,6 +59,23 @@
               <div class="role-detail" id="roleDetail" hidden></div>
             </div>
             <button type="button" class="role-close ix" id="roleClose" aria-label="返回頭銜" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+          </div>
+        </article>
+
+        <article class="slide" data-tint="blue" aria-roledescription="投影片" aria-label="2 / 5 Main Project" aria-hidden="true">
+          <div class="panel panel--vn tone-blue">
+            <span class="panel__spot" aria-hidden="true"></span>
+            <div class="panel__copy">
+              <p class="eyebrow">遊戲委託案</p>
+              <h2 class="panel__title">視覺小說</h2>
+              <dl class="stats">
+                <div><dt>6</dt><dd>種語言</dd></div>
+                <div><dt>32</dt><dd>章</dd></div>
+                <div><dt>86</dt><dd>個配樂節點</dd></div>
+              </dl>
+              <div class="actions"><button class="act act--main ix" type="button" data-open="vn">Details</button></div>
+            </div>
+            <figure class="panel__media" id="vnHero"></figure>
           </div>
         </article>
 
@@ -137,8 +137,8 @@
 
       <div class="hero__ctrl">
         <div class="steps" role="tablist" aria-label="切換">
-          <button class="step is-active ix tone-blue" type="button" role="tab" aria-selected="true"><span class="step__head"><span class="num">01</span><i class="icon-tile icon-tile--sm" data-icon="game"></i></span><b>Main Project</b><i class="step__bar"><i></i></i></button>
-          <button class="step ix tone-rose" type="button" role="tab" aria-selected="false"><span class="step__head"><span class="num">02</span><i class="icon-tile icon-tile--sm" data-icon="user"></i></span><b>Title</b><i class="step__bar"><i></i></i></button>
+          <button class="step is-active ix tone-rose" type="button" role="tab" aria-selected="true"><span class="step__head"><span class="num">01</span><i class="icon-tile icon-tile--sm" data-icon="user"></i></span><b>Title</b><i class="step__bar"><i></i></i></button>
+          <button class="step ix tone-blue" type="button" role="tab" aria-selected="false"><span class="step__head"><span class="num">02</span><i class="icon-tile icon-tile--sm" data-icon="game"></i></span><b>Main Project</b><i class="step__bar"><i></i></i></button>
           <button class="step ix tone-lilac" type="button" role="tab" aria-selected="false"><span class="step__head"><span class="num">03</span><i class="icon-tile icon-tile--sm" data-icon="spark"></i></span><b>Skills</b><i class="step__bar"><i></i></i></button>
           <button class="step ix tone-mint" type="button" role="tab" aria-selected="false"><span class="step__head"><span class="num">04</span><i class="icon-tile icon-tile--sm" data-icon="film"></i></span><b>Videos</b><i class="step__bar"><i></i></i></button>
           <button class="step ix tone-peach" type="button" role="tab" aria-selected="false"><span class="step__head"><span class="num">05</span><i class="icon-tile icon-tile--sm" data-icon="pen"></i></span><b>Design</b><i class="step__bar"><i></i></i></button>
