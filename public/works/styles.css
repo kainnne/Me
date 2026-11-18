@@ -468,3 +468,8 @@ svg{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-l
   .panel--vn .panel__media{order:-1}
   .panel--vn .stats{grid-template-columns:repeat(3,auto)}
 }
+
+/* 按下時維持在指向的位置附近（原本從 -6px 掉回 -1px，點在上緣時放開會離開按鈕，瀏覽器不算一次點擊） */
+.step.is-press{transform:translateY(-5px) scale(.985)!important}
+.act.is-press{transform:translateY(-2px) scale(.98)!important}
+.skill.is-press{transform:translateY(-6px) scale(.995)!important}

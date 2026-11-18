@@ -290,7 +290,9 @@ const vnItems = () => (S.VN_VIDEO.src ? [asVid(S.VN_VIDEO)] : []).concat(WORK("v
 /* ===== 輪播：自動換頁＋拖曳／滑動＋01–04 分頁 ===== */
 const slides = $$(".slide"), steps = $$(".step");
 const DUR = 7, HOLD = 1.75; // 每張 7 秒；手動切換後停 DUR×HOLD 秒再回到自動
-let cur = 0, prog = null, busy = false, holdNext = false, heroDragged = false;
+let cur = 0, prog = null, busy = false, holdNext = false, heroDragged = false, heroTl = null;
+// 換張動畫可被打斷：動畫中再點，前一段直接跳到結尾，馬上切到新的那張（原本動畫期間的點擊會被忽略，要點第二下）
+function finishHero() { const t = heroTl; heroTl = null; if (t) { t.progress(1); t.kill(); } busy = false; }
 const hold = { hover: false, view: false, box: false, tab: false, contact: false, role: false, notes: false, video: false };
 const tw = (tl, method, els, ...args) => (els.length ? tl[method](els, ...args) : tl);
 const parts = (sl) => ({ panel: $$(".panel, .skill", sl), title: $$(".panel__title, .face", sl), body: $$(".eyebrow, .stats, .feature-list > li, .actions", sl), media: $$(".panel__media", sl) });
@@ -315,7 +317,8 @@ function manual(n, dir) {
 }
 function show(n, dir = 1) {
   n = (n + slides.length) % slides.length;
-  if (n === cur || busy) return;
+  if (busy) finishHero();
+  if (n === cur) return;
   const from = slides[cur], to = slides[n];
   steps.forEach((s, i) => { s.classList.toggle("is-active", i === n); s.setAttribute("aria-selected", String(i === n)); });
   from.setAttribute("aria-hidden", "true"); from.inert = true;
@@ -328,7 +331,7 @@ function show(n, dir = 1) {
   if (!hasGsap || reduce) { from.classList.remove("is-active"); to.classList.add("is-active"); cur = n; runProgress(); return; }
   busy = true;
   const a = parts(from), b = parts(to);
-  const tl = gsap.timeline({ defaults: { ease: "expo.out" }, onComplete: () => { busy = false; } });
+  const tl = heroTl = gsap.timeline({ defaults: { ease: "expo.out" }, onComplete: () => { busy = false; heroTl = null; } });
   tw(tl, "to", a.panel, { autoAlpha: 0, x: -50 * dir, scale: 0.98, duration: 0.45, stagger: 0.02, ease: "power3.in" }, 0);
   tl.add(() => { from.classList.remove("is-active"); to.classList.add("is-active"); gsap.set(a.panel, { clearProps: "all" }); cur = n; runProgress(); }, 0.45);
   tw(tl, "fromTo", b.panel, { autoAlpha: 0, x: 60 * dir, scale: 0.98 }, { autoAlpha: 1, x: 0, scale: 1, duration: 0.9, stagger: 0.04 }, 0.45);
@@ -390,13 +393,13 @@ function dragGuard() { if (heroDragged) { heroDragged = false; return true; } re
 const TITLE = 0; // Title 是第 01 張
 function goTitle() {
   if (cur !== TITLE) { manual(TITLE, TITLE > cur ? 1 : -1); return; }
-  if (busy) return;
+  if (busy) finishHero();
   if (roleOpen) closeRole(true);
   holdNext = true;
   if (!hasGsap || reduce) { runProgress(); return; }
   busy = true;
   const a = parts(slides[cur]);
-  const tl = gsap.timeline({ defaults: { ease: "expo.out" }, onComplete: () => { busy = false; gsap.set([...a.panel, ...a.title, ...a.body], { clearProps: "all" }); } });
+  const tl = heroTl = gsap.timeline({ defaults: { ease: "expo.out" }, onComplete: () => { busy = false; heroTl = null; gsap.set([...a.panel, ...a.title, ...a.body], { clearProps: "all" }); } });
   tw(tl, "to", a.panel, { autoAlpha: 0, y: -14, scale: 0.98, duration: 0.35, ease: "power3.in" }, 0);
   tl.add(runProgress, 0.35);
   tw(tl, "fromTo", a.panel, { autoAlpha: 0, y: 18, scale: 0.98 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.9 }, 0.38);
