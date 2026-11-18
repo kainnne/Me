@@ -7,9 +7,11 @@
   - 所有路徑以 / 開頭。
 */
 window.SITE = {
-  // 視覺小說示範影片：gameplay-2.2.4.mp4 剪掉有作品名稱的主選單（0–16 秒、91.7 秒後），只留實機遊玩 75 秒。
+  // 視覺小說示範影片 vn-demo-v2：重新錄製，每句約 1 秒，含開場擬音、六語切換、Kain³ 品牌片頭片尾（2026-11-18 背景 agent 錄製）。
+  // 備用 vn-demo-fast：gameplay-2.2.4.mp4 從 6.6 秒（CG 鑑賞）剪到 91.5 秒，畫面加速 1.6 倍，音樂維持原速。Kaine 要求對話加快。
+  // 舊的 vn-demo-trim：gameplay-2.2.4.mp4 剪掉有作品名稱的主選單（0–16 秒、91.7 秒後），只留實機遊玩 75 秒。
   // 新錄的版本（含開場音效、Kain³ 片頭片尾）完成後換成 vn-demo-v2.mp4。
-  VN_VIDEO: { src: "assets/vn/vn-demo-trim.mp4", poster: "assets/vn/vn-demo-trim-poster.jpg", w: 1280, h: 720, title: "視覺小說示範影片", len: "1:16" },
+  VN_VIDEO: { src: "assets/vn/vn-demo-v2.mp4", poster: "assets/vn/vn-demo-v2-poster.jpg", w: 1920, h: 1080, title: "視覺小說示範影片", len: "0:52" },
 
   VIDEOS: [
     { id: "p01", src: "assets/video/kainnne-academy-p01-web.mp4", poster: "assets/video/kainnne-academy-p01-poster.jpg", w: 1920, h: 1080, title: "Kain³e Academy P01", len: "2:37" },
@@ -57,13 +59,14 @@ window.SITE = {
     },
     {
       id: "eb24", ai: false, type: "音樂專輯", title: "Everything Before 24", tone: "berry", icon: "album",
-      ways: ["作曲", "製譜", "樂手召集與排練", "發行"],
+      ways: ["作曲", "製譜", "Affinity Publisher 排版", "樂手召集與排練"],
       detail: {
         track: "eb24",
-        facts: [["曲數", "10 首"], ["長度", "約 49 分鐘"], ["編制", "鋼琴五重奏與長笛"], ["紙本樂譜", "142 頁"]],
+        facts: [["曲數", "10 首"], ["長度", "約 49 分鐘"], ["編制", "鋼琴五重奏與長笛"], ["紙本樂譜", "142 頁"], ["排版", "Affinity Publisher"]],
         // 紙本專輯譜：~/Desktop/雲端封存/紙本專輯譜/2026.5.24(finish!!).pdf 第 3、16、17、27、28、41 頁（照片頁有其他樂手，沒放）。
         media: [
-          { src: "assets/music/eb24-cover-20260524-finish.png", w: 1400, h: 1979, alt: "《Everything Before 24》樂譜封面" },
+          { src: "assets/design/2026-eb24-cover-v2.jpg", w: 1272, h: 1800, alt: "《Everything Before 24》書封" },
+          { src: "assets/design/2026-eb24-back-v2.jpg", w: 1274, h: 1800, alt: "《Everything Before 24》書背" },
           { src: "assets/music/eb24-pages/p003.webp", w: 1100, h: 1555, alt: "目錄" },
           { src: "assets/music/eb24-pages/p016.webp", w: 1100, h: 1555, alt: "Prologue 扉頁" },
           { src: "assets/music/eb24-pages/p017.webp", w: 1100, h: 1555, alt: "A Memory with Kaine 總譜" },
@@ -81,13 +84,16 @@ window.SITE = {
     {
       // 來源路徑見 assets/design/designs.json。
       id: "design", ai: false, type: "平面設計", title: "海報與印刷品", tone: "peach", icon: "design",
-      ways: ["海報", "邀請卡", "節目單", "樂譜封面"],
+      ways: ["海報", "邀請卡", "節目單", "書封與樂譜排版"],
       // pieces：展開後以 01–07 字卡呈現（type＝品項、title＝作品名）。
       detail: {
+        facts: [["工具", "Affinity Publisher、Canva"]],
         pieces: [
           { src: "assets/design/2025-dear-love-poster.jpg", w: 1272, h: 1800, type: "海報", title: "DEAR LOVE", tone: "rose" },
           { src: "assets/design/2026-rationality-and-music-poster.jpg", w: 1272, h: 1800, type: "海報", title: "理性與樂音", tone: "lilac" },
-          { src: "assets/music/eb24-cover-20260524-finish.png", w: 1400, h: 1979, type: "樂譜封面", title: "Everything Before 24", tone: "blue" },
+          { src: "assets/design/2026-eb24-cover-v2.jpg", w: 1272, h: 1800, type: "書封", title: "Everything Before 24", tone: "blue" },
+          { src: "assets/design/2026-eb24-back-v2.jpg", w: 1274, h: 1800, type: "書背", title: "Everything Before 24", tone: "lilac" },
+          { src: "assets/design/2026-eb24-invitation-digital.jpg", w: 1800, h: 1277, type: "邀請卡（電子檔）", title: "for you", tone: "berry" },
           { src: "assets/design/2025-dear-love-program.jpg", w: 1080, h: 1350, type: "節目單", title: "DEAR LOVE", tone: "berry" },
           { src: "assets/design/2026-rationality-and-music-invitation-piano.jpg", w: 1278, h: 1800, type: "邀請卡", title: "理性與樂音（直式）", tone: "peach" },
           { src: "assets/design/2025-dear-love-invitation-front.jpg", w: 1800, h: 1278, type: "邀請卡", title: "DEAR LOVE", tone: "rose" },

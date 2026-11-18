@@ -473,3 +473,19 @@ svg{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-l
 .step.is-press{transform:translateY(-5px) scale(.985)!important}
 .act.is-press{transform:translateY(-2px) scale(.98)!important}
 .skill.is-press{transform:translateY(-6px) scale(.995)!important}
+
+/* 手機：01–05 分頁與小卡的圓角要裁掉模糊光球與毛玻璃（iOS Safari 圓角裁不到濾鏡，四角會露出方形底色） */
+@media (max-width:760px){
+  .step,.skill,.piece{-webkit-mask-image:-webkit-radial-gradient(white,black);mask-image:radial-gradient(white,black)}
+  .step::after{display:none}
+  /* 02 Main Project：字縮小，讓影片是主角 */
+  .panel--vn{gap:14px;padding:14px}
+  .panel--vn .eyebrow{font-size:.64rem;margin-bottom:4px}
+  .panel--vn .panel__title{font-size:1.45rem}
+  .panel--vn .stats{margin-top:10px;padding-top:10px;gap:2px 18px}
+  .panel--vn .stats dt{font-size:1.2rem}
+  .panel--vn .stats dd{font-size:.68rem;margin-top:2px}
+  .panel--vn .actions{margin-top:12px}
+  .panel--vn .act{min-height:38px;padding:0 16px;font-size:.74rem}
+  #vnHero{border-radius:16px}
+}
