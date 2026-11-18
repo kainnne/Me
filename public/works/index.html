@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-Hant-TW" data-mood="dream">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>朱璽 Kaine Zhu</title>
+  <meta name="description" content="朱璽（Kaine Zhu）的頭銜、能力與作品。">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#FFF7FA">
+  <link rel="icon" type="image/png" href="assets/brand/kainnne-mark-512.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600;700&family=DM+Mono:wght@400;500&family=Nunito:wght@400;600;700;800&family=Quicksand:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- 第四輪第二版（2026-11-18）：頁首、Contact、字卡材質與互動照 kainnne.com（resume-website/src）；輪播照哲威揚 v7。
+       上方 01–04 輪播，下方作品字卡兩張一組。打開 Contact 整頁轉暗，關掉回亮色；輪播換張時背景換淡色調。 -->
+  <a class="skip" href="#works">跳到作品</a>
+
+  <div class="bg" aria-hidden="true">
+    <div class="bg__shader" id="bgShader"></div>
+    <div class="bg__pointer"></div>
+  </div>
+
+  <header class="site-header" id="hdr">
+    <nav class="site-nav" aria-label="主要導覽">
+      <a class="nav-cell nav-name" href="#top" id="brand" aria-label="朱璽 Kaine Zhu，回到頂端"><span class="nav-name__zh">朱璽</span><span class="nav-name__en" lang="en">Kaine Zhu</span></a>
+      <div class="contact-control">
+        <button class="nav-cell contact-nav-button" type="button" id="contactBtn" aria-expanded="false" aria-haspopup="dialog" aria-controls="contactPop">Contact</button>
+        <div class="contact-popover" id="contactPop" role="dialog" aria-label="Contact" hidden>
+          <div class="contact-popover-head"><span>Contact</span><button type="button" id="contactClose" aria-label="關閉聯絡方式"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+          <a href="mailto:ryanzhu@kainnne.com"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg><span><strong>EMAIL</strong><small>ryanzhu@kainnne.com</small></span></a>
+          <a href="mailto:chaos60649@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg><span><strong>Gmail</strong><small>chaos60649@gmail.com</small></span></a>
+          <button type="button" class="contact-copy" data-copy="559148232" aria-label="複製 LINE：559148232"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4C7 4 3 7.2 3 11.2c0 3.6 3.2 6.6 7.5 7.1l-.4 2.2 3.3-2.2c4.6-.4 7.6-3.4 7.6-7.1C21 7.2 17 4 12 4Z"/></svg><span><strong>LINE</strong><small>559148232</small></span><em class="copied" aria-hidden="true">已複製</em></button>
+          <a href="https://www.instagram.com/kaine_z_/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6"/></svg><span><strong>Instagram</strong><small>@kaine_z_</small></span></a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top" tabindex="-1">
+    <h1 class="sr">朱璽 Kaine Zhu</h1>
+
+    <!-- ===== 輪播 01–04 ===== -->
+    <section class="hero shell" aria-roledescription="輪播" aria-label="朱璽 Kaine Zhu">
+      <div class="hero__track" id="heroTrack">
+
+        <article class="slide is-active" data-tint="blue" aria-roledescription="投影片" aria-label="1 / 5 Main Project">
+          <div class="panel tone-blue">
+            <span class="panel__spot" aria-hidden="true"></span>
+            <div class="panel__copy">
+              <p class="eyebrow">遊戲委託案</p>
+              <h2 class="panel__title">視覺小說</h2>
+              <dl class="stats">
+                <div><dt>6</dt><dd>種語言</dd></div>
+                <div><dt>32</dt><dd>章</dd></div>
+                <div><dt>86</dt><dd>個配樂節點</dd></div>
+              </dl>
+              <div class="actions"><button class="act act--main ix" type="button" data-open="vn">Details</button></div>
+            </div>
+            <figure class="panel__media" id="vnHero"></figure>
+          </div>
+        </article>
+
+        <article class="slide" data-tint="rose" aria-roledescription="投影片" aria-label="2 / 5 Title" aria-hidden="true">
+          <div class="panel panel--title tone-rose">
+            <span class="panel__spot" aria-hidden="true"></span>
+            <span class="face ix"><img src="assets/me/portrait.jpg" alt="朱璽" width="360" height="360"></span>
+            <div class="roles-wrap">
+              <ol class="feature-list roles" id="roles">
+                <li><button type="button" class="role ix" data-role="zwy" aria-expanded="false" aria-controls="roleDetail"><span>01</span><b>共同創辦人</b><small>哲威揚科技</small></button></li>
+                <li><button type="button" class="role ix" data-role="kcis" aria-expanded="false" aria-controls="roleDetail"><span>02</span><b>數位教學工程師</b><small>康橋國際學校</small></button></li>
+                <li><button type="button" class="role ix" data-role="ntu" aria-expanded="false" aria-controls="roleDetail"><span>03</span><b>計畫研究專員</b><small>國立臺灣大學</small></button></li>
+              </ol>
+              <div class="role-detail" id="roleDetail" hidden></div>
+            </div>
+            <button type="button" class="role-close ix" id="roleClose" aria-label="返回頭銜" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+          </div>
+        </article>
+
+        <article class="slide" data-tint="lilac" aria-roledescription="投影片" aria-label="3 / 5 Skills" aria-hidden="true">
+          <ul class="skills">
+            <li class="skill ix tone-blue" data-go="vn"><span class="skill__spot" aria-hidden="true"></span><i class="icon-tile" data-icon="arch"></i><b>系統架構</b><small>AI Agent 與地端 AI 系統</small></li>
+            <li class="skill ix tone-lilac" data-go="kainnne"><span class="skill__spot" aria-hidden="true"></span><i class="icon-tile" data-icon="web"></i><b>UI／UX 設計</b><small>網站、介面與前端</small></li>
+            <li class="skill ix tone-rose" data-go="slide:4"><span class="skill__spot" aria-hidden="true"></span><i class="icon-tile" data-icon="text"></i><b>文字規範</b><small>替 AI 訂寫作與介面文字規則</small></li>
+            <li class="skill ix tone-berry" data-go="eb24"><span class="skill__spot" aria-hidden="true"></span><i class="icon-tile" data-icon="concert"></i><b>音樂創作</b><small>作曲、製譜、指揮、鋼琴、長笛</small></li>
+            <li class="skill ix tone-mint" data-go="video"><span class="skill__spot" aria-hidden="true"></span><i class="icon-tile" data-icon="film"></i><b>影片製作</b><small>腳本、配音、混音、字幕</small></li>
+            <li class="skill ix tone-peach" data-go="design"><span class="skill__spot" aria-hidden="true"></span><i class="icon-tile" data-icon="design"></i><b>平面設計</b><small>海報、邀請卡、節目單、樂譜封面</small></li>
+          </ul>
+        </article>
+
+        <article class="slide" data-tint="mint" aria-roledescription="投影片" aria-label="4 / 5 Videos" aria-hidden="true">
+          <div class="panel tone-mint">
+            <span class="panel__spot" aria-hidden="true"></span>
+            <div class="panel__copy">
+              <p class="eyebrow">影片製作</p>
+              <h2 class="panel__title">教學與品牌影片</h2>
+              <ol class="feature-list">
+                <li><span>01</span>腳本</li><li><span>02</span>AI 配音</li><li><span>03</span>混音</li><li><span>04</span>雙語字幕</li>
+              </ol>
+              <div class="actions"><button class="act act--main ix" type="button" data-open="video">Details</button></div>
+            </div>
+            <div class="panel__media reel" id="reelHero"></div>
+          </div>
+        </article>
+
+        <article class="slide" data-tint="lilac" aria-roledescription="投影片" aria-label="5 / 5 Design" aria-hidden="true">
+          <div class="panel panel--notes tone-peach">
+            <span class="panel__spot" aria-hidden="true"></span>
+            <div class="panel__copy">
+              <p class="eyebrow">Concept・Tool・Example</p>
+              <h2 class="panel__title">Design</h2>
+            </div>
+            <ol class="feature-list notes" id="notes" data-lenis-prevent tabindex="0" aria-label="設計做法">
+              <li><span>01</span><div><b lang="en">Design Tokens</b><code>CSS Custom Properties：亮暗兩組色票＋6 個色調</code><small>--tone、--tone-deep 讓字卡、按鈕、編號同色</small></div></li>
+              <li><span>02</span><div><b lang="en">Glassmorphism</b><code>backdrop-filter、色調漸層、角落光球、內緣高光</code><small>字卡、分頁、Contact 共用同一種材質</small></div></li>
+              <li><span>03</span><div><b lang="en">Theming</b><code>data-mood 狀態＋CSS 變數＋Shader uniforms 同步</code><small>打開 Contact 整頁轉暗，關掉回亮色</small></div></li>
+              <li><span>04</span><div><b lang="en">Anchor Navigation</b><code>錨點＋Lenis scrollTo＋狀態聯動</code><small>能力卡跳到對應作品，名字跳到 02 Title</small></div></li>
+              <li><span>05</span><div><b lang="en">Carousel</b><code>GSAP Timeline＋Pointer Events 拖曳</code><small>7 秒自動換頁，可拖曳、滑動、方向鍵</small></div></li>
+              <li><span>06</span><div><b lang="en">FLIP Animation</b><code>只動 transform 與 opacity，不觸發重排</code><small>頭銜展開時該列移到最上面</small></div></li>
+              <li><span>07</span><div><b lang="en">Progressive Disclosure</b><code>收合抽屜＋details 元素</code><small>Details 展開細節、AI 分工表</small></div></li>
+              <li><span>08</span><div><b lang="en">Micro-interaction</b><code>hover、press、focus 三態＋指標光點</code><small>字卡浮起、圖示旋轉、名字逐字跳動</small></div></li>
+              <li><span>09</span><div><b lang="en">Touch Parity</b><code>Pointer Events 統一滑鼠與觸控</code><small>手機按住＝指向，放開＝點擊，長按不選字</small></div></li>
+              <li><span>10</span><div><b lang="en">Responsive</b><code>CSS Grid、clamp()、1040／860／760 斷點</code><small>兩欄改單欄，輪播高度跟著內容</small></div></li>
+              <li><span>11</span><div><b lang="en">WebGL Background</b><code>Paper Shaders MeshGradient</code><small>每張投影片換一組淡色調</small></div></li>
+              <li><span>12</span><div><b lang="en">Smooth Scroll</b><code>Lenis＋ScrollTrigger</code><small>作品字卡第一次捲到時依序浮上</small></div></li>
+              <li><span>13</span><div><b lang="en">Performance</b><code>loading="lazy"、preload="none"、rAF 節流、Shader 降到 720p、模糊半徑 25→16px</code><small>影片點開才載入，滑鼠光點每一幀最多更新一次，降低 GPU 運算量</small></div></li>
+              <li><span>14</span><div><b lang="en">Accessibility</b><code>ARIA tablist、inert、焦點鎖定、prefers-reduced-motion</code><small>鍵盤可完整操作，減少動態時全部靜止</small></div></li>
+              <li><span>15</span><div><b lang="en">Typography</b><code>Comfortaa、Nunito、DM Mono、Noto Sans TC</code><small>標題用圓體，編號用等寬字</small></div></li>
+              <li><span>16</span><div><b lang="en">Content Rule</b><code>每個字都要有辨識、導覽或操作用途</code><small>不放宣傳句，按鈕不加箭頭</small></div></li>
+              <li><span>17</span><div><b lang="en">AI Workflow</b><code>Claude Code、Codex 依設計規則實作與審查</code><small>我負責方向、審查與驗收</small></div></li>
+            </ol>
+          </div>
+        </article>
+      </div>
+
+      <div class="hero__ctrl">
+        <div class="steps" role="tablist" aria-label="切換">
+          <button class="step is-active ix tone-blue" type="button" role="tab" aria-selected="true"><span class="step__head"><span class="num">01</span><i class="icon-tile icon-tile--sm" data-icon="game"></i></span><b>Main Project</b><i class="step__bar"><i></i></i></button>
+          <button class="step ix tone-rose" type="button" role="tab" aria-selected="false"><span class="step__head"><span class="num">02</span><i class="icon-tile icon-tile--sm" data-icon="user"></i></span><b>Title</b><i class="step__bar"><i></i></i></button>
+          <button class="step ix tone-lilac" type="button" role="tab" aria-selected="false"><span class="step__head"><span class="num">03</span><i class="icon-tile icon-tile--sm" data-icon="spark"></i></span><b>Skills</b><i class="step__bar"><i></i></i></button>
+          <button class="step ix tone-mint" type="button" role="tab" aria-selected="false"><span class="step__head"><span class="num">04</span><i class="icon-tile icon-tile--sm" data-icon="film"></i></span><b>Videos</b><i class="step__bar"><i></i></i></button>
+          <button class="step ix tone-peach" type="button" role="tab" aria-selected="false"><span class="step__head"><span class="num">05</span><i class="icon-tile icon-tile--sm" data-icon="pen"></i></span><b>Design</b><i class="step__bar"><i></i></i></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 作品：kainnne.com 專案卡，兩張一組。點 Details 在該列下方展開細節。 ===== -->
+    <section class="works shell" id="works" aria-label="Works">
+      <div class="project-grid" id="grid"></div>
+    </section>
+  </main>
+
+  <!-- 放大檢視（圖片與影片共用） -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="放大檢視" hidden>
+    <figure class="lightbox__stage" id="lbStage"></figure>
+    <p class="lightbox__count" aria-live="polite"><b id="lbNow">1</b><span id="lbAll">/ 1</span><em id="lbTitle"></em></p>
+    <button class="lb-btn lightbox__close" type="button" aria-label="關閉"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <button class="lb-btn lightbox__prev" type="button" aria-label="上一張"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+    <button class="lb-btn lightbox__next" type="button" aria-label="下一張"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+  </div>
+
+  <script src="assets/vendor/zwy/gsap.min.js"></script>
+  <script src="assets/vendor/zwy/ScrollTrigger.min.js"></script>
+  <script src="assets/vendor/zwy/lenis.min.js"></script>
+  <script src="assets/vendor/zwy/paper-mesh.min.js"></script>
+  <script src="data.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
