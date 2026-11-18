@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#fcf6f8">
+  <title>朱璽 Kaine Zhu</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;700&amp;family=DM+Mono:wght@400;500&amp;family=Noto+Sans+TC:wght@400;500;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要內容</a>
+
+  <div class="bg" aria-hidden="true">
+    <div class="bg-mesh" id="mesh"></div>
+    <div class="bg-veil"></div>
+    <div class="bg-glow"></div>
+  </div>
+
+  <header class="bar" id="bar">
+    <a class="bar-name ix" href="#main" aria-label="朱璽 Kaine Zhu，回到頂端"><span class="zh">朱璽</span><span class="en">Kaine Zhu</span></a>
+    <nav class="nav" aria-label="頁內導覽">
+      <a class="nav-a ix" href="#motive">動機</a>
+      <a class="nav-a ix" href="#works">作品</a>
+      <a class="nav-a ix" href="#system">架構</a>
+      <a class="nav-a ix" href="#future">規劃</a>
+      <a class="nav-a ix" href="#cv">履歷</a>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+
+    <!-- ===== 動機 ===== -->
+    <section class="sec" id="motive" aria-labelledby="motive-h">
+      <h2 class="sec-h" id="motive-h">動機</h2>
+      <div class="motive">
+        <p>生成式 AI 已經能直接做出完整的歌曲，旋律可以很好聽，但成品有明顯的瓶頸。生成的歌曲帶著一種 AI 特有的殘響與空間感，編制和音色也很容易聽出 AI 的痕跡，做得再好，耳朵聽久了也會膩，而且很難做出新的聲響。</p>
+        <p>我想解決的是可控性。現在的音樂人一直在追求特殊的聲響，所以我讓 AI 與系統架構、專業軟體配合：把生成的歌曲拆成可以編輯的 MIDI、樂譜和 Logic 工程，人聲交給 Synthesizer V 這類以樂譜和參數驅動的歌聲合成軟體，每個音的音高、時間、發音都能逐一調整。</p>
+        <p>選擇以 Logic 為基礎，是因為每個音都能保持可以調整。透過一版一版的迭代開發，目標是讓第一版就能做得很漂亮。</p>
+        <p>這兩首作品的旋律都是我自己寫的，沒有只靠提示詞產生整首歌。Stay Right Here 的旋律與歌詞是我寫的，Love Beyond Reach Mvt. 1（Remix）的素材直接取自我的鋼琴三重奏《Love Beyond Reach》。</p>
+        <p>未來希望把這套流程做成免費、開源、每個人都能使用的工具，讓音樂人更快把想法變成可演奏的作品，對音樂產業有所貢獻。</p>
+      </div>
+    </section>
+
+    <!-- ===== 作品 ===== -->
+    <section class="sec" id="works" aria-labelledby="works-h">
+      <h2 class="sec-h" id="works-h">作品</h2>
+
+      <div class="concl">
+        <div class="concl-col">
+          <h3 class="sub-h"><span class="tag tag-ok">已完成</span></h3>
+          <ul class="ticks">
+            <li>人聲聽起來不會膩</li>
+            <li>歌詞每個字都對到原唱的位置</li>
+            <li>換氣自然，句子有呼吸</li>
+            <li>鋼琴、鼓、貝斯等伴奏重製後表現穩定</li>
+            <li>每小節都有和弦的總譜，樂手可以直接演奏</li>
+          </ul>
+        </div>
+        <div class="concl-col">
+          <h3 class="sub-h"><span class="tag tag-gap">瓶頸</span></h3>
+          <ul class="ticks ticks-gap">
+            <li>主奏由多把吉他疊在一起，擷取旋律容易出錯</li>
+            <li>沒有人聲的語氣與發音可以對照，段落與句法較難判斷</li>
+            <li>主奏的音色與彈法仍需要人工逐段修正</li>
+          </ul>
+        </div>
+      </div>
+
+      <article class="work tone-sky" id="srh" data-song="srh" data-title="Stay Right Here">
+        <span class="pc-orb" aria-hidden="true"></span>
+        <header class="work-head">
+          <h3 class="work-title" lang="en">Stay Right Here</h3>
+          <p class="work-meta">歌曲・Eb 大調・67 BPM・主唱、和聲、鋼琴、電鋼琴、貝斯、鼓・演唱 Synthesizer V</p>
+        </header>
+        <div class="work-body">
+          <div class="player" aria-label="試聽">
+            <div class="player-top">
+              <button class="play ix" type="button" aria-label="播放"><span class="play-icon" aria-hidden="true"></span></button>
+              <button class="refbtn ix" type="button" aria-pressed="false">生成原曲（對照）</button>
+              <p class="now-v"></p>
+            </div>
+            <div class="wave" role="slider" tabindex="0" aria-label="播放位置" aria-valuemin="0"></div>
+            <p class="time"><span class="cur">0:00</span><span class="status" aria-live="polite"></span><span class="dur"></span></p>
+            <h4 class="sub-h vhead">版本迭代</h4>
+            <div class="vline" role="radiogroup" aria-label="版本"></div>
+            <p class="vread" aria-live="polite"></p>
+          </div>
+          <div class="fold score-fold" data-fold>
+            <button class="fold-head ix" type="button" aria-expanded="false"><span>總譜</span><small class="score-v"></small><i class="chev" aria-hidden="true"></i></button>
+            <div class="fold-body" inert><div class="fold-clip"><div class="fold-inner">
+              <div class="reader" aria-label="總譜"></div>
+            </div></div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="work tone-rose" id="mirror" data-song="mirror" data-title="Love Beyond Reach Mvt. 1（Remix）">
+        <span class="pc-orb" aria-hidden="true"></span>
+        <header class="work-head">
+          <h3 class="work-title"><span lang="en">Love Beyond Reach Mvt. 1</span>（Remix）</h3>
+          <p class="work-meta">演奏曲・120 BPM・4/4、5/8、6/8・雙電吉他、鋼琴、弦樂四部、貝斯、鼓</p>
+        </header>
+        <div class="work-body">
+          <div class="player" aria-label="試聽">
+            <div class="player-top">
+              <button class="play ix" type="button" aria-label="播放"><span class="play-icon" aria-hidden="true"></span></button>
+              <button class="refbtn ix" type="button" aria-pressed="false">生成原曲（對照）</button>
+              <p class="now-v"></p>
+            </div>
+            <div class="wave" role="slider" tabindex="0" aria-label="播放位置" aria-valuemin="0"></div>
+            <p class="time"><span class="cur">0:00</span><span class="status" aria-live="polite"></span><span class="dur"></span></p>
+            <h4 class="sub-h vhead">版本迭代</h4>
+            <div class="vline" role="radiogroup" aria-label="版本"></div>
+            <p class="vread" aria-live="polite"></p>
+          </div>
+          <div class="fold score-fold" data-fold>
+            <button class="fold-head ix" type="button" aria-expanded="false"><span>總譜</span><small class="score-v"></small><i class="chev" aria-hidden="true"></i></button>
+            <div class="fold-body" inert><div class="fold-clip"><div class="fold-inner">
+              <div class="reader" aria-label="總譜"></div>
+            </div></div></div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ===== 系統架構 ===== -->
+    <section class="sec" id="system" aria-labelledby="sys-h">
+      <h2 class="sec-h" id="sys-h">系統架構</h2>
+      <p class="sec-lead">生成的歌曲經過分軌、轉 MIDI 與分析後，分成四條平行作業，經過驗收與聆聽回饋再進入下一版。點選圖中的步驟可展開細節。</p>
+
+      <figure class="diagram">
+        <svg class="dg dg-wide" viewBox="0 0 1160 548" role="group" aria-label="系統架構圖">
+          <defs>
+            <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker>
+            <linearGradient id="gLoop" x1="0" x2="1"><stop offset="0" stop-color="#cf8ba5"/><stop offset="1" stop-color="#a99bd6"/></linearGradient>
+          </defs>
+          <g class="edges">
+            <path d="M148 260H174" marker-end="url(#ah)"/>
+            <path d="M336 260H362" marker-end="url(#ah)"/>
+            <path d="M542 228C562 228 558 92 574 92" marker-end="url(#ah)"/>
+            <path d="M542 252C562 252 558 206 574 206" marker-end="url(#ah)"/>
+            <path d="M542 300C562 300 558 420 574 420" marker-end="url(#ah)"/>
+            <path d="M774 92C792 92 788 156 802 156" marker-end="url(#ah)"/>
+            <path d="M774 206C792 206 788 226 802 226" marker-end="url(#ah)"/>
+            <path d="M974 190C992 190 982 250 996 250" marker-end="url(#ah)"/>
+            <path d="M774 420C900 420 950 312 996 312" marker-end="url(#ah)"/>
+            <path d="M1070 340V392" marker-end="url(#ah)"/>
+          </g>
+          <path class="loop" d="M1070 482V524H454V384" marker-end="url(#ah)"/>
+          <text class="loop-t" x="760" y="514" text-anchor="middle">下一版（v1 → v2 → v3 …）</text>
+          <text class="par-t" x="676" y="30" text-anchor="middle">平行作業</text>
+          <path class="par" d="M578 38H774"/>
+
+          <g class="nd k-in" data-step="step-split" tabindex="0" role="button" aria-label="生成歌曲">
+            <rect x="20" y="215" width="128" height="90" rx="20"/>
+            <text class="t" x="84" y="256" text-anchor="middle">生成歌曲</text>
+            <text class="s" x="84" y="280" text-anchor="middle">音訊</text>
+          </g>
+          <g class="nd k-code" data-step="step-split" tabindex="0" role="button" aria-label="分軌與轉 MIDI">
+            <rect x="178" y="200" width="158" height="120" rx="20"/>
+            <text class="t" x="257" y="246" text-anchor="middle">分軌與轉 MIDI</text>
+            <text class="s" x="257" y="272" text-anchor="middle">插件分成各樂器分軌</text>
+            <text class="s" x="257" y="292" text-anchor="middle">音訊轉成 MIDI</text>
+          </g>
+          <g class="nd k-code" data-step="step-ana" tabindex="0" role="button" aria-label="分析">
+            <rect x="366" y="140" width="176" height="240" rx="22"/>
+            <text class="t" x="454" y="184" text-anchor="middle">分析</text>
+            <text class="s" x="454" y="216" text-anchor="middle">拍號與小節</text>
+            <text class="s" x="454" y="240" text-anchor="middle">和聲</text>
+            <text class="s" x="454" y="264" text-anchor="middle">旋律</text>
+            <text class="s" x="454" y="288" text-anchor="middle">同類樂器多層分離</text>
+            <rect class="chip-r" x="384" y="306" width="140" height="52" rx="14"/>
+            <text class="s2" x="454" y="328" text-anchor="middle">E.Gtr 1 主奏</text>
+            <text class="s2" x="454" y="347" text-anchor="middle">E.Gtr 2 副旋律</text>
+          </g>
+          <g class="nd k-a" data-step="step-a" tabindex="0" role="button" aria-label="編曲與音色">
+            <rect x="578" y="46" width="196" height="92" rx="20"/>
+            <text class="t" x="676" y="84" text-anchor="middle">編曲與音色</text>
+            <text class="s" x="676" y="110" text-anchor="middle">Logic Pro 工程</text>
+          </g>
+          <g class="nd k-b" data-step="step-b" tabindex="0" role="button" aria-label="人聲">
+            <rect x="578" y="156" width="196" height="100" rx="20"/>
+            <text class="t" x="676" y="192" text-anchor="middle">人聲</text>
+            <text class="s" x="676" y="218" text-anchor="middle">歌詞逐字對位・換氣</text>
+            <text class="s" x="676" y="240" text-anchor="middle">Synthesizer V</text>
+          </g>
+          <g class="nd k-c" data-step="step-c" tabindex="0" role="button" aria-label="樂譜產生">
+            <rect x="578" y="368" width="196" height="104" rx="20"/>
+            <text class="t" x="676" y="404" text-anchor="middle">樂譜產生</text>
+            <text class="s" x="676" y="430" text-anchor="middle">MuseScore 總譜</text>
+            <text class="s" x="676" y="452" text-anchor="middle">每小節和弦・同步檢查</text>
+          </g>
+          <g class="nd k-d" data-step="step-mix" tabindex="0" role="button" aria-label="混音">
+            <rect x="806" y="96" width="168" height="196" rx="22"/>
+            <text class="t" x="890" y="130" text-anchor="middle">混音</text>
+            <rect class="chip-r" x="822" y="146" width="136" height="42" rx="13"/>
+            <text class="s2" x="890" y="172" text-anchor="middle">離線混音</text>
+            <rect class="chip-r" x="822" y="200" width="136" height="42" rx="13"/>
+            <text class="s2" x="890" y="226" text-anchor="middle">Logic 混音</text>
+            <text class="s" x="890" y="272" text-anchor="middle">兩條 branch</text>
+          </g>
+          <g class="nd k-code" data-step="step-verify" tabindex="0" role="button" aria-label="驗收">
+            <rect x="1000" y="210" width="140" height="130" rx="20"/>
+            <text class="t" x="1070" y="246" text-anchor="middle">驗收</text>
+            <text class="s" x="1070" y="274" text-anchor="middle">逐音檢查</text>
+            <text class="s" x="1070" y="296" text-anchor="middle">對位量測</text>
+            <text class="s" x="1070" y="318" text-anchor="middle">響度</text>
+          </g>
+          <g class="nd k-human" data-step="step-human" tabindex="0" role="button" aria-label="人工干預">
+            <rect x="1000" y="396" width="140" height="86" rx="20"/>
+            <text class="t" x="1070" y="432" text-anchor="middle">人工干預</text>
+            <text class="s" x="1070" y="458" text-anchor="middle">聆聽回饋</text>
+          </g>
+        </svg>
+
+        <svg class="dg dg-tall" viewBox="0 0 360 1000" role="group" aria-label="系統架構圖">
+          <defs>
+            <marker id="ah2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker>
+          </defs>
+          <g class="edges">
+            <path d="M180 74V92" marker-end="url(#ah2)"/>
+            <path d="M180 172V190" marker-end="url(#ah2)"/>
+            <path d="M150 344C150 368 62 362 62 382" marker-end="url(#ah2)"/>
+            <path d="M180 344V382" marker-end="url(#ah2)"/>
+            <path d="M210 344C210 368 298 362 298 382" marker-end="url(#ah2)"/>
+            <path d="M62 510V556" marker-end="url(#ah2)"/>
+            <path d="M180 510V556" marker-end="url(#ah2)"/>
+            <path d="M298 510V736" marker-end="url(#ah2)"/>
+            <path d="M121 690V736" marker-end="url(#ah2)"/>
+            <path d="M180 840V876" marker-end="url(#ah2)"/>
+          </g>
+          <path class="loop" d="M300 926H346V268H334" marker-end="url(#ah2)"/>
+          <text class="loop-t" x="0" y="0" text-anchor="middle" transform="translate(354 600) rotate(-90)">下一版</text>
+          <text class="par-t" x="180" y="372" text-anchor="middle">平行作業</text>
+
+          <g class="nd k-in" data-step="step-split" tabindex="0" role="button" aria-label="生成歌曲">
+            <rect x="105" y="10" width="150" height="64" rx="18"/>
+            <text class="t" x="180" y="38" text-anchor="middle">生成歌曲</text>
+            <text class="s" x="180" y="60" text-anchor="middle">音訊</text>
+          </g>
+          <g class="nd k-code" data-step="step-split" tabindex="0" role="button" aria-label="分軌與轉 MIDI">
+            <rect x="50" y="96" width="260" height="76" rx="18"/>
+            <text class="t" x="180" y="126" text-anchor="middle">分軌與轉 MIDI</text>
+            <text class="s" x="180" y="152" text-anchor="middle">插件分軌，音訊轉成 MIDI</text>
+          </g>
+          <g class="nd k-code" data-step="step-ana" tabindex="0" role="button" aria-label="分析">
+            <rect x="30" y="194" width="300" height="150" rx="20"/>
+            <text class="t" x="180" y="224" text-anchor="middle">分析</text>
+            <text class="s" x="180" y="250" text-anchor="middle">拍號與小節・和聲・旋律</text>
+            <text class="s" x="180" y="274" text-anchor="middle">同類樂器多層分離</text>
+            <rect class="chip-r" x="70" y="288" width="220" height="40" rx="12"/>
+            <text class="s2" x="180" y="313" text-anchor="middle">E.Gtr 1 主奏／E.Gtr 2 副旋律</text>
+          </g>
+          <g class="nd k-a" data-step="step-a" tabindex="0" role="button" aria-label="編曲與音色">
+            <rect x="8" y="386" width="108" height="124" rx="16"/>
+            <text class="t" x="62" y="420" text-anchor="middle">編曲</text>
+            <text class="t" x="62" y="442" text-anchor="middle">與音色</text>
+            <text class="s" x="62" y="470" text-anchor="middle">Logic Pro</text>
+            <text class="s" x="62" y="490" text-anchor="middle">工程</text>
+          </g>
+          <g class="nd k-b" data-step="step-b" tabindex="0" role="button" aria-label="人聲">
+            <rect x="126" y="386" width="108" height="124" rx="16"/>
+            <text class="t" x="180" y="420" text-anchor="middle">人聲</text>
+            <text class="s" x="180" y="448" text-anchor="middle">逐字對位</text>
+            <text class="s" x="180" y="468" text-anchor="middle">換氣</text>
+            <text class="s" x="180" y="490" text-anchor="middle">Synth V</text>
+          </g>
+          <g class="nd k-c" data-step="step-c" tabindex="0" role="button" aria-label="樂譜產生">
+            <rect x="244" y="386" width="108" height="124" rx="16"/>
+            <text class="t" x="298" y="420" text-anchor="middle">樂譜</text>
+            <text class="s" x="298" y="448" text-anchor="middle">MuseScore</text>
+            <text class="s" x="298" y="468" text-anchor="middle">每小節和弦</text>
+            <text class="s" x="298" y="490" text-anchor="middle">同步檢查</text>
+          </g>
+          <g class="nd k-d" data-step="step-mix" tabindex="0" role="button" aria-label="混音">
+            <rect x="8" y="560" width="226" height="130" rx="18"/>
+            <text class="t" x="121" y="590" text-anchor="middle">混音</text>
+            <rect class="chip-r" x="20" y="604" width="98" height="40" rx="12"/>
+            <text class="s2" x="69" y="629" text-anchor="middle">離線混音</text>
+            <rect class="chip-r" x="124" y="604" width="98" height="40" rx="12"/>
+            <text class="s2" x="173" y="629" text-anchor="middle">Logic 混音</text>
+            <text class="s" x="121" y="672" text-anchor="middle">兩條 branch</text>
+          </g>
+          <g class="nd k-code" data-step="step-verify" tabindex="0" role="button" aria-label="驗收">
+            <rect x="30" y="740" width="300" height="100" rx="18"/>
+            <text class="t" x="180" y="776" text-anchor="middle">驗收</text>
+            <text class="s" x="180" y="806" text-anchor="middle">逐音檢查・對位量測・響度</text>
+          </g>
+          <g class="nd k-human" data-step="step-human" tabindex="0" role="button" aria-label="人工干預">
+            <rect x="60" y="880" width="240" height="92" rx="18"/>
+            <text class="t" x="180" y="916" text-anchor="middle">人工干預</text>
+            <text class="s" x="180" y="944" text-anchor="middle">聆聽回饋</text>
+          </g>
+        </svg>
+      </figure>
+
+      <ul class="tools" aria-label="使用工具">
+        <li>Logic Pro</li><li>Synthesizer V</li><li>MuseScore</li><li>Python 分析工具</li>
+      </ul>
+
+      <div class="acc" id="steps">
+        <div class="fold" data-fold id="step-split">
+          <button class="fold-head ix" type="button" aria-expanded="false" aria-controls="step-split-b"><span class="dotk k-code"></span><span>分軌與轉 MIDI</span><i class="chev" aria-hidden="true"></i></button>
+          <div class="fold-body" id="step-split-b" inert><div class="fold-clip"><div class="fold-inner">
+            <ul class="pts">
+              <li>生成的歌曲先透過插件分成人聲、鼓、貝斯、鍵盤、吉他等分軌，每條分軌再轉成 MIDI。</li>
+              <li>歌詞的時間軸一起匯出，作為人聲逐字對位的依據。</li>
+              <li>所有原始素材記錄來源與雜湊值，後面每一步都能回頭比對。</li>
+            </ul>
+          </div></div></div>
+        </div>
+        <div class="fold" data-fold id="step-ana">
+          <button class="fold-head ix" type="button" aria-expanded="false" aria-controls="step-ana-b"><span class="dotk k-code"></span><span>分析</span><i class="chev" aria-hidden="true"></i></button>
+          <div class="fold-body" id="step-ana-b" inert><div class="fold-clip"><div class="fold-inner">
+            <ul class="pts">
+              <li>拍號與小節線：有原曲樂譜時逐小節對位，沒有時由程式從低音、和聲與鼓偵測。Love Beyond Reach Mvt. 1（Remix）保留 4/4、5/8、6/8 的變換。</li>
+              <li>和聲逐小節標記，之後直接寫進總譜的和弦記號。</li>
+              <li>同類樂器多層分離：同一條分軌裡可能有兩件同類樂器在做不同的事。Love Beyond Reach Mvt. 1（Remix）的電吉他分軌其實是兩把，拆成 E.Gtr 1 主奏與 E.Gtr 2 副旋律後，與原曲逐小節吻合 70–100%。</li>
+              <li>三條平行作業共用這一步的小節表，所以編曲、人聲與樂譜的小節號一致。</li>
+            </ul>
+          </div></div></div>
+        </div>
+        <div class="fold" data-fold id="step-a">
+          <button class="fold-head ix" type="button" aria-expanded="false" aria-controls="step-a-b"><span class="dotk k-a"></span><span>編曲與音色</span><i class="chev" aria-hidden="true"></i></button>
+          <div class="fold-body" id="step-a-b" inert><div class="fold-clip"><div class="fold-inner">
+            <ul class="pts">
+              <li>只用已安裝的音色，例如 Steinway 鋼琴、Rhodes 電鋼琴與 Logic 電吉他音色鏈，不依賴付費外掛。</li>
+              <li>寫成 Logic Pro 工程，每一軌保留可編輯的 MIDI，樂手或編曲者可以直接接手修改。</li>
+            </ul>
+          </div></div></div>
+        </div>
+        <div class="fold" data-fold id="step-b">
+          <button class="fold-head ix" type="button" aria-expanded="false" aria-controls="step-b-b"><span class="dotk k-b"></span><span>人聲</span><i class="chev" aria-hidden="true"></i></button>
+          <div class="fold-body" id="step-b-b" inert><div class="fold-clip"><div class="fold-inner">
+            <ul class="pts">
+              <li>歌詞用強制對齊逐字對回生成曲，再逐字檢查子音與氣音的起音位置。</li>
+              <li>Synthesizer V 重新演唱，逐音確認每個字都有發聲。</li>
+              <li>換氣只縮短前一個音的尾巴，不移動下一句的起音，總譜同步標上換氣休止符。</li>
+            </ul>
+          </div></div></div>
+        </div>
+        <div class="fold" data-fold id="step-c">
+          <button class="fold-head ix" type="button" aria-expanded="false" aria-controls="step-c-b"><span class="dotk k-c"></span><span>樂譜產生</span><i class="chev" aria-hidden="true"></i></button>
+          <div class="fold-body" id="step-c-b" inert><div class="fold-clip"><div class="fold-inner">
+            <ul class="pts">
+              <li>MuseScore 產生總譜與主旋律譜，每小節都有和弦記號，同類樂器分在不同譜表。</li>
+              <li>交付前跑同步檢查，比對譜上每個音與音檔的時間，不同步就不交付。</li>
+              <li>樂譜與編曲、人聲平行進行，不必等混音完成。</li>
+            </ul>
+          </div></div></div>
+        </div>
+        <div class="fold" data-fold id="step-mix">
+          <button class="fold-head ix" type="button" aria-expanded="false" aria-controls="step-mix-b"><span class="dotk k-d"></span><span>混音</span><i class="chev" aria-hidden="true"></i></button>
+          <div class="fold-body" id="step-mix-b" inert><div class="fold-clip"><div class="fold-inner">
+            <ul class="pts">
+              <li>離線混音由 Python 程式完成，可以很快出試聽版，並量測與生成曲的頻段差距再調整。</li>
+              <li>Logic 混音在工程內做每軌 EQ、壓縮與真實空間殘響，結果可以繼續在 Logic 編輯。</li>
+              <li>兩條 branch 同時進行，聆聽比較後選定，另一條保留作為備案。</li>
+            </ul>
+          </div></div></div>
+        </div>
+        <div class="fold" data-fold id="step-verify">
+          <button class="fold-head ix" type="button" aria-expanded="false" aria-controls="step-verify-b"><span class="dotk k-code"></span><span>驗收</span><i class="chev" aria-hidden="true"></i></button>
+          <div class="fold-body" id="step-verify-b" inert><div class="fold-clip"><div class="fold-inner">
+            <ul class="pts">
+              <li>逐音檢查：每個音都要有發聲，Love Beyond Reach Mvt. 1（Remix）的 Logic 版吉他 657 個音全部發聲。</li>
+              <li>對位量測：人聲起音與生成曲相差 60 毫秒內的比例，主歌從 64% 提升到 75%。</li>
+              <li>響度與頻段：整體響度對齊 −14 LUFS，並比較各頻段與生成曲的差距。</li>
+            </ul>
+          </div></div></div>
+        </div>
+        <div class="fold" data-fold id="step-human">
+          <button class="fold-head ix" type="button" aria-expanded="false" aria-controls="step-human-b"><span class="dotk k-human"></span><span>人工干預</span><i class="chev" aria-hidden="true"></i></button>
+          <div class="fold-body" id="step-human-b" inert><div class="fold-clip"><div class="fold-inner">
+            <ul class="pts">
+              <li>聆聽後用小節號指出問題，從出問題的那一步重跑，不必整首重做。</li>
+              <li>每一次修正都留下紀錄與當時的檔案，目前 53 筆，舊版一律不刪。</li>
+              <li>不同步、歌詞沒對上、兩把吉他混成一條，都是聆聽時發現的，發現後再寫成自動檢查。</li>
+            </ul>
+          </div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 規劃 ===== -->
+    <section class="sec" id="future" aria-labelledby="fut-h">
+      <div class="fold fold-sec" data-fold>
+        <button class="fold-head fold-head-sec ix" type="button" aria-expanded="false" aria-controls="fut-b">
+          <h2 class="sec-h" id="fut-h">未來規劃</h2><i class="chev" aria-hidden="true"></i>
+        </button>
+        <div class="fold-body" id="fut-b" inert><div class="fold-clip"><div class="fold-inner">
+          <ol class="path" aria-label="流程">
+            <li>AI 發想</li><li>音樂人調整</li><li>總譜與編曲</li><li>樂手排練</li><li class="is-live">現場演出</li>
+          </ol>
+          <ul class="pts">
+            <li>把整個流程做成可在本機執行的軟體，不依賴特定生成平台與付費外掛。</li>
+            <li>生成、分軌與採譜改用開源模型串接，只在串接後仍解決不了的地方訓練模型，例如同類樂器多層分離與主奏的演奏感。</li>
+            <li>音樂人用 AI 發想後自己調整，拿到總譜與編曲，樂手可以更快反應，同時保留自己的想法。</li>
+            <li>錄音容易被生成，現場演出無法取代。</li>
+          </ul>
+        </div></div></div>
+      </div>
+    </section>
+
+    <!-- ===== 履歷 ===== -->
+    <section class="sec" id="cv" aria-labelledby="cv-h">
+      <div class="fold fold-sec" data-fold>
+        <button class="fold-head fold-head-sec ix" type="button" aria-expanded="false" aria-controls="cv-b">
+          <h2 class="sec-h" id="cv-h">履歷</h2><i class="chev" aria-hidden="true"></i>
+        </button>
+        <div class="fold-body" id="cv-b" inert>
+          <div class="fold-clip"><div class="fold-inner cv-more">
+            <div>
+              <h3 class="sub-h">經歷</h3>
+              <ol class="num">
+                <li>康軒文教集團（康橋國際學校）AI Education Engineer，2026/7 起，負責校內 AI 工具、AI 教育訓練與知識平台前端。</li>
+                <li>2026 康橋 KC Voice 歌唱比賽評審。</li>
+                <li>哲威揚科技（ZWY TECH）共同創辦人、產品長，AirLock 獲 2026 Agentic AI on the Edge Hackathon 新北特別獎。</li>
+                <li>國立臺灣大學 生物環境系統工程學系 研究助理（2025/9–2025/12），目前持續與該系進行 LLM 於 ESG 應用的研究合作。</li>
+              </ol>
+            </div>
+            <div>
+              <h3 class="sub-h">學歷</h3>
+              <ol class="num">
+                <li>國立中山大學 海洋環境及工程學系 碩士（2023/9–2025/9）</li>
+                <li>國立中山大學 海洋環境及工程學系 學士（2019/9–2023/6）</li>
+              </ol>
+            </div>
+            <div>
+              <h3 class="sub-h">音樂</h3>
+              <ol class="num">
+                <li>個人專輯《Everything Before 24》（2026/4）</li>
+                <li>聯合音樂會《DEAR LOVE》（2025/5/21）</li>
+                <li>聯合音樂會《從巴黎到台灣：音樂旅程中的詩意與情感》（2024/12/30）</li>
+                <li>作曲發表會《理工交響之詩》（2024/6/9）</li>
+                <li>畢業音樂會（2023/6/9）</li>
+                <li>多次擔任音樂會總負責人、指揮、作曲與器樂演出，在學期間擔任社團社長，社團評鑑提升到前 15 名。</li>
+              </ol>
+            </div>
+          </div></div>
+        </div>
+      </div>
+    </section>
+
+
+    <noscript><p class="noscript">播放器與總譜閱讀器需要 JavaScript。音檔在 audio/，總譜在 scores/。</p></noscript>
+  </main>
+
+
+  <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="總譜放大閱讀">
+    <div class="lb-bar">
+      <span class="lb-count"></span>
+      <div class="lb-act">
+        <button class="lb-btn ix" type="button" data-lb="prev" aria-label="上一頁"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button class="lb-btn ix" type="button" data-lb="next" aria-label="下一頁"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+        <button class="lb-btn ix" type="button" data-lb="close" aria-label="關閉"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+    </div>
+    <div class="lb-scroll"><img class="lb-img" src="scores/pages/mirror_latest_p01.webp" width="1601" height="2265" loading="lazy" alt=""></div>
+  </div>
+
+  <script src="tracks.js"></script>
+  <script src="waveforms.js"></script>
+  <script src="app.js"></script>
+  <script type="module" src="background.js"></script>
+</body>
+</html>
