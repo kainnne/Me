@@ -177,6 +177,7 @@
   var playing = null;
   var waveId = 0;
 
+  var LOGIC_BASE = 'https://github.com/kainnne/Me/releases/download/music-lab-logic-v1/';
   function src(file) { return file.replace(/^\/+/, ''); }
   function fmt(sec) {
     if (!isFinite(sec) || sec < 0) sec = 0;
@@ -359,6 +360,12 @@
     this.read.appendChild(el('b', 'r-id', v.v));
     this.read.appendChild(el('span', 'r-t', v.text));
     this.read.appendChild(el('small', 'r-d', v.date + (i === last ? '・最新版' : '')));
+    if (v.logic) {
+      var dl = el('a', 'r-dl ix', '下載 Logic 工程（' + v.logic.size + '）');
+      dl.href = LOGIC_BASE + v.logic.file;
+      dl.setAttribute('download', '');
+      this.read.appendChild(dl);
+    }
   };
   Player.prototype.render = function () {
     var self = this;

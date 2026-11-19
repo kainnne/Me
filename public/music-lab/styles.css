@@ -600,3 +600,17 @@ main { outline: none; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: 0.01ms !important; animation: none !important; scroll-behavior: auto !important; }
 }
+
+/* Logic 工程下載連結（版本說明下方） */
+.vread .r-dl {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 10px; min-height: 36px; padding: 0 14px;
+  border-radius: 999px; border: 1px solid rgba(201, 120, 150, .35);
+  background: rgba(255, 255, 255, .7);
+  font: 500 13px/1 inherit; color: #9b4f6c; text-decoration: none;
+  transition: background .2s, transform .15s;
+}
+.vread .r-dl::before { content: "↓"; font-weight: 600; }
+.vread .r-dl:hover, .vread .r-dl:active { background: rgba(250, 228, 236, .9); }
+.vread .r-dl:active { transform: scale(.97); }
+@media (prefers-reduced-motion: reduce) { .vread .r-dl { transition: none; } }
