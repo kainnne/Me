@@ -96,19 +96,19 @@
     "id": "stories",
     "number": "04",
     "title": "Kain³e Stories",
-    "eyebrow": "VISUAL NOVEL PRODUCTION",
+    "eyebrow": "VISUAL NOVELS · FREE DOWNLOAD",
     "description": {
-      "en": "Custom visual novels and adaptations of written stories.",
-      "zh": "將小說與文字內容改編成客製化視覺小說。"
+      "en": "Original visual novels, free to download for macOS.",
+      "zh": "原創視覺小說平台，免費下載 macOS 版。"
     },
     "features": [
-      { "en": "Try a story", "zh": "作品試閱" },
-      { "en": "Novel adaptations", "zh": "小說改編" },
-      { "en": "Custom visual styles", "zh": "客製視覺風格" },
-      { "en": "Publishing partnerships", "zh": "出版／企業合作" }
+      { "en": "Two titles available", "zh": "兩部作品上架" },
+      { "en": "Browse by genre", "zh": "依類型瀏覽" },
+      { "en": "Direct macOS download", "zh": "macOS 版直接下載" },
+      { "en": "Notarized by Apple", "zh": "通過 Apple 公證" }
     ],
     "category": "product",
-    "tags": ["Visual novels", "Story adaptation", "Custom production"],
+    "tags": ["Visual novels", "Free download", "macOS"],
     "color": "berry",
     "featured": true,
     "status": "live",
