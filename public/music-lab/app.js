@@ -177,7 +177,7 @@
   var playing = null;
   var waveId = 0;
 
-  function src(file) { return '/' + file.replace(/^\/+/, ''); }
+  function src(file) { return file.replace(/^\/+/, ''); }
   function fmt(sec) {
     if (!isFinite(sec) || sec < 0) sec = 0;
     var m = Math.floor(sec / 60), s = Math.floor(sec % 60);
@@ -585,7 +585,7 @@
       (function (n) { f.addEventListener('click', function () { self.page = n; openLb(self, f); }); })(i - 1);
       this.track.appendChild(f);
     }
-    this.pdf.href = '/' + s.pdf;
+    this.pdf.href = s.pdf;
     this.page = 0;
     this.track.scrollLeft = 0;
     this.sync();
