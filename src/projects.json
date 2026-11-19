@@ -169,7 +169,8 @@
     "color": "blue",
     "featured": true,
     "status": "live",
-    "href": "https://development.kainnne.com/"
+    "href": "https://development.kainnne.com/",
+    "hidden": true
   },
   {
     "id": "works",
