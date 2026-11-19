@@ -14,7 +14,7 @@ window.SITE = {
   // 備用 vn-demo-fast：gameplay-2.2.4.mp4 從 6.6 秒（CG 鑑賞）剪到 91.5 秒，畫面加速 1.6 倍，音樂維持原速。Kaine 要求對話加快。
   // 舊的 vn-demo-trim：gameplay-2.2.4.mp4 剪掉有作品名稱的主選單（0–16 秒、91.7 秒後），只留實機遊玩 75 秒。
   // 新錄的版本（含開場音效、Kain³ 片頭片尾）完成後換成 vn-demo-v2.mp4。
-  VN_VIDEO: { src: "assets/vn/vn-promo-v4.mp4", poster: "assets/vn/vn-promo-v4-poster.jpg", w: 1920, h: 1080, title: "視覺小說宣傳片", len: "1:26" },
+  VN_VIDEO: { src: "assets/vn/vn-promo-v5.mp4", poster: "assets/vn/vn-promo-v5-poster.jpg", w: 1920, h: 1080, title: "視覺小說宣傳片", len: "1:26" },
 
   VIDEOS: [
     { id: "p01", src: "assets/video/kainnne-academy-p01-web.mp4", poster: "assets/video/kainnne-academy-p01-poster.jpg", w: 1920, h: 1080, title: "Kain³e Academy P01", len: "2:37" },
