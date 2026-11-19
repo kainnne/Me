@@ -172,6 +172,28 @@
     "href": "https://development.kainnne.com/"
   },
   {
+    "id": "works",
+    "number": "06",
+    "title": "Works",
+    "eyebrow": "FRONTEND · MOTION · PORTFOLIO",
+    "description": {
+      "en": "Front-end showcase page with video and graphic design works.",
+      "zh": "前端互動展示頁，收錄影片與平面設計作品。"
+    },
+    "features": [
+      { "en": "Carousel and motion interactions", "zh": "輪播與動態互動" },
+      { "en": "Responsive layout with touch feedback", "zh": "響應式版面與觸控回饋" },
+      { "en": "Visual novel promo film", "zh": "視覺小說宣傳片" },
+      { "en": "Design concepts and tool list", "zh": "設計概念與工具清單" }
+    ],
+    "category": "product",
+    "tags": ["Frontend", "Motion", "Portfolio"],
+    "color": "peach",
+    "featured": true,
+    "status": "live",
+    "href": "https://kainnne.com/works/"
+  },
+  {
     "id": "learning",
     "number": "06",
     "title": "Kain³e Academy",

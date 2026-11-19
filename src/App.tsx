@@ -7,6 +7,7 @@ import {
   Mail,
   MonitorDown,
   Music2,
+  PanelsTopLeft,
   Workflow,
   X,
 } from "lucide-react";
@@ -199,7 +200,9 @@ function ProjectCard({ project, index, language }: { project: Project; index: nu
           ? BookOpenText
           : project.id === "development" || project.id === "ai-tools"
             ? Grid2X2
-            : Workflow;
+            : project.id === "works"
+              ? PanelsTopLeft
+              : Workflow;
   const features = project.features.map((feature) => feature[language]);
 
   const handleMove = (event: ReactPointerEvent<HTMLElement>) => {
