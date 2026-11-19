@@ -7,12 +7,13 @@
   - 所有路徑以 / 開頭。
 */
 window.SITE = {
-  // 視覺小說示範影片 vn-demo-v3-fast：v3 重錄（一般句 0.38 秒停留、擬音句最多 0.9 秒），中段遊玩再加速 1.25 倍，平均約 0.48 秒一句，片頭片尾原速。
+  // 視覺小說宣傳片 vn-promo-v1（2026-11-19）：HyperFrames 製作，主題曲 Lunar Ambition 原速，15 段每段 16 拍（5.57 秒），遊玩錄影與 CG 展示輪流，3D 幾何轉場。工程在 scratchpad promo/vn-promo。
+  // 前一版 vn-demo-v3-fast：v3 重錄（一般句 0.38 秒停留、擬音句最多 0.9 秒），中段遊玩再加速 1.25 倍，平均約 0.48 秒一句，片頭片尾原速。
   // 前一版 vn-demo-v2：重新錄製，每句約 1 秒，含開場擬音、六語切換、Kain³ 品牌片頭片尾（2026-11-18 背景 agent 錄製）。
   // 備用 vn-demo-fast：gameplay-2.2.4.mp4 從 6.6 秒（CG 鑑賞）剪到 91.5 秒，畫面加速 1.6 倍，音樂維持原速。Kaine 要求對話加快。
   // 舊的 vn-demo-trim：gameplay-2.2.4.mp4 剪掉有作品名稱的主選單（0–16 秒、91.7 秒後），只留實機遊玩 75 秒。
   // 新錄的版本（含開場音效、Kain³ 片頭片尾）完成後換成 vn-demo-v2.mp4。
-  VN_VIDEO: { src: "assets/vn/vn-demo-v3-fast.mp4", poster: "assets/vn/vn-demo-v3-poster.jpg", w: 1920, h: 1080, title: "視覺小說示範影片", len: "0:56" },
+  VN_VIDEO: { src: "assets/vn/vn-promo-v1.mp4", poster: "assets/vn/vn-promo-v1-poster.jpg", w: 1920, h: 1080, title: "視覺小說宣傳片", len: "1:26" },
 
   VIDEOS: [
     { id: "p01", src: "assets/video/kainnne-academy-p01-web.mp4", poster: "assets/video/kainnne-academy-p01-poster.jpg", w: 1920, h: 1080, title: "Kain³e Academy P01", len: "2:37" },
