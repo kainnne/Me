@@ -298,7 +298,7 @@ const vnItems = () => (S.VN_VIDEO.src ? [asVid(S.VN_VIDEO)] : []).concat(WORK("v
 
 /* ===== 輪播：自動換頁＋拖曳／滑動＋01–04 分頁 ===== */
 const slides = $$(".slide"), steps = $$(".step");
-const DUR = 7, HOLD = 1.75; // 每張 7 秒；手動切換後停 DUR×HOLD 秒再回到自動
+const DUR = 3.5, HOLD = 1.75; // 每張 3.5 秒（Kaine 2026-11-19：7 秒太久）；手動切換後停 DUR×HOLD 秒再回到自動
 let cur = 0, prog = null, busy = false, holdNext = false, heroDragged = false, heroTl = null;
 // 換張動畫可被打斷：動畫中再點，前一段直接跳到結尾，馬上切到新的那張（原本動畫期間的點擊會被忽略，要點第二下）
 function finishHero() { const t = heroTl; heroTl = null; if (t) { t.progress(1); t.kill(); } busy = false; }
