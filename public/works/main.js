@@ -312,7 +312,7 @@ function syncProg() { if (prog) heroHeld() ? prog.pause() : prog.resume(); }
 document.addEventListener("visibilitychange", () => heroHold("tab", document.hidden));
 function runProgress() {
   if (prog) prog.kill();
-  steps.forEach((s, i) => { $(".step__bar i", s).style.width = i < cur ? "100%" : "0%"; s.classList.toggle("is-done", i < cur); });
+  steps.forEach((s, i) => { $(".step__bar i", s).style.width = "0%"; s.classList.toggle("is-done", i < cur); }); // 播過的不留滿格，只有目前這一格會跑進度
   if (!hasGsap || reduce) { $(".step__bar i", steps[cur]).style.width = "100%"; return; }
   const d = holdNext ? DUR * HOLD : DUR;
   holdNext = false;
