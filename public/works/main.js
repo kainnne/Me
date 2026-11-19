@@ -50,9 +50,18 @@ const colorsNow = () => (mood() === "dusk" ? SHADER.dusk : SHADER[tint] || SHADE
       u_distortion: 0.82, u_swirl: 0.42, u_grainMixer: 0.06, u_grainOverlay: 0.03,
       u_fit: 0, u_scale: 1, u_rotation: 0, u_offsetX: 0, u_offsetY: 0, u_originX: 0.5, u_originY: 0.5, u_worldWidth: 0, u_worldHeight: 0,
     }, undefined, reduce ? 0 : 0.1, 0, 1, 1280 * 720); // 背景只需要柔和漸層，降解析度與速度，減輕毛玻璃疊在動態背景上的負擔
-    document.addEventListener("visibilitychange", () => shader.setSpeed(document.hidden || reduce ? 0 : 0.1));
+    document.addEventListener("visibilitychange", () => syncShader());
   } catch (e) { el.remove(); shader = null; }
 })();
+// 影片播放時暫停背景動畫：毛玻璃疊在會動的背景上，每一幀都要重算，會搶走影片解碼的資源
+function syncShader() {
+  if (!shader) return;
+  const playing = $$("video").some((v) => !v.paused && !v.ended);
+  shader.setSpeed(document.hidden || reduce || playing ? 0 : 0.1);
+}
+["play", "pause", "ended", "emptied"].forEach((t) => document.addEventListener(t, (e) => { if (e.target.tagName === "VIDEO") syncShader(); }, true));
+// 不提供影片另存：選單沒有下載，右鍵選單也關掉
+document.addEventListener("contextmenu", (e) => { if (e.target.tagName === "VIDEO") e.preventDefault(); });
 function paint() {
   $('meta[name="theme-color"]').content = mood() === "dusk" ? "#1a0c1a" : "#FFF7FA";
   if (shader) shader.setUniforms({ u_colors: colorsNow().map(window.PaperShaders.getShaderColorFromString) });
@@ -202,7 +211,7 @@ const LB = (function lightbox() {
     const it = list[i];
     stage.querySelector("video")?.pause();
     stage.innerHTML = it.video
-      ? `<video src="${it.video}" poster="${it.poster || ""}" controls playsinline autoplay width="${it.w}" height="${it.h}" aria-label="${esc(it.alt)}"></video>`
+      ? `<video src="${it.video}" poster="${it.poster || ""}" controls controlslist="nodownload" playsinline autoplay width="${it.w}" height="${it.h}" aria-label="${esc(it.alt)}"></video>`
       : `<img src="${it.src}" alt="${esc(it.alt)}" width="${it.w}" height="${it.h}">`;
     now.textContent = i + 1;
     all.textContent = "/ " + list.length;
@@ -223,7 +232,7 @@ const LB = (function lightbox() {
   const close = () => {
     const done = () => {
       stage.querySelector("video")?.pause();
-      stage.innerHTML = "";
+      stage.innerHTML = ""; syncShader();
       box.hidden = true;
       if (lenis) lenis.start();
       heroHold("box", false);
@@ -273,7 +282,7 @@ const vnItems = () => (S.VN_VIDEO.src ? [asVid(S.VN_VIDEO)] : []).concat(WORK("v
   // 視覺小說：影片直接在卡片裡播放（不開放大檢視，不附 CG，CG 在下方 Details）
   const vh = $("#vnHero"), V = S.VN_VIDEO;
   vh.innerHTML = V.src
-    ? `<video class="vn-inline" controls playsinline preload="metadata" poster="${V.poster}" width="${V.w}" height="${V.h}" aria-label="${esc(V.title)}"><source src="${V.src}" type="video/mp4"></video>`
+    ? `<video class="vn-inline" controls controlslist="nodownload" playsinline preload="metadata" poster="${V.poster}" width="${V.w}" height="${V.h}" aria-label="${esc(V.title)}"><source src="${V.src}" type="video/mp4"></video>`
     : `<img class="vn-inline" src="${V.poster}" alt="視覺小說 CG" width="${V.w}" height="${V.h}">`;
   const vEl = $("video", vh);
   if (vEl) {
@@ -585,7 +594,7 @@ function closeDrawer(focusCard) {
   openCard = null;
   stopAudio();
   setOpen(c, false);
-  const done = () => { drawer.hidden = true; drawer.innerHTML = ""; };
+  const done = () => { drawer.hidden = true; drawer.innerHTML = ""; syncShader(); };
   if (hasGsap && !reduce) gsap.to(drawer, { height: 0, autoAlpha: 0, duration: 0.45, ease: "power3.inOut", onComplete: () => { done(); gsap.set(drawer, { clearProps: "all" }); } });
   else done();
   if (focusCard) $("[data-details]", c).focus({ preventScroll: true });
