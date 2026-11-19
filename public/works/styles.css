@@ -491,22 +491,17 @@ svg{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-l
   #vnHero{border-radius:16px}
 }
 
-/* 01–05：每一格都是「編號＋名稱＋進度條」排成一列（Kaine 2026-11-19 從十個版本裡選的第 6 版，電腦與手機同一種樣式）。
-   電腦五格並排；中等寬度自動換行；手機一列一格。 */
-.steps{grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
-.step{flex-direction:row;align-items:center;gap:12px;padding:15px 18px;border-radius:18px}
+/* 01–05：所有寬度都直向排列，一列一格：編號、名稱、拉長的進度條（Kaine 2026-11-19：電腦也要直排，進度條拉長跑起來比較好看）。 */
+.steps{grid-template-columns:1fr;gap:8px}
+.step{flex-direction:row;align-items:center;gap:18px;padding:15px 22px;border-radius:18px}
 .step__head{flex:none}
 .step .icon-tile--sm{display:none}
 .step .num{font-size:.74rem}
-.step b{flex:1;min-width:0;font-size:1rem;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.step__bar{flex:0 0 44px}
-@media (max-width:1180px){
-  .steps{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
-  .step__bar{flex-basis:56px}
-}
+.step b{flex:0 0 9.5em;min-width:0;font-size:1.02rem;letter-spacing:-.01em;white-space:nowrap}
+.step__bar{flex:1 1 auto;height:3px}
+.step.is-hover{transform:translateY(-2px)}
 @media (max-width:640px){
-  .steps{grid-template-columns:1fr;gap:7px}
+  .steps{gap:7px}
   .step{gap:14px;padding:14px 16px}
-  .step b{font-size:1.02rem}
-  .step__bar{flex-basis:72px}
+  .step b{flex-basis:7.2em}
 }
