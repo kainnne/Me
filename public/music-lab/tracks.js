@@ -37,7 +37,7 @@ window.TRACKS = {
       { "v": "v1", "date": "11/06", "file": "audio/first_srh_R1.m4a", "text": "第一版：234 個主唱音有 126 個沒有聲音，空間聽起來像卡拉 OK。", "score": "first" },
       { "v": "v2", "date": "11/06", "file": "audio/srh_v02.m4a", "text": "補回所有主唱音（151 個字都有聲音），只留一位歌手，刪掉 48 個貝斯雜音，混音比例對齊生成曲。", "logic": { "file": "stay-right-here_logic_v001.zip", "size": "21 MB" } },
       { "v": "v3", "date": "11/06", "file": "audio/srh_v03.m4a", "text": "加強鼓的起音，和聲降低 4 dB，人聲改用真實空間殘響，整理總譜版面。", "logic": { "file": "stay-right-here_logic_v001.zip", "size": "21 MB" } },
-      { "v": "v4", "date": "11/18", "file": "audio/srh_v005_lyricfix.m4a", "text": "解決歌詞沒對上的問題：生成曲與分軌的時間差從 0.04 秒漂移到 0.83 秒，改用強制對齊，146 個字中有 80 個重新定位。" },
+      { "v": "v4", "date": "11/18", "file": "audio/srh_v005_lyricfix.m4a", "text": "改善歌詞沒對上的問題：生成曲與分軌的時間差從 0.04 秒漂移到 0.83 秒，改用強制對齊，146 個字中有 80 個重新定位，仍有部分字需要再修正。" },
       { "v": "v5", "date": "11/18", "file": "audio/srh_logic_v002b.m4a", "text": "Logic 版：對位後的人聲接進 Logic 工程重新混音。", "logic": { "file": "stay-right-here_logic_v002.zip", "size": "29 MB" } },
       { "v": "v6", "date": "11/18", "file": "audio/srh_v06_score.m4a", "text": "總譜 v004：人聲照新的對位，52 小節每小節都有和弦。", "score": "v6" },
       { "v": "v7", "date": "11/18", "file": "audio/srh_logic_v003.m4a", "text": "加入 12 處換氣（只縮短前一個音的尾巴），電鋼琴加大並加空間，總譜同步標上換氣休止符。", "score": "latest", "logic": { "file": "stay-right-here_logic_v003.zip", "size": "29 MB" } }
