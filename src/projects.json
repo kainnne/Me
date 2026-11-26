@@ -143,13 +143,13 @@
     "eyebrow": "3D MUSIC GAME · PLAY IN BROWSER",
     "description": {
       "en": "A 3D music exploration game, playable in the browser.",
-      "zh": "3D 音樂探索遊戲，瀏覽器直接遊玩。"
+      "zh": "A 3D music exploration game, playable in the browser."
     },
     "features": [
-      { "en": "Seven tracks", "zh": "七首曲目" },
-      { "en": "Seven scenes and skies", "zh": "七種場景與天色" },
-      { "en": "Free flight", "zh": "自由飛行" },
-      { "en": "Desktop and mobile", "zh": "支援電腦與手機" }
+      { "en": "Seven tracks", "zh": "Seven tracks" },
+      { "en": "Seven scenes and skies", "zh": "Seven scenes and skies" },
+      { "en": "Free flight", "zh": "Free flight" },
+      { "en": "Desktop and mobile", "zh": "Desktop and mobile" }
     ],
     "category": "product",
     "tags": ["Music", "WebGL", "Game"],
