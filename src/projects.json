@@ -137,6 +137,28 @@
     "href": "https://stories.kainnne.com/"
   },
   {
+    "id": "aurelodia",
+    "number": "05",
+    "title": "Aurelodia",
+    "eyebrow": "MUSIC · 3D WORLD · PLAY IN BROWSER",
+    "description": {
+      "en": "A 3D music world where every song becomes an island you can fly into.",
+      "zh": "把每一首歌變成一座可以飛進去的島。"
+    },
+    "features": [
+      { "en": "Seven songs, seven islands", "zh": "七首歌、七座島" },
+      { "en": "Light and weather follow the music", "zh": "光與天氣跟著音樂走" },
+      { "en": "Walk, run, and fly", "zh": "走、跑、飛" },
+      { "en": "Plays in the browser", "zh": "瀏覽器直接玩" }
+    ],
+    "category": "product",
+    "tags": ["Music", "WebGL", "Game"],
+    "color": "lilac",
+    "featured": true,
+    "status": "live",
+    "href": "https://aurelodia.kainnne.com/"
+  },
+  {
     "id": "ai-tools",
     "number": "05",
     "title": "AI TOOLS",
