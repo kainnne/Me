@@ -140,16 +140,16 @@
     "id": "aurelodia",
     "number": "05",
     "title": "Aurelodia",
-    "eyebrow": "MUSIC · 3D WORLD · PLAY IN BROWSER",
+    "eyebrow": "3D MUSIC GAME · PLAY IN BROWSER",
     "description": {
-      "en": "A 3D music world where every song becomes an island you can fly into.",
-      "zh": "把每一首歌變成一座可以飛進去的島。"
+      "en": "A 3D music exploration game, playable in the browser.",
+      "zh": "3D 音樂探索遊戲，瀏覽器直接遊玩。"
     },
     "features": [
-      { "en": "Seven songs, seven islands", "zh": "七首歌、七座島" },
-      { "en": "Light and weather follow the music", "zh": "光與天氣跟著音樂走" },
-      { "en": "Walk, run, and fly", "zh": "走、跑、飛" },
-      { "en": "Plays in the browser", "zh": "瀏覽器直接玩" }
+      { "en": "Seven tracks", "zh": "七首曲目" },
+      { "en": "Seven scenes and skies", "zh": "七種場景與天色" },
+      { "en": "Free flight", "zh": "自由飛行" },
+      { "en": "Desktop and mobile", "zh": "支援電腦與手機" }
     ],
     "category": "product",
     "tags": ["Music", "WebGL", "Game"],
